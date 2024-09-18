@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh014oeqscv8h"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/bullet.gd" id="1_sueat"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rje25"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvm1r"]
+radius = 0.5
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_sueat")
+SPEED = 250.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+mesh = SubResource("SphereMesh_rje25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dvm1r")

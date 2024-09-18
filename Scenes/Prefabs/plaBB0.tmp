@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://chr5bm0rlck45"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/player.gd" id="1_57xy2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5h45"]
+size = Vector2(14, 20)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qjfd6"]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_57xy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_x5h45")
+
+[node name="Body" type="Sprite2D" parent="."]
+modulate = Color(0.313827, 0.428372, 0.314214, 1)
+rotation = -1.5708
+scale = Vector2(12, 18)
+texture = SubResource("CanvasTexture_qjfd6")
+
+[node name="Nozzle" type="Sprite2D" parent="."]
+modulate = Color(0.177722, 0.253547, 0.178093, 1)
+position = Vector2(-8, 2.02505e-14)
+rotation = -1.5708
+scale = Vector2(2, 12)
+texture = SubResource("CanvasTexture_qjfd6")
+
+[node name="Head" type="Sprite2D" parent="."]
+modulate = Color(0.238103, 0.332079, 0.238514, 1)
+rotation = -1.5708
+scale = Vector2(6, 8)
+texture = SubResource("CanvasTexture_qjfd6")
