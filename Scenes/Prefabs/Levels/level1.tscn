@@ -31,7 +31,8 @@ offset_right = -54.0
 offset_bottom = 166.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
-text = "press the WASD or Arrow Keys to move!"
+text = "press the WASD or Arrow Keys to move!
+Press SPACE to shoot!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
