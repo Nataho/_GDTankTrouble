@@ -42,7 +42,7 @@ func Movement(a):
 func Shoot():
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = plBullet.instantiate()
-		bullet.position.x -= 15
+		bullet.position.x += 15
 		bullet.rotation_degrees = rotation_degrees
 		add_child(bullet); bullet.reparent(get_parent())
 		print("SHOOT")
