@@ -11,10 +11,18 @@ func _ready():
 	print(rot)
 
 func _physics_process(delta:float) -> void:
-	#forward_vector = PlayerG.playerForwardV #for homming missile
+	if PlayerG.playerPower:
+		forward_vector = PlayerG.playerForwardV #for controlled missile
 	velocity = forward_vector * SPEED
 	translate(velocity * delta)
 	pass
 
 func die():
 	queue_free()
+	
+
+func hit(area):
+	print("HIT!")
+	queue_free()
+	get_parent().reset()
+	pass

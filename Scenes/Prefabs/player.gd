@@ -13,6 +13,17 @@ func _physics_process(delta):
 	Rotation()
 	Movement(delta)
 	Shoot()
+	POWER()
+
+func POWER():
+	if PlayerG.playerPower:
+		$BodyPower.show()
+		$NozzlePower.show()
+		$HeadPower.show()
+	else:
+		$BodyPower.hide()
+		$NozzlePower.hide()
+		$HeadPower.hide()
 
 func Rotation():
 	var rotate = Input.get_action_strength("rotate right") - Input.get_action_strength("rotate left")
@@ -22,14 +33,15 @@ func Rotation():
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
 func Movement(a):
+	##
 	#var direction = Input.get_vector('rotate left','rotate right','forward','back')
 	#desired_velocity = direction * SPEED
 	#steering_velocity = desired_velocity - velocity
 	#velocity += steering_velocity * drag_factor
 	#velocity = direction * SPEED
-	##rotation = velocity.angle()
+	#rotation = velocity.angle()
 	#move_and_slide()
-	##look_at(get_global_mouse_position())
+	#look_at(get_global_mouse_position())
 	
 	var forward_vector = (Vector2(cos(-rotation), sin(rotation)))
 	var move = Input.get_action_strength("forward") - Input.get_action_strength("back")

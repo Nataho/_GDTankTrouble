@@ -6,7 +6,7 @@
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_55a4l")
 
-[node name="Player" parent="." instance=ExtResource("1_ch0g8")]
+[node name="Player" parent="." groups=["Bullet", "Player"] instance=ExtResource("1_ch0g8")]
 position = Vector2(648, 317)
 rotation = 3.14159
 motion_mode = 1
@@ -35,25 +35,64 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -534.0
+offset_left = -541.0
 offset_top = 45.0
-offset_right = -54.0
+offset_right = -47.0
 offset_bottom = 166.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
-text = "press the WS or up and down keys to move!
-Left Click to shoot!"
+text = "press the WASD to move!
+Space to shoot!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions3" type="Label" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -576.0
+offset_top = 195.0
+offset_bottom = 366.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Use the Left joystick to move
+and right joystick to rotate!
+
+press RB/R1/R to shoot!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Instructions2" type="Label" parent="UI/Control"]
 layout_mode = 1
-offset_left = 55.0
+offset_left = 36.0
 offset_top = 52.0
-offset_right = 414.0
+offset_right = 433.0
 offset_bottom = 165.0
 theme_override_font_sizes/font_size = 40
-text = "Press \"esc\" to reset scene"
+text = "Press \"F5\" or \"Fn + F5\" to reset scene"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions4" type="Label" parent="UI/Control"]
+layout_mode = 1
+offset_left = 31.0
+offset_top = 210.0
+offset_right = 556.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 40
+text = "Press U to activate power!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions5" type="Label" parent="UI/Control"]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 316.0
+offset_right = 539.0
+offset_bottom = 374.0
+theme_override_font_sizes/font_size = 40
+text = "Press LB,L1,L to activate power!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -68,4 +107,4 @@ offset_right = 168.0
 offset_bottom = -18.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
-text = "version: 0.0.09"
+text = "version: 0.0.10"
