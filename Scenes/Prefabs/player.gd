@@ -21,15 +21,15 @@ func Rotation():
 
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
-func Movement(a): 
-	var direction = Input.get_vector('rotate left','rotate right','forward','back')
+func Movement(a):
+	#var direction = Input.get_vector('rotate left','rotate right','forward','back')
 	#desired_velocity = direction * SPEED
 	#steering_velocity = desired_velocity - velocity
 	#velocity += steering_velocity * drag_factor
 	#velocity = direction * SPEED
-	rotation = velocity.angle()
-	move_and_slide()
-	look_at(get_global_mouse_position())
+	##rotation = velocity.angle()
+	#move_and_slide()
+	##look_at(get_global_mouse_position())
 	
 	var forward_vector = (Vector2(cos(-rotation), sin(rotation)))
 	var move = Input.get_action_strength("forward") - Input.get_action_strength("back")
@@ -37,13 +37,13 @@ func Movement(a):
 		velocity = forward_vector * move * SPEED
 	else:
 		velocity = Vector2.ZERO
+	PlayerG.playerForwardV = forward_vector
 	translate(velocity * a)
 
 func Shoot():
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = plBullet.instantiate()
 		bullet.position.x += 15
-		bullet.rotation_degrees = rotation_degrees
+		#bullet.rotation_degrees = rotation_degrees
 		add_child(bullet); bullet.reparent(get_parent())
-		print("SHOOT")
-		
+		print("SHOOT")		

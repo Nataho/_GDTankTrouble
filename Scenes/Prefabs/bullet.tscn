@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh014oeqscv8h"]
+[gd_scene load_steps=4 format=3 uid="uid://dh014oeqscv8h"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/bullet.gd" id="1_sueat"]
-[ext_resource type="Texture2D" uid="uid://btnlqghtgnk3j" path="res://Assets/Bullet.png" id="2_8x8fs"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rje25"]
 
@@ -22,10 +21,5 @@ shape = SubResource("CircleShape2D_dvm1r")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.00234192, 0.00234192)
-texture = ExtResource("2_8x8fs")
 
 [connection signal="timeout" from="Timer" to="." method="die"]
