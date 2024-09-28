@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 150
 const rotationSPEED = 5.0
 
-@export_range(0,4,0.1) var playerIndex := 0
+@export_range(-1,3,0.1) var playerIndex := 0
 var bulletCount = PlayerG.bulletCap
 @export_range(0,10,0.1) var drag_factor := 0.1
 
@@ -24,12 +24,21 @@ func _physics_process(delta):
 
 var hasPressedPower = false
 func POWER():
-	if Input.is_joy_button_pressed(playerIndex,9):
-		if !hasPressedPower:
-			hasPressedPower = true
-			PlayerG.playerPower[playerIndex] = !PlayerG.playerPower[playerIndex]
-			print(PlayerG.playerPower[playerIndex])
-	else: hasPressedPower = false
+	if playerIndex == -1: 
+		if Input.is_action_just_pressed("RemoteMissile"):
+			if !hasPressedPower:
+				hasPressedPower = true
+				PlayerG.playerPower[playerIndex] = !PlayerG.playerPower[playerIndex]
+				print(PlayerG.playerPower[playerIndex])
+		else: hasPressedPower = false
+	else: 
+		if Input.is_joy_button_pressed(playerIndex,9):
+			if !hasPressedPower:
+				hasPressedPower = true
+				PlayerG.playerPower[playerIndex] = !PlayerG.playerPower[playerIndex]
+				print(PlayerG.playerPower[playerIndex])
+		else: hasPressedPower = false
+	
 	if PlayerG.playerPower[playerIndex]:
 		#$BodyPower.show()
 		#$NozzlePower.show()
@@ -41,7 +50,7 @@ func POWER():
 
 var rotate
 func Rotation():
-	if playerIndex == 4: rotate = Input.get_action_strength("rotate right") - Input.get_action_strength("rotate left")
+	if playerIndex == -1: rotate = Input.get_action_strength("rotate right") - Input.get_action_strength("rotate left")
 	else: rotate = Input.get_joy_axis(playerIndex,2)
 	
 	if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_B):
@@ -65,7 +74,7 @@ func Movement(a):
 	#look_at(get_global_mouse_position())
 	var move
 	var forward_vector = (Vector2(cos(-rotation), sin(rotation)))
-	if playerIndex == 4: move = Input.get_action_strength("forward") - Input.get_action_strength("back")
+	if playerIndex == -1: move = Input.get_action_strength("forward") - Input.get_action_strength("back")
 	else: move = Input.get_joy_axis(playerIndex,1)*-1
 	if move<-0.1 or move>0.1:
 		velocity = forward_vector * move * SPEED
@@ -78,7 +87,7 @@ func Movement(a):
 var hasShot = false #prevents shooting multiple bullets when pressing one button
 func Shoot():
 	if PlayerG.pBulletCount[playerIndex] >= bulletCount: return
-	if playerIndex == 4: 
+	if playerIndex == -1: 
 		if Input.is_action_just_pressed("shoot"):
 			if !hasShot:
 				print(hasShot)

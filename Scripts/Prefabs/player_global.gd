@@ -5,11 +5,11 @@ var playerVelocity
 
 var bulletCap = 10
 var pBulletCount = { #counts bullets of players
+	-1: 0,
 	0: 0,
 	1: 0,
 	2: 0,
 	3: 0,
-	4: 0,
 }
 var playerForwardV = [
 	Vector2(),
@@ -27,11 +27,11 @@ var playerPower = [
 ]
 
 var tankColor = {
+	-1: Color(1,1,1,1),
 	0: Color(1,1,2,1),
 	1: Color(2,1,1,1),
 	2: Color(2,2,1,1),
 	3: Color(3,2,1,1),
-	4: Color(1,1,1,1),
 }
 
 
@@ -40,11 +40,11 @@ var tankColor = {
 
 func reset():
 	PlayerG.pBulletCount = { #counts bullets of players
+	-1: 0,
 	0: 0,
 	1: 0,
 	2: 0,
 	3: 0,
-	4: 0,
 }
 ###########
 	playerForwardV = [

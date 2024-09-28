@@ -9,7 +9,7 @@ script = ExtResource("1_55a4l")
 [node name="Player" parent="." instance=ExtResource("1_ch0g8")]
 position = Vector2(1379, 871)
 rotation = -0.523598
-playerIndex = 4
+playerIndex = -1
 
 [node name="LPlayer" type="Label" parent="."]
 offset_right = 74.0
