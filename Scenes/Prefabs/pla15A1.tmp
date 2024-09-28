@@ -42,6 +42,21 @@ rotation = -1.5708
 scale = Vector2(6, 8)
 texture = SubResource("CanvasTexture_qjfd6")
 
+[node name="BodyPower" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.784314, 0.427451, 0.313726, 1)
+rotation = -1.57079
+scale = Vector2(12, 18)
+texture = SubResource("CanvasTexture_qjfd6")
+
+[node name="NozzlePower" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.639216, 0.254902, 0.176471, 1)
+position = Vector2(8, 2.02505e-14)
+rotation = -1.5708
+scale = Vector2(2, 12)
+texture = SubResource("CanvasTexture_qjfd6")
+
 [node name="HeadPower" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.670588, 0.333333, 0.239216, 1)
