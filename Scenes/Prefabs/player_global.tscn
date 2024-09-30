@@ -4,3 +4,4 @@
 
 [node name="PlayerGlobal" type="Node"]
 script = ExtResource("1_f5qgk")
+respawnTime = 5

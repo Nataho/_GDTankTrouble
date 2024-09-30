@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://chr5bm0rlck45"]
+[gd_scene load_steps=7 format=4 uid="uid://chr5bm0rlck45"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/player.gd" id="1_57xy2"]
 
@@ -12,12 +12,18 @@ data = PackedByteArray("AAAAAAEABgDW/+D/uP/G/8T/1f/C/9b/nv+x/4n/l/+O/5X/nP+Y/6j/
 format = 1
 stereo = true
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkn8y"]
+radius = 82.4087
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mg8oi"]
+radius = 15.2329
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 3
 scale = Vector2(5, 5)
-collision_layer = 2
+collision_layer = 2147483650
+collision_mask = 3
 script = ExtResource("1_57xy2")
-drag_factor = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -51,3 +57,27 @@ texture = SubResource("CanvasTexture_qjfd6")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamWAV_rjnfi")
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+shape = SubResource("CircleShape2D_qkn8y")
+
+[node name="WallCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCheck"]
+shape = SubResource("CircleShape2D_mg8oi")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="PlayerCheck" to="." method="CheckForPlayers"]
+[connection signal="body_entered" from="WallCheck" to="." method="CheckForWalls"]
+[connection signal="timeout" from="Timer" to="." method="Respawn"]

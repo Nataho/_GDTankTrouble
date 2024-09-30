@@ -3,18 +3,64 @@ extends CharacterBody2D
 const SPEED = 150
 const rotationSPEED = 5.0
 
-@export_range(-1,3,0.1) var playerIndex := 0
+@export_range(-1,4,0.1) var playerIndex := 0
 var bulletCount = PlayerG.bulletCap
 @export_range(0,10,0.1) var drag_factor := 0.1
 
 var velo: Vector2 = Vector2.ZERO
 var plBullet := preload("res://Scenes/Prefabs/bullet.tscn")
 
+var Spawned = false
+var CoastClear = false
+
 func _ready():
+	$Timer.wait_time = PlayerG.respawnTime
 	modulate = PlayerG.tankColor[playerIndex]
-	#modulate = Color.from_hsv()
-	#var tankHsv = currentColor.to_hsv()
-	pass
+	CHECK()
+
+
+
+func Died(): 
+	self.hide()
+	self.set_process_mode(4)
+	$Timer.start()
+	
+
+func Respawn(): CHECK()
+
+func CHECK():
+	self.show()
+	self.set_process_mode(0)
+	var WindowSize = get_viewport().size
+	while !Spawned:
+		randomize()
+		CoastClear = true
+		var rngX = randi_range(50, WindowSize.x -50)
+		var rngY = randi_range(50, WindowSize.y -50)
+		var rngRot = randi_range(0,360)
+		self.rotation_degrees = rngRot
+		self.position = Vector2(rngX,rngY)
+		
+		#check for nearby players and walls
+		for body in get_tree().get_nodes_in_group("Player"):
+			if body != self and self.position.distance_to(body.position) < 475:
+				CoastClear = false
+				print("This Player has a player nearby and can't spawn")
+				break
+		
+		for body in get_tree().get_nodes_in_group("Walls"):
+			if body != self and self.position.distance_to(body.position) < 150:
+				CoastClear = false
+				print("This Player is near a wall and can't spawn")
+				break
+		
+		if CoastClear:
+			print("This Player Can Now Spawn!")
+			Spawned = true
+			break
+		else: 
+			print("Check Failed, Relocating")
+		
 
 func _physics_process(delta):
 	Rotation()
@@ -93,17 +139,24 @@ func Shoot():
 				print(hasShot)
 				var bullet = plBullet.instantiate()
 				bullet.position.x += 15
-				#bullet.rotation_degrees = rotation_degrees
 				add_child(bullet); bullet.reparent(get_parent())
 				print("SHOOT")
 	else:
-		if Input.is_joy_button_pressed(playerIndex,10):# or Input.is_action_just_pressed("shoot"): #presses RB / R1 / R
+		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_RIGHT_SHOULDER):# or Input.is_action_just_pressed("shoot"): #presses RB / R1 / R
 			if !hasShot:
 				print(hasShot)
 				var bullet = plBullet.instantiate()
 				bullet.position.x += 15
-				#bullet.rotation_degrees = rotation_degrees
 				add_child(bullet); bullet.reparent(get_parent())
 				print("SHOOT")
 				hasShot = true
 		else: hasShot = false;#print(hasShot)
+
+func CheckForWalls(body): #area2d
+	if body.name != self.name and not Spawned:
+		print(self.name + " you are near a wall " + body.name)
+		CoastClear = false
+func CheckForPlayers(body): #area2d
+	if body.name != self.name and !Spawned:
+		print(self.name + " you are near player " + body.name)
+	elif body.name == self.name: CoastClear = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs7lexdwymee3"]
+
+[ext_resource type="Script" path="res://tests/test_bullet.gd" id="1_6l6um"]
+[ext_resource type="Texture2D" uid="uid://d3ky86ofqhnm7" path="res://icon.svg" id="1_pmmu7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcdfe"]
+
+[node name="TestBullet" type="CharacterBody2D"]
+collision_mask = 257
+script = ExtResource("1_6l6um")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wcdfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_pmmu7")
