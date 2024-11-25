@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dm644nfi0nxiy"]
+
+[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="1_k7ug4"]
+
+[resource]
+font = ExtResource("1_k7ug4")
+font_size = 80
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)

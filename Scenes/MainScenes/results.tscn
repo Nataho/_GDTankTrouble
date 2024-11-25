@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=3 uid="uid://5qfbrjxv0slv"]
+
+[ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="1_lbocf"]
+[ext_resource type="Script" path="res://Scripts/MainScenes/results.gd" id="1_waoks"]
+[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="2_inuxo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cti8j"]
+font = ExtResource("2_inuxo")
+font_size = 40
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_waoks")
+
+[node name="Player" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -928.0
+offset_top = 257.0
+offset_right = -672.0
+offset_bottom = 513.0
+grow_horizontal = 2
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="Satistics" type="Label" parent="Player"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_top = 273.0
+offset_right = 130.5
+offset_bottom = 446.0
+grow_horizontal = 2
+text = "kill: 0
+death: 0
+suicide: 0
+game score: 0
+total score: 0"
+label_settings = SubResource("LabelSettings_cti8j")
+horizontal_alignment = 2
+
+[node name="Player1" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -528.0
+offset_top = 257.0
+offset_right = -272.0
+offset_bottom = 513.0
+grow_horizontal = 2
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="Satistics" type="Label" parent="Player1"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_top = 273.0
+offset_right = 130.5
+offset_bottom = 446.0
+grow_horizontal = 2
+text = "kill: 0
+death: 0
+suicide: 0
+game score: 0
+total score: 0"
+label_settings = SubResource("LabelSettings_cti8j")
+horizontal_alignment = 2
+
+[node name="Player2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 257.0
+offset_right = 128.0
+offset_bottom = 513.0
+grow_horizontal = 2
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="Satistics" type="Label" parent="Player2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_top = 273.0
+offset_right = 130.5
+offset_bottom = 446.0
+grow_horizontal = 2
+text = "kill: 0
+death: 0
+suicide: 0
+game score: 0
+total score: 0"
+label_settings = SubResource("LabelSettings_cti8j")
+horizontal_alignment = 2
+
+[node name="Player3" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 272.0
+offset_top = 257.0
+offset_right = 528.0
+offset_bottom = 513.0
+grow_horizontal = 2
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="Satistics" type="Label" parent="Player3"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_top = 273.0
+offset_right = 130.5
+offset_bottom = 446.0
+grow_horizontal = 2
+text = "kill: 0
+death: 0
+suicide: 0
+game score: 0
+total score: 0"
+label_settings = SubResource("LabelSettings_cti8j")
+horizontal_alignment = 2
+
+[node name="Player4" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 672.0
+offset_top = 257.0
+offset_right = 928.0
+offset_bottom = 513.0
+grow_horizontal = 2
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="Satistics" type="Label" parent="Player4"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_top = 273.0
+offset_right = 130.5
+offset_bottom = 446.0
+grow_horizontal = 2
+text = "kill: 0
+death: 0
+suicide: 0
+game score: 0
+total score: 0"
+label_settings = SubResource("LabelSettings_cti8j")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = 111.0
+offset_right = 183.0
+offset_bottom = 192.0
+grow_horizontal = 2
+text = "RESULTS:"
+label_settings = ExtResource("1_lbocf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time Left" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -867.0
+offset_top = -81.0
+offset_right = -360.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Automatic Exit: "
+label_settings = ExtResource("1_lbocf")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="AutoExit"]

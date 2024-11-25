@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bisxjvwbauriv"]
+
+[ext_resource type="Script" path="res://Scripts/MainScenes/loading.gd" id="1_5ijko"]
+[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="1_qcbu0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdf4b"]
+font = ExtResource("1_qcbu0")
+font_size = 240
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Loading" type="CanvasLayer"]
+script = ExtResource("1_5ijko")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -492.0
+offset_top = -120.0
+offset_right = 492.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+label_settings = SubResource("LabelSettings_gdf4b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Refresh" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Refresh" to="." method="Refresh"]

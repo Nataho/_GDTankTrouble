@@ -1,6 +1,118 @@
-[gd_scene load_steps=2 format=3 uid="uid://d18qeqmnb3shl"]
+[gd_scene load_steps=6 format=3 uid="uid://d18qeqmnb3shl"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_a2i88"]
+[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="2_cul20"]
+[ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="3_14i8t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccbrq"]
+font = ExtResource("2_cul20")
+font_size = 240
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1eosx"]
+font = ExtResource("2_cul20")
+font_size = 120
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a2i88")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -214.0
+offset_right = 322.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "PLAY!"
+
+[node name="Tutorial" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = 82.0
+offset_right = 322.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "TUTORIAL"
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(8.46986, 8.46986)
+text = "debug"
+
+[node name="TITLE" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -649.5
+offset_top = 135.0
+offset_right = 649.5
+offset_bottom = 375.0
+grow_horizontal = 2
+text = "BLOCKY BLASTERS"
+label_settings = SubResource("LabelSettings_ccbrq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Edition" type="Label" parent="CanvasLayer/Control/TITLE"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -319.0
+offset_top = 199.0
+offset_right = 1113.0
+offset_bottom = 320.0
+grow_horizontal = 2
+text = "Founders Week Edition!"
+label_settings = SubResource("LabelSettings_1eosx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_top = 701.0
+offset_right = 671.0
+offset_bottom = 782.0
+text = "What's Up/New?
+Founders:
+Day 1:
+-5 players
+-Free For All
+-Power Ups"
+label_settings = ExtResource("3_14i8t")
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="buttonPlay"]
+[connection signal="pressed" from="CanvasLayer/Control/Tutorial" to="." method="buttonTutorial"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="debug"]

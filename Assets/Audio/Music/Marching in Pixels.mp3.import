@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqt0ofkvlpoje"
+path="res://.godot/imported/Marching in Pixels.mp3-f6e38c0bceb859615e7087ec83b980a2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Marching in Pixels.mp3"
+dest_files=["res://.godot/imported/Marching in Pixels.mp3-f6e38c0bceb859615e7087ec83b980a2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

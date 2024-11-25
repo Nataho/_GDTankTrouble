@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://by72uwklcjpye"
+path="res://.godot/imported/Wii Play Tanks Music  Brown Tank.mp3-c4fae4c5c56b2e9b96da9504a6a54d00.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Wii Play Tanks Music  Brown Tank.mp3"
+dest_files=["res://.godot/imported/Wii Play Tanks Music  Brown Tank.mp3-c4fae4c5c56b2e9b96da9504a6a54d00.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

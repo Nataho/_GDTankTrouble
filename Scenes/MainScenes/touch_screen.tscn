@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cco5812xjbj8"]
+
+[ext_resource type="Texture2D" uid="uid://x8be8cwh422q" path="res://Assets/Photos/MoveLeftSprite.png" id="1_ysyxu"]
+[ext_resource type="Texture2D" uid="uid://b0vbbdi7dbi8r" path="res://Assets/Photos/MoveLeftPressed.png" id="2_3eop4"]
+
+[node name="TouchScreen" type="CanvasLayer"]
+
+[node name="buttonLeft" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left" type="TouchScreenButton" parent="buttonLeft"]
+position = Vector2(4, 13)
+texture_normal = ExtResource("1_ysyxu")
+texture_pressed = ExtResource("2_3eop4")

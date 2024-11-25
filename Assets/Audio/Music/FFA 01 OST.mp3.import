@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dekqrwod4rmw"
+path="res://.godot/imported/FFA 01 OST.mp3-ddd0492dd0dc82cf990d5d40007d5cee.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/FFA 01 OST.mp3"
+dest_files=["res://.godot/imported/FFA 01 OST.mp3-ddd0492dd0dc82cf990d5d40007d5cee.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=162.0
+beat_count=354
+bar_beats=4

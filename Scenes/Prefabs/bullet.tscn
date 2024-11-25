@@ -7,13 +7,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvm1r"]
 radius = 0.5
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D" groups=["Bullet"]]
 scale = Vector2(2, 2)
-collision_mask = 261
+collision_mask = 16777477
 script = ExtResource("1_sueat")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.43, 0.43, 0.43, 1)
 mesh = SubResource("SphereMesh_rje25")
 
 [node name="Timer" type="Timer" parent="."]
@@ -21,10 +21,12 @@ wait_time = 5.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_dvm1r")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 262
+scale = Vector2(1.1, 1.1)
+collision_mask = 16777478
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_dvm1r")

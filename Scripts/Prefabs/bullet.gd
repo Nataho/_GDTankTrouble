@@ -16,30 +16,50 @@ func GetGamepadIndex():
 	pass
 
 func _ready():
+	AudioG.playSFX("bulletShoot",true)
 	GetGamepadIndex()
+	modulate = PlayerG.activeTankColor[playerIndex] #color
 	PlayerG.pBulletCount[playerIndex] += 1
-	print("Player ", playerIndex, "has shot")
+	if GameManager.Debug: print("Player ", playerIndex, " has shot")
 	forward_vector = PlayerG.playerForwardV[playerIndex] #for forward direction ####
 	velocity = forward_vector * SPEED
 
 func _physics_process(delta:float) -> void:
+	Collisions(delta)
+	
+func Collisions(delta:float) -> void:
 	var collision = move_and_collide(velocity*delta)
+	var collisionBody
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
-	pass
+		collisionBody = collision.get_collider()
+	if collisionBody != null and collisionBody.name == "Walls":
+		AudioG.playSFX("bulletBounce",true)
+	if collisionBody != null and collisionBody.name == "Bullet":
+		if GameManager.Debug: print("bullet has collided")
+		queue_free(); PlayerG.pBulletCount[playerIndex] -=1
+		collisionBody.queue_free(); PlayerG.pBulletCount[collisionBody.playerIndex] -=1
+		AudioG.playSFX2("bulletCollide",true)
+	collisionBody = null
 
 func die():
 	PlayerG.pBulletCount[playerIndex] -= 1
 	queue_free()
 	
 func hit(body):
-	if body.name == "Player" or body.name == "Player1" or body.name == "Player2" or body.name == "Player3" or body.name == "Player4":
-		print(body.name)
-		print("HIT!")
+	if body in get_tree().get_nodes_in_group("Player"):
+		if GameManager.Debug: print("HIT!")
 		body.Spawned = false
 		body.CoastClear = false
 		body.Died()
+		AudioG.playSFX3("playerDie",true)
 		PlayerG.pBulletCount[playerIndex] -= 1
+		PlayerG.PlayerScore[body.playerIndex]["deaths"] += 1
 		queue_free()
-	elif body.name == "Walls":
-		print("wall")
+		if body.playerIndex == playerIndex: #if bullet has hit the sender
+			PlayerG.PlayerScore[playerIndex]["game score"] -= 1
+			PlayerG.PlayerScore[playerIndex]["suicide"] += 1
+		else:
+			PlayerG.PlayerScore[playerIndex]["kills"] += 1
+			PlayerG.PlayerScore[playerIndex]["game score"] += 1
+		if GameManager.Debug: print("Player ", playerIndex, "'s score is: ", PlayerG.PlayerScore[playerIndex])

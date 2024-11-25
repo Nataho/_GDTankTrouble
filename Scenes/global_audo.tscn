@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2gfvr3hshmm2"]
+
+[ext_resource type="Script" path="res://Scripts/global_audo.gd" id="1_7xffd"]
+
+[node name="GlobalAudio" type="Node"]
+script = ExtResource("1_7xffd")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="SFX2" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="SFX3" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"SFX"
+
+[node name="SFXEND" type="AudioStreamPlayer" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"Music"
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"Music"
+
+[node name="Music3" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
+bus = &"Music"

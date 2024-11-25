@@ -1,0 +1,190 @@
+[gd_scene load_steps=12 format=3 uid="uid://cn2rml7kd82mp"]
+
+[ext_resource type="Script" path="res://InGameUI2.gd" id="1_51tcy"]
+[ext_resource type="Script" path="res://InGameUI.gd" id="2_umxrk"]
+[ext_resource type="Texture2D" uid="uid://x8be8cwh422q" path="res://Assets/Photos/MoveLeftSprite.png" id="3_ewv41"]
+[ext_resource type="Texture2D" uid="uid://b0vbbdi7dbi8r" path="res://Assets/Photos/MoveLeftPressed.png" id="4_u61fv"]
+[ext_resource type="Texture2D" uid="uid://qqixd6wb1t0h" path="res://Assets/Photos/MoveRightSprite.png" id="5_spti7"]
+[ext_resource type="Texture2D" uid="uid://dphxgsujpjf35" path="res://Assets/Photos/MoveRightPressed.png" id="6_00duu"]
+[ext_resource type="Texture2D" uid="uid://c43k0rxs7vg5v" path="res://Assets/Photos/MoveJumpSprite.png" id="7_x7txq"]
+[ext_resource type="Texture2D" uid="uid://cqwtrhiupv31c" path="res://Assets/Photos/MoveJumpPressed.png" id="8_xya5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u3kv"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whr77"]
+size = Vector2(32, 16)
+
+[sub_resource type="Shortcut" id="Shortcut_tinsx"]
+
+[node name="InGameUI" type="CanvasLayer"]
+script = ExtResource("1_51tcy")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_umxrk")
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 1.45
+anchor_top = 1.451
+anchor_right = 1.45
+anchor_bottom = 1.451
+offset_left = -3447.0
+offset_top = -1946.44
+offset_right = -2296.0
+offset_bottom = -1297.44
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="Shoot" type="Button" parent="Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 737.0
+offset_top = -43.5
+offset_right = 2.0
+offset_bottom = -363.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="forward" type="TouchScreenButton" parent="Control/Control"]
+position = Vector2(784.5, 379)
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("7_x7txq")
+texture_pressed = ExtResource("8_xya5m")
+shape = SubResource("RectangleShape2D_5u3kv")
+
+[node name="Back" type="TouchScreenButton" parent="Control/Control"]
+position = Vector2(872.5, 584)
+rotation = 3.14159
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("7_x7txq")
+texture_pressed = ExtResource("8_xya5m")
+shape = SubResource("RectangleShape2D_5u3kv")
+
+[node name="Control2" type="Control" parent="Control"]
+layout_mode = 1
+anchor_top = 1.451
+anchor_bottom = 1.451
+offset_top = -1950.44
+offset_right = 514.0
+offset_bottom = -1301.44
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="LeftTouch" type="TouchScreenButton" parent="Control/Control2"]
+position = Vector2(56, 506)
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("3_ewv41")
+texture_pressed = ExtResource("4_u61fv")
+shape = SubResource("RectangleShape2D_whr77")
+passby_press = true
+
+[node name="RightTouch" type="TouchScreenButton" parent="Control/Control2"]
+position = Vector2(260, 506)
+scale = Vector2(5.5, 5.5)
+texture_normal = ExtResource("5_spti7")
+texture_pressed = ExtResource("6_00duu")
+shape = SubResource("RectangleShape2D_whr77")
+passby_press = true
+
+[node name="Left" type="Button" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -129.0
+offset_right = 214.0
+offset_bottom = -34.0
+grow_vertical = 0
+action_mode = 0
+text = "Left"
+
+[node name="Right" type="Button" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = -129.0
+offset_right = 425.0
+offset_bottom = -34.0
+grow_vertical = 0
+action_mode = 0
+text = "Right"
+
+[node name="Pause" type="Button" parent="Control"]
+visible = false
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 53.0
+offset_bottom = 53.0
+shortcut = SubResource("Shortcut_tinsx")
+text = "| |"
+
+[node name="MainMenu" type="Button" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -58.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 58.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+action_mode = 0
+text = "Back"
+
+[node name="Space" type="Button" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.625
+offset_top = -129.0
+offset_right = -65.625
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+action_mode = 0
+text = "Jump"
+
+[connection signal="button_down" from="Control/Control/Shoot" to="Control" method="shoot_pressend"]
+[connection signal="button_up" from="Control/Control/Shoot" to="Control" method="shoot_released"]
+[connection signal="pressed" from="Control/Control/forward" to="Control" method="_on_jump_pressed"]
+[connection signal="released" from="Control/Control/forward" to="Control" method="_on_jump_released"]
+[connection signal="pressed" from="Control/Control/Back" to="Control" method="backward_pressed"]
+[connection signal="released" from="Control/Control/Back" to="Control" method="backward_released"]
+[connection signal="pressed" from="Control/Control2/LeftTouch" to="Control" method="_on_left_2_pressed"]
+[connection signal="released" from="Control/Control2/LeftTouch" to="Control" method="_on_left_2_released"]
+[connection signal="pressed" from="Control/Control2/RightTouch" to="Control" method="_on_right_touch_pressed"]
+[connection signal="released" from="Control/Control2/RightTouch" to="Control" method="_on_right_touch_released"]
+[connection signal="button_down" from="Control/Left" to="Control" method="_on_left_button_down"]
+[connection signal="button_up" from="Control/Left" to="Control" method="_on_left_button_up"]
+[connection signal="button_down" from="Control/Right" to="Control" method="_on_right_button_down"]
+[connection signal="button_up" from="Control/Right" to="Control" method="_on_right_button_up"]
+[connection signal="pressed" from="Control/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Control/MainMenu" to="Control" method="_on_main_menu_pressed"]
+[connection signal="button_down" from="Control/Space" to="Control" method="_on_space_button_down"]
+[connection signal="button_up" from="Control/Space" to="Control" method="_on_space_button_up"]

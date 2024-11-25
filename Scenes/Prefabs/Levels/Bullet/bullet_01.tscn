@@ -1,0 +1,3291 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddcq3ha7vc3h5"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Levels/Bullet/bullet_map.gd" id="1_gdl3g"]
+[ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="2_bf55i"]
+[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="3_enbks"]
+[ext_resource type="PackedScene" uid="uid://wmpvq2c53b5" path="res://Scenes/Prefabs/UI/multiplayer_ui.tscn" id="4_dpev5"]
+[ext_resource type="PackedScene" uid="uid://chr5bm0rlck45" path="res://Scenes/Prefabs/player.tscn" id="5_fhyrw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
+font = ExtResource("3_enbks")
+font_size = 640
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w80a2"]
+size = Vector2(138, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5u6ma"]
+
+[node name="Bullet_01" type="Node2D"]
+script = ExtResource("1_gdl3g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1292, 680)
+zoom = Vector2(1.765, 1.765)
+metadata/_edit_lock_ = true
+
+[node name="Countdown" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Version" type="Label" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -46.0
+offset_right = 168.0
+offset_bottom = -18.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "version: 0.0.16"
+metadata/_edit_use_anchors_ = true
+
+[node name="TIME" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.5
+offset_right = 110.5
+offset_bottom = 81.0
+grow_horizontal = 2
+text = "Time:
+"
+label_settings = ExtResource("2_bf55i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GAME" type="Label" parent="UI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1088.0
+offset_top = -318.5
+offset_right = 1088.0
+offset_bottom = 318.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME!"
+label_settings = SubResource("LabelSettings_ynohh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Barriers" type="Node" parent="."]
+
+[node name="Walls" type="StaticBody2D" parent="Barriers"]
+collision_layer = 258
+
+[node name="Wall70" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 0)
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall70"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall71" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 0)
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall71"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall72" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 0)
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall72"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall73" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 0)
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall73"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall74" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall74"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall75" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall75"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall76" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 136)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall76"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall77" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 272)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall77"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall78" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 408)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall78"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall79" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 544)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall79"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall80" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 680)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall80"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall81" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 816)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall81"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall82" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 952)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall82"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall83" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 1088)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall83"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall84" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 1224)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall84"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall85" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 1360)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall85"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall86" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 1494)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall86"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall87" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(0, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall87"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall88" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall88"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall89" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall89"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall90" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall90"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall91" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall91"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall92" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(680, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall92"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall93" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(816, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall93"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall94" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(952, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall94"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall95" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1088, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall95"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall96" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1224, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall96"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall97" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1360, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall97"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall98" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1496, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall98"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall99" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1632, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall99"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall100" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1768, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall100"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall101" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1904, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall101"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall102" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall102"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall103" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall103"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall104" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall104"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall105" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall105"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall106" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 1494)
+rotation = -3.1416
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall106"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall107" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 1494)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall107"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall108" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 1358)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall108"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall109" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 1222)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall109"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall110" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 1086)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall110"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall134" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 1088)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall134"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall135" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 1088)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall135"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall136" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 1088)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall136"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall325" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1307, 743)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall325"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall334" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(958, 885)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall334"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall335" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(897, 824)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall335"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall338" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1638, 885)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall338"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall339" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1699, 824)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall339"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall336" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(889, 538)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall336"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall352" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(680, 363)
+rotation = -3.92699
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall352"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall356" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(634, 474)
+rotation = -4.71239
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall356"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall357" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(635, 897)
+rotation = -4.71239
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall357"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall358" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1949, 895)
+rotation = -4.71239
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall358"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall359" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1949, 471)
+rotation = -4.71239
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall359"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall355" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1904, 1007)
+rotation = -3.92699
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall355"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall353" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(681, 1008)
+rotation = -2.35619
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall353"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall354" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1904, 359)
+rotation = -2.35619
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall354"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall340" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1012, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall340"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall341" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1148, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall341"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall342" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1284, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall342"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall343" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1420, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall343"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall344" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1557, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall344"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall345" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1575, 414)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall345"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall346" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1019, 946)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall346"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall347" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1150, 946)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall347"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall348" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1286, 946)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall348"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall349" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1422, 946)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall349"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall350" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1559, 946)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall350"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall351" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1577, 946)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall351"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall337" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(950, 476)
+rotation = -4.71239
+scale = Vector2(1.01205, 0.980198)
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall337"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall326" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1245, 682)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall326"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall327" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1369, 682)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall327"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall329" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1369, 682)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall329"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall330" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1636, 477)
+rotation = -4.71239
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall330"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall331" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1636, 477)
+rotation = -4.71239
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall331"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall332" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1697, 538)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall332"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall333" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1697, 538)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall333"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall328" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1307, 621)
+rotation = -7.85398
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall328"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall175" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall175"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall176" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall176"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall177" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall177"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall178" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall178"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall179" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall179"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall180" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall180"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall181" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall181"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall182" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall182"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall183" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall183"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall184" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall184"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall185" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall185"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall186" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall186"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall187" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall187"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall188" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall188"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall189" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall189"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall190" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, 272)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall190"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall191" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, 272)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall191"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall192" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, 272)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall192"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall193" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 272)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall193"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall194" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 272)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall194"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall195" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 272)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall195"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall196" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall196"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall197" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall197"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall198" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall198"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall199" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall199"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall200" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall200"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall201" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall201"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall202" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall202"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall203" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall203"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall204" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall204"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall205" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall205"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall206" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall206"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall207" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall207"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall208" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall208"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall209" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall209"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall210" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall210"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall211" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 1088)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall211"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall212" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 1088)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall212"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall213" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 1088)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall213"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall214" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 1224)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall214"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall215" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 1224)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall215"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall216" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 1224)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall216"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall217" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 1349)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall217"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall218" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 1349)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall218"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall219" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 1349)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall219"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall223" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(952, 1360)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall223"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall224" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(816, 1360)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall224"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall225" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(680, 1360)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall225"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall232" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(681, 1296)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall232"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall233" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(545, 1296)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall233"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall234" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(409, 1296)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall234"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall235" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(356, 1295)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall235"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall238" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1197, 1295)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall238"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall239" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1061, 1295)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall239"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall240" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(925, 1295)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall240"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall241" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(872, 1294)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall241"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall242" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1573, 1217)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall242"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall243" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1437, 1217)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall243"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall244" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1301, 1217)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall244"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall245" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1248, 1216)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall245"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall246" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1945, 1296)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall246"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall247" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1809, 1296)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall247"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall248" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1673, 1296)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall248"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall249" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1620, 1295)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall249"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall250" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2140, 1209)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall250"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall251" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2004, 1209)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall251"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall252" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1868, 1209)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall252"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall253" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1815, 1208)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall253"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall255" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2004, 1209)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall255"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall257" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1815, 1208)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall257"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall236" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(220, 1295)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall236"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall237" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(84, 1295)
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall237"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall229" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1460, 1360)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall229"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall230" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1324, 1360)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall230"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall231" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1188, 1360)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall231"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall256" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2228, 1372)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall256"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall258" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2092, 1372)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall258"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall259" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1956, 1372)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall259"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall263" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1865, 1151)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall263"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall264" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1729, 1151)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall264"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall265" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1593, 1151)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall265"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall266" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1335, 1150)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall266"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall267" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1199, 1150)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall267"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall268" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1063, 1150)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall268"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall269" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(883, 1183)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall269"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall270" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(747, 1183)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall270"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall271" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(611, 1183)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall271"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall272" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2374, 106)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall272"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall273" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2238, 106)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall273"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall274" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2102, 106)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall274"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall275" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2476, 52)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall275"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall276" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2340, 52)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall276"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall277" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2204, 52)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall277"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall278" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2429, 155)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall278"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall279" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2293, 155)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall279"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall280" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2157, 155)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall280"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall281" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1913, 205)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall281"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall282" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1777, 205)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall282"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall283" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1641, 205)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall283"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall284" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1917, 123)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall284"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall285" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1781, 123)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall285"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall286" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1645, 123)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall286"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall287" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1908, 55)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall287"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall288" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1772, 55)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall288"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall289" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1636, 55)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall289"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall290" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1465, 208)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall290"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall291" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1329, 208)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall291"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall292" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1193, 208)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall292"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall293" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1466, 120)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall293"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall294" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1330, 120)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall294"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall295" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1194, 120)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall295"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall296" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1472, 56)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall296"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall297" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1336, 56)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall297"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall298" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1200, 56)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall298"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall299" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1014, 205)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall299"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall300" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(878, 205)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall300"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall301" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(742, 205)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall301"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall302" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1017, 120)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall302"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall303" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(881, 120)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall303"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall304" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(745, 120)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall304"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall305" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1012, 58)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall305"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall306" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(876, 58)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall306"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall307" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(740, 58)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall307"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall308" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(567, 52)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall308"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall309" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(431, 52)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall309"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall310" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(295, 52)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall310"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall317" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(359, 85)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall317"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall318" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(223, 85)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall318"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall319" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(87, 85)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall319"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall311" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(563, 122)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall311"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall312" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(427, 122)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall312"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall313" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(291, 122)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall313"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall314" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(371, 162)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall314"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall315" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(235, 162)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall315"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall316" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(99, 162)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall316"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall260" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2441, 1282)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall260"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall261" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2305, 1282)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall261"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall262" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2169, 1282)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall262"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall226" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(957, 1222)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall226"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall227" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(821, 1222)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall227"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall228" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(685, 1222)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall228"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall220" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(408, 1496)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall220"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall221" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(272, 1496)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall221"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall222" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(136, 1496)
+rotation = -6.28319
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall222"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall137" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 1122)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall137"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall138" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 952)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall138"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall321" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 1017)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall321"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall322" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 1001)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall322"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall139" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 816)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall139"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall140" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 680)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall140"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall141" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 544)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall141"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall142" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 408)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall142"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall324" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 338)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall324"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall143" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 256)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall143"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall144" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1904, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall144"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall145" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall145"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall146" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1768, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall146"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall147" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1632, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall147"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall148" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1496, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall148"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall149" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1360, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall149"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall150" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1224, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall150"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall151" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1088, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall151"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall152" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(952, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall152"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall153" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(816, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall153"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall154" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(680, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall154"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall155" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 256)
+rotation = -6.28318
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall155"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall156" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 256)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall156"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall157" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 408)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall157"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall323" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 351)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall323"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall158" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 544)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall158"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall159" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 680)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall159"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall160" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 816)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall160"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall161" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 952)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall161"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall162" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 1122)
+rotation = -7.85397
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall162"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall163" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(544, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall163"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall164" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(680, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall164"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall165" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(816, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall165"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall166" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(952, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall166"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall167" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1088, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall167"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall168" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1224, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall168"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall169" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1360, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall169"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall170" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1496, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall170"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall171" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1632, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall171"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall172" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1768, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall172"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall173" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1904, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall173"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall174" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall174"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall254" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 1122)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall254"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall320" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, 1122)
+rotation = -9.42478
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall320"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall111" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 950)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall111"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall112" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 814)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall112"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall113" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 678)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall113"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall114" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 542)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall114"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall115" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 406)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall115"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall116" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 270)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall116"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall117" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, 134)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall117"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall118" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, -2)
+rotation = -4.7124
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall118"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall119" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2584, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall119"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall120" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2448, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall120"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall121" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2312, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall121"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall122" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2176, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall122"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall123" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(2040, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall123"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall124" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1904, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall124"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall125" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1768, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall125"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall126" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1632, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall126"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall127" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1496, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall127"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall128" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1360, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall128"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall129" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1224, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall129"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall130" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1088, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall130"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall131" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(952, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall131"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall132" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(816, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall132"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Wall133" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(680, -2)
+rotation = -6.2832
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall133"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Multiplayer UI" parent="." instance=ExtResource("4_dpev5")]
+
+[node name="toResult" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="spawnPower" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("5_fhyrw")]
+position = Vector2(-330, 682)
+
+[connection signal="timeout" from="Countdown" to="." method="UpdateTime"]
+[connection signal="timeout" from="toResult" to="." method="toResult"]
+[connection signal="timeout" from="spawnPower" to="." method="newPowerUp"]
