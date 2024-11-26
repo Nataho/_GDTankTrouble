@@ -39,7 +39,7 @@ func _ready() -> void:
 
 
 func StartGame():
-	Transition.ChangeScene("FFA 03","slideRight")
+	Transition.ChangeScene("loading", "slideRight")
 
 #region Player Names
 func submitPlayer0(value:String, index = -1):

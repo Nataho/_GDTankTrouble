@@ -7,6 +7,7 @@ const Scenes = {
 	"tutorial": "res://Scenes/MainScenes/tutorial.tscn",
 	"player menu": "res://Scenes/MainScenes/player_menu.tscn",
 	"results": "res://Scenes/MainScenes/results.tscn",
+	"loading": "res://Scenes/MainScenes/loading_screen.tscn",
 	
 	"level 1" : "res://Scenes/Prefabs/Levels/level1.tscn",
 	

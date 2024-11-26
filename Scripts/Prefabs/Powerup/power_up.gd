@@ -11,7 +11,7 @@ var spawned = false
 
 var Sprites:Dictionary = {
 	1: "res://Assets/Photos/PowerUps/PowerUpMouse.png",
-	2: "res://Assets/Photos/PowerUps/Elephant.png",
+	2: "res://Assets/Photos/PowerUps/PowerupElephant.png",
 	3: "res://Assets/Photos/PowerUps/PowerupSpeed.png",
 }
 
