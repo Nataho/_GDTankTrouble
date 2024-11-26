@@ -14,6 +14,9 @@ const Scenes = {
 	"FFA 01": "res://Scenes/Prefabs/Levels/FFA/ffa_01.tscn",
 	"FFA 02": "res://Scenes/Prefabs/Levels/FFA/ffa_02.tscn",
 	"FFA 03": "res://Scenes/Prefabs/Levels/FFA/ffa_03.tscn",
+	
+	"Bullet 01": "res://Scenes/Prefabs/Levels/Bullet/bullet_01.tscn",
+	"Bullet 02": "res://Scenes/Prefabs/Levels/Bullet/bullet_02.tscn",
 }
 
 func changeScene(scene: String):

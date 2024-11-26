@@ -16,7 +16,7 @@ var bulletCount = PlayerG.bulletCap #cap for the bullet, asked in player_global.
 @export var isPlayerMenu = false
 @export var canShoot_Move = true
 
-@onready var head_power: Sprite2D = $Node2D/HeadPower
+@onready var head_power: Sprite2D = $power/HeadPower
 
 var velo: Vector2 = Vector2.ZERO
 var plBullet := preload("res://Scenes/Prefabs/bullet.tscn")
@@ -25,7 +25,7 @@ var Spawned = false
 var CoastClear = false
 
 func _process(delta: float) -> void:
-	if isPlayerMenu: modulate = Color.LIGHT_GOLDENROD
+	if isPlayerMenu: modulate = Color.LIGHT_GOLDENROD; $power/WorldEnvironment.environment = null
 	if GameManager.Debug: if Input.is_action_just_pressed("goBack"): get_tree().quit()
 #region startup
 func _ready():

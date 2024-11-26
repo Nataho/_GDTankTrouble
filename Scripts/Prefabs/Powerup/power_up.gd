@@ -19,7 +19,6 @@ var isTexture = false
 func _ready() -> void:
 	$Animate.play("RESET")
 	spawn()
-
 func spawn():
 	isTexture = false; 
 	hide()
@@ -69,6 +68,7 @@ func Player_Contact(body):
 			
 		
 		if selectedPower == powerUps.speed: #speed
+			body.set_tank_power_color(Color(0, 5.69, 5.66, 1))
 			body.set_tank_scale(1)
 			body.set_tank_speed(2)
 			body.start_power_timer(15)

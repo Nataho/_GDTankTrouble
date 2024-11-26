@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddr5lufbs0eyj"]
+[gd_scene load_steps=15 format=3 uid="uid://ddr5lufbs0eyj"]
 
 [ext_resource type="Script" path="res://Scripts/MainScenes/loading_screen.gd" id="1_y07lo"]
 [ext_resource type="Texture2D" uid="uid://by2okstvbdda2" path="res://Assets/Photos/PowerUps/PowerupElephant.png" id="2_17q42"]
@@ -18,6 +18,472 @@ font_size = 235
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_h273u"]
+font = ExtResource("5_llm5r")
+font_size = 80
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_itlep"]
+resource_name = "ALL Jump_"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 2.14355, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1017, 875), Vector2(1017, 900), Vector2(1017, 728), Vector2(1017, 875), Vector2(1017, 900), Vector2(1017, 875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.5, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.378929, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.6), Vector2(0.47, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:pivot_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Elephant:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Elephant:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 2.14355, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1216, 875), Vector2(1216, 900), Vector2(1216, 728), Vector2(1216, 875), Vector2(1216, 900), Vector2(1216, 875)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Elephant:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.5, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.378929, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.6), Vector2(0.47, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Elephant:pivot_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Speed:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Speed:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 2.14355, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1415, 875), Vector2(1415, 900), Vector2(1415, 728), Vector2(1415, 875), Vector2(1415, 900), Vector2(1415, 875)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Speed:scale")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.5, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.378929, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.6), Vector2(0.47, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Speed:pivot_offset")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+
+[sub_resource type="Animation" id="Animation_kjd24"]
+resource_name = "Elephant Jump"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elephant:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elephant:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 2.14355, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1216, 875), Vector2(1216, 900), Vector2(1216, 728), Vector2(1216, 875), Vector2(1216, 900), Vector2(1216, 875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elephant:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.5, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.378929, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.6), Vector2(0.47, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Elephant:pivot_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+
+[sub_resource type="Animation" id="Animation_efvmg"]
+resource_name = "Mouse Jump"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 2.14355, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1017, 875), Vector2(1017, 900), Vector2(1017, 728), Vector2(1017, 875), Vector2(1017, 900), Vector2(1017, 875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.5, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.378929, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.6), Vector2(0.47, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:pivot_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+
+[sub_resource type="Animation" id="Animation_fu3e6"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1017, 875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mouse:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouse:pivot_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Elephant:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Elephant:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1216, 875)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Elephant:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Elephant:pivot_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Speed:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Speed:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1415, 875)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Speed:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Speed:pivot_offset")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+
+[sub_resource type="Animation" id="Animation_6ai5t"]
+resource_name = "Speed Jump"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Speed:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Speed:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 2.14355, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1415, 875), Vector2(1415, 900), Vector2(1415, 728), Vector2(1415, 875), Vector2(1415, 900), Vector2(1415, 875)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Speed:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.5, 0.6, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 0.378929, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.6), Vector2(0.47, 1.4), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.6), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Speed:pivot_offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64.5, 64.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0uee"]
+_data = {
+"ALL Jump": SubResource("Animation_itlep"),
+"Elephant Jump": SubResource("Animation_kjd24"),
+"Mouse Jump": SubResource("Animation_efvmg"),
+"RESET": SubResource("Animation_fu3e6"),
+"Speed Jump": SubResource("Animation_6ai5t")
+}
+
 [node name="Loading Screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,6 +498,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -48,22 +516,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Elephant" type="TextureRect" parent="."]
-modulate = Color(1.5, 1.5, 1.5, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = 155.0
-offset_right = 64.0
-offset_bottom = 283.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_17q42")
-
 [node name="Mouse" type="TextureRect" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
 layout_mode = 1
@@ -78,7 +530,25 @@ offset_right = -135.0
 offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(64.5, 64.5)
 texture = ExtResource("3_b3ucy")
+
+[node name="Elephant" type="TextureRect" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 155.0
+offset_right = 64.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64.5, 64.5)
+texture = ExtResource("2_17q42")
 
 [node name="Speed" type="TextureRect" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
@@ -94,9 +564,10 @@ offset_right = 263.0
 offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(64.5, 64.5)
 texture = ExtResource("4_1vi4h")
 
-[node name="Label" type="Label" parent="."]
+[node name="LoadingText" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,10 +585,34 @@ label_settings = SubResource("LabelSettings_1p2vq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Hints" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1148.0
+offset_top = 488.0
+offset_right = 1160.0
+offset_bottom = 569.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading Game"
+label_settings = SubResource("LabelSettings_h273u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+[node name="MouseAnimate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i0uee")
+}
 
-[connection signal="timeout" from="Timer" to="." method="loadingFinished"]
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+
+[node name="Next" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="MouseAnimate" to="." method="mouseEnd"]
+[connection signal="timeout" from="Next" to="." method="nextAnim"]

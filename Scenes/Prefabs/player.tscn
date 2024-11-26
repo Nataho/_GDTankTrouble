@@ -1,11 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://chr5bm0rlck45"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/player.gd" id="1_57xy2"]
-
-[sub_resource type="Environment" id="Environment_afkor"]
-background_mode = 3
-glow_enabled = true
-glow_hdr_luminance_cap = 256.0
+[ext_resource type="Environment" uid="uid://ciprmu7jebwue" path="res://Assets/Environment/player.tres" id="2_443lu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qjfd6"]
 
@@ -34,18 +30,18 @@ collision_mask = 3
 script = ExtResource("1_57xy2")
 playerIndex = -1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="power" type="Node2D" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D"]
-environment = SubResource("Environment_afkor")
-
-[node name="HeadPower" type="Sprite2D" parent="Node2D"]
+[node name="HeadPower" type="Sprite2D" parent="power"]
 visible = false
 modulate = Color(2, 2, 2, 1)
 z_index = 4
 rotation = -1.5708
 scale = Vector2(3.50806, 6.92972)
 texture = SubResource("CanvasTexture_qjfd6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="power"]
+environment = ExtResource("2_443lu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
