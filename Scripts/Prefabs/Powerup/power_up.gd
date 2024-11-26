@@ -8,6 +8,7 @@ enum powerUps {
 }
 @export var selectedPower: powerUps
 var spawned = false
+var landed = false
 
 var Sprites:Dictionary = {
 	1: "res://Assets/Photos/PowerUps/PowerUpMouse.png",
@@ -22,7 +23,6 @@ func _ready() -> void:
 func spawn():
 	isTexture = false; 
 	hide()
-	set_monitoring(false)
 	
 	$Show.start()
 	spawned = false
@@ -46,7 +46,12 @@ func spawn():
 		spawned = true
 
 func Player_Contact(body):
-	if body in get_tree().get_nodes_in_group("Player"):
+	if body.name == "Walls":
+		spawn()
+		return
+	if body in get_tree().get_nodes_in_group("PowerUp"): print("ASDLFKJASLDFJASF")
+	
+	if body in get_tree().get_nodes_in_group("Player") && landed:
 		
 		if selectedPower == powerUps.mouse: #mouse
 			body.power_reset()
@@ -74,9 +79,7 @@ func Player_Contact(body):
 			body.start_power_timer(15)
 			
 		
-	if body.name == "Walls":
-		spawn()
-		return
+	
 	queue_free()
 
 func Self_Contact(body):
@@ -91,4 +94,4 @@ func Self_Show():
 	if !isTexture: $Animate.play("Drop")
 	elif isTexture: $Animate.play("Drop - Texture")
 	await $Animate.animation_finished
-	set_monitoring(true)
+	landed = true

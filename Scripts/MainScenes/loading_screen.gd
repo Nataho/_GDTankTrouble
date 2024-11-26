@@ -25,6 +25,8 @@ var hints = [
 	"don't just focus on shooting enemies, dodge their bullets as well.",
 	"offense is the best defense, shoot the incoming bullets to deflect or destroy them.",
 	"any suggestions? put it on the suggestion paper!!",
+	"Certain maps feature strategic openings in the walls. Use these small gaps to aim and take out your opponents.",
+	
 ]
 
 var maps = {
