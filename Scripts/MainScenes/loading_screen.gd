@@ -27,6 +27,11 @@ var hints = [
 	"any suggestions? put it on the suggestion paper!!",
 ]
 
+var maps = {
+	1: "FFA 01",
+	2: "FFA 02",
+	3: "FFA 03",
+}
 
 
 var loadingTime = randf_range(5,10)
@@ -36,7 +41,8 @@ var animationTime
 func loadingFinished():
 	$MouseAnimate.play("ALL Jump"); $LoadingText.text = (loadingText[4])
 	await $MouseAnimate.animation_finished
-	Transition.ChangeScene("FFA 02", "slideLeft")
+	var newMap = maps[randi_range(1,maps.size())]
+	Transition.ChangeScene(newMap, "slideLeft")
 
 func timeSet():
 	isTimeValid = false
