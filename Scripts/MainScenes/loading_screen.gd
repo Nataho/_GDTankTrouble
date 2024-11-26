@@ -26,7 +26,8 @@ var hints = [
 	"offense is the best defense, shoot the incoming bullets to deflect or destroy them.",
 	"any suggestions? put it on the suggestion paper!!",
 	"Certain maps feature strategic openings in the walls. Use these small gaps to aim and take out your opponents.",
-	
+	"Something exciting is coming your way—stay tuned tomorrow to uncover the mystery!", #founders
+	"50 PESO REWARD!: FIND A WAY TO RECREATE THE SCALING BUG!"
 ]
 
 var maps = {
