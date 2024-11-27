@@ -18,16 +18,22 @@ var loadingText = [
 
 var hints = [
 	"the ELEPHANT makes you and your bullets bigger but, you become an easy target.",
-	"the MOUSE makes you and your bullet tiny but, hitting opponents become hard.",
+	"the MOUSE makes you and your bullet tiny but, hitting opponents becomes hard.",
 	"the SPEED makes you rotate and move faster but, you are faster than your bullets.",
 	"get behind your opponents to get an easy kill.",
-	"use the walls to hit enemies before they realize it.",
-	"don't just focus on shooting enemies, dodge their bullets as well.",
+	"use the walls to hit your opponents before they realize it.",
+	"don't just focus on shooting your opponents, dodge their bullets as well.",
 	"offense is the best defense, shoot the incoming bullets to deflect or destroy them.",
 	"any suggestions? put it on the suggestion paper!!",
 	"Certain maps feature strategic openings in the walls. Use these small gaps to aim and take out your opponents.",
 	"Something exciting is coming your way—stay tuned tomorrow to uncover the mystery!", #founders
-	"50 PESO REWARD!: FIND A WAY TO RECREATE THE SCALING BUG!"
+	"50 PESO REWARD!: FIND A WAY TO RECREATE THE SCALING BUG!",
+	"the game is meant to be chaotic. so everything that is not intended is part of the chaos",
+	"don't be slow to react, you're an easy target.",
+	"you should grab the power ups, it will be a blessing and a curse",
+	"this game is made with Godot 4.3",
+	"IT is the best!",
+	"Game Dev is the Best!",
 ]
 
 var maps = {
