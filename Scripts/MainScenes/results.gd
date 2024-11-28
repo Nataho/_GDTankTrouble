@@ -70,4 +70,4 @@ func AutoExit():
 		$Timer.stop()
 		Transition.ChangeScene("main","slideLeft")
 	
-	
+func exit(): Transition.ChangeScene("main","slideLeft")

@@ -44,7 +44,6 @@ texture = SubResource("CanvasTexture_qjfd6")
 environment = ExtResource("2_443lu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_x5h45")
 
@@ -71,7 +70,6 @@ texture = SubResource("CanvasTexture_qjfd6")
 stream = SubResource("AudioStreamWAV_rjnfi")
 
 [node name="PlayerCheck" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2147483648
 
@@ -80,7 +78,6 @@ visible = false
 shape = SubResource("CircleShape2D_qkn8y")
 
 [node name="WallCheck" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 256
 
@@ -89,7 +86,6 @@ visible = false
 shape = SubResource("CircleShape2D_mg8oi")
 
 [node name="WallCheck2" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 258
 

@@ -19,6 +19,7 @@ var loadingText = [
 var hints = [
 	"the ELEPHANT makes you and your bullets bigger but, you become an easy target.",
 	"the MOUSE makes you and your bullet tiny but, hitting opponents becomes hard.",
+	"use the MOUSE to get through tiny gaps and escape from enemies or surprise them",
 	"the SPEED makes you rotate and move faster but, you are faster than your bullets.",
 	"get behind your opponents to get an easy kill.",
 	"use the walls to hit your opponents before they realize it.",

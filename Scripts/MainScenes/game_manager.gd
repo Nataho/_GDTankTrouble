@@ -1,5 +1,5 @@
 extends Node
-
+@export var Version:String = "0.0.16"
 @export var Debug:bool = true
 
 const Scenes = {
