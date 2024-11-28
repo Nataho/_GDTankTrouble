@@ -6,6 +6,13 @@ extends Control
 @onready var player3: ColorRect = $Player3
 @onready var player4: ColorRect = $Player4	
 
+var placement = [
+	Vector2(352,257),
+	Vector2(752,257),
+	Vector2(1152,257),
+	Vector2(1552,257),
+	Vector2(1952,257),
+]
 
 func _ready() -> void:
 	Colors()
@@ -64,11 +71,11 @@ func UpdateStatistics():
 	$Player4/Satistics.text = Text
 
 func setPlacement(): pass
-#player 0: (352,257)
-#player 1: (752,257)
-#player 1: (1152,257)
-#player 1: (1552,257)
-#player 1: (1952,257)
+#1st: (352,257)
+#2nd: (752,257)
+#3rd: (1152,257)
+#4th: (1552,257)
+#5th: (1952,257)
 
 var seconds:int = 15
 func AutoExit():
