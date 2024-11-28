@@ -106,7 +106,7 @@ var tankColor = {
 #debugging
 
 var activeTankColor = {
-	0: Color(1.98, 1.09, -0.26, 1)
+	#0: Color(1.98, 1.09, -0.26, 1)
 } #stores new tank colors
 #endregion
 

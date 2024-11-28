@@ -15,15 +15,32 @@ var placement = [
 ]
 
 func _ready() -> void:
+	setPlacement()
+	
 	Colors()
 	UpdateStatistics()
 
 func Colors():
-	player.modulate = PlayerG.activeTankColor[-1]
-	player1.modulate = PlayerG.activeTankColor[0]
-	player2.modulate = PlayerG.activeTankColor[1]
-	player3.modulate = PlayerG.activeTankColor[2]
-	player4.modulate = PlayerG.activeTankColor[3]
+	
+	if -1 in PlayerG.activeTankColor: player.modulate = PlayerG.activeTankColor[-1]
+	#else: player.modulate = PlayerG.tankColor[-1]
+	
+	if 0 in PlayerG.activeTankColor: player1.modulate = PlayerG.activeTankColor[0]
+	#else: player1.modulate = PlayerG.tankColor[0]
+	
+	if 1 in PlayerG.activeTankColor: player2.modulate = PlayerG.activeTankColor[1]
+	#else: player2.modulate = PlayerG.tankColor[1]
+	
+	if 2 in PlayerG.activeTankColor: player3.modulate = PlayerG.activeTankColor[2]
+	#else: player3.modulate = PlayerG.tankColor[2]
+	
+	if 3 in PlayerG.activeTankColor: player4.modulate = PlayerG.activeTankColor[3]
+	#else: player4.modulate = PlayerG.tankColor[3]
+	
+	#player1.modulate = PlayerG.activeTankColor[0]
+	#player2.modulate = PlayerG.activeTankColor[1]
+	#player3.modulate = PlayerG.activeTankColor[2]
+	#player4.modulate = PlayerG.activeTankColor[3]
 
 func CalculateScores():
 	var loop = 0
@@ -70,7 +87,14 @@ func UpdateStatistics():
 	Text += "total score: " + str(PlayerG.PlayerScore[3]["total score"])+"\n"
 	$Player4/Satistics.text = Text
 
-func setPlacement(): pass
+func setPlacement(): 
+	var participants = {}
+	for num in range(-1,4):
+		participants[PlayerG.playerNames[num]] = PlayerG.PlayerScore[num]["game score"]
+	print(participants)
+	
+	print(participants)
+
 #1st: (352,257)
 #2nd: (752,257)
 #3rd: (1152,257)
