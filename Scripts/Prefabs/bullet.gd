@@ -56,8 +56,10 @@ func hit(body):
 		PlayerG.pBulletCount[playerIndex] -= 1
 		PlayerG.PlayerScore[body.playerIndex]["deaths"] += 1
 		queue_free()
-		if body.playerIndex == playerIndex: #if bullet has hit the sender
+		if body.playerIndex == playerIndex: #if bullet has hit the sender 
 			PlayerG.PlayerScore[playerIndex]["game score"] -= 1
+			if PlayerG.PlayerScore[playerIndex]["game score"] < 0: PlayerG.PlayerScore[playerIndex]["game score"] = 0
+			
 			PlayerG.PlayerScore[playerIndex]["suicide"] += 1
 		else:
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1

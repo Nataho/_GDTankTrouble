@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt86d405umefi"]
+[gd_scene load_steps=8 format=3 uid="uid://bt86d405umefi"]
 
 [ext_resource type="Script" path="res://Scripts/MainScenes/player_menu.gd" id="1_y8pii"]
 [ext_resource type="PackedScene" uid="uid://chr5bm0rlck45" path="res://Scenes/Prefabs/player.tscn" id="2_7obty"]
@@ -12,9 +12,6 @@ font = ExtResource("4_a2owq")
 font_size = 50
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_oyuoy"]
-file = "res://Assets/Video/wow.ogg"
 
 [node name="PlayerMenu" type="CanvasLayer"]
 script = ExtResource("1_y8pii")
@@ -166,17 +163,6 @@ speed
 ??? laser"
 label_settings = SubResource("LabelSettings_7rnj3")
 vertical_alignment = 1
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-stream = SubResource("VideoStreamTheora_oyuoy")
-autoplay = true
 
 [connection signal="text_submitted" from="DisplayPlayers/Player0/-1" to="." method="submitPlayer0"]
 [connection signal="pressed" from="StartGame" to="." method="StartGame"]

@@ -103,7 +103,7 @@ var tankColor = {
 	6: Color(1.68, 1.83, 2.74, 1), #purple
 	7: Color(2.66, 1.78, 2.54, 1),
 }
-#debugging
+
 
 var activeTankColor = {
 	#0: Color(1.98, 1.09, -0.26, 1)

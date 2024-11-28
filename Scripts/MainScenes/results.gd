@@ -4,15 +4,7 @@ extends Control
 @onready var player1: ColorRect = $Player1
 @onready var player2: ColorRect = $Player2
 @onready var player3: ColorRect = $Player3
-@onready var player4: ColorRect = $Player4	
-
-var placement = [
-	Vector2(352,257),
-	Vector2(752,257),
-	Vector2(1152,257),
-	Vector2(1552,257),
-	Vector2(1952,257),
-]
+@onready var player4: ColorRect = $Player4
 
 func _ready() -> void:
 	setPlacement()
@@ -87,13 +79,115 @@ func UpdateStatistics():
 	Text += "total score: " + str(PlayerG.PlayerScore[3]["total score"])+"\n"
 	$Player4/Satistics.text = Text
 
-func setPlacement(): 
-	var participants = {}
-	for num in range(-1,4):
-		participants[PlayerG.playerNames[num]] = PlayerG.PlayerScore[num]["game score"]
-	print(participants)
+var placement = [
+	Vector2(352, 257),
+	Vector2(752, 257),
+	Vector2(1152, 257),
+	Vector2(1552, 257),
+	Vector2(1952, 257),
+]
+
+@onready var playerIcons = {
+	1: $Player,
+	2: $Player1,
+	3: $Player2,
+	4: $Player3,
+	5: $Player4,
+}
+#1st: (352,257)
+#2nd: (752,257)
+#3rd: (1152,257)
+#4th: (1552,257)
+#5th: (1952,257)
+
+func setPlacement():
+	var scores = []
+	for indexes in PlayerG.ActivePlayers:
+		scores.append(PlayerG.PlayerScore[indexes]["game score"])
+	scores.sort();scores.reverse()
+	print (scores)
 	
-	print(participants)
+	var placements = {}
+	var place = 1
+	while place <= PlayerG.ActivePlayers.size():
+		for score in scores: for indexes in PlayerG.ActivePlayers:
+			if PlayerG.PlayerScore[indexes]["game score"] == score and not placements.has(indexes):
+				placements[indexes] = place
+				
+				
+				place += 1
+		#print(place)
+	print(placements)
+	
+	if -1 in PlayerG.ActivePlayers: playerIcons[1].position = placement[placements[-1]-1]
+	else: playerIcons[1].hide()
+	
+	if 0 in PlayerG.ActivePlayers: playerIcons[2].position = placement[placements[0]-1]
+	else: playerIcons[2].hide()
+	
+	if 1 in PlayerG.ActivePlayers: playerIcons[3].position = placement[placements[1]-1]
+	else: playerIcons[3].hide()
+	
+	if 2 in PlayerG.ActivePlayers: playerIcons[4].position = placement[placements[2]-1]
+	else: playerIcons[4].hide()
+	
+	if 3 in PlayerG.ActivePlayers: playerIcons[5].position = placement[placements[3]-1]
+	else: playerIcons[5].hide()
+	
+	
+	#var participants = {}
+	#for num in range(1,6):
+		#
+		#if num-2 not in PlayerG.ActivePlayers:continue
+		#
+		#var tie
+		#var breaker = 0
+		#if PlayerG.PlayerScore[num]["deaths"] != 0:
+			#tie = PlayerG.PlayerScore[num]["kills"] / PlayerG.PlayerScore[num]["deaths"]
+			#breaker = tie / 10
+			#
+		#participants[num] = {
+			#"name": PlayerG.playerNames[num],
+			#"index": num,
+			#"score": PlayerG.PlayerScore[num]["game score"] + breaker
+		#}
+#
+	#var scores = []
+	#for name in participants:
+		#scores.append(participants[name]["score"])
+	#scores.sort()
+	#scores.reverse()
+	#print("participants: ", participants)
+#
+	#var placements = {}
+	#var rank = 1
+	#for score in scores:
+		#for index in participants:
+			#if participants[index]["score"] == score and not placements.has(index):
+				#placements[index] = rank
+		#rank += 1
+#
+	#var Rank = 1
+	#while Rank <= 5:
+		#for index in participants:
+			#if placements[index] == Rank:
+				#print("Placement ", Rank, ": Participant ", index, " with ", participants[index]["score"], " points")
+				#if Rank > 1 and playerIcons[participants[index]["index"]].position == playerIcons[participants[index - 1]["index"]].position:
+					#Rank += 1
+					#
+				#playerIcons[participants[index]["index"]].position = placement[Rank - 2]
+				#print(playerIcons[participants[index]["index"]].position)
+		#Rank += 1
+
+
+# Call the function to set placements
+#setPlacement()
+
+
+
+	
+	#for name in participants:
+		#print("Participant ", name, ": ", participants[name], " points, Placement: ", placements[name])
 
 #1st: (352,257)
 #2nd: (752,257)
