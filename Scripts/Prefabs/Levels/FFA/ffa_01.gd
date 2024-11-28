@@ -50,7 +50,7 @@ func _input(event: InputEvent) -> void:
 		reset()
 
 func reset(): #reset whole map and player statistics
-	PlayerG.reset()
+	#PlayerG.reset()
 	get_tree().reload_current_scene()
 #endregion
 

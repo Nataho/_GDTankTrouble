@@ -6,16 +6,17 @@ extends Control
 @onready var player3: ColorRect = $Player3
 @onready var player4: ColorRect = $Player4	
 
+
 func _ready() -> void:
 	Colors()
 	UpdateStatistics()
 
 func Colors():
-	player.modulate = PlayerG.tankColor[-1]
-	player1.modulate = PlayerG.tankColor[0]
-	player2.modulate = PlayerG.tankColor[1]
-	player3.modulate = PlayerG.tankColor[2]
-	player4.modulate = PlayerG.tankColor[3]
+	player.modulate = PlayerG.activeTankColor[-1]
+	player1.modulate = PlayerG.activeTankColor[0]
+	player2.modulate = PlayerG.activeTankColor[1]
+	player3.modulate = PlayerG.activeTankColor[2]
+	player4.modulate = PlayerG.activeTankColor[3]
 
 func CalculateScores():
 	var loop = 0
@@ -61,6 +62,13 @@ func UpdateStatistics():
 	Text += "suicide: " + str(PlayerG.PlayerScore[3]["suicide"])+"\n"
 	Text += "total score: " + str(PlayerG.PlayerScore[3]["total score"])+"\n"
 	$Player4/Satistics.text = Text
+
+func setPlacement(): pass
+#player 0: (352,257)
+#player 1: (752,257)
+#player 1: (1152,257)
+#player 1: (1552,257)
+#player 1: (1952,257)
 
 var seconds:int = 15
 func AutoExit():

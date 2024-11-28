@@ -103,6 +103,8 @@ func CHECK():
 			if body != self and self.position.distance_to(body.position) < 150:
 				CoastClear = false; respawnAttempts +=1
 				break
+		
+		if body != self and self
 
 		for body in get_tree().get_nodes_in_group("bullet"):
 			if body != self and self.position.distance_to(body.position) < 150:
