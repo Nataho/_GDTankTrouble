@@ -94,6 +94,9 @@ position = Vector2(-7.62939e-06, -7.62939e-06)
 scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall2"]
+texture = ExtResource("4_umeu8")
+
 [node name="Wall3" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(408, 1360)
 shape = SubResource("RectangleShape2D_w80a2")
@@ -103,6 +106,9 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(-7.62939e-06, -7.62939e-06)
 scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall3"]
+texture = ExtResource("4_umeu8")
 
 [node name="Wall6" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(680, 1224)
