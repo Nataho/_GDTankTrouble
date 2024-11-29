@@ -21,11 +21,11 @@ var canPlay = 0
 #region Startup
 func _ready() -> void:
 	canPlay = 0
-	
-	if playerIndex > 3:
-		$Name.editable = false
-		$Computer.disabled = true
-		$ColorSelect.disabled = true
+	#
+	#if playerIndex > 3:
+		#$Name.editable = false
+		#$Computer.disabled = true
+		#$ColorSelect.disabled = true
 	
 	$ColorSelect.selected = playerIndex
 	$Name.placeholder_text = "Controller " + str(playerIndex + 1)

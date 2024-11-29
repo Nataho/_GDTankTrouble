@@ -3,6 +3,9 @@ extends CanvasLayer
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("goBack"):
 		Transition.ChangeScene("main", "dissolve")
+	if event is InputEventMouseMotion:
+		var mouse_movement = event.relative
+		$Unattended.start()
 	#if event.is_action_pressed("reset"):
 		#get_tree().reload_current_scene()
 	pass
@@ -205,13 +208,14 @@ func check_avail():
 	var playerCount = 0
 	playerCount += canKeyboard
 	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
-	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player2.canPlay
+	playerCount += $DisplayPlayers/Player3.canPlay
+	playerCount += $DisplayPlayers/Player4.canPlay
+	playerCount += $DisplayPlayers/Player5.canPlay
+	playerCount += $DisplayPlayers/Player6.canPlay
+	playerCount += $DisplayPlayers/Player7.canPlay
+	playerCount += $DisplayPlayers/Player8.canPlay
+	#if GameManager.Debug: print(playerCount)
 	
 	if playerCount < 2: canPlay = false
 	else: canPlay = true

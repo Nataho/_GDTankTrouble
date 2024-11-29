@@ -1203,7 +1203,7 @@ texture = ExtResource("4_umeu8")
 
 [node name="Wall62" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1224, 0)
-rotation = -4.71239
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_w80a2")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall62"]

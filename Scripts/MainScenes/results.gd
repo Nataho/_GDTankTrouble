@@ -44,41 +44,51 @@ func CalculateScores():
 
 func UpdateStatistics():
 	var Text:String
-	Text = "game score: " + str(PlayerG.PlayerScore[-1]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[-1]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[-1]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[-1]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[-1]["total score"])+"\n"
+	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[0]]["game score"])+"\n"
+	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[0]]["kills"]) +"\n"
+	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[0]]["deaths"])+"\n"
+	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[0]]["suicide"])+"\n"
+	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[0]]["total score"])+"\n"
 	$Player/Satistics.text = Text
-	$Player/Name.text = PlayerG.playerNames[-1]
+	$Player/Name.text = PlayerG.playerNames[placementOrder[0]]
+	player.modulate = 	PlayerG.activeTankColor[placementOrder[0]]
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[0]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[0]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[0]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[0]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[0]["total score"])+"\n"
+	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[1]]["game score"])+"\n"
+	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[1]]["kills"]) +"\n"
+	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[1]]["deaths"])+"\n"
+	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[1]]["suicide"])+"\n"
+	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[1]]["total score"])+"\n"
 	$Player1/Satistics.text = Text
+	$Player1/Name.text = PlayerG.playerNames[placementOrder[1]]
+	player1.modulate = PlayerG.activeTankColor[placementOrder[1]]
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[1]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[1]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[1]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[1]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[1]["total score"])+"\n"
+	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[2]]["game score"])+"\n"
+	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[2]]["kills"]) +"\n"
+	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[2]]["deaths"])+"\n"
+	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[2]]["suicide"])+"\n"
+	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[2]]["total score"])+"\n"
 	$Player2/Satistics.text = Text
+	$Player2/Name.text = PlayerG.playerNames[placementOrder[2]]
+	player2.modulate = PlayerG.activeTankColor[placementOrder[2]]
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[2]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[2]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[2]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[2]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[2]["total score"])+"\n"
+	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[3]]["game score"])+"\n"
+	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[3]]["kills"]) +"\n"
+	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[3]]["deaths"])+"\n"
+	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[3]]["suicide"])+"\n"
+	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[3]]["total score"])+"\n"
 	$Player3/Satistics.text = Text
+	$Player3/Name.text = PlayerG.playerNames[placementOrder[3]]
+	player3.modulate = PlayerG.activeTankColor[placementOrder[3]]
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[3]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[3]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[3]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[3]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[3]["total score"])+"\n"
+	
+	Text = "game score: " + str(PlayerG.PlayerScore[4]["game score"])+"\n"
+	Text += "kills: " + str(PlayerG.PlayerScore[4]["kills"]) +"\n"
+	Text += "deaths: " + str(PlayerG.PlayerScore[4]["deaths"])+"\n"
+	Text += "suicide: " + str(PlayerG.PlayerScore[4]["suicide"])+"\n"
+	Text += "total score: " + str(PlayerG.PlayerScore[4]["total score"])+"\n"
 	$Player4/Satistics.text = Text
+	$Player4/Name.text = PlayerG.playerNames[placementOrder[4]]
+	player4.modulate = PlayerG.activeTankColor[placementOrder[4]]
 
 var placement = [
 	Vector2(352, 452),
@@ -100,7 +110,7 @@ var placement = [
 #3rd: (1152,257)
 #4th: (1552,257)
 #5th: (1952,257)
-
+var placementOrder
 func setPlacement():
 	var scores = []
 	for indexes in PlayerG.ActivePlayers:
@@ -114,28 +124,28 @@ func setPlacement():
 		for score in scores: for indexes in PlayerG.ActivePlayers:
 			if PlayerG.PlayerScore[indexes]["game score"] == score and not placements.has(indexes):
 				placements[indexes] = place
-				
-				
+
 				place += 1
 		#print(place)
 	print(placements)
-	
-	if -1 in PlayerG.ActivePlayers: 
-		playerIcons[1].position = placement[placements[-1]-1]
-		
-	else: playerIcons[1].hide()
-	
-	if 0 in PlayerG.ActivePlayers: playerIcons[2].position = placement[placements[0]-1]
-	else: playerIcons[2].hide()
-	
-	if 1 in PlayerG.ActivePlayers: playerIcons[3].position = placement[placements[1]-1]
-	else: playerIcons[3].hide()
-	
-	if 2 in PlayerG.ActivePlayers: playerIcons[4].position = placement[placements[2]-1]
-	else: playerIcons[4].hide()
-	
-	if 3 in PlayerG.ActivePlayers: playerIcons[5].position = placement[placements[3]-1]
-	else: playerIcons[5].hide()
+	placementOrder = placements.keys()
+	print(placements)
+	#if -1 in PlayerG.ActivePlayers: 
+		#playerIcons[1].position = placement[placements[-1]-1]
+		#
+	#else: playerIcons[1].hide()
+	#
+	#if 0 in PlayerG.ActivePlayers: playerIcons[2].position = placement[placements[0]-1]
+	#else: playerIcons[2].hide()
+	#
+	#if 1 in PlayerG.ActivePlayers: playerIcons[3].position = placement[placements[1]-1]
+	#else: playerIcons[3].hide()
+	#
+	#if 2 in PlayerG.ActivePlayers: playerIcons[4].position = placement[placements[2]-1]
+	#else: playerIcons[4].hide()
+	#
+	#if 3 in PlayerG.ActivePlayers: playerIcons[5].position = placement[placements[3]-1]
+	#else: playerIcons[5].hide()
 
 var LogoMoveFreq: float = 1 ; var LogoRotFreq: float = 2
 var LogoMoveAmp: float = 20 ; var LogoRotAmp: float = 50
