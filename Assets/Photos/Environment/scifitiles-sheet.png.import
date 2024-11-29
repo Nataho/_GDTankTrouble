@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4m7ctbdh6nls"
-path="res://.godot/imported/WallDown.png-a7e2056ab8482173f78cbb49c68293a5.ctex"
+uid="uid://g1j0m05x1b3o"
+path="res://.godot/imported/scifitiles-sheet.png-7bc0e654ee6700e643cd53389d5fe68c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Photos/Environment/WallDown.png"
-dest_files=["res://.godot/imported/WallDown.png-a7e2056ab8482173f78cbb49c68293a5.ctex"]
+source_file="res://Assets/Photos/Environment/scifitiles-sheet.png"
+dest_files=["res://.godot/imported/scifitiles-sheet.png-7bc0e654ee6700e643cd53389d5fe68c.ctex"]
 
 [params]
 

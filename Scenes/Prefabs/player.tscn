@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://chr5bm0rlck45"]
 
 [ext_resource type="Script" path="res://Scenes/Prefabs/player.gd" id="1_57xy2"]
-[ext_resource type="Environment" uid="uid://ciprmu7jebwue" path="res://Assets/Environment/player.tres" id="2_443lu"]
+[ext_resource type="Environment" uid="uid://ciprmu7jebwue" path="res://Assets/player.tres" id="2_443lu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qjfd6"]
 

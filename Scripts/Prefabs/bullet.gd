@@ -16,6 +16,10 @@ func GetGamepadIndex():
 	pass
 
 func _ready():
+	$shadow.rotation_degrees -= spawnRot
+	print(spawnRot)
+	
+	
 	AudioG.playSFX("bulletShoot",true)
 	GetGamepadIndex()
 	modulate = PlayerG.activeTankColor[playerIndex] #color
