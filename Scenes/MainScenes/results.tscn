@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://5qfbrjxv0slv"]
+[gd_scene load_steps=7 format=3 uid="uid://5qfbrjxv0slv"]
 
 [ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="1_lbocf"]
 [ext_resource type="Script" path="res://Scripts/MainScenes/results.gd" id="1_waoks"]
+[ext_resource type="Texture2D" uid="uid://c8wtd40xo6m5o" path="res://Assets/Photos/crown.png" id="2_428m5"]
 [ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="2_inuxo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cti8j"]
@@ -9,6 +10,10 @@ font = ExtResource("2_inuxo")
 font_size = 40
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_okine"]
+background_mode = 3
+glow_enabled = true
 
 [node name="Results" type="Control"]
 layout_mode = 3
@@ -26,9 +31,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -928.0
-offset_top = 257.0
+offset_top = 452.0
 offset_right = -672.0
-offset_bottom = 513.0
+offset_bottom = 708.0
 grow_horizontal = 2
 color = Color(0.431373, 0.431373, 0.431373, 1)
 
@@ -57,9 +62,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -528.0
-offset_top = 257.0
+offset_top = 452.0
 offset_right = -272.0
-offset_bottom = 513.0
+offset_bottom = 708.0
 grow_horizontal = 2
 color = Color(0.431373, 0.431373, 0.431373, 1)
 
@@ -88,9 +93,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -128.0
-offset_top = 257.0
+offset_top = 452.0
 offset_right = 128.0
-offset_bottom = 513.0
+offset_bottom = 708.0
 grow_horizontal = 2
 color = Color(0.431373, 0.431373, 0.431373, 1)
 
@@ -119,9 +124,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 272.0
-offset_top = 257.0
+offset_top = 452.0
 offset_right = 528.0
-offset_bottom = 513.0
+offset_bottom = 708.0
 grow_horizontal = 2
 color = Color(0.431373, 0.431373, 0.431373, 1)
 
@@ -150,9 +155,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 672.0
-offset_top = 257.0
+offset_top = 452.0
 offset_right = 928.0
-offset_bottom = 513.0
+offset_bottom = 708.0
 grow_horizontal = 2
 color = Color(0.431373, 0.431373, 0.431373, 1)
 
@@ -222,6 +227,24 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 80
 text = "back to main menu
 "
+
+[node name="Crown" type="TextureRect" parent="."]
+modulate = Color(3, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -938.0
+offset_top = 220.0
+offset_right = -666.0
+offset_bottom = 492.0
+grow_horizontal = 2
+pivot_offset = Vector2(136, 136)
+texture = ExtResource("2_428m5")
+expand_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_okine")
 
 [connection signal="timeout" from="Timer" to="." method="AutoExit"]
 [connection signal="pressed" from="Button" to="." method="exit"]

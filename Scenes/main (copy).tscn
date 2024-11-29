@@ -1,0 +1,237 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba3gqgkeddjxe"]
+
+[ext_resource type="FontFile" uid="uid://4rqi5msf7djb" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="2_hkd6k"]
+[ext_resource type="FontFile" uid="uid://iwi5gv3g2t2b" path="res://Assets/Fonts/NerkoOne-Regular.ttf" id="2_igw7g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbuqo"]
+font_size = 160
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eo4fa"]
+lifetime_randomness = 0.67
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 87.59
+direction = Vector3(-1000, 500, 0)
+initial_velocity_max = 50.0
+angular_velocity_min = -69.4
+angular_velocity_max = 156.14
+gravity = Vector3(-98, 98, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 5.94
+turbulence_noise_speed = Vector3(-10, 0, 0)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -516.0
+offset_top = -96.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Tools" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkd6k")
+theme_override_font_sizes/font_size = 40
+text = "TOOLS"
+
+[node name="Play" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkd6k")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = -260.0
+offset_right = 398.0
+offset_bottom = -60.0
+grow_vertical = 0
+
+[node name="Update" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkd6k")
+theme_override_font_sizes/font_size = 30
+text = "CHECK FOR UPDATES"
+
+[node name="dex" type="Button" parent="GridContainer"]
+visible = false
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Dex"
+
+[node name="Hashinata" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkd6k")
+theme_override_font_sizes/font_size = 30
+text = "HASHINATA"
+
+[node name="shinzu" type="Button" parent="GridContainer"]
+visible = false
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Shinzu"
+
+[node name="Animated" type="Node" parent="."]
+
+[node name="Title" type="Label" parent="Animated"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.5
+offset_top = -320.0
+offset_right = 418.5
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_igw7g")
+theme_override_font_sizes/font_size = 160
+text = "BREAKING ICE"
+label_settings = SubResource("LabelSettings_jbuqo")
+
+[node name="Logo" type="TextureRect" parent="Animated"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -192.0
+offset_right = 242.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(242, 242)
+
+[node name="version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -50.0
+offset_right = 213.0
+offset_bottom = -19.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "version 0.0.00 DEV?"
+vertical_alignment = 1
+
+[node name="Particles" type="Node" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles"]
+visible = false
+position = Vector2(1631.64, -95)
+rotation = -0.000481516
+scale = Vector2(7.79, 1)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_eo4fa")
+lifetime = 8.0
+speed_scale = 0.5
+randomness = 0.35
+
+[node name="Particle1" type="CPUParticles2D" parent="Particles"]
+z_index = -1
+position = Vector2(1870, 69)
+rotation = -0.000481516
+scale = Vector2(48.8472, 5.06327)
+amount = 50
+lifetime = 8.0
+speed_scale = 0.15
+randomness = 0.35
+direction = Vector2(-2.545, 0)
+gravity = Vector2(-10, 980)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -245.0
+angular_velocity_max = 245.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+
+[node name="Particle2" type="CPUParticles2D" parent="Particles"]
+visible = false
+z_index = -1
+position = Vector2(1914, 338)
+rotation = -0.000481516
+scale = Vector2(48.8472, 5.06327)
+amount = 50
+lifetime = 8.0
+speed_scale = 0.15
+randomness = 0.35
+direction = Vector2(-2.545, 0)
+gravity = Vector2(-10, 980)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -245.0
+angular_velocity_max = 245.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+
+[node name="Particle3" type="CPUParticles2D" parent="Particles"]
+visible = false
+z_index = -1
+position = Vector2(1306, -111)
+rotation = -0.000481516
+scale = Vector2(48.8472, 5.06327)
+amount = 50
+lifetime = 8.0
+speed_scale = 0.15
+randomness = 0.35
+direction = Vector2(-2.545, 0)
+gravity = Vector2(-10, 980)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = -245.0
+angular_velocity_max = 245.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -244.0
+offset_bottom = -112.0
+grow_horizontal = 0
+grow_vertical = 0
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="HBoxContainer/Tools" to="." method="Tools"]
+[connection signal="pressed" from="HBoxContainer/Play" to="." method="Play"]
+[connection signal="pressed" from="GridContainer/Update" to="." method="Update"]
+[connection signal="pressed" from="GridContainer/dex" to="." method="dex"]
+[connection signal="pressed" from="GridContainer/Hashinata" to="." method="hashinata"]
+[connection signal="pressed" from="GridContainer/shinzu" to="." method="shinzu"]
+[connection signal="pressed" from="SettingsButton" to="." method="Settings"]

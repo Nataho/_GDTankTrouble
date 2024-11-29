@@ -119,7 +119,9 @@ func setPlacement():
 		#print(place)
 	print(placements)
 	
-	if -1 in PlayerG.ActivePlayers: playerIcons[1].position = placement[placements[-1]-1]
+	if -1 in PlayerG.ActivePlayers: 
+		playerIcons[1].position = placement[placements[-1]-1]
+		
 	else: playerIcons[1].hide()
 	
 	if 0 in PlayerG.ActivePlayers: playerIcons[2].position = placement[placements[0]-1]
@@ -133,7 +135,16 @@ func setPlacement():
 	
 	if 3 in PlayerG.ActivePlayers: playerIcons[5].position = placement[placements[3]-1]
 	else: playerIcons[5].hide()
-	
+
+var LogoMoveFreq: float = 1 ; var LogoRotFreq: float = 2
+var LogoMoveAmp: float = 20 ; var LogoRotAmp: float = 50
+var time = 0
+func _physics_process(delta):
+	time += delta
+	var movement = cos(time*LogoMoveFreq)*LogoMoveAmp
+	var _rotate = cos(time*LogoRotFreq)*LogoRotAmp
+	$Crown.position.y += movement * delta
+	$Crown.rotation_degrees += _rotate * delta / 10
 	
 	#var participants = {}
 	#for num in range(1,6):
