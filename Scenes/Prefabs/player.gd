@@ -220,6 +220,7 @@ func Shoot():
 			if !hasShot:
 				var bullet = plBullet.instantiate()
 				bullet.position.x += 15
+				bullet.spawnRot = rotation_degrees
 				add_child(bullet); bullet.reparent(get_parent())
 				if GameManager.Debug: print("SHOOT")
 	else:

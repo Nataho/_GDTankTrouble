@@ -51,8 +51,13 @@ var animationTime
 func loadingFinished():
 	$MouseAnimate.play("ALL Jump"); $LoadingText.text = (loadingText[4])
 	await $MouseAnimate.animation_finished
+<<<<<<< Updated upstream
 	var newMap = maps[randi_range(1,maps.size())] #default
 	#var newMap = maps[1]#modified
+=======
+	#var newMap = maps[randi_range(1,maps.size())] #default
+	var newMap = maps[2]#modified
+>>>>>>> Stashed changes
 	Transition.ChangeScene(newMap, "slideLeft")
 
 func timeSet():

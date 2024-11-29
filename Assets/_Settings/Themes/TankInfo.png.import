@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4m7ctbdh6nls"
-path="res://.godot/imported/WallDown.png-a7e2056ab8482173f78cbb49c68293a5.ctex"
+uid="uid://d0jtuo1nqwlmj"
+path="res://.godot/imported/TankInfo.png-0238ec6315a2bfcb30e383f8ce47513a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Photos/Environment/WallDown.png"
-dest_files=["res://.godot/imported/WallDown.png-a7e2056ab8482173f78cbb49c68293a5.ctex"]
+source_file="res://Assets/_Settings/Themes/TankInfo.png"
+dest_files=["res://.godot/imported/TankInfo.png-0238ec6315a2bfcb30e383f8ce47513a.ctex"]
 
 [params]
 
