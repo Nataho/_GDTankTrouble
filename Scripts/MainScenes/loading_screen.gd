@@ -28,7 +28,7 @@ var hints = [
 	"any suggestions? put it on the suggestion paper!!",
 	"Certain maps feature strategic openings in the walls. Use these small gaps to aim and take out your opponents.",
 	"Something exciting is coming your way—stay tuned tomorrow to uncover the mystery!", #founders
-	"50 PESO REWARD!: FIND A WAY TO RECREATE THE SCALING BUG!www",
+	"50 PESO REWARD!: FIND A WAY TO RECREATE THE SCALING BUG!",
 	"the game is meant to be chaotic. so everything that is not intended is part of the chaos",
 	"don't be slow to react, you're an easy target.",
 	"you should grab the power ups, it will be a blessing and a curse",

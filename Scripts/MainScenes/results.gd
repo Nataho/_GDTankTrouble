@@ -80,11 +80,11 @@ func UpdateStatistics():
 	$Player4/Satistics.text = Text
 
 var placement = [
-	Vector2(352, 257),
-	Vector2(752, 257),
-	Vector2(1152, 257),
-	Vector2(1552, 257),
-	Vector2(1952, 257),
+	Vector2(352, 452),
+	Vector2(752, 452),
+	Vector2(1152, 452),
+	Vector2(1552, 452),
+	Vector2(1952, 452),
 ]
 
 @onready var playerIcons = {

@@ -149,7 +149,6 @@ speed_scale = 0.5
 randomness = 0.35
 
 [node name="Particle1" type="CPUParticles2D" parent="Particles"]
-visible = false
 z_index = -1
 position = Vector2(2837, 129)
 rotation = -0.000481516
@@ -169,7 +168,6 @@ scale_amount_min = 0.2
 scale_amount_max = 0.7
 
 [node name="Particle2" type="CPUParticles2D" parent="Particles"]
-visible = false
 z_index = -1
 position = Vector2(2881, 398)
 rotation = -0.000481516
@@ -189,7 +187,6 @@ scale_amount_min = 0.2
 scale_amount_max = 0.7
 
 [node name="Particle3" type="CPUParticles2D" parent="Particles"]
-visible = false
 z_index = -1
 position = Vector2(2273, -51)
 rotation = -0.000481516
@@ -210,9 +207,8 @@ scale_amount_max = 0.7
 color = Color(2, 2, 2, 1)
 
 [node name="Particle4" type="CPUParticles2D" parent="Particles"]
-visible = false
 z_index = -1
-position = Vector2(2737, 678)
+position = Vector2(2709, 638)
 rotation = -0.000481516
 scale = Vector2(48.8472, 5.06327)
 amount = 50
@@ -226,8 +222,8 @@ initial_velocity_min = 10.0
 initial_velocity_max = 50.0
 angular_velocity_min = -245.0
 angular_velocity_max = 245.0
-scale_amount_min = 0.2
-scale_amount_max = 0.7
+scale_amount_min = 0.5
+scale_amount_max = 2.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pty2a")
