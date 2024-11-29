@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkeopr6i3dupk"]
+[gd_scene load_steps=10 format=3 uid="uid://dkeopr6i3dupk"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Powerup/power_up.gd" id="1_vdkw8"]
 
@@ -125,12 +125,18 @@ _data = {
 "RESET - Texture": SubResource("Animation_gf8to")
 }
 
+[sub_resource type="Environment" id="Environment_keid7"]
+background_mode = 3
+glow_enabled = true
+glow_hdr_scale = 0.0
+
 [node name="PowerUp" type="Area2D" groups=["PowerUp"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_vdkw8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
 scale = Vector2(58, 58)
 texture = SubResource("CanvasTexture_mq5mw")
 
@@ -145,6 +151,9 @@ wait_time = 0.05
 libraries = {
 "": SubResource("AnimationLibrary_llx80")
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_keid7")
 
 [connection signal="body_entered" from="." to="." method="Player_Contact"]
 [connection signal="timeout" from="Show" to="." method="Self_Show"]

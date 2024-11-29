@@ -31,10 +31,12 @@ var hints = [
 	"50 PESO REWARD!: FIND A WAY TO RECREATE THE SCALING BUG!",
 	"the game is meant to be chaotic. so everything that is not intended is part of the chaos",
 	"don't be slow to react, you're an easy target.",
-	"you should grab the power ups, it will be a blessing and a curse",
+	"you should grab the power ups, it will be a blessing and a curse.",
 	"this game is made with Godot 4.3",
 	"IT is the best!",
 	"Game Dev is the Best!",
+	"jv zorpe fp pebbkx.",
+	"the jumbled letters are 3 letters back."
 ]
 
 var maps = {

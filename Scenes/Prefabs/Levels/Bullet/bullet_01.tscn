@@ -3284,7 +3284,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("5_fhyrw")]
-position = Vector2(-330, 682)
+position = Vector2(985, 673)
 
 [connection signal="timeout" from="Countdown" to="." method="UpdateTime"]
 [connection signal="timeout" from="toResult" to="." method="toResult"]

@@ -17,7 +17,6 @@ func GetGamepadIndex():
 
 func _ready():
 	$shadow.rotation_degrees -= spawnRot
-	print(spawnRot)
 	
 	
 	AudioG.playSFX("bulletShoot",true)

@@ -63,9 +63,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -347.0
+offset_left = -322.0
 offset_top = -200.0
-offset_right = 297.0
+offset_right = 322.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -154,6 +154,7 @@ speed_scale = 0.5
 randomness = 0.35
 
 [node name="Particle1" type="CPUParticles2D" parent="Particles"]
+visible = false
 z_index = -1
 position = Vector2(2837, 129)
 rotation = -0.000481516
@@ -174,6 +175,7 @@ scale_amount_max = 0.7
 color = Color(2, 2, 2, 1)
 
 [node name="Particle2" type="CPUParticles2D" parent="Particles"]
+visible = false
 z_index = -1
 position = Vector2(2881, 398)
 rotation = -0.000481516
@@ -194,6 +196,7 @@ scale_amount_max = 0.7
 color = Color(2, 2, 2, 1)
 
 [node name="Particle3" type="CPUParticles2D" parent="Particles"]
+visible = false
 z_index = -1
 position = Vector2(2273, -51)
 rotation = -0.000481516
@@ -214,6 +217,7 @@ scale_amount_max = 0.7
 color = Color(2, 2, 2, 1)
 
 [node name="Particle4" type="CPUParticles2D" parent="Particles"]
+visible = false
 z_index = -1
 position = Vector2(2709, 638)
 rotation = -0.000481516
@@ -240,6 +244,13 @@ hue_variation_curve = SubResource("Curve_r6xfe")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pty2a")
 
+[node name="Unattended" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="buttonPlay"]
 [connection signal="pressed" from="CanvasLayer/Control/Tutorial" to="." method="buttonTutorial"]
 [connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="debug"]
+[connection signal="timeout" from="Unattended" to="." method="Unattended"]

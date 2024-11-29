@@ -82,7 +82,8 @@ func playSFXEND(sound,randPitch):
 
 #region music
 func playMusic(sound):
-	STOP()
+	#STOP()
+	if MUSIC.stream == load(music[sound]):return
 	MUSIC.stream = load(music[sound])
 	MUSIC.play()
 #endregion

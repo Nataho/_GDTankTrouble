@@ -3,10 +3,12 @@ extends CanvasLayer
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("goBack"):
 		Transition.ChangeScene("main", "dissolve")
-	if event.is_action_pressed("reset"):
-		get_tree().reload_current_scene()
+	#if event.is_action_pressed("reset"):
+		#get_tree().reload_current_scene()
+	pass
 
 func _ready() -> void:
+	$StartGame.disabled = true
 	AudioG.playMusic("game menu")
 	PlayerG.reset()
 	#for key in Players:
@@ -36,7 +38,7 @@ func _ready() -> void:
 	7: $DisplayPlayers/Player8/Player,
 	
 }
-
+var canKeyboard = 0
 
 func StartGame():
 	Transition.ChangeScene("loading", "slideRight")
@@ -48,10 +50,12 @@ func submitPlayer0(value:String, index = -1):
 		Players[index].isPlayerMenu = true
 		PlayerG.EnableKeyboard = false
 		PlayerG.ActivePlayers.erase(index)
+		canKeyboard = 0
 		return
 		
 	if Players[index].isPlayerMenu:
 		PlayerG.ActivePlayers.append(index)
+		canKeyboard = 1
 		
 	PlayerG.playerNames[index] = value
 	PlayerG.EnableKeyboard = true
@@ -194,3 +198,35 @@ func SetTimeFFA(value: String):
 	var intVal = value.to_int()
 	PlayerG.FFA_TimeLimit = intVal
 	$"FFA SetTime".text = str(intVal)
+
+var canPlay = false
+
+func check_avail():
+	var playerCount = 0
+	playerCount += canKeyboard
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	playerCount += $DisplayPlayers/Player1.canPlay
+	
+	if playerCount < 2: canPlay = false
+	else: canPlay = true
+	
+	$StartGame.disabled = !canPlay
+
+func Unattended():
+	GameManager.isIdle = true
+	var maxPlayers = 7
+	var loopIndex = 0
+	while loopIndex <= maxPlayers:
+		PlayerG.ActivePlayers.append(loopIndex)
+		PlayerG.activeTankColor[loopIndex] = PlayerG.tankColor[loopIndex]
+		PlayerG.isAI[loopIndex] = true
+		PlayerG.playerNames[loopIndex] = "Player " + str(loopIndex+1)
+		
+		loopIndex += 1
+	Transition.ChangeScene("loading","slideRight")

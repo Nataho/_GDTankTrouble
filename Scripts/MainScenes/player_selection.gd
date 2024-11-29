@@ -16,8 +16,11 @@ var buttonColor = {
 	"yellow": "res://Assets/_Settings/Themes/yellow.tres"
 }
 
+var canPlay = 0
+
 #region Startup
 func _ready() -> void:
+	canPlay = 0
 	
 	if playerIndex > 3:
 		$Name.editable = false
@@ -44,10 +47,12 @@ func submitPlayer(value:String):
 		player.isPlayerMenu = true
 		PlayerG.EnableKeyboard = false
 		PlayerG.ActivePlayers.erase(playerIndex)
+		canPlay = 0
 		return
 		
 	if player.isPlayerMenu:
 		PlayerG.ActivePlayers.append(playerIndex)
+		canPlay = 1
 		
 	PlayerG.playerNames[playerIndex] = value
 	PlayerG.EnableKeyboard = true

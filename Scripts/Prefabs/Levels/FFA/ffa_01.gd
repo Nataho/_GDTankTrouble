@@ -18,9 +18,11 @@ var EnableKeyboard: bool = false
 
 #region Important Stuff
 func _ready() -> void:
-	if GameManager.Debug:
-		if PlayerG.FFA_TimeLimit == 0:
-			$Countdown.stop()
+	if GameManager.isIdle: #runs when the game is on idle or is unattended
+		$"Game Name".show()
+		$Timer.start()
+	if PlayerG.FFA_TimeLimit == 0:
+		$Countdown.stop()
 	
 	
 	if OS.get_name() == "Android":
@@ -46,8 +48,14 @@ func _process(delta: float) -> void:
 	TagsFollowPlayer()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset"):
-		reset()
+	if event is InputEventMouseMotion && GameManager.isIdle:
+		GameManager.isIdle = false
+		Transition.ChangeScene("main","slideLeft")
+	#if event.is_action_pressed("shoot"):
+		#Transition.ChangeScene("main", "slideLeft")
+	#if event.is_action_pressed("reset"):
+		#reset()
+	pass
 
 func reset(): #reset whole map and player statistics
 	#PlayerG.reset()
@@ -118,6 +126,7 @@ func UpdateTime():
 		$toResult.start()
 		
 func toResult():
+	if GameManager.isIdle: Transition.ChangeScene("main", "slideLeft");return
 	Transition.ChangeScene("results", "slideLeft")
 
 func newPowerUp():
@@ -131,3 +140,30 @@ func newPowerUp():
 	
 	$spawnPower.wait_time = rngTime
 	
+
+
+func _physics_process(delta):
+	if GameManager.isIdle: titleAnim(delta)
+	
+	
+var LogoMoveFreq: float = 1 ; var LogoRotFreq: float = 2
+var LogoMoveAmp: float = 20 ; var LogoRotAmp: float = 50
+var time = 0
+func titleAnim(delta):
+	time += delta
+	var movement = cos(time*LogoMoveFreq)*LogoMoveAmp
+	var _rotate = cos(time*LogoRotFreq)*LogoRotAmp
+	%"Game Name".position.y += movement * delta
+	%"Game Name".rotation_degrees += _rotate * delta / 10
+
+
+var maps = {
+	1: "FFA 01",
+	2: "FFA 02",
+	3: "FFA 03",
+}
+func nextIdleMap():
+	var newMap = maps[randi_range(1,maps.size())] #default
+	#var newMap = maps[2]#modified
+	Transition.ChangeScene(newMap, "slideLeft")
+	pass

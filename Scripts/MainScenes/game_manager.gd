@@ -1,7 +1,7 @@
 extends Node
 @export var Version:String = "0.0.16"
 @export var Debug:bool = true
-
+var isIdle = false
 const Scenes = {
 	"main": "res://Scenes/main.tscn",
 	"tutorial": "res://Scenes/MainScenes/tutorial.tscn",
