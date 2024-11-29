@@ -1,15 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://ubfeaa7ln71o"]
+[gd_scene load_steps=13 format=4 uid="uid://ccvquoya5fc2b"]
 
-[ext_resource type="Script" path="res://Scripts/Prefabs/Levels/FFA/ffa_01.gd" id="1_jfucw"]
-[ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="2_fdrm2"]
-[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="3_p5qjb"]
-[ext_resource type="PackedScene" uid="uid://wmpvq2c53b5" path="res://Scenes/Prefabs/UI/multiplayer_ui.tscn" id="4_2memf"]
-[ext_resource type="Texture2D" uid="uid://d4m7ctbdh6nls" path="res://Assets/Photos/Environment/WallDown.png" id="4_eqicy"]
-[ext_resource type="PackedScene" uid="uid://dkeopr6i3dupk" path="res://Scenes/Prefabs/Powerup/power_up.tscn" id="5_tanu6"]
-[ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="7_fw870"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Levels/FFA/ffa_01.gd" id="1_4jbb7"]
+[ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="2_podhb"]
+[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="3_vqks0"]
+[ext_resource type="Texture2D" uid="uid://d4m7ctbdh6nls" path="res://Assets/Photos/Environment/WallDown.png" id="4_igatv"]
+[ext_resource type="PackedScene" uid="uid://wmpvq2c53b5" path="res://Scenes/Prefabs/UI/multiplayer_ui.tscn" id="5_2uyjd"]
+[ext_resource type="PackedScene" uid="uid://dkeopr6i3dupk" path="res://Scenes/Prefabs/Powerup/power_up.tscn" id="6_p48nh"]
+[ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="7_ufr6r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
-font = ExtResource("3_p5qjb")
+font = ExtResource("3_vqks0")
 font_size = 640
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
@@ -20,7 +20,7 @@ size = Vector2(138, 16)
 [sub_resource type="BoxMesh" id="BoxMesh_5u6ma"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ij5xk"]
-texture = ExtResource("7_fw870")
+texture = ExtResource("7_ufr6r")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -347,7 +347,7 @@ sources/0 = SubResource("TileSetAtlasSource_ij5xk")
 
 [node name="FFA_02" type="Node2D"]
 position = Vector2(38, -73)
-script = ExtResource("1_jfucw")
+script = ExtResource("1_4jbb7")
 
 [node name="Countdown" type="Timer" parent="."]
 process_callback = 0
@@ -378,7 +378,7 @@ offset_bottom = 81.0
 grow_horizontal = 2
 text = "Time:
 "
-label_settings = ExtResource("2_fdrm2")
+label_settings = ExtResource("2_podhb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -411,7 +411,6 @@ vertical_alignment = 1
 [node name="Barriers" type="Node" parent="."]
 
 [node name="Walls" type="StaticBody2D" parent="Barriers"]
-modulate = Color(5, 5, 5, 1)
 collision_layer = 258
 
 [node name="Wall70" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
@@ -507,7 +506,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall139"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall165" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1043.25, 1125)
@@ -520,7 +519,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall165"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall177" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(907, 1125)
@@ -533,7 +532,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall177"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall183" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(771, 1125)
@@ -546,7 +545,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall183"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall179" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1716, 1125)
@@ -559,7 +558,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall179"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall161" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1579.54, 1125)
@@ -572,7 +571,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall161"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall187" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1013.33, 272)
@@ -585,7 +584,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall187"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall189" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(877, 272)
@@ -598,7 +597,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall189"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall191" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(742, 272)
@@ -611,7 +610,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall191"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall193" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1706.67, 272)
@@ -624,7 +623,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall193"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall197" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1571, 272)
@@ -637,7 +636,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall197"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall163" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(563.696, 983.25)
@@ -651,7 +650,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall163"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall171" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2050, 982)
@@ -665,7 +664,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall171"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall175" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2054.78, 413.84)
@@ -679,7 +678,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall175"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall205" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1032, 467)
@@ -693,7 +692,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall205"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall359" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(722, 461)
@@ -707,7 +706,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall359"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall229" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(631, 317.667)
@@ -721,7 +720,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall229"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall245" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1332.64, 690.214)
@@ -735,7 +734,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall245"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall237" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1846.75, 272)
@@ -749,7 +748,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall237"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall367" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1842.26, 1125.04)
@@ -763,7 +762,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall367"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall261" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1954, 1078)
@@ -777,7 +776,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall261"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall253" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(659.5, 1079)
@@ -791,7 +790,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall253"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall269" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1959, 318)
@@ -805,7 +804,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall269"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall213" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1543, 943)
@@ -819,7 +818,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall213"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall351" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1875, 947)
@@ -833,7 +832,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall351"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall221" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1057, 949)
@@ -847,7 +846,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall221"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall225" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1556, 475)
@@ -861,7 +860,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall225"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall277" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1790, 704)
@@ -875,7 +874,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall277"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall282" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(842, 692)
@@ -889,7 +888,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall282"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall343" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(750, 960)
@@ -903,7 +902,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall343"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall347" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1889, 476)
@@ -917,7 +916,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall347"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall325" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(199, 1255)
@@ -931,7 +930,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall325"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall331" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(153.168, 1143.68)
@@ -945,7 +944,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall331"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall334" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(310, 1300.89)
@@ -959,7 +958,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall334"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall328" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2423, 1259)
@@ -973,7 +972,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall328"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall341" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2311.5, 1305)
@@ -986,7 +985,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall341"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall342" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2468.56, 1147.95)
@@ -1000,7 +999,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall342"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall329" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2423, 181)
@@ -1014,7 +1013,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall329"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall340" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2468.69, 292.414)
@@ -1028,7 +1027,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall340"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall339" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2311.83, 134.833)
@@ -1043,7 +1042,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall339"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall330" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(180, 182)
@@ -1057,7 +1056,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall330"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall338" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(134, 293)
@@ -1071,7 +1070,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall338"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall337" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(291, 136.75)
@@ -1084,7 +1083,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall337"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall285" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(262, 694)
@@ -1098,7 +1097,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall285"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall297" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2345.17, 694.667)
@@ -1112,7 +1111,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall297"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall309" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1254, 126)
@@ -1126,7 +1125,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall309"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall313" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1386, 126)
@@ -1140,7 +1139,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall313"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall317" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1249, 1358)
@@ -1154,7 +1153,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall317"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall321" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1381, 1358)
@@ -1168,7 +1167,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall321"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall305" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2312, 817)
@@ -1182,7 +1181,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall305"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall301" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2312.17, 572)
@@ -1196,7 +1195,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall301"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall293" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(295.446, 816.77)
@@ -1210,7 +1209,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall293"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall289" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(296, 571)
@@ -1224,7 +1223,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall289"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall77" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(0, 272)
@@ -1579,7 +1578,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall108"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall109" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2584, 1222)
@@ -1593,7 +1592,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall109"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall110" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2584, 1086)
@@ -1607,7 +1606,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall110"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall111" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2584, 950)
@@ -1621,7 +1620,7 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall111"]
-texture = ExtResource("4_eqicy")
+texture = ExtResource("4_igatv")
 
 [node name="Wall112" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(2584, 814)
@@ -1865,12 +1864,12 @@ position = Vector2(-7.62939e-06, -7.62939e-06)
 scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
-[node name="Multiplayer UI" parent="." instance=ExtResource("4_2memf")]
+[node name="Multiplayer UI" parent="." instance=ExtResource("5_2uyjd")]
 
 [node name="toResult" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="PowerUp" parent="." instance=ExtResource("5_tanu6")]
+[node name="PowerUp" parent="." instance=ExtResource("6_p48nh")]
 position = Vector2(1304, 894)
 selectedPower = 1
 
@@ -1880,14 +1879,6 @@ wait_time = 5.0
 autostart = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-visible = false
-position = Vector2(98, 0)
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD//wIAAAAGAAEAAAD//wMAAAAGAAEAAAD//wQAAAAGAAEAAAD//wUAAAAGAAEAAAD//wYAAAAGAAEAAAD//wcAAAAGAAEAAAD//wgAAAAGAAEAAAD//wkAAAAGAAEAAAD//woAAAAGAAEAAAD//wsAAAAGAAEAAAD//wwAAAAGAAEAAAD//w0AAAAGAAEAAAD//w4AAAAGAAEAAAD//w8AAAAGAAEAAAD//xAAAAAGAAEAAAAAAAIAAAAGAAEAAAAAAAMAAAAGAAEAAAAAAAQAAAAGAAEAAAAAAAUAAAAGAAEAAAAAAAYAAAAGAAEAAAAAAAcAAAAGAAEAAAAAAAgAAAAGAAEAAAAAAAkAAAAGAAEAAAAAAAoAAAAGAAEAAAAAAAsAAAAGAAEAAAAAAAwAAAAGAAEAAAAAAA0AAAAGAAEAAAAAAA4AAAAGAAEAAAAAAA8AAAAGAAEAAAAAABAAAAAGAAEAAAABAAIAAAAIAAAAAAABAAMAAAAIAAEAAAABAAQAAAAGAAEAAAABAAUAAAAGAAEAAAABAAYAAAAGAAEAAAABAAcAAAAGAAEAAAABAAkAAAAGAAEAAAABAAoAAAAGAAEAAAABAAsAAAAGAAEAAAABAAwAAAAIAAAAAAABAA0AAAAIAAEAAAABAA4AAAAGAAEAAAABAA8AAAAGAAEAAAABABAAAAAGAAEAAAACAAIAAAAJAAAAAAACAAMAAAAJAAEAAAACAAQAAAAGAAEAAAACAAUAAAAGAAEAAAACAAYAAAAGAAEAAAACAAcAAAAGAAEAAAACAAgAAAAGAAEAAAACAAkAAAAGAAEAAAACAAoAAAAGAAEAAAACAAsAAAAGAAEAAAACAAwAAAAJAAAAAAACAA0AAAAJAAEAAAACAA4AAAAGAAEAAAACAA8AAAAGAAEAAAACABAAAAAGAAEAAAADAAIAAAAGAAEAAAADAAMAAAAGAAQAAAADAAQAAAAGAAEAAAADAAUAAAAGAAEAAAADAAYAAAAGAAEAAAADAAcAAAACAAAAAAADAAgAAAAGAAEAAAADAAkAAAAGAAEAAAADAAoAAAAGAAEAAAADAAsAAAAGAAEAAAADAAwAAAAGAAEAAAADAA0AAAAGAAEAAAADAA4AAAAGAAQAAAADAA8AAAAGAAEAAAADABAAAAAGAAEAAAAEAAIAAAAGAAEAAAAEAAMAAAAGAAEAAAAEAAQAAAAGAAEAAAAEAAUAAAAGAAEAAAAEAAYAAAAGAAEAAAAEAAcAAAAGAAEAAAAEAAgAAAAGAAEAAAAEAAkAAAAGAAEAAAAEAAoAAAAGAAEAAAAEAAsAAAAGAAEAAAAEAAwAAAAGAAEAAAAEAA0AAAAGAAEAAAAEAA4AAAAGAAQAAAAEAA8AAAAGAAEAAAAEABAAAAAGAAEAAAAFAAIAAAAGAAEAAAAFAAMAAAAGAAEAAAAFAAQAAAAGAAEAAAAFAAUAAAAGAAEAAAAFAAYAAAAGAAEAAAAFAAcAAAAGAAEAAAAFAAgAAAAGAAEAAAAFAAkAAAAGAAEAAAAFAAoAAAAGAAEAAAAFAAsAAAAGAAEAAAAFAAwAAAAGAAEAAAAFAA0AAAAGAAEAAAAFAA4AAAAGAAEAAAAFAA8AAAAGAAEAAAAFABAAAAAGAAEAAAAGAAIAAAAGAAEAAAAGAAMAAAAGAAEAAAAGAAQAAAAGAAEAAAAGAAUAAAAGAAEAAAAGAAYAAAAGAAEAAAAGAAcAAAAGAAEAAAAGAAgAAAAGAAEAAAAGAAkAAAAGAAEAAAAGAAoAAAAGAAEAAAAGAAsAAAAGAAEAAAAGAAwAAAAGAAEAAAAGAA0AAAAGAAEAAAAGAA4AAAAGAAEAAAAGAA8AAAAGAAEAAAAGABAAAAAGAAEAAAAHAAIAAAAGAAEAAAAHAAMAAAAGAAEAAAAHAAQAAAAGAAEAAAAHAAUAAAAGAAEAAAAHAAYAAAAGAAEAAAAHAAcAAAAGAAEAAAAHAAgAAAAGAAEAAAAHAAkAAAAGAAEAAAAHAAoAAAAGAAEAAAAHAAsAAAAGAAEAAAAHAAwAAAAGAAEAAAAHAA0AAAAGAAEAAAAHAA4AAAAGAAEAAAAHAA8AAAAGAAEAAAAHABAAAAAGAAEAAAAIAAIAAAAGAAEAAAAIAAMAAAAGAAEAAAAIAAQAAAAGAAEAAAAIAAUAAAAGAAEAAAAIAAYAAAAGAAEAAAAIAAcAAAAGAAEAAAAIAAgAAAAGAAEAAAAIAAkAAAAGAAEAAAAIAAoAAAAGAAEAAAAIAAsAAAAGAAEAAAAIAAwAAAAGAAEAAAAIAA0AAAAGAAEAAAAIAA4AAAAGAAEAAAAIAA8AAAAAAAMAAAAIABAAAAAGAAEAAAAJAAIAAAAGAAEAAAAJAAMAAAAGAAEAAAAJAAQAAAAGAAEAAAAJAAUAAAAGAAEAAAAJAAYAAAAGAAEAAAAJAAcAAAAGAAEAAAAJAAgAAAAGAAEAAAAJAAkAAAAGAAEAAAAJAAoAAAAGAAEAAAAJAAsAAAAGAAEAAAAJAAwAAAAGAAEAAAAJAA0AAAAGAAEAAAAJAA4AAAAGAAEAAAAJAA8AAAAAAAMAAAAJABAAAAAGAAEAAAAKAAIAAAAGAAEAAAAKAAMAAAAGAAEAAAAKAAQAAAAGAAEAAAAKAAUAAAAGAAEAAAAKAAYAAAAGAAEAAAAKAAcAAAAGAAEAAAAKAAgAAAAGAAEAAAAKAAkAAAAGAAEAAAAKAAoAAAAGAAEAAAAKAAsAAAAGAAEAAAAKAAwAAAAGAAEAAAAKAA0AAAAGAAQAAAAKAA4AAAAGAAEAAAAKAA8AAAAAAAMAAAAKABAAAAAGAAEAAAALAAIAAAAGAAEAAAALAAMAAAAGAAEAAAALAAQAAAAGAAEAAAALAAUAAAAGAAEAAAALAAYAAAAGAAEAAAALAAcAAAAGAAEAAAALAAgAAAAGAAEAAAALAAkAAAAGAAEAAAALAAoAAAAGAAEAAAALAAsAAAAGAAEAAAALAAwAAAAGAAEAAAALAA0AAAAGAAEAAAALAA4AAAAGAAEAAAALAA8AAAAGAAEAAAALABAAAAAGAAEAAAAMAAIAAAAGAAEAAAAMAAMAAAAGAAQAAAAMAAQAAAAGAAEAAAAMAAUAAAAGAAEAAAAMAAYAAAAGAAEAAAAMAAcAAAAGAAEAAAAMAAgAAAAGAAEAAAAMAAkAAAAGAAEAAAAMAAoAAAAGAAEAAAAMAAsAAAAGAAEAAAAMAAwAAAAGAAEAAAAMAA0AAAAGAAEAAAAMAA4AAAAGAAEAAAAMAA8AAAAGAAEAAAAMABAAAAAGAAEAAAANAAIAAAACAAAAAAANAAMAAAAGAAEAAAANAAQAAAAGAAEAAAANAAUAAAAGAAEAAAANAAYAAAAGAAEAAAANAAcAAAAEAAMAAAANAAgAAAAEAAMAAAANAAkAAAAGAAEAAAANAAoAAAAGAAEAAAANAAsAAAAGAAEAAAANAAwAAAAGAAEAAAANAA0AAAACAAUAAAANAA4AAAAGAAEAAAANAA8AAAAGAAEAAAANABAAAAAGAAEAAAAOAAIAAAAGAAEAAAAOAAMAAAAGAAEAAAAOAAQAAAAGAAEAAAAOAAUAAAAGAAEAAAAOAAYAAAAGAAEAAAAOAAcAAAAGAAEAAAAOAAgAAAAGAAEAAAAOAAkAAAAGAAEAAAAOAAoAAAAGAAEAAAAOAAsAAAAGAAEAAAAOAAwAAAAGAAEAAAAOAA0AAAAGAAEAAAAOAA4AAAAGAAEAAAAOAA8AAAAGAAEAAAAOABAAAAAGAAEAAAAPAAIAAAAGAAEAAAAPAAMAAAAGAAEAAAAPAAQAAAAGAAEAAAAPAAUAAAAGAAEAAAAPAAYAAAAGAAEAAAAPAAcAAAAGAAEAAAAPAAgAAAAGAAEAAAAPAAkAAAAGAAEAAAAPAAoAAAAGAAEAAAAPAAsAAAAGAAEAAAAPAAwAAAAGAAEAAAAPAA0AAAAGAAEAAAAPAA4AAAAGAAEAAAAPAA8AAAAGAAEAAAAPABAAAAAGAAEAAAAQAAIAAAAGAAEAAAAQAAMAAAAGAAEAAAAQAAQAAAAGAAEAAAAQAAUAAAAGAAEAAAAQAAYAAAAGAAEAAAAQAAcAAAAGAAEAAAAQAAgAAAAGAAEAAAAQAAkAAAAGAAEAAAAQAAoAAAAGAAEAAAAQAAsAAAAGAAEAAAAQAAwAAAAGAAEAAAAQAA0AAAAGAAEAAAAQAA4AAAAGAAEAAAAQABAAAAAGAAEAAAARAAIAAAAGAAEAAAARAAMAAAAGAAEAAAARAAQAAAAGAAEAAAARAAUAAAAGAAEAAAARAAYAAAAGAAEAAAARAAcAAAAGAAEAAAARAAgAAAAGAAEAAAARAAkAAAAGAAEAAAARAAoAAAAGAAEAAAARAAsAAAAGAAEAAAARAAwAAAAGAAEAAAARAA0AAAAGAAEAAAARAA4AAAAGAAEAAAARAA8AAAAAAAMAAAARABAAAAAGAAEAAAASAAIAAAAGAAEAAAASAAMAAAAGAAEAAAASAAQAAAAGAAEAAAASAAUAAAAGAAEAAAASAAYAAAAGAAEAAAASAAcAAAAGAAEAAAASAAgAAAAGAAEAAAASAAkAAAAGAAEAAAASAAoAAAAGAAEAAAASAAsAAAAGAAEAAAASAAwAAAAGAAEAAAASAA0AAAAGAAEAAAASAA4AAAAGAAEAAAASAA8AAAAAAAMAAAASABAAAAAGAAEAAAATAAIAAAAGAAEAAAATAAMAAAAGAAEAAAATAAQAAAAGAAEAAAATAAUAAAAGAAEAAAATAAYAAAAGAAEAAAATAAcAAAAGAAEAAAATAAgAAAAGAAEAAAATAAkAAAAGAAEAAAATAAoAAAAGAAEAAAATAAsAAAAGAAEAAAATAAwAAAAGAAEAAAATAA0AAAAGAAEAAAATAA4AAAAGAAEAAAATAA8AAAAAAAMAAAATABAAAAAGAAEAAAAUAAIAAAAGAAEAAAAUAAMAAAAGAAEAAAAUAAQAAAAGAAEAAAAUAAUAAAAGAAEAAAAUAAYAAAAGAAEAAAAUAAcAAAAGAAEAAAAUAAgAAAAGAAEAAAAUAAkAAAAGAAEAAAAUAAoAAAAGAAEAAAAUAAsAAAAGAAEAAAAUAAwAAAAGAAEAAAAUAA0AAAAGAAEAAAAUAA4AAAAGAAEAAAAUAA8AAAAGAAEAAAAUABAAAAAGAAEAAAAVAAIAAAAGAAEAAAAVAAMAAAAGAAEAAAAVAAQAAAAGAAEAAAAVAAUAAAAGAAEAAAAVAAYAAAAGAAEAAAAVAAcAAAAGAAEAAAAVAAgAAAAGAAEAAAAVAAkAAAAGAAEAAAAVAAoAAAAGAAEAAAAVAAsAAAAGAAEAAAAVAAwAAAAGAAQAAAAVAA0AAAAGAAEAAAAVAA4AAAAGAAEAAAAVAA8AAAAGAAEAAAAVABAAAAAGAAEAAAAWAAIAAAAGAAEAAAAWAAMAAAAGAAEAAAAWAAQAAAAGAAEAAAAWAAUAAAAGAAEAAAAWAAYAAAAGAAEAAAAWAAcAAAACAAUAAAAWAAgAAAAGAAQAAAAWAAkAAAAGAAEAAAAWAAoAAAAGAAEAAAAWAAsAAAAGAAEAAAAWAAwAAAAGAAEAAAAWAA0AAAAGAAEAAAAWAA4AAAAGAAEAAAAWAA8AAAAGAAEAAAAWABAAAAAGAAEAAAAXAAIAAAAIAAAAAAAXAAMAAAAIAAEAAAAXAAQAAAAGAAQAAAAXAAUAAAAGAAEAAAAXAAYAAAAGAAEAAAAXAAcAAAAGAAEAAAAXAAgAAAAGAAEAAAAXAAkAAAAGAAEAAAAXAAoAAAAGAAEAAAAXAAsAAAAGAAEAAAAXAAwAAAAIAAAAAAAXAA0AAAAIAAEAAAAXAA4AAAAGAAEAAAAXAA8AAAAGAAQAAAAXABAAAAAGAAEAAAAYAAIAAAAJAAAAAAAYAAMAAAAJAAEAAAAYAAQAAAAGAAEAAAAYAAUAAAAGAAEAAAAYAAYAAAAGAAEAAAAYAAcAAAAGAAEAAAAYAAgAAAAGAAEAAAAYAAkAAAAGAAEAAAAYAAoAAAAGAAEAAAAYAAsAAAAGAAEAAAAYAAwAAAAJAAAAAAAYAA0AAAAJAAEAAAAYAA4AAAAGAAEAAAAYAA8AAAAGAAEAAAAYABAAAAAGAAEAAAAZAAIAAAAGAAEAAAAZAAMAAAAGAAEAAAAZAAQAAAAGAAEAAAAZAAUAAAAGAAEAAAAZAAYAAAAGAAEAAAAZAAcAAAAGAAEAAAAZAAgAAAAGAAEAAAAZAAkAAAAGAAEAAAAZAAoAAAAGAAEAAAAZAAsAAAAGAAEAAAAZAAwAAAAGAAEAAAAZAA0AAAAGAAEAAAAZAA4AAAAGAAEAAAAZAA8AAAAGAAEAAAAZABAAAAAGAAEAAAAaAAIAAAAGAAEAAAAaAAMAAAAGAAEAAAAaAAQAAAAGAAEAAAAaAAUAAAAGAAEAAAAaAAYAAAAGAAEAAAAaAAcAAAAGAAEAAAAaAAgAAAAGAAEAAAAaAAkAAAAGAAEAAAAaAAoAAAAGAAEAAAAaAAsAAAAGAAEAAAAaAAwAAAAGAAEAAAAaAA0AAAAGAAEAAAAaAA4AAAAGAAEAAAAaAA8AAAAGAAEAAAAaABAAAAAGAAEAAAAZAAEAAAAGAAEAAAAaAAEAAAAGAAEAAAAPAAAAAAAGAAEAAAAPAAEAAAAGAAEAAAAQAAAAAAAGAAEAAAAQAAEAAAAGAAEAAAARAAAAAAAAAAIAAAARAAEAAAACAAMAAAASAAAAAAAAAAIAAAASAAEAAAAAAAMAAAATAAAAAAAAAAIAAAATAAEAAAABAAMAAAAUAAAAAAAGAAEAAAAUAAEAAAAGAAEAAAAVAAAAAAAGAAEAAAAVAAEAAAAGAAEAAAAWAAAAAAAGAAEAAAAWAAEAAAAGAAEAAAAXAAAAAAAGAAEAAAAXAAEAAAAGAAEAAAAYAAAAAAAGAAEAAAAYAAEAAAAGAAEAAAAZAAAAAAAGAAEAAAAaAAAAAAAGAAEAAAD//wAAAAAAAAIAAAD//wEAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAEAAAACAAMAAAABAAAAAAAAAAIAAAABAAEAAAACAAMAAAACAAAAAAAAAAIAAAACAAEAAAAAAAMAAAADAAAAAAAGAAEAAAADAAEAAAAGAAEAAAAEAAAAAAAGAAEAAAAEAAEAAAAGAAEAAAAFAAAAAAAAAAIAAAAGAAAAAAAGAAEAAAAHAAAAAAAGAAEAAAAIAAAAAAAAAAIAAAAIAAEAAAACAAMAAAAJAAAAAAAAAAIAAAAJAAEAAAABAAMAAAAKAAAAAAAAAAIAAAAKAAEAAAACAAMAAAALAAAAAAAAAAIAAAALAAEAAAAAAAMAAAAMAAAAAAAAAAIAAAAMAAEAAAAAAAMAAAANAAAAAAAGAAEAAAANAAEAAAAGAAEAAAAOAAAAAAAGAAEAAAAOAAEAAAAGAAEAAAAQAA8AAAAGAAEAAAABAAgAAAAGAAQAAAAHAAEAAAAGAAEAAAAGAAEAAAAGAAEAAAAFAAEAAAACAAMAAAAFAP//AAAGAAEAAAAGAP//AAAGAAEAAAAHAP//AAAGAAEAAAAIAP//AAAGAAEAAAAJAP//AAAGAAEAAAAKAP//AAAGAAEAAAALAP//AAAGAAEAAAARAP//AAAGAAEAAAASAP//AAAGAAEAAAATAP//AAAGAAEAAAAUAP//AAAGAAEAAAAVAP//AAAGAAEAAAAWAP//AAAGAAEAAAAXAP//AAAGAAEAAAA=")
-tile_set = SubResource("TileSet_dlpjo")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
-modulate = Color(0.7, 0.7, 0.7, 1)
 position = Vector2(98, 0)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAD//wIAAAAGAAEAAAD//wMAAAAGAAEAAAD//wQAAAAGAAEAAAD//wUAAAAGAAEAAAD//wYAAAAGAAEAAAD//wcAAAAGAAEAAAD//wgAAAAGAAEAAAD//wkAAAAGAAEAAAD//woAAAAGAAEAAAD//wsAAAAGAAEAAAD//wwAAAAGAAEAAAD//w0AAAAGAAEAAAD//w4AAAAGAAEAAAD//w8AAAAGAAEAAAD//xAAAAAGAAEAAAAAAAIAAAAGAAEAAAAAAAMAAAAGAAEAAAAAAAQAAAAGAAEAAAAAAAUAAAAGAAEAAAAAAAYAAAAGAAEAAAAAAAcAAAAGAAEAAAAAAAgAAAAGAAEAAAAAAAkAAAAGAAEAAAAAAAoAAAAGAAEAAAAAAAsAAAAGAAEAAAAAAAwAAAAGAAEAAAAAAA0AAAAGAAEAAAAAAA4AAAAGAAEAAAAAAA8AAAAGAAEAAAAAABAAAAAGAAEAAAABAAIAAAAIAAAAAAABAAMAAAAIAAEAAAABAAQAAAAGAAEAAAABAAUAAAAGAAEAAAABAAYAAAAGAAEAAAABAAcAAAAGAAEAAAABAAkAAAAGAAEAAAABAAoAAAAGAAEAAAABAAsAAAAGAAEAAAABAAwAAAAIAAAAAAABAA0AAAAIAAEAAAABAA4AAAAGAAEAAAABAA8AAAAGAAEAAAABABAAAAAGAAEAAAACAAIAAAAJAAAAAAACAAMAAAAJAAEAAAACAAQAAAAGAAEAAAACAAUAAAAGAAEAAAACAAYAAAAGAAEAAAACAAcAAAAGAAEAAAACAAgAAAAGAAEAAAACAAkAAAAGAAEAAAACAAoAAAAGAAEAAAACAAsAAAAGAAEAAAACAAwAAAAJAAAAAAACAA0AAAAJAAEAAAACAA4AAAAGAAEAAAACAA8AAAAGAAEAAAACABAAAAAGAAEAAAADAAIAAAAGAAEAAAADAAMAAAAGAAQAAAADAAQAAAAGAAEAAAADAAUAAAAGAAEAAAADAAYAAAAGAAEAAAADAAcAAAACAAAAAAADAAgAAAAGAAEAAAADAAkAAAAGAAEAAAADAAoAAAAGAAEAAAADAAsAAAAGAAEAAAADAAwAAAAGAAEAAAADAA0AAAAGAAEAAAADAA4AAAAGAAQAAAADAA8AAAAGAAEAAAADABAAAAAGAAEAAAAEAAIAAAAGAAEAAAAEAAMAAAAGAAEAAAAEAAQAAAAGAAEAAAAEAAUAAAAGAAEAAAAEAAYAAAAGAAEAAAAEAAcAAAAGAAEAAAAEAAgAAAAGAAEAAAAEAAkAAAAGAAEAAAAEAAoAAAAGAAEAAAAEAAsAAAAGAAEAAAAEAAwAAAAGAAEAAAAEAA0AAAAGAAEAAAAEAA4AAAAGAAQAAAAEAA8AAAAGAAEAAAAEABAAAAAGAAEAAAAFAAIAAAAGAAEAAAAFAAMAAAAGAAEAAAAFAAQAAAAGAAEAAAAFAAUAAAAGAAEAAAAFAAYAAAAGAAEAAAAFAAcAAAAGAAEAAAAFAAgAAAAGAAEAAAAFAAkAAAAGAAEAAAAFAAoAAAAGAAEAAAAFAAsAAAAGAAEAAAAFAAwAAAAGAAEAAAAFAA0AAAAGAAEAAAAFAA4AAAAGAAEAAAAFAA8AAAAGAAEAAAAFABAAAAAGAAEAAAAGAAIAAAAGAAEAAAAGAAMAAAAGAAEAAAAGAAQAAAAGAAEAAAAGAAUAAAAGAAEAAAAGAAYAAAAGAAEAAAAGAAcAAAAGAAEAAAAGAAgAAAAGAAEAAAAGAAkAAAAGAAEAAAAGAAoAAAAGAAEAAAAGAAsAAAAGAAEAAAAGAAwAAAAGAAEAAAAGAA0AAAAGAAEAAAAGAA4AAAAGAAEAAAAGAA8AAAAGAAEAAAAGABAAAAAGAAEAAAAHAAIAAAAGAAEAAAAHAAMAAAAGAAEAAAAHAAQAAAAGAAEAAAAHAAUAAAAGAAEAAAAHAAYAAAAGAAEAAAAHAAcAAAAGAAEAAAAHAAgAAAAGAAEAAAAHAAkAAAAGAAEAAAAHAAoAAAAGAAEAAAAHAAsAAAAGAAEAAAAHAAwAAAAGAAEAAAAHAA0AAAAGAAEAAAAHAA4AAAAGAAEAAAAHAA8AAAAGAAEAAAAHABAAAAAGAAEAAAAIAAIAAAAGAAEAAAAIAAMAAAAGAAEAAAAIAAQAAAAGAAEAAAAIAAUAAAAGAAEAAAAIAAYAAAAGAAEAAAAIAAcAAAAGAAEAAAAIAAgAAAAGAAEAAAAIAAkAAAAGAAEAAAAIAAoAAAAGAAEAAAAIAAsAAAAGAAEAAAAIAAwAAAAGAAEAAAAIAA0AAAAGAAEAAAAIAA4AAAAGAAEAAAAIAA8AAAAAAAMAAAAIABAAAAAGAAEAAAAJAAIAAAAGAAEAAAAJAAMAAAAGAAEAAAAJAAQAAAAGAAEAAAAJAAUAAAAGAAEAAAAJAAYAAAAGAAEAAAAJAAcAAAAGAAEAAAAJAAgAAAAGAAEAAAAJAAkAAAAGAAEAAAAJAAoAAAAGAAEAAAAJAAsAAAAGAAEAAAAJAAwAAAAGAAEAAAAJAA0AAAAGAAEAAAAJAA4AAAAGAAEAAAAJAA8AAAAAAAMAAAAJABAAAAAGAAEAAAAKAAIAAAAGAAEAAAAKAAMAAAAGAAEAAAAKAAQAAAAGAAEAAAAKAAUAAAAGAAEAAAAKAAYAAAAGAAEAAAAKAAcAAAAGAAEAAAAKAAgAAAAGAAEAAAAKAAkAAAAGAAEAAAAKAAoAAAAGAAEAAAAKAAsAAAAGAAEAAAAKAAwAAAAGAAEAAAAKAA0AAAAGAAQAAAAKAA4AAAAGAAEAAAAKAA8AAAAAAAMAAAAKABAAAAAGAAEAAAALAAIAAAAGAAEAAAALAAMAAAAGAAEAAAALAAQAAAAGAAEAAAALAAUAAAAGAAEAAAALAAYAAAAGAAEAAAALAAcAAAAGAAEAAAALAAgAAAAGAAEAAAALAAkAAAAGAAEAAAALAAoAAAAGAAEAAAALAAsAAAAGAAEAAAALAAwAAAAGAAEAAAALAA0AAAAGAAEAAAALAA4AAAAGAAEAAAALAA8AAAAGAAEAAAALABAAAAAGAAEAAAAMAAIAAAAGAAEAAAAMAAMAAAAGAAQAAAAMAAQAAAAGAAEAAAAMAAUAAAAGAAEAAAAMAAYAAAAGAAEAAAAMAAcAAAAGAAEAAAAMAAgAAAAGAAEAAAAMAAkAAAAGAAEAAAAMAAoAAAAGAAEAAAAMAAsAAAAGAAEAAAAMAAwAAAAGAAEAAAAMAA0AAAAGAAEAAAAMAA4AAAAGAAEAAAAMAA8AAAAGAAEAAAAMABAAAAAGAAEAAAANAAIAAAACAAAAAAANAAMAAAAGAAEAAAANAAQAAAAGAAEAAAANAAUAAAAGAAEAAAANAAYAAAAGAAEAAAANAAcAAAAEAAMAAAANAAgAAAAEAAMAAAANAAkAAAAGAAEAAAANAAoAAAAGAAEAAAANAAsAAAAGAAEAAAANAAwAAAAGAAEAAAANAA0AAAACAAUAAAANAA4AAAAGAAEAAAANAA8AAAAGAAEAAAANABAAAAAGAAEAAAAOAAIAAAAGAAEAAAAOAAMAAAAGAAEAAAAOAAQAAAAGAAEAAAAOAAUAAAAGAAEAAAAOAAYAAAAGAAEAAAAOAAcAAAAGAAEAAAAOAAgAAAAGAAEAAAAOAAkAAAAGAAEAAAAOAAoAAAAGAAEAAAAOAAsAAAAGAAEAAAAOAAwAAAAGAAEAAAAOAA0AAAAGAAEAAAAOAA4AAAAGAAEAAAAOAA8AAAAGAAEAAAAOABAAAAAGAAEAAAAPAAIAAAAGAAEAAAAPAAMAAAAGAAEAAAAPAAQAAAAGAAEAAAAPAAUAAAAGAAEAAAAPAAYAAAAGAAEAAAAPAAcAAAAGAAEAAAAPAAgAAAAGAAEAAAAPAAkAAAAGAAEAAAAPAAoAAAAGAAEAAAAPAAsAAAAGAAEAAAAPAAwAAAAGAAEAAAAPAA0AAAAGAAEAAAAPAA4AAAAGAAEAAAAPAA8AAAAGAAEAAAAPABAAAAAGAAEAAAAQAAIAAAAGAAEAAAAQAAMAAAAGAAEAAAAQAAQAAAAGAAEAAAAQAAUAAAAGAAEAAAAQAAYAAAAGAAEAAAAQAAcAAAAGAAEAAAAQAAgAAAAGAAEAAAAQAAkAAAAGAAEAAAAQAAoAAAAGAAEAAAAQAAsAAAAGAAEAAAAQAAwAAAAGAAEAAAAQAA0AAAAGAAEAAAAQAA4AAAAGAAEAAAAQABAAAAAGAAEAAAARAAIAAAAGAAEAAAARAAMAAAAGAAEAAAARAAQAAAAGAAEAAAARAAUAAAAGAAEAAAARAAYAAAAGAAEAAAARAAcAAAAGAAEAAAARAAgAAAAGAAEAAAARAAkAAAAGAAEAAAARAAoAAAAGAAEAAAARAAsAAAAGAAEAAAARAAwAAAAGAAEAAAARAA0AAAAGAAEAAAARAA4AAAAGAAEAAAARAA8AAAAAAAMAAAARABAAAAAGAAEAAAASAAIAAAAGAAEAAAASAAMAAAAGAAEAAAASAAQAAAAGAAEAAAASAAUAAAAGAAEAAAASAAYAAAAGAAEAAAASAAcAAAAGAAEAAAASAAgAAAAGAAEAAAASAAkAAAAGAAEAAAASAAoAAAAGAAEAAAASAAsAAAAGAAEAAAASAAwAAAAGAAEAAAASAA0AAAAGAAEAAAASAA4AAAAGAAEAAAASAA8AAAAAAAMAAAASABAAAAAGAAEAAAATAAIAAAAGAAEAAAATAAMAAAAGAAEAAAATAAQAAAAGAAEAAAATAAUAAAAGAAEAAAATAAYAAAAGAAEAAAATAAcAAAAGAAEAAAATAAgAAAAGAAEAAAATAAkAAAAGAAEAAAATAAoAAAAGAAEAAAATAAsAAAAGAAEAAAATAAwAAAAGAAEAAAATAA0AAAAGAAEAAAATAA4AAAAGAAEAAAATAA8AAAAAAAMAAAATABAAAAAGAAEAAAAUAAIAAAAGAAEAAAAUAAMAAAAGAAEAAAAUAAQAAAAGAAEAAAAUAAUAAAAGAAEAAAAUAAYAAAAGAAEAAAAUAAcAAAAGAAEAAAAUAAgAAAAGAAEAAAAUAAkAAAAGAAEAAAAUAAoAAAAGAAEAAAAUAAsAAAAGAAEAAAAUAAwAAAAGAAEAAAAUAA0AAAAGAAEAAAAUAA4AAAAGAAEAAAAUAA8AAAAGAAEAAAAUABAAAAAGAAEAAAAVAAIAAAAGAAEAAAAVAAMAAAAGAAEAAAAVAAQAAAAGAAEAAAAVAAUAAAAGAAEAAAAVAAYAAAAGAAEAAAAVAAcAAAAGAAEAAAAVAAgAAAAGAAEAAAAVAAkAAAAGAAEAAAAVAAoAAAAGAAEAAAAVAAsAAAAGAAEAAAAVAAwAAAAGAAQAAAAVAA0AAAAGAAEAAAAVAA4AAAAGAAEAAAAVAA8AAAAGAAEAAAAVABAAAAAGAAEAAAAWAAIAAAAGAAEAAAAWAAMAAAAGAAEAAAAWAAQAAAAGAAEAAAAWAAUAAAAGAAEAAAAWAAYAAAAGAAEAAAAWAAcAAAACAAUAAAAWAAgAAAAGAAQAAAAWAAkAAAAGAAEAAAAWAAoAAAAGAAEAAAAWAAsAAAAGAAEAAAAWAAwAAAAGAAEAAAAWAA0AAAAGAAEAAAAWAA4AAAAGAAEAAAAWAA8AAAAGAAEAAAAWABAAAAAGAAEAAAAXAAIAAAAIAAAAAAAXAAMAAAAIAAEAAAAXAAQAAAAGAAQAAAAXAAUAAAAGAAEAAAAXAAYAAAAGAAEAAAAXAAcAAAAGAAEAAAAXAAgAAAAGAAEAAAAXAAkAAAAGAAEAAAAXAAoAAAAGAAEAAAAXAAsAAAAGAAEAAAAXAAwAAAAIAAAAAAAXAA0AAAAIAAEAAAAXAA4AAAAGAAEAAAAXAA8AAAAGAAQAAAAXABAAAAAGAAEAAAAYAAIAAAAJAAAAAAAYAAMAAAAJAAEAAAAYAAQAAAAGAAEAAAAYAAUAAAAGAAEAAAAYAAYAAAAGAAEAAAAYAAcAAAAGAAEAAAAYAAgAAAAGAAEAAAAYAAkAAAAGAAEAAAAYAAoAAAAGAAEAAAAYAAsAAAAGAAEAAAAYAAwAAAAJAAAAAAAYAA0AAAAJAAEAAAAYAA4AAAAGAAEAAAAYAA8AAAAGAAEAAAAYABAAAAAGAAEAAAAZAAIAAAAGAAEAAAAZAAMAAAAGAAEAAAAZAAQAAAAGAAEAAAAZAAUAAAAGAAEAAAAZAAYAAAAGAAEAAAAZAAcAAAAGAAEAAAAZAAgAAAAGAAEAAAAZAAkAAAAGAAEAAAAZAAoAAAAGAAEAAAAZAAsAAAAGAAEAAAAZAAwAAAAGAAEAAAAZAA0AAAAGAAEAAAAZAA4AAAAGAAEAAAAZAA8AAAAGAAEAAAAZABAAAAAGAAEAAAAaAAIAAAAGAAEAAAAaAAMAAAAGAAEAAAAaAAQAAAAGAAEAAAAaAAUAAAAGAAEAAAAaAAYAAAAGAAEAAAAaAAcAAAAGAAEAAAAaAAgAAAAGAAEAAAAaAAkAAAAGAAEAAAAaAAoAAAAGAAEAAAAaAAsAAAAGAAEAAAAaAAwAAAAGAAEAAAAaAA0AAAAGAAEAAAAaAA4AAAAGAAEAAAAaAA8AAAAGAAEAAAAaABAAAAAGAAEAAAAZAAEAAAAGAAEAAAAaAAEAAAAGAAEAAAAPAAAAAAAGAAEAAAAPAAEAAAAGAAEAAAAQAAAAAAAGAAEAAAAQAAEAAAAGAAEAAAARAAAAAAAAAAIAAAARAAEAAAACAAMAAAASAAAAAAAAAAIAAAASAAEAAAAAAAMAAAATAAAAAAAAAAIAAAATAAEAAAABAAMAAAAUAAAAAAAGAAEAAAAUAAEAAAAGAAEAAAAVAAAAAAAGAAEAAAAVAAEAAAAGAAEAAAAWAAAAAAAGAAEAAAAWAAEAAAAGAAEAAAAXAAAAAAAGAAEAAAAXAAEAAAAGAAEAAAAYAAAAAAAGAAEAAAAYAAEAAAAGAAEAAAAZAAAAAAAGAAEAAAAaAAAAAAAGAAEAAAD//wAAAAAAAAIAAAD//wEAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAEAAAACAAMAAAABAAAAAAAAAAIAAAABAAEAAAACAAMAAAACAAAAAAAAAAIAAAACAAEAAAAAAAMAAAADAAAAAAAGAAEAAAADAAEAAAAGAAEAAAAEAAAAAAAGAAEAAAAEAAEAAAAGAAEAAAAFAAAAAAAAAAIAAAAGAAAAAAAGAAEAAAAHAAAAAAAGAAEAAAAIAAAAAAAAAAIAAAAIAAEAAAACAAMAAAAJAAAAAAAAAAIAAAAJAAEAAAABAAMAAAAKAAAAAAAAAAIAAAAKAAEAAAACAAMAAAALAAAAAAAAAAIAAAALAAEAAAAAAAMAAAAMAAAAAAAAAAIAAAAMAAEAAAAAAAMAAAANAAAAAAAGAAEAAAANAAEAAAAGAAEAAAAOAAAAAAAGAAEAAAAOAAEAAAAGAAEAAAAQAA8AAAAGAAEAAAABAAgAAAAGAAQAAAAHAAEAAAAGAAEAAAAGAAEAAAAGAAEAAAAFAAEAAAACAAMAAAAFAP//AAAGAAEAAAAGAP//AAAGAAEAAAAHAP//AAAGAAEAAAAIAP//AAAGAAEAAAAJAP//AAAGAAEAAAAKAP//AAAGAAEAAAALAP//AAAGAAEAAAARAP//AAAGAAEAAAASAP//AAAGAAEAAAATAP//AAAGAAEAAAAUAP//AAAGAAEAAAAVAP//AAAGAAEAAAAWAP//AAAGAAEAAAAXAP//AAAGAAEAAAA=")
