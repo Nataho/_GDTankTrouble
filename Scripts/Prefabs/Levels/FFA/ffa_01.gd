@@ -156,7 +156,6 @@ func titleAnim(delta):
 	%"Game Name".position.y += movement * delta
 	%"Game Name".rotation_degrees += _rotate * delta / 10
 
-
 var maps = {
 	1: "FFA 01",
 	2: "FFA 02",
@@ -165,5 +164,5 @@ var maps = {
 func nextIdleMap():
 	var newMap = maps[randi_range(1,maps.size())] #default
 	#var newMap = maps[2]#modified
-	Transition.ChangeScene(newMap, "slideLeft")
+	Transition.ChangeScene(newMap, "dissolve")
 	pass
