@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5qfbrjxv0slv"]
+[gd_scene load_steps=8 format=3 uid="uid://5qfbrjxv0slv"]
 
 [ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="1_lbocf"]
 [ext_resource type="Script" path="res://Scripts/MainScenes/results.gd" id="1_waoks"]
@@ -8,6 +8,12 @@
 [sub_resource type="LabelSettings" id="LabelSettings_cti8j"]
 font = ExtResource("2_inuxo")
 font_size = 40
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8lx3j"]
+font = ExtResource("2_inuxo")
+font_size = 30
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
@@ -54,6 +60,25 @@ game score: 0
 total score: 0"
 label_settings = SubResource("LabelSettings_cti8j")
 horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -15.5
+offset_right = 120.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 15)
+text = "WHAT THE HELL"
+label_settings = SubResource("LabelSettings_8lx3j")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player1" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(256, 256)

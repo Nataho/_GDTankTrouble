@@ -55,6 +55,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Controller 1"
 alignment = 1
+max_length = 10
 
 [node name="Computer" type="Button" parent="."]
 layout_mode = 1

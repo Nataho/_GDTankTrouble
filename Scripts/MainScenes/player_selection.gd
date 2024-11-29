@@ -18,6 +18,12 @@ var buttonColor = {
 
 #region Startup
 func _ready() -> void:
+	
+	if playerIndex > 3:
+		$Name.editable = false
+		$Computer.disabled = true
+		$ColorSelect.disabled = true
+	
 	$ColorSelect.selected = playerIndex
 	$Name.placeholder_text = "Controller " + str(playerIndex + 1)
 	

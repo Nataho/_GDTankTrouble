@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d18qeqmnb3shl"]
+[gd_scene load_steps=13 format=3 uid="uid://d18qeqmnb3shl"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_a2i88"]
 [ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="2_cul20"]
@@ -34,6 +34,11 @@ turbulence_enabled = true
 turbulence_noise_strength = 5.94
 turbulence_noise_speed = Vector3(-10, 0, 0)
 
+[sub_resource type="Curve" id="Curve_r6xfe"]
+min_value = -1.0
+_data = [Vector2(0.375, -0.472527), 0.0, -2.06769, 0, 0, Vector2(0.785714, 0.0769231), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Environment" id="Environment_pty2a"]
 background_mode = 3
 glow_enabled = true
@@ -58,10 +63,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -322.0
-offset_top = -214.0
-offset_right = 322.0
-offset_bottom = -41.0
+offset_left = -347.0
+offset_top = -200.0
+offset_right = 297.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 120
@@ -131,7 +136,7 @@ Founders:
 Day 1:
 -5 players
 -Free For All
--Power Ups"
+-3 Power Ups"
 label_settings = ExtResource("3_14i8t")
 vertical_alignment = 1
 
@@ -166,6 +171,7 @@ angular_velocity_min = -245.0
 angular_velocity_max = 245.0
 scale_amount_min = 0.2
 scale_amount_max = 0.7
+color = Color(2, 2, 2, 1)
 
 [node name="Particle2" type="CPUParticles2D" parent="Particles"]
 z_index = -1
@@ -185,6 +191,7 @@ angular_velocity_min = -245.0
 angular_velocity_max = 245.0
 scale_amount_min = 0.2
 scale_amount_max = 0.7
+color = Color(2, 2, 2, 1)
 
 [node name="Particle3" type="CPUParticles2D" parent="Particles"]
 z_index = -1
@@ -222,8 +229,13 @@ initial_velocity_min = 10.0
 initial_velocity_max = 50.0
 angular_velocity_min = -245.0
 angular_velocity_max = 245.0
+angle_min = -180.0
 scale_amount_min = 0.5
 scale_amount_max = 2.0
+color = Color(1, 1.5, 1, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_r6xfe")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pty2a")

@@ -50,6 +50,7 @@ func UpdateStatistics():
 	Text += "suicide: " + str(PlayerG.PlayerScore[-1]["suicide"])+"\n"
 	Text += "total score: " + str(PlayerG.PlayerScore[-1]["total score"])+"\n"
 	$Player/Satistics.text = Text
+	$Player/Name.text = PlayerG.playerNames[-1]
 	
 	Text = "game score: " + str(PlayerG.PlayerScore[0]["game score"])+"\n"
 	Text += "kills: " + str(PlayerG.PlayerScore[0]["kills"]) +"\n"
@@ -145,6 +146,10 @@ func _physics_process(delta):
 	var _rotate = cos(time*LogoRotFreq)*LogoRotAmp
 	$Crown.position.y += movement * delta
 	$Crown.rotation_degrees += _rotate * delta / 10
+	
+	$Player/Name.scale.y += movement / 500
+	$Player/Name.rotation_degrees += _rotate * delta / 10
+	
 	
 	#var participants = {}
 	#for num in range(1,6):
