@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://svv8rhm7dkh2"
-path="res://.godot/imported/TileSet1.png-9f53e47c7e551906c0652871f4f1fccd.ctex"
+uid="uid://ddsgphcv38lv0"
+path="res://.godot/imported/cracked.png-5cbb512d522e259f74b7866d12606899.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Prefabs/Levels/FFA/TileSet1.png"
-dest_files=["res://.godot/imported/TileSet1.png-9f53e47c7e551906c0652871f4f1fccd.ctex"]
+source_file="res://Assets/Photos/Environment/cracked.png"
+dest_files=["res://.godot/imported/cracked.png-5cbb512d522e259f74b7866d12606899.ctex"]
 
 [params]
 
