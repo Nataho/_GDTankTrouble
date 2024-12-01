@@ -22,5 +22,38 @@ const Scenes = {
 	"Bullet 02": "res://Scenes/Prefabs/Levels/Bullet/bullet_02.tscn",
 }
 
+#region scoring
+var SCORES = {
+	"bh": 28,
+	"von" : 63,
+	"NEgg": 2,
+	"judel": 9,
+	"ram": 8,
+	"hati": 3,
+	#"owen": 123,
+}
+
+func add_to_leaderboard(Name = null,Score = null):
+	#gets the value of the dictionary and sorts it by descending order
+	if Name != null && Score != null: SCORES[Name] = Score
+	var scorevalues = SCORES.values()
+	scorevalues.sort()
+	scorevalues.reverse()
+	
+	#checks the name if it is the same as te score placement
+	var newScoreSet:Dictionary
+	for score in scorevalues:
+		for names in SCORES:
+			if SCORES[names] == score:
+				newScoreSet[names] = score
+	SCORES = newScoreSet
+	
+	if Debug: print(SCORES)
+
+#endregion scoring
+
+func _ready() -> void:
+	add_to_leaderboard()
+
 func changeScene(scene: String):
 	get_tree().change_scene_to_file(Scenes[scene])

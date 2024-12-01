@@ -201,6 +201,11 @@ func nextIdleMap():
 	Transition.ChangeScene(newMap, "dissolve")
 	pass
 
+func leaderboards():
+	var text = "Leaderboard:"
+	for names in GameManager.SCORES:
+		text += "\n" + str()
+	
 #region survival
 var lives = 5
 func setLives(value): lives = value
