@@ -886,6 +886,62 @@ mesh = SubResource("BoxMesh_5u6ma")
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall58"]
 texture = ExtResource("4_wmg1a")
 
+[node name="Wall59" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1816, 476)
+rotation = -9.94836
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall59"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall59"]
+texture = ExtResource("4_wmg1a")
+
+[node name="Wall60" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1697, 545)
+rotation = -9.94836
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall60"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall60"]
+texture = ExtResource("4_wmg1a")
+
+[node name="Wall137" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1596, 539)
+rotation = -10.9956
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall137"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall137"]
+texture = ExtResource("4_wmg1a")
+
+[node name="Wall144" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1657, 568)
+rotation = -9.94836
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall144"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall144"]
+texture = ExtResource("4_wmg1a")
+
 [node name="Wall61" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
 position = Vector2(1596, 928)
 rotation = -10.9956
@@ -1304,6 +1360,20 @@ scale = Vector2(136, 14)
 mesh = SubResource("BoxMesh_5u6ma")
 
 [node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall50"]
+texture = ExtResource("4_wmg1a")
+
+[node name="Wall150" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
+position = Vector2(1817, 620)
+rotation = -6.80677
+shape = SubResource("RectangleShape2D_w80a2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Barriers/Walls/Wall150"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-7.62939e-06, -7.62939e-06)
+scale = Vector2(136, 14)
+mesh = SubResource("BoxMesh_5u6ma")
+
+[node name="Sprite2D" type="Sprite2D" parent="Barriers/Walls/Wall150"]
 texture = ExtResource("4_wmg1a")
 
 [node name="Wall51" type="CollisionShape2D" parent="Barriers/Walls" groups=["Walls"]]
