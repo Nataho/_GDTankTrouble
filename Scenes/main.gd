@@ -1,10 +1,13 @@
 extends Node2D
 
 func _ready():
+	GameManager.isIdle = false
+	if GameManager.Debug: $Unattended.wait_time = 5
 	
 	$Particles/Particle1.show()
 	$Particles/Particle2.show()
 	$Particles/Particle3.show()
+	$Particles/Particle4.show()
 	
 	PlayerG.reset()
 	AudioG.playMusic("main menu")
@@ -26,6 +29,7 @@ func _input(event):
 
 func Unattended():
 	GameManager.isIdle = true
+	PlayerG.FFA_TimeLimit = 20
 	var maxPlayers = 7
 	var loopIndex = 0
 	while loopIndex <= maxPlayers:

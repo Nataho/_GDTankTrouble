@@ -21,6 +21,12 @@ func _ready() -> void:
 	if GameManager.isIdle: #runs when the game is on idle or is unattended
 		$"Game Name".show()
 		$Timer.start()
+		
+		var camera = Camera2D.new()
+		add_child(camera)
+		camera.position = Vector2(2560/2,1440/2)
+		camera.zoom = Vector2(0.8,0.8)
+		
 	if PlayerG.FFA_TimeLimit == 0:
 		$Countdown.stop()
 	
@@ -46,15 +52,16 @@ func Android():
 
 func _process(delta: float) -> void:
 	TagsFollowPlayer()
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && GameManager.isIdle:
 		GameManager.isIdle = false
 		Transition.ChangeScene("main","slideLeft")
 	#if event.is_action_pressed("shoot"):
 		#Transition.ChangeScene("main", "slideLeft")
-	#if event.is_action_pressed("reset"):
-		#reset()
+	if event.is_action_pressed("reset") && GameManager.Debug:
+		reset()
+	if event.is_action_pressed("goBackCombo"):
+		Transition.ChangeScene("main","slideLeft")
 	pass
 
 func reset(): #reset whole map and player statistics
@@ -128,6 +135,8 @@ func UpdateTime():
 func toResult():
 	if GameManager.isIdle: Transition.ChangeScene("main", "slideLeft");return
 	Transition.ChangeScene("results", "slideLeft")
+	
+	if GameManager.kiosk: PlayerG.kiosk_gameNum += 1
 
 func newPowerUp():
 	var amount = 2

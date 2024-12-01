@@ -991,6 +991,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Joy-con" type="Sprite2D" parent="CanvasLayer/Control"]
+visible = false
 position = Vector2(1944.27, 1052.77)
 scale = Vector2(1.40243, 1.40243)
 texture = ExtResource("2_exk27")
@@ -1008,6 +1009,7 @@ texture = SubResource("CompressedTexture2D_nwj5t")
 expand_mode = 5
 
 [node name="north" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 offset_left = 2043.06
 offset_top = 756.412
@@ -1017,6 +1019,7 @@ scale = Vector2(2.15157, 2.15157)
 texture = ExtResource("4_bimcl")
 
 [node name="south" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 offset_left = 2043.06
 offset_top = 863.542
@@ -1026,6 +1029,7 @@ scale = Vector2(2.15157, 2.15157)
 texture = ExtResource("4_bimcl")
 
 [node name="west" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 offset_left = 1985.95
 offset_top = 809.861
@@ -1035,6 +1039,7 @@ scale = Vector2(2.15157, 2.15157)
 texture = ExtResource("4_bimcl")
 
 [node name="east" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 offset_left = 2099.22
 offset_top = 808.797
@@ -1044,6 +1049,7 @@ scale = Vector2(2.15157, 2.15157)
 texture = ExtResource("4_bimcl")
 
 [node name="right shoulder" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 offset_left = 2019.23
 offset_top = 614.386
@@ -1053,6 +1059,7 @@ scale = Vector2(3.77254, 3.77254)
 texture = ExtResource("5_wjmic")
 
 [node name="JoystickzoneL" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 0
 offset_left = 1700.93
 offset_top = 804.064

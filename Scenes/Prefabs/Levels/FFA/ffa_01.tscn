@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://do6yxj1jvoa47"]
+[gd_scene load_steps=20 format=4 uid="uid://do6yxj1jvoa47"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Levels/FFA/ffa_01.gd" id="1_4lb2s"]
 [ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="2_jgx5h"]
@@ -21,7 +21,7 @@ size = Vector2(138, 16)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5u6ma"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vt72m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r82ow"]
 texture = ExtResource("6_prqyc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -343,27 +343,29 @@ texture_region_size = Vector2i(32, 32)
 7:4/0 = 0
 5:4/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xthw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ov51s"]
 texture = ExtResource("7_itiqm")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwlgy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ve44q"]
 texture = ExtResource("8_d6aie")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7ab5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bhmp"]
 texture = ExtResource("9_6qdhv")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_rftvj"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_vt72m")
-sources/1 = SubResource("TileSetAtlasSource_4xthw")
-sources/2 = SubResource("TileSetAtlasSource_xwlgy")
-sources/3 = SubResource("TileSetAtlasSource_n7ab5")
+sources/0 = SubResource("TileSetAtlasSource_r82ow")
+sources/1 = SubResource("TileSetAtlasSource_ov51s")
+sources/2 = SubResource("TileSetAtlasSource_ve44q")
+sources/3 = SubResource("TileSetAtlasSource_3bhmp")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sa81x"]
 
 [sub_resource type="Environment" id="Environment_xclex"]
 background_mode = 3
@@ -1983,6 +1985,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -2003,6 +2007,104 @@ BLASTERS"
 label_settings = ExtResource("2_jgx5h")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Game Name/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 280.0
+offset_top = -81.0
+offset_right = 1089.0
+grow_vertical = 0
+pivot_offset = Vector2(195, 83)
+text = "10 PESOS PER HEAD"
+label_settings = ExtResource("2_jgx5h")
+vertical_alignment = 1
+
+[node name="Description2" type="Label" parent="Game Name/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1048.0
+offset_top = -81.0
+offset_right = -239.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(195, 83)
+text = "3 GAMES FOR 10 PESOS"
+label_settings = ExtResource("2_jgx5h")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Description3" type="Label" parent="Game Name/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -481.0
+offset_top = 40.0
+offset_right = 481.0
+offset_bottom = 121.0
+grow_horizontal = 2
+pivot_offset = Vector2(195, 83)
+text = "2-5 PLAYER MUTIPLAYER!"
+label_settings = ExtResource("2_jgx5h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Game Name/Control"]
+modulate = Color(0.318, 0.459, 1.636, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 144.0
+grow_horizontal = 2
+texture = SubResource("CanvasTexture_sa81x")
+
+[node name="TextureRect2" type="TextureRect" parent="Game Name/Control"]
+modulate = Color(0.318, 0.459, 1.636, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 104)
+texture = SubResource("CanvasTexture_sa81x")
+
+[node name="TextureRect3" type="TextureRect" parent="Game Name/Control"]
+modulate = Color(0.318, 0.459, 1.636, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 248.0
+grow_vertical = 2
+texture = SubResource("CanvasTexture_sa81x")
+
+[node name="TextureRect4" type="TextureRect" parent="Game Name/Control"]
+modulate = Color(0.318, 0.459, 1.636, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("CanvasTexture_sa81x")
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0

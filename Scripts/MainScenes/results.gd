@@ -44,51 +44,61 @@ func CalculateScores():
 
 func UpdateStatistics():
 	var Text:String
-	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[0]]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[0]]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[0]]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[0]]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[0]]["total score"])+"\n"
-	$Player/Satistics.text = Text
-	$Player/Name.text = PlayerG.playerNames[placementOrder[0]]
-	player.modulate = 	PlayerG.activeTankColor[placementOrder[0]]
+	if PlayerG.ActivePlayers.size() >= 1:
+			Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[0]]["game score"])+"\n"
+			Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[0]]["kills"]) +"\n"
+			Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[0]]["deaths"])+"\n"
+			Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[0]]["suicide"])+"\n"
+			Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[0]]["total score"])+"\n"
+			$Player/Satistics.text = Text
+			$Player/Name.text = PlayerG.playerNames[placementOrder[0]]
+			player.modulate = 	PlayerG.activeTankColor[placementOrder[0]]
+	else: player.hide()
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[1]]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[1]]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[1]]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[1]]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[1]]["total score"])+"\n"
-	$Player1/Satistics.text = Text
-	$Player1/Name.text = PlayerG.playerNames[placementOrder[1]]
-	player1.modulate = PlayerG.activeTankColor[placementOrder[1]]
+	if PlayerG.ActivePlayers.size() >= 2:
+		Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[1]]["game score"])+"\n"
+		Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[1]]["kills"]) +"\n"
+		Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[1]]["deaths"])+"\n"
+		Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[1]]["suicide"])+"\n"
+		Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[1]]["total score"])+"\n"
+		$Player1/Satistics.text = Text
+		$Player1/Name.text = PlayerG.playerNames[placementOrder[1]]
+		player1.modulate = PlayerG.activeTankColor[placementOrder[1]]
+	else: player1.hide()
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[2]]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[2]]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[2]]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[2]]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[2]]["total score"])+"\n"
-	$Player2/Satistics.text = Text
-	$Player2/Name.text = PlayerG.playerNames[placementOrder[2]]
-	player2.modulate = PlayerG.activeTankColor[placementOrder[2]]
+	if PlayerG.ActivePlayers.size() >= 3:
+		Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[2]]["game score"])+"\n"
+		Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[2]]["kills"]) +"\n"
+		Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[2]]["deaths"])+"\n"
+		Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[2]]["suicide"])+"\n"
+		Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[2]]["total score"])+"\n"
+		$Player2/Satistics.text = Text
+		$Player2/Name.text = PlayerG.playerNames[placementOrder[2]]
+		player2.modulate = PlayerG.activeTankColor[placementOrder[2]]
+	else: player2.hide()
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[3]]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[3]]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[3]]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[3]]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[3]]["total score"])+"\n"
-	$Player3/Satistics.text = Text
-	$Player3/Name.text = PlayerG.playerNames[placementOrder[3]]
-	player3.modulate = PlayerG.activeTankColor[placementOrder[3]]
+	if PlayerG.ActivePlayers.size() >= 4:
+		Text = "game score: " + str(PlayerG.PlayerScore[placementOrder[3]]["game score"])+"\n"
+		Text += "kills: " + str(PlayerG.PlayerScore[placementOrder[3]]["kills"]) +"\n"
+		Text += "deaths: " + str(PlayerG.PlayerScore[placementOrder[3]]["deaths"])+"\n"
+		Text += "suicide: " + str(PlayerG.PlayerScore[placementOrder[3]]["suicide"])+"\n"
+		Text += "total score: " + str(PlayerG.PlayerScore[placementOrder[3]]["total score"])+"\n"
+		$Player3/Satistics.text = Text
+		$Player3/Name.text = PlayerG.playerNames[placementOrder[3]]
+		player3.modulate = PlayerG.activeTankColor[placementOrder[3]]
+	else: player3.hide()
 	
 	
-	Text = "game score: " + str(PlayerG.PlayerScore[4]["game score"])+"\n"
-	Text += "kills: " + str(PlayerG.PlayerScore[4]["kills"]) +"\n"
-	Text += "deaths: " + str(PlayerG.PlayerScore[4]["deaths"])+"\n"
-	Text += "suicide: " + str(PlayerG.PlayerScore[4]["suicide"])+"\n"
-	Text += "total score: " + str(PlayerG.PlayerScore[4]["total score"])+"\n"
-	$Player4/Satistics.text = Text
-	$Player4/Name.text = PlayerG.playerNames[placementOrder[4]]
-	player4.modulate = PlayerG.activeTankColor[placementOrder[4]]
+	if PlayerG.ActivePlayers.size() >= 5:
+		Text = "game score: " + str(PlayerG.PlayerScore[4]["game score"])+"\n"
+		Text += "kills: " + str(PlayerG.PlayerScore[4]["kills"]) +"\n"
+		Text += "deaths: " + str(PlayerG.PlayerScore[4]["deaths"])+"\n"
+		Text += "suicide: " + str(PlayerG.PlayerScore[4]["suicide"])+"\n"
+		Text += "total score: " + str(PlayerG.PlayerScore[4]["total score"])+"\n"
+		$Player4/Satistics.text = Text
+		$Player4/Name.text = PlayerG.playerNames[placementOrder[4]]
+		player4.modulate = PlayerG.activeTankColor[placementOrder[4]]
+	else: player4.hide()
 
 var placement = [
 	Vector2(352, 452),
@@ -223,10 +233,38 @@ func _physics_process(delta):
 
 var seconds:int = 15
 func AutoExit():
-	$"Time Left".text = "Automatic Exit: " + str(seconds)
+	if GameManager.kiosk: $"Time Left".text = "Next Game: " + str(seconds)
+	else: $"Time Left".text = "Automatic Exit: " + str(seconds)
 	seconds -= 1
 	if seconds < 0:
 		$Timer.stop()
+		if GameManager.kiosk && PlayerG.kiosk_gameNum < 3: 
+			nextKioskMap()
+			PlayerG.gameFinished = false
+			PlayerG.PlayerScore = {
+				-1 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				0 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				1 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				2 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				3 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				4 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				5 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				6 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+				7 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
+			}
+			return
 		Transition.ChangeScene("main","slideLeft")
+		#Next game start in (pila ka secods). 
 	
 func exit(): Transition.ChangeScene("main","slideLeft")
+
+var maps = {
+	1: "FFA 01",
+	2: "FFA 02",
+	3: "FFA 03",
+}
+func nextKioskMap():
+	var newMap = maps[randi_range(1,maps.size())] #default
+	#var newMap = maps[2]#modified
+	Transition.ChangeScene(newMap, "dissolve")
+	pass

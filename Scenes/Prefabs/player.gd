@@ -23,8 +23,22 @@ var plBullet := preload("res://Scenes/Prefabs/bullet.tscn")
 
 var Spawned = false
 var CoastClear = false
-
+var raycastTarget = false
+var targetDirection = rotation_degrees
 func _process(delta: float) -> void:
+	if isAI && state: 
+		#var targetPos = $Vision.to_local(target.position)
+		#$RayCast2D.target_position = targetPos
+		#$eye.look_at(targetPos)
+		
+		$eye.rotation_degrees = 0
+		$RayCast2D.target_position = $Vision.to_local(target.position)
+		$eye.look_at(target.position)
+		targetDirection = $eye.global_rotation_degrees
+		print("Player direction ",targetDirection)
+		print("bot rotation ",rotation_degrees)
+	else:$RayCast2D.target_position = Vector2(100,0)
+		
 	if isPlayerMenu: modulate = Color.LIGHT_GOLDENROD; $power/WorldEnvironment.environment = null
 	if GameManager.Debug: if Input.is_action_just_pressed("goBack"): get_tree().quit()
 #region startup
@@ -262,11 +276,15 @@ func initializeAI():
 	$AI/Movement.start()
 
 var doRotation = false
-var rotate
+var rotate = 0
+var ignoreState = false
 func AI_Rotate():
 	$AI/Rotation.wait_time = randf_range(0.1,1)
-	rotate = randf_range(-1,1)
+	
 	doRotation = randi_range(1,0) == 1 #true or false
+	ignoreState = randi_range(1,0) == 1 #true or false
+	if state: return
+	rotate = randf_range(-1,1)
 
 var move
 var forward_vector
@@ -277,6 +295,7 @@ func AI_Move():
 	doMovement = randi_range(1,0) == 1 #true or false
 
 func AI_Shoot():
+	if !state: return
 	if blocked: return
 	$AI/Shoot.wait_time = randf_range(0.1,5)
 	var bullet = plBullet.instantiate()
@@ -286,9 +305,19 @@ func AI_Shoot():
 	if GameManager.Debug: print("SHOOT")
 
 func AIdoRotation():
-	if doRotation:
+	
+	if state && doRotation && !ignoreState:
+		#var direction = ($Vision.to_local(target.position) - position).normalized()
+		#var targetAngle = rad_to_deg(atan2(direction.y, direction.x))
+		#var angleDiff = wrapf(targetAngle - rotation, -180, 180)
+		if targetDirection < rotation_degrees: rotate = -1
+		elif targetDirection > rotation_degrees: rotate = 1
+		if abs(rotation_degrees - targetDirection) < 1: rotate = 0
+		
 		self.rotation_degrees += rotate * rotationSPEED * SPEEDmultiplier
 		
+	elif doRotation:
+		self.rotation_degrees += rotate * rotationSPEED * SPEEDmultiplier
 func AIdoMovement(delta):
 	PlayerG.playerForwardV[playerIndex] = forward_vector
 	forward_vector = (Vector2(cos(-rotation), sin(rotation)))
@@ -296,6 +325,61 @@ func AIdoMovement(delta):
 		velocity = forward_vector * move * SPEED * SPEEDmultiplier; PlayerG.PlayerMoved = true
 		translate(velocity * delta)
 		move_and_slide()
+
+
+@onready var vision: Area2D = $Vision
+
+##########################
+var target = null
+#var states = {
+	#"found" : true
+#}
+var targetDetails = {
+	"position" = Vector2(),
+	
+}
+var state
+var powerFound
+
+func AI_player_in_area(body):
+	if !isAI: return
+	$MeshInstance2D.show()
+	#print(self.name, " HAS FOUND ", body.name)
+	
+	#if body == self: return
+	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name || state): 
+		target = body
+		targetDetails["position"] = body.position
+		state = true
+		print(self.name, " HAS FOUND ", body.name)
+		doRotation = true
+	
+	#if !(state): 
+		#target = body
+		#state = true
+		#powerFound = true
+		#print(self.name, " HAS FOUND ", body.name)
+	
+	
+	#look_at(body.position) #not good
+	
+
+func AI_player_out_area(body):
+	if !isAI: return
+	$MeshInstance2D.hide()
+	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name):
+		print(self.name, " HAS LOST ", body.name)
+		target = null
+		targetDetails["position"] = Vector2()
+		state = false
+	
+	#if !(state): 
+		#print(self.name, " HAS LOST ", body.name)
+		#
+		#target = null
+		#state = false
+		#powerFound = false
+
 #endregion
 
 #region PowerUps
@@ -327,7 +411,7 @@ func set_tank_scale(value) -> void:
 			scale = Vector2(tankScale * Scale_default, tankScale * Scale_default)
 			await get_tree().create_timer(0.01).timeout  # Small delay to slow down the loop
 	else:
-		while tankScale < value and scaling: #runs when value is higher than current scale
+		while tankScale < value and scaling: #runs when value is	 higher than current scale
 			tankScale += 0.1
 			if tankScale > value:
 				tankScale = value

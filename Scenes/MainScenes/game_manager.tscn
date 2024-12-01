@@ -5,3 +5,4 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_rdjpe")
 Debug = false
+kiosk = true

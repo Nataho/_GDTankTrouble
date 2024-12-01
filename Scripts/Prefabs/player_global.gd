@@ -9,7 +9,7 @@ var playerAmount:int = 0 #counts the amount of players t
 var EnableKeyboard: bool = false
 
 #games
-var FFA_TimeLimit:int = 500 #120 is the default
+var FFA_TimeLimit:int = 120 #120 is the default
 var gameFinished:bool = false
 
 var ActivePlayers:Array = [] #stores players that are active
@@ -26,6 +26,10 @@ var PlayerRotated = false
 var PlayerMoved = false
 var PlayerShot = false
 #endregion
+
+#region kiosk
+var kiosk_gameNum = 0
+#endregion kiosk
 
 var bulletCap = 5
 
@@ -97,10 +101,10 @@ var tankColor = {
 	2: Color(1.05,2.76,1.82,1), #controller 3
 	3: Color(3,2,1,1), #controller 4
 	4: Color(1,1,2,1),
-	5: Color(1.98, 1.09, -0.26, 1), #orange
-	#5: Color(1.0,0.65,0.0,1), #corrected orange
-	#5: Color(4,3,1,1), #controller 4
-	6: Color(1.68, 1.83, 2.74, 1), #purple
+	#5: Color(1.98, 1.09, -0.26, 1), #original orange
+	5: Color(2.943, 1.82, 1.21, 1), #orange
+	#6: Color(1.68, 1.83, 2.74, 1), #original purple
+	6: Color(2, 1, 2.42, 1), #purple
 	7: Color(2.66, 1.78, 2.54, 1),
 }
 
@@ -135,6 +139,8 @@ func reset():
 	PlayerRotated = false
 	PlayerMoved = false
 	PlayerShot = false
+	
+	kiosk_gameNum = 0
 	
 	ActivePlayers = []
 	
