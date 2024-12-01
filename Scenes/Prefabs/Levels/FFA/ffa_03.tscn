@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://do6yxj1jvoa47"]
+[gd_scene load_steps=22 format=4 uid="uid://do6yxj1jvoa47"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Levels/FFA/ffa_01.gd" id="1_t8r8b"]
 [ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="2_nonqm"]
@@ -369,6 +369,12 @@ sources/3 = SubResource("TileSetAtlasSource_ikt3d")
 background_mode = 3
 glow_enabled = true
 glow_hdr_scale = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vuk2"]
+font = ExtResource("3_e53ow")
+font_size = 35
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_y78r0"]
 font = ExtResource("3_e53ow")
@@ -2240,6 +2246,21 @@ text = "BLOCKY
 BLASTERS"
 label_settings = ExtResource("2_nonqm")
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Leaderboard" type="Label" parent="Game Name/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -40.5
+offset_right = 809.0
+offset_bottom = 40.5
+grow_vertical = 2
+pivot_offset = Vector2(195, 83)
+text = "Leaderboard:"
+label_settings = SubResource("LabelSettings_1vuk2")
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="Game Name/Control"]

@@ -18,6 +18,7 @@ var EnableKeyboard: bool = false
 
 #region Important Stuff
 func _ready() -> void:
+	leaderboards()
 	if GameManager.isIdle: #runs when the game is on idle or is unattended
 		$"Game Name".show()
 		$Timer.start()
@@ -202,9 +203,11 @@ func nextIdleMap():
 	pass
 
 func leaderboards():
-	var text = "Leaderboard:"
-	for names in GameManager.SCORES:
-		text += "\n" + str()
+	var scores = GameManager.SCORES
+	var text:String = "Leaderboard:"
+	for names in scores:
+		text += "\n" + str(scores[names])
+	%Leaderboard.text = text
 	
 #region survival
 var lives = 5
