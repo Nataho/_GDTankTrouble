@@ -28,8 +28,14 @@ var PlayerShot = false
 #endregion
 
 #region kiosk
+@export var kiosk_gameMax = 2
 var kiosk_gameNum = 0
 #endregion kiosk
+
+#region survival
+var isSurvival = false
+var isHardMode = false
+#endregion
 
 var bulletCap = 5
 
@@ -141,6 +147,10 @@ func reset():
 	PlayerShot = false
 	
 	kiosk_gameNum = 0
+	
+	isSurvival = false
+	isHardMode = false
+	
 	
 	ActivePlayers = []
 	

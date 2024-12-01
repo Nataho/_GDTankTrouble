@@ -21,16 +21,16 @@ func _ready() -> void:
 	if GameManager.isIdle: #runs when the game is on idle or is unattended
 		$"Game Name".show()
 		$Timer.start()
+		$Barriers/Walls.modulate = Color(5,3,5,1)
 		
 		var camera = Camera2D.new()
 		add_child(camera)
 		camera.position = Vector2(2560/2,1440/2)
 		camera.zoom = Vector2(0.8,0.8)
 		
-	if PlayerG.FFA_TimeLimit == 0:
+	if PlayerG.FFA_TimeLimit == 0 or PlayerG.isSurvival:
 		$Countdown.stop()
-	
-	
+
 	if OS.get_name() == "Android":
 		Android()
 	print(PlayerG.isAI)
@@ -50,8 +50,31 @@ func Android():
 	var mobileUI_Instance = mobileUI.instantiate()
 	add_child(mobileUI_Instance)
 
+var defaultModulate = 1
+var allModulate = defaultModulate
+var camZoom = 1
+var isZooming = false
 func _process(delta: float) -> void:
 	TagsFollowPlayer()
+	#if isZooming && camZoom < 5:
+		#spawnCam.position = playerNodeArray[1].position
+		#camZoom += 0.001
+		#if camZoom > 5: camZoom == 5
+	#else:
+		#spawnCam.position = Vector2(2560/2,1440/2)
+		#camZoom -= 0.001
+		#if camZoom < 1: camZoom == 1
+	#spawnCam.zoom = Vector2(camZoom,camZoom)
+	
+	while allModulate < defaultModulate:
+		modulate = Color(1,allModulate,allModulate)
+		$Barriers/Walls.modulate = Color(5, 5*allModulate, 5*allModulate)
+		allModulate += 0.0001
+		await get_tree().create_timer(0.5).timeout
+		if allModulate > defaultModulate: allModulate = defaultModulate
+	
+	
+	
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && GameManager.isIdle:
 		GameManager.isIdle = false
@@ -169,9 +192,41 @@ var maps = {
 	1: "FFA 01",
 	2: "FFA 02",
 	3: "FFA 03",
+	4: "FFA 04",
+	5: "FFA 05",
 }
 func nextIdleMap():
 	var newMap = maps[randi_range(1,maps.size())] #default
 	#var newMap = maps[2]#modified
 	Transition.ChangeScene(newMap, "dissolve")
 	pass
+
+#region survival
+var lives = 5
+func setLives(value): lives = value
+func addLives(value): lives += value
+func died():
+	allModulate = 0.5
+	lives -= 1
+	$UI/TIME.text = "Lives: " + str(lives)
+	if lives < 0: survival_GAME()
+
+var spawnCam
+var myLabel = Label.new()
+func spawned():
+	#spawnCam = Camera2D.new()
+	#add_child(spawnCam)
+	#spawnCam.limit_smoothed = true
+	#isZooming = true
+	pass
+
+func survival_GAME():
+	AudioG.playSFXEND("whistle",false)
+	$UI/Panel.show()
+	$Countdown.stop()
+	PlayerG.gameFinished = true
+	TIME.text = "GAME!"
+	print("GAME FINISHED!!")
+	$toResult.start()
+	pass
+#endregion survival

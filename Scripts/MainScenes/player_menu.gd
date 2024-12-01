@@ -234,3 +234,32 @@ func Unattended():
 		
 		loopIndex += 1
 	Transition.ChangeScene("loading","slideRight")
+
+#region set GameMode
+func gamemode_survival(isDown:bool):
+	if isDown:
+		for slot in Players:
+			if slot == -1: continue
+			Players[slot].get_parent().setSurvival(true)
+		$SURVIVAL.theme = load("res://Assets/_Settings/Themes/red.tres")
+	else:
+		$SURVIVAL.theme = null
+		for slot in Players:
+			if slot == -1: continue
+			Players[slot].get_parent().setSurvival(false)
+
+func hardMode(isDown:bool):
+	PlayerG.isHardMode = isDown
+	#= {
+	#-1: $DisplayPlayers/Player0/Player,
+	#0: $DisplayPlayers/Player1/Player,
+	#1: $DisplayPlayers/Player2/Player,
+	#2: $DisplayPlayers/Player3/Player,
+	#3: $DisplayPlayers/Player4/Player,
+	#4: $DisplayPlayers/Player5/Player,
+	#5: $DisplayPlayers/Player6/Player,
+	#6: $DisplayPlayers/Player7/Player,
+	#7: $DisplayPlayers/Player8/Player,
+	#
+#}
+#endregion set GameMode

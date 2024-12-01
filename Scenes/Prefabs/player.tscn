@@ -117,14 +117,25 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Eye" type="Node2D" parent="."]
+visible = false
 
 [node name="Vision" type="Area2D" parent="."]
 visible = false
-collision_layer = 0
-collision_mask = 2155872256
+collision_layer = 8388608
+collision_mask = 2147483648
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
 scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(-100, 0, 20, 500, 330, 450, 700, 300, 1000, 0, 700, -300, 330, -450, 20, -500)
+
+[node name="Vision2" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2147483648
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision2"]
+position = Vector2(-5.6, 0)
+scale = Vector2(0.07475, 0.07475)
 polygon = PackedVector2Array(-100, 0, 20, 500, 330, 450, 700, 300, 1000, 0, 700, -300, 330, -450, 20, -500)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -157,6 +168,10 @@ process_callback = 0
 [connection signal="area_exited" from="Vision" to="." method="AI_player_out_area"]
 [connection signal="body_entered" from="Vision" to="." method="AI_player_in_area"]
 [connection signal="body_exited" from="Vision" to="." method="AI_player_out_area"]
+[connection signal="area_entered" from="Vision2" to="." method="AI_player_in_area"]
+[connection signal="area_exited" from="Vision2" to="." method="AI_player_out_area"]
+[connection signal="body_entered" from="Vision2" to="." method="AI_player_in_area"]
+[connection signal="body_exited" from="Vision2" to="." method="AI_player_out_area"]
 [connection signal="timeout" from="AI/Rotation" to="." method="AI_Rotate"]
 [connection signal="timeout" from="AI/Movement" to="." method="AI_Move"]
 [connection signal="timeout" from="AI/Shoot" to="." method="AI_Shoot"]

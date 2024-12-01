@@ -135,6 +135,32 @@ theme_override_font_sizes/font_size = 80
 disabled = true
 text = "START GAME"
 
+[node name="SURVIVAL" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 106.0
+offset_top = -266.0
+offset_right = 348.0
+offset_bottom = -189.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+toggle_mode = true
+text = "SURVIVAL"
+
+[node name="HardMode" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1208.0
+offset_top = 561.0
+offset_right = -898.0
+offset_bottom = 638.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+toggle_mode = true
+text = "HARD MODE"
+
 [node name="FFA SetTime" type="LineEdit" parent="."]
 offset_left = 71.0
 offset_top = 50.0
@@ -179,6 +205,8 @@ autostart = true
 
 [connection signal="text_submitted" from="DisplayPlayers/Player0/-1" to="." method="submitPlayer0"]
 [connection signal="pressed" from="StartGame" to="." method="StartGame"]
+[connection signal="toggled" from="SURVIVAL" to="." method="gamemode_survival"]
+[connection signal="toggled" from="HardMode" to="." method="hardMode"]
 [connection signal="text_submitted" from="FFA SetTime" to="." method="SetTimeFFA"]
 [connection signal="timeout" from="Timer" to="." method="check_avail"]
 [connection signal="timeout" from="Unattended" to="." method="Unattended"]

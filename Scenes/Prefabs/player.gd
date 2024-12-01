@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var isAI:bool = false
 #endregion
 
+var tankParent
 var SPEED = 150; const defaultSPEED = 150
 var rotationSPEED = 3.0; const defaultRotationSPEED = 3.0
 var SPEEDmultiplier = 1
@@ -25,7 +26,15 @@ var Spawned = false
 var CoastClear = false
 var raycastTarget = false
 var targetDirection = rotation_degrees
+
+var defaultModulate = 1
+var allModulate = defaultModulate
 func _process(delta: float) -> void:
+	while allModulate > defaultModulate:
+		allModulate -= 0.001
+		modulate = Color(allModulate,allModulate,allModulate)
+		await get_tree().create_timer(0.01).timeout
+		if allModulate < defaultModulate: allModulate = defaultModulate
 	if isAI && state: 
 		#var targetPos = $Vision.to_local(target.position)
 		#$RayCast2D.target_position = targetPos
@@ -35,14 +44,23 @@ func _process(delta: float) -> void:
 		$RayCast2D.target_position = $Vision.to_local(target.position)
 		$eye.look_at(target.position)
 		targetDirection = $eye.global_rotation_degrees
-		print("Player direction ",targetDirection)
-		print("bot rotation ",rotation_degrees)
+		#print("Player direction ",targetDirection)
+		#print("bot rotation ",rotation_degrees)
 	else:$RayCast2D.target_position = Vector2(100,0)
 		
 	if isPlayerMenu: modulate = Color.LIGHT_GOLDENROD; $power/WorldEnvironment.environment = null
 	if GameManager.Debug: if Input.is_action_just_pressed("goBack"): get_tree().quit()
 #region startup
 func _ready():
+	if GameManager.isIdle || PlayerG.isHardMode: 
+		$Vision.monitoring = true
+		$Vision2.monitoring = false
+	else:
+		$Vision.monitoring = false #turn true if hard mode
+		$Vision2.monitoring = true
+	
+	if PlayerG.isSurvival && !isAI: allModulate = 5
+	if get_parent().get_parent(): tankParent = get_parent().get_parent()
 	if isTutorial: PlayerG.activeTankColor[playerIndex] = PlayerG.tankColor[playerIndex]
 	
 	if GameManager.Debug:
@@ -75,6 +93,9 @@ func CheckAI():
 	if isAI: initializeAI()
 #endregion startup
 func Died():
+	if tankParent && !isAI && PlayerG.isSurvival:
+		tankParent.died()
+	
 	self.hide() #hide player
 	self.set_process_mode(4) #process of player is disabled
 	$Timer.start() #start respawn timer
@@ -133,7 +154,9 @@ func CHECK():
 			break
 		else:
 			if GameManager.Debug: print("Check Failed, Relocating; ", respawnAttempts)
-		
+	if PlayerG.isSurvival && !isAI: allModulate = 5
+	
+	
 
 func _physics_process(delta):
 	
@@ -343,16 +366,20 @@ var powerFound
 
 func AI_player_in_area(body):
 	if !isAI: return
-	$MeshInstance2D.show()
 	#print(self.name, " HAS FOUND ", body.name)
 	
 	#if body == self: return
-	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name || state): 
+
+	if PlayerG.activeTankColor[playerIndex] == PlayerG.activeTankColor[body.playerIndex]: return
+	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name || state):
+		$MeshInstance2D.show()
 		target = body
 		targetDetails["position"] = body.position
 		state = true
-		print(self.name, " HAS FOUND ", body.name)
+		#print(self.name, " HAS FOUND ", body.name)
 		doRotation = true
+		ignoreState = false
+		$AI/Rotation.wait_time = 2; $AI/Rotation.start()
 	
 	#if !(state): 
 		#target = body
@@ -366,9 +393,9 @@ func AI_player_in_area(body):
 
 func AI_player_out_area(body):
 	if !isAI: return
-	$MeshInstance2D.hide()
-	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name):
-		print(self.name, " HAS LOST ", body.name)
+	if !(body != target || body.name == self.name):
+		$MeshInstance2D.hide()
+		#print(self.name, " HAS LOST ", body.name)
 		target = null
 		targetDetails["position"] = Vector2()
 		state = false

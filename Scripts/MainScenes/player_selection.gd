@@ -53,7 +53,7 @@ func submitPlayer(value:String):
 	if player.isPlayerMenu:
 		PlayerG.ActivePlayers.append(playerIndex)
 		canPlay = 1
-		
+		#you were here
 	PlayerG.playerNames[playerIndex] = value
 	PlayerG.EnableKeyboard = true
 	player.isPlayerMenu = false
@@ -69,3 +69,37 @@ func setComputer():
 		PlayerG.isAI[playerIndex] = false
 		computer.theme = load(buttonColor["green"])
 		$Name.placeholder_text = "Controller " + str(playerIndex + 1)
+
+func setSurvival(isDown:bool):
+
+	if isDown:
+		$Name.placeholder_text = "Computer " + str(playerIndex + 1)
+		PlayerG.ActivePlayers.append(playerIndex)
+		canPlay = 1
+		
+		PlayerG.isAI[playerIndex] = true
+		computer.theme = load(buttonColor["blue"])
+		PlayerG.playerNames[playerIndex] = "Computer" + str(playerIndex +1) 
+		$Name.text = PlayerG.playerNames[playerIndex]
+		PlayerG.EnableKeyboard = true
+		player.isPlayerMenu = false
+		PlayerG.activeTankColor[playerIndex] = PlayerG.tankColor[7]
+		player.modulate = PlayerG.activeTankColor[playerIndex]
+		PlayerG.isSurvival = true
+		PlayerG.FFA_TimeLimit = 0
+	elif !isDown:
+		print("UP")
+		$Name.placeholder_text = "Controller " + str(playerIndex+1)
+		PlayerG.ActivePlayers.erase(playerIndex)
+		canPlay = 0
+		
+		PlayerG.isAI[playerIndex] = false
+		computer.theme = load(buttonColor["green"])
+		PlayerG.playerNames[playerIndex] = "Player " + str(playerIndex)
+		$Name.text = ""
+		PlayerG.EnableKeyboard = false
+		player.isPlayerMenu = true
+		PlayerG.activeTankColor[playerIndex] = defaultColor
+		PlayerG.isSurvival = false
+		PlayerG.FFA_TimeLimit = 120
+	

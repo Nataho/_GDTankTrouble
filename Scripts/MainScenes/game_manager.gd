@@ -15,6 +15,8 @@ const Scenes = {
 	"FFA 01": "res://Scenes/Prefabs/Levels/FFA/ffa_01.tscn",
 	"FFA 02": "res://Scenes/Prefabs/Levels/FFA/ffa_02.tscn",
 	"FFA 03": "res://Scenes/Prefabs/Levels/FFA/ffa_03.tscn",
+	"FFA 04": "res://Scenes/Prefabs/Levels/FFA/ffa_04.tscn",
+	"FFA 05": "res://Scenes/Prefabs/Levels/FFA/ffa_05.tscn",
 	
 	"Bullet 01": "res://Scenes/Prefabs/Levels/Bullet/bullet_01.tscn",
 	"Bullet 02": "res://Scenes/Prefabs/Levels/Bullet/bullet_02.tscn",

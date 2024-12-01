@@ -36,13 +36,17 @@ var hints = [
 	"IT is the best!",
 	"Game Dev is the Best!",
 	"jv zorpe fp pebbkx.",
-	"the jumbled letters are 3 letters back."
+	"the jumbled letters are 3 letters back.",
+	"be careful of computers, they 'sometimes' know what they're doing",
+	
 ]
 
 var maps = {
 	1: "FFA 01",
 	2: "FFA 02",
 	3: "FFA 03",
+	4: "FFA 04",
+	5: "FFA 05",
 }
 
 

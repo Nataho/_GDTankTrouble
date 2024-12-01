@@ -7,6 +7,7 @@ extends Control
 @onready var player4: ColorRect = $Player4
 
 func _ready() -> void:
+	if PlayerG.isSurvival: seconds = 500
 	setPlacement()
 	
 	Colors()
@@ -238,7 +239,7 @@ func AutoExit():
 	seconds -= 1
 	if seconds < 0:
 		$Timer.stop()
-		if GameManager.kiosk && PlayerG.kiosk_gameNum < 3: 
+		if GameManager.kiosk && PlayerG.kiosk_gameNum < 2: 
 			nextKioskMap()
 			PlayerG.gameFinished = false
 			PlayerG.PlayerScore = {
@@ -263,6 +264,7 @@ var maps = {
 	2: "FFA 02",
 	3: "FFA 03",
 }
+
 func nextKioskMap():
 	var newMap = maps[randi_range(1,maps.size())] #default
 	#var newMap = maps[2]#modified
