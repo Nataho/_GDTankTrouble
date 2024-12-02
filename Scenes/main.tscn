@@ -469,9 +469,9 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
-offset_top = 636.0
+offset_top = 557.0
 offset_right = 1112.0
-offset_bottom = 1389.0
+offset_bottom = 1394.0
 text = "What's Up/New?
 Founders:
 Day 3:
