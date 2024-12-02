@@ -1998,6 +1998,7 @@ one_shot = true
 environment = SubResource("Environment_xclex")
 
 [node name="Game Name" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="Game Name"]
 layout_mode = 3

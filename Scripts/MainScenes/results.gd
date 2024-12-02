@@ -232,7 +232,7 @@ func _physics_process(delta):
 #4th: (1552,257)
 #5th: (1952,257)
 
-var seconds:int = 15
+var seconds:int = 10
 func AutoExit():
 	if GameManager.kiosk: $"Time Left".text = "Next Game: " + str(seconds)
 	else: $"Time Left".text = "Automatic Exit: " + str(seconds)
@@ -254,11 +254,16 @@ func AutoExit():
 				7 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
 			}
 			return
-		Transition.ChangeScene("main","slideLeft")
+		exit()
 		#Next game start in (pila ka secods). 
 	
-func exit(): Transition.ChangeScene("main","slideLeft")
-
+func exit(): 
+	for indexes in PlayerG.isAI.keys():
+		if PlayerG.isAI[indexes]: continue
+		GameManager.add_to_leaderboard(PlayerG.playerNames[indexes],PlayerG.PlayerScore[indexes]["game score"])
+	GameManager.SaveGame()
+	Transition.ChangeScene("main","slideLeft")
+	
 var maps = {
 	1: "FFA 01",
 	2: "FFA 02",

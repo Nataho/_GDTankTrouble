@@ -206,7 +206,7 @@ func leaderboards():
 	var scores = GameManager.SCORES
 	var text:String = "Leaderboard:"
 	for names in scores:
-		text += "\n" + str(scores[names])
+		text += "\n" + str(scores[names]) + " : " + names
 	%Leaderboard.text = text
 	
 #region survival

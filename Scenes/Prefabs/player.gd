@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 		$RayCast2D.target_position = $Vision.to_local(target.position)
 		$eye.look_at(target.position)
 		targetDirection = $eye.global_rotation_degrees
-		#print("Player direction ",targetDirection)
+		#print("Player direction ",targetDirection)wd
 		#print("bot rotation ",rotation_degrees)
 	else:$RayCast2D.target_position = Vector2(100,0)
 		
@@ -156,6 +156,7 @@ func CHECK():
 			if GameManager.Debug: print("Check Failed, Relocating; ", respawnAttempts)
 	if PlayerG.isSurvival && !isAI: allModulate = 5
 	
+	set_collision_layer_value(32,false) ; $invincibility.start()
 	
 
 func _physics_process(delta):
@@ -445,7 +446,8 @@ func set_tank_scale(value) -> void:
 			scale = Vector2(tankScale * Scale_default, tankScale * Scale_default)
 			await get_tree().create_timer(0.01).timeout  # Small delay to slow down the loop
 
-
+func invincibility():
+	set_collision_layer_value(32,true)
 func set_tank_speed(value) -> void:
 	if value > 3: value = 3
 	elif value < 0.5: value = 0.5

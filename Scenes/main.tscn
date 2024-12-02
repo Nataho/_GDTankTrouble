@@ -469,16 +469,18 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
-offset_top = 701.0
-offset_right = 671.0
-offset_bottom = 782.0
+offset_top = 636.0
+offset_right = 1112.0
+offset_bottom = 1389.0
 text = "What's Up/New?
 Founders:
-Day 2:
+Day 3:
 -5 players
 -Free For All
--3 Power Ups
--AI
+-4 Power Ups
+-better AI
+-Leaderboard
+-hp for bigger tanks
 -developing more features"
 label_settings = ExtResource("3_14i8t")
 vertical_alignment = 1

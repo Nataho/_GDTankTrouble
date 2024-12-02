@@ -116,11 +116,14 @@ process_callback = 0
 wait_time = 5.0
 one_shot = true
 
+[node name="invincibility" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="Eye" type="Node2D" parent="."]
 visible = false
 
 [node name="Vision" type="Area2D" parent="."]
-visible = false
 collision_layer = 8388608
 collision_mask = 2147483648
 
@@ -164,6 +167,7 @@ process_callback = 0
 [connection signal="body_exited" from="WallCheck2" to="." method="CheckForPassage"]
 [connection signal="timeout" from="Timer" to="." method="Respawn"]
 [connection signal="timeout" from="powerTimer" to="." method="stop_power_timer"]
+[connection signal="timeout" from="invincibility" to="." method="invincibility"]
 [connection signal="area_entered" from="Vision" to="." method="AI_player_in_area"]
 [connection signal="area_exited" from="Vision" to="." method="AI_player_out_area"]
 [connection signal="body_entered" from="Vision" to="." method="AI_player_in_area"]

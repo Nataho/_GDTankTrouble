@@ -22,6 +22,69 @@ const Scenes = {
 	"Bullet 02": "res://Scenes/Prefabs/Levels/Bullet/bullet_02.tscn",
 }
 
+#region handle saving and loading
+var saving:Dictionary = {
+	"leaderboard": SCORES,
+}
+func UpdateEVERYTHING():
+	saving["leaderboard"] = SCORES
+func Save():
+	UpdateEVERYTHING()
+	var saves = saving
+	return saves
+
+func SaveGame():
+	var save_game = FileAccess.open("user://Save.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(Save())
+	save_game.store_line(json_string)
+
+func LoadGame():
+	if not FileAccess.file_exists("user://Save.save"):
+		return
+	var save_game = FileAccess.open("user://Save.save", FileAccess.READ)
+	
+	while save_game.get_position() < save_game.get_length():
+		var json_string = save_game.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if parse_result == OK:
+			var node_data = json.get_data()
+			updateLeaderboard(node_data["leaderboard"])
+			# Ensure that the keys are converted back to integers
+#			var updated_names = {}
+#			for key in node_data.keys():
+#				updated_names[int(key)] = node_data[key]
+			#updateNames(node_data["Names"])
+			#if "Settings" in node_data: 
+				#updateSettings(node_data["Settings"])
+			#else: # Initialize with default settings if not present in save file
+				#updateSettings({
+					#"version": version,
+					#"particles": true,
+					#"fps": false,
+					#"v-sync": 0,
+					#"game settings": gameSet,
+					#"sound": sound,
+					#"statistics": statistics,
+					#
+				#})
+			#updateGameSet(node_data["Settings"]["game settings"])
+			#updateSound(node_data["Settings"]["sound"])
+			#updateStatistics(node_data["Settings"]["statistics"])
+			#print("load")
+
+func updateLeaderboard(update): 
+	#SCORES = update
+	if update == null: return
+	for names in update.keys():
+		update[names] = int(update[names])
+	SCORES = update
+	add_to_leaderboard()
+	if GameManager.Debug: print("updated leaderboard")
+#endregion handle saving ans loading
+
+
+
 #region scoring
 var SCORES = {
 	"bh": 28,
@@ -57,3 +120,10 @@ func _ready() -> void:
 
 func changeScene(scene: String):
 	get_tree().change_scene_to_file(Scenes[scene])
+
+
+
+
+#
+
+#
