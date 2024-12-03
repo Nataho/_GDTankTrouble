@@ -5,15 +5,21 @@ enum powerUps {
 	mouse,
 	elephant,
 	speed,
+	slow,
+	multi_shot,
+	random,
 }
 @export var selectedPower: powerUps
 var spawned = false
 var landed = false
 
 var Sprites:Dictionary = {
-	1: "res://Assets/Photos/PowerUps/PowerUpMouse.png",
-	2: "res://Assets/Photos/PowerUps/PowerupElephant.png",
-	3: "res://Assets/Photos/PowerUps/PowerupSpeed.png",
+	powerUps.mouse: "res://Assets/Photos/PowerUps/PowerUpMouse.png",
+	powerUps.elephant: "res://Assets/Photos/PowerUps/PowerupElephant.png",
+	powerUps.speed: "res://Assets/Photos/PowerUps/PowerupSpeed.png",
+	powerUps.slow: "res://Assets/Photos/PowerUps/Sticky!.png",
+	powerUps.multi_shot: "res://Assets/Photos/PowerUps/Multishot.png",
+	powerUps.random: "res://Assets/Photos/PowerUps/PowerUpMystery.png",
 }
 
 var isTexture = false
@@ -45,6 +51,7 @@ func spawn():
 		position = Vector2(rngX,rngY)
 		spawned = true
 
+var wasRandom = false
 func Player_Contact(body):
 	if body.name == "Walls":
 		spawn()
@@ -74,12 +81,37 @@ func Player_Contact(body):
 		
 		if selectedPower == powerUps.speed: #speed
 			body.set_tank_power_color(Color(0, 5.69, 5.66, 1))
+			body.set_multi_shot(false)
 			body.set_tank_scale(1)
 			body.set_tank_speed(2)
 			body.start_power_timer(15)
-			
 		
-	
+		if selectedPower == powerUps.slow:
+			body.set_tank_power_color(Color(0,5,0,1))
+			body.set_multi_shot(false)
+			body.set_tank_scale(1)
+			body.set_tank_speed(0.7)
+			body.start_power_timer(15)
+		
+		if selectedPower == powerUps.multi_shot:
+			body.power_reset()
+			body.set_tank_power_color(Color(5,5,0,1))
+			body.set_multi_shot(true)
+			body.start_power_timer(15)
+		
+		if selectedPower == powerUps.random:
+			selectedPower = randi_range(powerUps.none,powerUps.random-1)
+			wasRandom = true
+			Player_Contact(body)
+		
+	if wasRandom: 
+		if selectedPower != 0: $Sprite2D.texture = load(Sprites[selectedPower])
+		else: $Sprite2D.texture = load(Sprites[powerUps.random])
+		$Animate.play("Fly - Texture")
+		monitoring = false
+		monitorable = false
+		await $Animate.animation_finished
+		
 	queue_free()
 
 func Self_Contact(body):

@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="3_7vkm5"]
 [ext_resource type="PackedScene" uid="uid://wmpvq2c53b5" path="res://Scenes/Prefabs/UI/multiplayer_ui.tscn" id="4_tcb2h"]
 [ext_resource type="PackedScene" uid="uid://bnybsixdqwqbu" path="res://mainTileMap.tscn" id="5_ttwjs"]
-[ext_resource type="PackedScene" uid="uid://chr5bm0rlck45" path="res://Scenes/Prefabs/player.tscn" id="6_g01w3"]
+[ext_resource type="PackedScene" uid="uid://d1sl8f53dlquv" path="res://Scenes/MainScenes/crum.tscn" id="6_xnvue"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
 font = ExtResource("3_7vkm5")
@@ -266,14 +266,20 @@ grow_horizontal = 0
 grow_vertical = 2
 texture = SubResource("CanvasTexture_ci1sr")
 
-[node name="Player" parent="." instance=ExtResource("6_g01w3")]
-position = Vector2(520, 560)
-isTutorial = true
+[node name="Crum2" parent="." instance=ExtResource("6_xnvue")]
+position = Vector2(968, 760)
 
-[node name="Player2" parent="." instance=ExtResource("6_g01w3")]
-position = Vector2(1555, 581)
-isAI = true
-playerIndex = 0
+[node name="Crum3" parent="." instance=ExtResource("6_xnvue")]
+position = Vector2(323, 941)
+
+[node name="Crum4" parent="." instance=ExtResource("6_xnvue")]
+position = Vector2(630, 230)
+
+[node name="Crum5" parent="." instance=ExtResource("6_xnvue")]
+position = Vector2(1905, 331)
+
+[node name="Crum" parent="." instance=ExtResource("6_xnvue")]
+position = Vector2(1751, 1228)
 
 [connection signal="timeout" from="Countdown" to="." method="UpdateTime"]
 [connection signal="timeout" from="toResult" to="." method="toResult"]

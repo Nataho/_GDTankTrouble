@@ -18,16 +18,16 @@ var EnableKeyboard: bool = false
 
 #region Important Stuff
 func _ready() -> void:
-	leaderboards()
-	if GameManager.isIdle: #runs when the game is on idle or is unattended
-		$"Game Name".show()
-		$Timer.start()
-		$Barriers/Walls.modulate = Color(5,3,5,1)
+	
+	if PlayerG.isSurvival: 
+		var realPlayers:int = 0
+		for indexes in PlayerG.isAI.keys():
+			if !PlayerG.isAI[indexes]: realPlayers += 1
+			
+		if realPlayers > 1: lives = 10
+		$UI/TIME.text = "Lives: " + str(lives)
 		
-		var camera = Camera2D.new()
-		add_child(camera)
-		camera.position = Vector2(2560/2,1440/2)
-		camera.zoom = Vector2(0.8,0.8)
+	leaderboards()
 		
 	if PlayerG.FFA_TimeLimit == 0 or PlayerG.isSurvival:
 		$Countdown.stop()
@@ -39,8 +39,14 @@ func _ready() -> void:
 	#Players = PlayerG.playerAmount #########NOT A PART OF THE SNIPPET
 	Players = PlayerG.ActivePlayers.size()
 	EnableKeyboard = PlayerG.EnableKeyboard
-	AudioG.playMusic("FFA 1")
+	
+	if !GameManager.isIdle: AudioG.playMusic("FFA 1")
+	#if !PlayerG.isSurvival: AudioG.playMusic()
+	else: AudioG.playMusic("square roll")
 	SpawnPlayers()
+	
+	if GameManager.isIdle: idle()
+	
 	#region testing
 	print("entering players: ", PlayerG.ActivePlayers)
 	print(Players)
@@ -56,6 +62,8 @@ var allModulate = defaultModulate
 var camZoom = 1
 var isZooming = false
 func _process(delta: float) -> void:
+	if cam != null: cam.translate(Vector2(1,0))
+	
 	TagsFollowPlayer()
 	#if isZooming && camZoom < 5:
 		#spawnCam.position = playerNodeArray[1].position
@@ -164,11 +172,14 @@ func toResult():
 
 func newPowerUp():
 	var amount = 2
+	#var rngTime = randf_range(5,20) #default
 	var rngTime = randf_range(5,20)
 	var powerUp = load("res://Scenes/Prefabs/Powerup/power_up.tscn")
 	for i in range(amount):
 		var powerUp_instance = powerUp.instantiate()
-		powerUp_instance.selectedPower = randi_range(1,3)
+		
+		if !PlayerG.isSurvival: powerUp_instance.selectedPower = randi_range(1,6)
+		else: powerUp_instance.selectedPower = 6
 		add_child(powerUp_instance)
 	
 	$spawnPower.wait_time = rngTime
@@ -238,3 +249,48 @@ func survival_GAME():
 	$toResult.start()
 	pass
 #endregion survival
+
+var cam:Camera2D
+func idle():
+ #runs when the game is on idle or is unattended
+	$"Game Name".show()
+	$Timer.start()
+	$Barriers/Walls.modulate = Color(5,3,5,1)
+	
+	var rng = randi_range(1,3)
+	var camera = Camera2D.new()
+	camera.limit_smoothed = true
+	
+	
+	add_child(camera)
+	if rng == 1:
+		camera.position = Vector2(2560/2,1440/2)
+		camera.zoom = Vector2(0.8,0.8)
+	elif rng == 2:
+		camera.position = Vector2(700,1440/2)
+		camera.zoom = Vector2(1.5,1.5)
+		cam = camera
+	elif rng == 3:
+		randomize()
+		var rng2 = randi_range(0,7)
+		camera.zoom = Vector2(1.5,1.5)
+		camera.reparent(playerNodeArray[rng2])
+		camera.position = Vector2(0,0)
+		camera.position_smoothing_enabled = true
+		
+		camera.limit_left = -175; camera.limit_right = 2385
+		camera.limit_top = -100; camera.limit_bottom = 1340
+	
+		await get_tree().create_timer(7.0).timeout
+		randomize()
+		rng2 = randi_range(0,7)
+		camera.reparent(playerNodeArray[rng2])
+		camera.position = Vector2(0,0)
+		camera.limit_left = -175; camera.limit_right = 2385
+		camera.limit_top = -100; camera.limit_bottom = 1340
+		
+		
+		#camera.position = playerNodeArray[rng2]
+	
+	
+		

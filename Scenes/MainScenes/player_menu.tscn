@@ -46,6 +46,10 @@ grow_vertical = 2
 
 [node name="Player" parent="DisplayPlayers/Player0" instance=ExtResource("2_7obty")]
 scale = Vector2(10, 10)
+isAI = false
+drag_factor = 0.1
+tankScale = 1
+isTutorial = false
 isPlayerMenu = true
 canShoot_Move = false
 

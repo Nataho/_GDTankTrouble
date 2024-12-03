@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnybsixdqwqbu"]
+[gd_scene load_steps=17 format=3 uid="uid://bnybsixdqwqbu"]
 
 [ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="1_yeqb4"]
 [ext_resource type="Texture2D" uid="uid://b46sjqti8ep2s" path="res://Assets/Photos/Environment/amongus.png" id="2_pxffr"]
@@ -7,6 +7,12 @@
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0p5ji"]
 tile_data = PackedInt32Array(0, 327680, 0, 65536, 327680, 1, 131072, 327680, 2, 1, 393216, 0, 65537, 393216, 1, 131073, 393216, 2, 2, 458752, 0, 65538, 458752, 1, 131074, 458752, 2)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_savli"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxwqf"]
 texture = ExtResource("1_yeqb4")
@@ -371,6 +377,7 @@ texture_region_size = Vector2i(32, 32)
 6:1/0/terrains_peering_bit/bottom_left_corner = 0
 6:1/0/terrains_peering_bit/top_left_corner = 0
 6:1/0/terrains_peering_bit/top_right_corner = 0
+6:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_savli")
 7:0/0 = 0
 7:0/0/terrain_set = 0
 7:0/0/terrains_peering_bit/bottom_left_corner = 0
@@ -397,6 +404,7 @@ physics_layer_0/collision_mask = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "blue"
 terrain_set_0/terrain_0/color = Color(0.314425, 0.326541, 0.721481, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_lxwqf")
 sources/1 = SubResource("TileSetAtlasSource_xranv")
 sources/2 = SubResource("TileSetAtlasSource_wmsaj")

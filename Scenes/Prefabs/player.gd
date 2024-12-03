@@ -10,7 +10,7 @@ var rotationSPEED = 3.0; const defaultRotationSPEED = 3.0
 var SPEEDmultiplier = 1
 
 @export_range(-1,7,0.1) var playerIndex := 0 #for the player controls of a controller
-var bulletCount = PlayerG.bulletCap #cap for the bullet, asked in player_global.gd
+var bulletCount:int = PlayerG.PlayerBulletCap[playerIndex] #cap for the bullet, asked in player_global.gd
 @export_range(0,10,0.1) var drag_factor := 0.1# ??
 @export var tankScale = 1; const Scale_default = 5
 @export var isTutorial = false
@@ -18,6 +18,8 @@ var bulletCount = PlayerG.bulletCap #cap for the bullet, asked in player_global.
 @export var canShoot_Move = true
 
 @onready var head_power: Sprite2D = $power/HeadPower
+@onready var pathFinder: NavigationAgent2D = $NavigationAgent2D
+
 
 var velo: Vector2 = Vector2.ZERO
 var plBullet := preload("res://Scenes/Prefabs/bullet.tscn")
@@ -52,6 +54,8 @@ func _process(delta: float) -> void:
 	if GameManager.Debug: if Input.is_action_just_pressed("goBack"): get_tree().quit()
 #region startup
 func _ready():
+	
+	bulletCount = PlayerG.PlayerBulletCap[playerIndex]
 	if GameManager.isIdle || PlayerG.isHardMode: 
 		$Vision.monitoring = true
 		$Vision2.monitoring = false
@@ -96,6 +100,7 @@ func Died():
 	if tankParent && !isAI && PlayerG.isSurvival:
 		tankParent.died()
 	
+	power_reset()
 	self.hide() #hide player
 	self.set_process_mode(4) #process of player is disabled
 	$Timer.start() #start respawn timer
@@ -161,8 +166,17 @@ func CHECK():
 
 func _physics_process(delta):
 	
+	
+	
+	
+	
 	if PlayerG.gameFinished: return
+	
 	if !isAI:
+		#region pathfinding
+		
+		#endregion pathfinding
+		
 		Rotation()
 		POWER()
 		Movement(delta)
@@ -235,14 +249,17 @@ func Movement(delta):
 		velocity = forward_vector * move * SPEED * SPEEDmultiplier; PlayerG.PlayerMoved = true
 	else:
 		velocity = Vector2.ZERO
+	#PlayerG.playerForwardV[playerIndex] = forward_vector #default
 	PlayerG.playerForwardV[playerIndex] = forward_vector
-	translate(velocity * delta)
-	move_and_slide()
+	PlayerG.playerForwardV10[playerIndex] = -(Vector2(cos(rotation+3), sin(rotation+3)))
+	PlayerG.playerForwardV_10[playerIndex] = -(Vector2(cos(rotation-3), sin(rotation-3)))
+	translate(velocity * delta)  
+	move_and_slide() 
 	
-#region shooting
+#region shooting dw
 var hasShot = false #prevents shooting multiple bullets when pressing one button
 func Shoot():
-	#region stopShooting
+	#region stopShooting 
 	if !canShoot_Move: return #player menu
 	#endregion
 	
@@ -258,9 +275,30 @@ func Shoot():
 			if !hasShot:
 				var bullet = plBullet.instantiate()
 				bullet.position.x += 15
-				bullet.spawnRot = rotation_degrees
+				bullet.spawnRot = rotation
 				add_child(bullet); bullet.reparent(get_parent())
 				if GameManager.Debug: print("SHOOT")
+				
+			if isMultishot:
+				var extraBullets = 0
+				while extraBullets < 2:
+					if PlayerG.pBulletCount[playerIndex] >= bulletCount: return
+					var bullet = plBullet.instantiate()
+					bullet.isMultiShot = true
+					bullet.multiShotCount = extraBullets
+					if extraBullets == 0: 
+						bullet.position += Vector2(15,-5)
+						bullet.spawnRot = rotation
+						
+					else: 
+						bullet.position += Vector2(15,5)
+						bullet.spawnRot = rotation
+					
+					add_child(bullet); bullet.reparent(get_parent())
+					extraBullets += 1
+					#if GameManager.Debug: print("SHOOT")
+				
+				
 	else:
 		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A) or Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_RIGHT_SHOULDER):# or Input.is_action_just_pressed("shoot"): #presses RB / R1 / R
 			if !hasShot:
@@ -270,6 +308,24 @@ func Shoot():
 				add_child(bullet); bullet.reparent(get_parent())
 				if GameManager.Debug: print("SHOOT")
 				hasShot = true
+				
+			if isMultishot:
+				var extraBullets = 0
+				while extraBullets < 2:
+					if PlayerG.pBulletCount[playerIndex] >= bulletCount: return
+					var bullet = plBullet.instantiate()
+					bullet.isMultiShot = true
+					bullet.multiShotCount = extraBullets
+					if extraBullets == 0: 
+						bullet.position += Vector2(15,-5)
+						bullet.spawnRot = rotation
+						
+					else: 
+						bullet.position += Vector2(15,5)
+						bullet.spawnRot = rotation
+					
+					add_child(bullet); bullet.reparent(get_parent())
+					extraBullets += 1
 		else: hasShot = false;#print(hasShot)
 #endregion
 func CheckForWalls(body): #area2d
@@ -293,7 +349,9 @@ func CheckForPassage(body):
 #endregion
 
 
-#region AI(randomized0
+#region AI(randomized)
+const crum = false 
+
 func initializeAI():
 	$AI/Shoot.start()
 	$AI/Rotation.start()
@@ -321,11 +379,32 @@ func AI_Move():
 func AI_Shoot():
 	if !state: return
 	if blocked: return
+	
+	if isMultishot:
+		var extraBullets = 0
+		while extraBullets < 2:
+			if PlayerG.pBulletCount[playerIndex] >= bulletCount: return
+			var multiBullet = plBullet.instantiate()
+			multiBullet.isMultiShot = true
+			multiBullet.multiShotCount = extraBullets
+			if extraBullets == 0: 
+				multiBullet.position += Vector2(15,-5)
+				multiBullet.spawnRot = rotation
+				
+			else: 
+				multiBullet.position += Vector2(15,5)
+				multiBullet.spawnRot = rotation
+			
+			add_child(multiBullet); multiBullet.reparent(get_parent())
+			extraBullets += 1
+	
 	$AI/Shoot.wait_time = randf_range(0.1,5)
 	var bullet = plBullet.instantiate()
 	bullet.position.x += 15
 	bullet.playerIndex = playerIndex
 	add_child(bullet); bullet.reparent(get_parent())
+	
+	
 	if GameManager.Debug: print("SHOOT")
 
 func AIdoRotation():
@@ -343,8 +422,13 @@ func AIdoRotation():
 	elif doRotation:
 		self.rotation_degrees += rotate * rotationSPEED * SPEEDmultiplier
 func AIdoMovement(delta):
+	#PlayerG.playerForwardV[playerIndex] = forward_vector #defautl
 	PlayerG.playerForwardV[playerIndex] = forward_vector
+	#forward_vector = (Vector2(cos(-rotation), sin(rotation))) #default
 	forward_vector = (Vector2(cos(-rotation), sin(rotation)))
+	
+	PlayerG.playerForwardV10[playerIndex] = -(Vector2(cos(rotation+3), sin(rotation+3)))
+	PlayerG.playerForwardV_10[playerIndex] = -(Vector2(cos(rotation-3), sin(rotation-3)))
 	if doMovement:
 		velocity = forward_vector * move * SPEED * SPEEDmultiplier; PlayerG.PlayerMoved = true
 		translate(velocity * delta)
@@ -370,8 +454,12 @@ func AI_player_in_area(body):
 	#print(self.name, " HAS FOUND ", body.name)
 	
 	#if body == self: return
-
-	if PlayerG.activeTankColor[playerIndex] == PlayerG.activeTankColor[body.playerIndex]: return
+	
+		
+		
+	
+	
+	if !body.crum: if PlayerG.activeTankColor[playerIndex] == PlayerG.activeTankColor[body.playerIndex]: return
 	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name || state):
 		$MeshInstance2D.show()
 		target = body
@@ -382,6 +470,11 @@ func AI_player_in_area(body):
 		ignoreState = false
 		$AI/Rotation.wait_time = 2; $AI/Rotation.start()
 	
+	if body.crum: 
+		target = body
+		state = true
+		doRotation = true
+		ignoreState = false
 	#if !(state): 
 		#target = body
 		#state = true
@@ -400,7 +493,13 @@ func AI_player_out_area(body):
 		target = null
 		targetDetails["position"] = Vector2()
 		state = false
-	
+		
+	if body.crum: 
+		target = null
+		state = false
+		#AIcanShoot = false
+		doRotation = true
+		ignoreState = false
 	#if !(state): 
 		#print(self.name, " HAS LOST ", body.name)
 		#
@@ -408,6 +507,11 @@ func AI_player_out_area(body):
 		#state = false
 		#powerFound = false
 
+func breadCrum():
+	var crum = load("res://Scenes/MainScenes/crum.tscn")
+	crum.position = Vector2(0,50)
+	add_child(crum)
+	
 #endregion
 
 #region PowerUps
@@ -425,6 +529,7 @@ func power_reset():
 	scaling = false
 	set_tank_scale(1)
 	set_tank_speed(1)
+	set_multi_shot(false)
 	
 #region Setters
 #for tank scale powerups
@@ -448,11 +553,21 @@ func set_tank_scale(value) -> void:
 
 func invincibility():
 	set_collision_layer_value(32,true)
+	
 func set_tank_speed(value) -> void:
 	if value > 3: value = 3
 	elif value < 0.5: value = 0.5
 	if value < SPEEDmultiplier: pass #runs when tank speed is lower than current scale
+	
 	SPEEDmultiplier = value
+
+var isMultishot:bool = false
+func set_multi_shot(enabled):
+	if enabled: 
+		bulletCount = 9
+	else: bulletCount = 5
+	isMultishot = enabled
+	
 
 func set_tank_power_color(value:Color):
 	head_power.modulate = value

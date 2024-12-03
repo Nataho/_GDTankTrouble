@@ -6,6 +6,8 @@ var playerIndex :int
 
 #var velocity := Vector2.ZERO
 var forward_vector
+var isMultiShot = false
+var multiShotCount = 0
 
 var dir : float
 var spawnPos : Vector2
@@ -24,7 +26,11 @@ func _ready():
 	modulate = PlayerG.activeTankColor[playerIndex] #color
 	PlayerG.pBulletCount[playerIndex] += 1
 	if GameManager.Debug: print("Player ", playerIndex, " has shot")
-	forward_vector = PlayerG.playerForwardV[playerIndex] #for forward direction ####
+	
+	if !isMultiShot: forward_vector = PlayerG.playerForwardV[playerIndex] #afor forward wdirection ####
+	else: 
+		if multiShotCount == 0: forward_vector =  PlayerG.playerForwardV10[playerIndex]
+		else: forward_vector =  PlayerG.playerForwardV_10[playerIndex]
 	velocity = forward_vector * SPEED
 
 func _physics_process(delta:float) -> void:
@@ -34,15 +40,20 @@ func Collisions(delta:float) -> void:
 	var collision = move_and_collide(velocity*delta)
 	var collisionBody
 	if collision:
-		velocity = velocity.bounce(collision.get_normal())
 		collisionBody = collision.get_collider()
+		if collisionBody != null and collisionBody.name == "Bullet":
+			if GameManager.Debug: print("bullet has collided")
+			queue_free(); PlayerG.pBulletCount[playerIndex] -=1
+			collisionBody.queue_free(); PlayerG.pBulletCount[collisionBody.playerIndex] -=1
+			AudioG.playSFX2("bulletCollide",true)
+		
+		
+		velocity = velocity.bounce(collision.get_normal())
+		
+		
 	if collisionBody != null and collisionBody.name == "Walls":
 		AudioG.playSFX("bulletBounce",true)
-	if collisionBody != null and collisionBody.name == "Bullet":
-		if GameManager.Debug: print("bullet has collided")
-		queue_free(); PlayerG.pBulletCount[playerIndex] -=1
-		collisionBody.queue_free(); PlayerG.pBulletCount[collisionBody.playerIndex] -=1
-		AudioG.playSFX2("bulletCollide",true)
+	
 	collisionBody = null
 
 func die():
@@ -67,4 +78,5 @@ func hit(body):
 		else:
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1
 			PlayerG.PlayerScore[playerIndex]["game score"] += 1
+			if PlayerG.isSurvival && !PlayerG.isAI[playerIndex]: PlayerG.SURVIVALKill()
 		if GameManager.Debug: print("Player ", playerIndex, "'s score is: ", PlayerG.PlayerScore[playerIndex])

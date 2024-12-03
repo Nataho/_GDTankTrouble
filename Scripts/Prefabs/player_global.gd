@@ -39,6 +39,20 @@ var isHardMode = false
 
 var bulletCap = 5
 
+var PlayerBulletCap = {
+	-1: 5,
+	0: 5,
+	1: 5,
+	2: 5,
+	3: 5,
+	4: 5,
+	5: 5,
+	6: 5,
+	7: 5,
+}
+
+
+
 var PlayerScore = {
 	-1 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
 	0 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
@@ -77,6 +91,27 @@ var pBulletCount = { #counts bullets of players
 
 #takes forward vector of players for shooting velocity
 var playerForwardV = [
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+]
+
+var playerForwardV10 = [
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+	Vector2(),
+]
+var playerForwardV_10 = [
 	Vector2(),
 	Vector2(),
 	Vector2(),
@@ -153,6 +188,18 @@ func reset():
 	
 	
 	ActivePlayers = []
+	
+	PlayerBulletCap = {
+	-1: 5,
+	0: 5,
+	1: 5,
+	2: 5,
+	3: 5,
+	4: 5,
+	5: 5,
+	6: 5,
+	7: 5,
+	}
 	
 	PlayerScore = {
 		-1 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
@@ -232,4 +279,14 @@ func reset():
 		7: false,
 	}
 	
+	
+	
 	if GameManager.Debug: print(isAI)
+
+func SURVIVALKill():
+	#var totalScore
+	#for indexes in ActivePlayers:
+		#if isAI[indexes]: continue
+		#totalScore += PlayerScore[indexes]["game score"]
+	#print(totalScore)
+	pass

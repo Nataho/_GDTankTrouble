@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1sl8f53dlquv"]
+
+[ext_resource type="Script" path="res://Scripts/MainScenes/crum.gd" id="1_sjwur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfik5"]
+size = Vector2(66, 66)
+
+[sub_resource type="BoxMesh" id="BoxMesh_olpo0"]
+
+[node name="Crum" type="Area2D"]
+collision_layer = 1048576
+collision_mask = 1048576
+script = ExtResource("1_sjwur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mfik5")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(64, 64)
+mesh = SubResource("BoxMesh_olpo0")

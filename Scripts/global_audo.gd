@@ -15,6 +15,7 @@ extends Node
 	"game menu": "res://Assets/Audio/Music/GameMenu.mp3",
 	"wii tanks 1": "res://Assets/Audio/Music/Wii Play Tanks Music  Brown Tank.mp3",
 	"FFA 1": "res://Assets/Audio/Music/FFA 01 OST.mp3",
+	"square roll": "res://Assets/Audio/Music/The Roll of Squares.mp3",
 	
 }
 

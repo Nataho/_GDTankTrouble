@@ -2291,7 +2291,6 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_cbt1j")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-visible = false
 modulate = Color(0.7, 0.7, 0.7, 1)
 rotation = -0.000148455
 scale = Vector2(3, 3)

@@ -17,9 +17,11 @@ const Scenes = {
 	"FFA 03": "res://Scenes/Prefabs/Levels/FFA/ffa_03.tscn",
 	"FFA 04": "res://Scenes/Prefabs/Levels/FFA/ffa_04.tscn",
 	"FFA 05": "res://Scenes/Prefabs/Levels/FFA/ffa_05.tscn",
+	"FFA 06": "res://Scenes/Prefabs/Levels/FFA/ffa_06.tscn",
 	
 	"Bullet 01": "res://Scenes/Prefabs/Levels/Bullet/bullet_01.tscn",
 	"Bullet 02": "res://Scenes/Prefabs/Levels/Bullet/bullet_02.tscn",
+	
 	
 	"Survival 01": "res://Scenes/Prefabs/Levels/Survival/Survival_01.tscn",
 }
@@ -100,6 +102,8 @@ var SCORES = {
 
 func add_to_leaderboard(Name = null,Score = null):
 	#gets the value of the dictionary and sorts it by descending order
+	if Name in SCORES && SCORES[Name] > Score: return
+	if Name == "test" || Name == "keyboard": return
 	if Name != null && Score != null: SCORES[Name] = Score
 	var scorevalues = SCORES.values()
 	scorevalues.sort()

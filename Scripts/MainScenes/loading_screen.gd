@@ -21,6 +21,8 @@ var hints = [
 	"the MOUSE makes you and your bullet tiny but, hitting opponents becomes hard.",
 	"use the MOUSE to get through tiny gaps and escape from enemies or surprise them",
 	"the SPEED makes you rotate and move faster but, you are faster than your bullets.",
+	"the MULTISHOT lets you shoot 3 bullets at once. use it wisely.",
+	"the SLIME makes you rotate and move slower. There is no blessing.",
 	"get behind your opponents to get an easy kill.",
 	"use the walls to hit your opponents before they realize it.",
 	"don't just focus on shooting your opponents, dodge their bullets as well.",
@@ -38,7 +40,17 @@ var hints = [
 	"jv zorpe fp pebbkx.",
 	"the jumbled letters are 3 letters back.",
 	"be careful of computers, they 'sometimes' know what they're doing",
+	"compuers can see you accross the wall but, they can't go to you"
 	
+	
+]
+
+var powerUpTexture = [
+	"res://Assets/Photos/PowerUps/PowerUpMouse.png",
+	"res://Assets/Photos/PowerUps/PowerupElephant.png",
+	"res://Assets/Photos/PowerUps/PowerupSpeed.png",
+	"res://Assets/Photos/PowerUps/Sticky!.png",
+	"res://Assets/Photos/PowerUps/PowerUpMystery.png",
 ]
 
 var maps = {
@@ -47,6 +59,7 @@ var maps = {
 	3: "FFA 03",
 	4: "FFA 04",
 	5: "FFA 05",
+	#6: "FFA 06",
 }
 
 
@@ -56,9 +69,9 @@ var animationTime
 
 func loadingFinished():
 	$MouseAnimate.play("ALL Jump"); $LoadingText.text = (loadingText[4])
-	await $MouseAnimate.animation_finished
+	if !GameManager.isIdle: await $MouseAnimate.animation_finished
 	var newMap = maps[randi_range(1,maps.size())] #default
-	#var newMap = maps[2]#modified
+	#var newMap = maps[6]#modified
 	Transition.ChangeScene(newMap, "slideLeft")
 
 func timeSet():
@@ -66,12 +79,26 @@ func timeSet():
 	while !isTimeValid:
 		var attempts = 0
 		attempts += 1
-		animationTime = randi_range(1,4)
+		if !GameManager.isIdle: animationTime = randi_range(1,4)
+		else: animationTime = 2
 		if loadingTime - animationTime >= 0: isTimeValid = true; print("get time attempts: ",attempts, "; animation time: ", animationTime)
 	$Next.wait_time = animationTime
 	$Next.start()
 
 func _ready() -> void:
+	#for index in range(0,5):
+		#pass
+	randomize()
+	var rng = randi_range(0,powerUpTexture.size()-1)
+	$Mouse.texture = load(powerUpTexture[rng]); powerUpTexture.remove_at(rng)
+	
+	rng = randi_range(0,powerUpTexture.size()-1)
+	$Elephant.texture = load(powerUpTexture[rng]); powerUpTexture.remove_at(rng)
+	
+	rng = randi_range(0,powerUpTexture.size()-1)
+	$Speed.texture = load(powerUpTexture[rng]); powerUpTexture.remove_at(rng)
+	
+	if GameManager.isIdle: AudioG.playMusic("square roll")
 	timeSet()
 	$Hints.text = hints[randi_range(0,hints.size()-1)]
 	$MouseAnimate.play(animations[animIndex]); $LoadingText.text = (loadingText[animIndex])

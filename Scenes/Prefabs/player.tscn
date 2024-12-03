@@ -28,7 +28,7 @@ size = Vector2(4.2, 2)
 z_index = 3
 scale = Vector2(5, 5)
 collision_layer = 2147483650
-collision_mask = 3
+collision_mask = 2147483651
 script = ExtResource("1_57xy2")
 playerIndex = -1
 
@@ -120,13 +120,15 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="BreadCrum" type="Timer" parent="."]
+
 [node name="Eye" type="Node2D" parent="."]
 visible = false
 
 [node name="Vision" type="Area2D" parent="."]
 visible = false
 collision_layer = 8388608
-collision_mask = 2147483648
+collision_mask = 2148532224
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision"]
 scale = Vector2(0.2, 0.2)
@@ -135,7 +137,7 @@ polygon = PackedVector2Array(-100, 0, 20, 500, 330, 450, 700, 300, 1000, 0, 700,
 [node name="Vision2" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 2147483648
+collision_mask = 2148532224
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vision2"]
 position = Vector2(-5.6, 0)
@@ -143,12 +145,10 @@ scale = Vector2(0.07475, 0.07475)
 polygon = PackedVector2Array(-100, 0, 20, 500, 330, 450, 700, 300, 1000, 0, 700, -300, 330, -450, 20, -500)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(100, 0)
-collision_mask = 2155872256
+collision_mask = 2156920832
 
 [node name="eye" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(150, 0)
 collision_mask = 0
 
@@ -167,6 +167,10 @@ process_callback = 0
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.156863, 0, 0.807843, 1)
 
 [connection signal="body_entered" from="PlayerCheck" to="." method="CheckForPlayers"]
 [connection signal="body_entered" from="WallCheck" to="." method="CheckForWalls"]
@@ -186,3 +190,4 @@ target_desired_distance = 5.0
 [connection signal="timeout" from="AI/Rotation" to="." method="AI_Rotate"]
 [connection signal="timeout" from="AI/Movement" to="." method="AI_Move"]
 [connection signal="timeout" from="AI/Shoot" to="." method="AI_Shoot"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="pathFinder_velocity_computed"]
