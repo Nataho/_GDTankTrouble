@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bv1lef0gge56h"
+path="res://.godot/imported/Madeline and Theo.mp3-a5a9f2b6790fff16ca827416447aa116.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Celeste/Madeline and Theo.mp3"
+dest_files=["res://.godot/imported/Madeline and Theo.mp3-a5a9f2b6790fff16ca827416447aa116.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

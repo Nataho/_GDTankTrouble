@@ -32,29 +32,18 @@ var targetDirection = rotation_degrees
 var defaultModulate = 1
 var allModulate = defaultModulate
 func _process(delta: float) -> void:
+	
 	while allModulate > defaultModulate:
 		allModulate -= 0.001
 		modulate = Color(allModulate,allModulate,allModulate)
 		await get_tree().create_timer(0.01).timeout
 		if allModulate < defaultModulate: allModulate = defaultModulate
-	if isAI && state: 
-		#var targetPos = $Vision.to_local(target.position)
-		#$RayCast2D.target_position = targetPos
-		#$eye.look_at(targetPos)
-		
-		$eye.rotation_degrees = 0
-		$RayCast2D.target_position = $Vision.to_local(target.position)
-		$eye.look_at(target.position)
-		targetDirection = $eye.global_rotation_degrees
-		#print("Player direction ",targetDirection)wd
-		#print("bot rotation ",rotation_degrees)
-	else:$RayCast2D.target_position = Vector2(100,0)
 		
 	if isPlayerMenu: modulate = Color.LIGHT_GOLDENROD; $power/WorldEnvironment.environment = null
 	if GameManager.Debug: if Input.is_action_just_pressed("goBack"): get_tree().quit()
+	
 #region startup
 func _ready():
-	
 	bulletCount = PlayerG.PlayerBulletCap[playerIndex]
 	if GameManager.isIdle || PlayerG.isHardMode: 
 		$Vision.monitoring = true
@@ -95,7 +84,10 @@ func CheckAI():
 	isAI = PlayerG.isAI[playerIndex]
 	if isAI: print("player AI index ", playerIndex,"; isAI: ", isAI)
 	if isAI: initializeAI()
+	if isAI: set_AI_detection(true)
+	
 #endregion startup
+
 func Died():
 	if tankParent && !isAI && PlayerG.isSurvival:
 		tankParent.died()
@@ -165,11 +157,6 @@ func CHECK():
 	
 
 func _physics_process(delta):
-	
-	
-	
-	
-	
 	if PlayerG.gameFinished: return
 	
 	if !isAI:
@@ -377,7 +364,7 @@ func AI_Move():
 	doMovement = randi_range(1,0) == 1 #true or false
 
 func AI_Shoot():
-	if !state: return
+	if !state || $CheckWall.is_colliding(): return
 	if blocked: return
 	
 	if isMultishot:
@@ -454,11 +441,6 @@ func AI_player_in_area(body):
 	#print(self.name, " HAS FOUND ", body.name)
 	
 	#if body == self: return
-	
-		
-		
-	
-	
 	if !body.crum: if PlayerG.activeTankColor[playerIndex] == PlayerG.activeTankColor[body.playerIndex]: return
 	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name || state):
 		$MeshInstance2D.show()
@@ -573,3 +555,26 @@ func set_tank_power_color(value:Color):
 	head_power.modulate = value
 #endregion Setters
 #endregion PowerUps
+
+
+#region timed looping functions
+var isAID #is AI Detection
+func set_AI_detection(value:bool):
+	isAID = value
+	if isAID: AI_Detection()
+func AI_Detection():
+	if isAI && state: 
+		#var targetPos = $Vision.to_local(target.position)
+		#$RayCast2D.target_position = targetPos
+		#$eye.look_at(targetPos)
+		
+		$eye.rotation_degrees = 0
+		$RayCast2D.target_position = $Vision.to_local(target.position)
+		$eye.look_at(target.position)
+		targetDirection = $eye.global_rotation_degrees
+		#print("Player direction ",targetDirection)wd
+		#print("bot rotation ",rotation_degrees)
+	else:$RayCast2D.target_position = Vector2(100,0)
+	await get_tree().create_timer(0.1).timeout
+	if isAID: AI_Detection()
+#endregion timed looping functions

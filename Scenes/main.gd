@@ -7,6 +7,8 @@ func _ready():
 	if GameManager.Debug: $Unattended.wait_time = 5
 	PlayerG.reset()
 	AudioG.playMusic("main menu")
+	
+	$CanvasLayer/Control/Play.grab_focus()
 
 func loadParticles():
 	$Particles/Particle1.show()

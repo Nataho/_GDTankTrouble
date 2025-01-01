@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://d18qeqmnb3shl"]
+[gd_scene load_steps=20 format=4 uid="uid://d18qeqmnb3shl"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_a2i88"]
 [ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="2_cul20"]
@@ -367,12 +367,6 @@ font_size = 120
 outline_size = 40
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_s20nj"]
-font = ExtResource("2_cul20")
-font_size = 65
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Curve" id="Curve_r6xfe"]
 min_value = -1.0
 _data = [Vector2(0.375, -0.472527), 0.0, -2.06769, 0, 0, Vector2(0.785714, 0.0769231), 0.0, 0.0, 0, 0]
@@ -458,6 +452,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Edition" type="Label" parent="CanvasLayer/Control/TITLE"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -470,23 +465,6 @@ grow_horizontal = 2
 text = "Founders Week Edition!"
 label_settings = SubResource("LabelSettings_1eosx")
 horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-offset_top = 557.0
-offset_right = 1113.0
-offset_bottom = 1310.0
-text = "What's Up/New?
-Founders:
-Day 3:
--5 players
--Free For All
-- random powerup
--Multiplayer Survival
--Leaderboard
--developing more features"
-label_settings = SubResource("LabelSettings_s20nj")
 vertical_alignment = 1
 
 [node name="Particles" type="Node" parent="."]

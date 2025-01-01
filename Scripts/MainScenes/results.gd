@@ -253,6 +253,17 @@ func AutoExit():
 				6 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
 				7 : {"kills":0, "deaths": 0, "suicide":0, "game score":0, "total score":0, "flag score": 0, "friendly fire": 0},
 			}
+			PlayerG.teamScore = {
+				Color(2,2,2,1): 0,
+				Color(1,2,3,1): 0,
+				Color(4,1,1,1): 0,
+				Color(1.05,2.76,1.82,1): 0,
+				Color(3,2,1,1): 0,
+				Color(1,1,2,1): 0,
+				Color(2.943, 1.82, 1.21, 1): 0,
+				Color(2, 1, 2.42, 1): 0,
+				Color(2.66, 1.78, 2.54, 1): 0,
+			}
 			return
 		exit()
 		#Next game start in (pila ka secods). 

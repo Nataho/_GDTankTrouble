@@ -232,12 +232,6 @@ func died():
 
 var spawnCam
 var myLabel = Label.new()
-func spawned():
-	#spawnCam = Camera2D.new()
-	#add_child(spawnCam)
-	#spawnCam.limit_smoothed = true
-	#isZooming = true
-	pass
 
 func survival_GAME():
 	AudioG.playSFXEND("whistle",false)
@@ -291,6 +285,3 @@ func idle():
 		
 		
 		#camera.position = playerNodeArray[rng2]
-	
-	
-		

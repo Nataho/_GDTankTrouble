@@ -19,6 +19,7 @@ var buttonColor = {
 var canPlay = 0
 
 #region Startup
+
 func _ready() -> void:
 	canPlay = 0
 	#
@@ -40,19 +41,20 @@ func setColor(id):
 	PlayerG.activeTankColor[playerIndex] = PlayerG.tankColor[id]
 	player.modulate = PlayerG.activeTankColor[playerIndex]
 #endregion
-
-
+var isEmpty = true
 func submitPlayer(value:String):
 	if value == "": 
 		player.isPlayerMenu = true
 		PlayerG.EnableKeyboard = false
 		PlayerG.ActivePlayers.erase(playerIndex)
 		canPlay = 0
+		isEmpty = true
 		return
 		
 	if player.isPlayerMenu:
 		PlayerG.ActivePlayers.append(playerIndex)
 		canPlay = 1
+		isEmpty = false
 		#you were here
 	PlayerG.playerNames[playerIndex] = value
 	PlayerG.EnableKeyboard = true
@@ -71,7 +73,6 @@ func setComputer():
 		$Name.placeholder_text = "Controller " + str(playerIndex + 1)
 
 func setSurvival(isDown:bool):
-
 	if isDown:
 		$Name.placeholder_text = "Computer " + str(playerIndex + 1)
 		PlayerG.ActivePlayers.append(playerIndex)

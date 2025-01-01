@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://k0euuo2pxhdp"]
+
+[ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="1_70gg6"]
+[ext_resource type="Script" path="res://Scripts/MainScenes/mode_select.gd" id="1_gsc5p"]
+
+[node name="Mode Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gsc5p")
+
+[node name="CampaignMode" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -386.0
+offset_right = 1339.0
+offset_bottom = -213.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_70gg6")
+theme_override_font_sizes/font_size = 120
+text = "CAMPAIGN MODE"
+flat = true
+
+[node name="Multiplayer" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -86.0
+offset_right = 1353.0
+offset_bottom = 87.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_70gg6")
+theme_override_font_sizes/font_size = 120
+text = "MULTIPLAYER"
+flat = true
+
+[node name="Tutorial" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = 214.0
+offset_right = 1353.0
+offset_bottom = 387.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_70gg6")
+theme_override_font_sizes/font_size = 120
+text = "HOW TO PLAY"
+flat = true

@@ -240,12 +240,14 @@ func gamemode_survival(isDown:bool):
 	if isDown:
 		for slot in Players:
 			if slot == -1: continue
+			if !Players[slot].get_parent().isEmpty: continue
 			Players[slot].get_parent().setSurvival(true)
 		$SURVIVAL.theme = load("res://Assets/_Settings/Themes/red.tres")
 	else:
 		$SURVIVAL.theme = null
 		for slot in Players:
 			if slot == -1: continue
+			if !Players[slot].get_parent().isEmpty: continue
 			Players[slot].get_parent().setSurvival(false)
 
 func hardMode(isDown:bool):

@@ -149,7 +149,6 @@ var tankColor = {
 	7: Color(2.66, 1.78, 2.54, 1),
 }
 
-
 var activeTankColor = {
 	#0: Color(1.98, 1.09, -0.26, 1)
 } #stores new tank colors
@@ -172,6 +171,18 @@ var EnemyTankColor := [
 	Color(1,2,1,1), #green
 	Color(1.94, 0.11, 0.59,1), #dark_pink
 ]
+
+var teamScore := {
+	Color(2,2,2,1): 0,
+	Color(1,2,3,1): 0,
+	Color(4,1,1,1): 0,
+	Color(1.05,2.76,1.82,1): 0,
+	Color(3,2,1,1): 0,
+	Color(1,1,2,1): 0,
+	Color(2.943, 1.82, 1.21, 1): 0,
+	Color(2, 1, 2.42, 1): 0,
+	Color(2.66, 1.78, 2.54, 1): 0,
+}
 
 func reset():
 	playerAmount = 0 #counts the amount of players to be spawned

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerG="*res://Scripts/Prefabs/player_global.gd"
 AudioG="*res://Scenes/global_audo.tscn"
+StoryManager="*res://Scenes/MainScenes/story_manager.tscn"
 Transition="*res://Scenes/transition_scene.tscn"
 GameManager="*res://Scenes/MainScenes/game_manager.tscn"
 

@@ -3,7 +3,6 @@ extends CharacterBody2D
 var playerIndex :int
 @export var SPEED := 500.0
 
-
 #var velocity := Vector2.ZERO
 var forward_vector
 var isMultiShot = false
@@ -19,7 +18,6 @@ func GetGamepadIndex():
 
 func _ready():
 	$shadow.rotation_degrees -= spawnRot
-	
 	
 	AudioG.playSFX("bulletShoot",true)
 	GetGamepadIndex()
@@ -72,11 +70,19 @@ func hit(body):
 		queue_free()
 		if body.playerIndex == playerIndex: #if bullet has hit the sender 
 			PlayerG.PlayerScore[playerIndex]["game score"] -= 1
+			#region team score
+			var total = 0
+			for color in PlayerG.activeTankColor:
+				if PlayerG.activeTankColor[color] == PlayerG.activeTankColor[playerIndex]: total += 1
+			if total == 1: PlayerG.teamScore[PlayerG.activeTankColor[playerIndex]] -=1
+			if PlayerG.teamScore[PlayerG.activeTankColor[playerIndex]] < 0: PlayerG.teamScore[PlayerG.activeTankColor[playerIndex]] = 0
+			#endregion team score
 			if PlayerG.PlayerScore[playerIndex]["game score"] < 0: PlayerG.PlayerScore[playerIndex]["game score"] = 0
 		
 			PlayerG.PlayerScore[playerIndex]["suicide"] += 1
-		else:
+		else: #if the bullet has hit a player other than the sender
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1
 			PlayerG.PlayerScore[playerIndex]["game score"] += 1
+			if !PlayerG.activeTankColor[body.playerIndex] == PlayerG.activeTankColor[playerIndex]: PlayerG.teamScore[PlayerG.activeTankColor[playerIndex]] +=1 #team score
 			if PlayerG.isSurvival && !PlayerG.isAI[playerIndex]: PlayerG.SURVIVALKill()
 		if GameManager.Debug: print("Player ", playerIndex, "'s score is: ", PlayerG.PlayerScore[playerIndex])
