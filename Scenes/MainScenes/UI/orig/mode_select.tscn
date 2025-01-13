@@ -1,0 +1,905 @@
+[gd_scene load_steps=30 format=3 uid="uid://k0euuo2pxhdp"]
+
+[ext_resource type="Script" path="res://Scripts/MainScenes/UI/mode_select.gd" id="1_drrap"]
+[ext_resource type="PackedScene" uid="uid://ca8rarr1ftfjk" path="res://Scenes/MainScenes/UI/Button.tscn" id="2_gj3xe"]
+[ext_resource type="Texture2D" uid="uid://b51dxsncwq5w5" path="res://Assets/Photos/Campaign/map.jpg" id="3_yh5lv"]
+[ext_resource type="Texture2D" uid="uid://c18t63rbu4bv7" path="res://Assets/Photos/player 1.png" id="4_pxevx"]
+[ext_resource type="Texture2D" uid="uid://cu3g3e8ey1bp8" path="res://Assets/Photos/Misc/JoyconL.png" id="5_krj6b"]
+[ext_resource type="Texture2D" uid="uid://b82hyndbe6ox7" path="res://Assets/Photos/Misc/JoyconR.png" id="6_a1cwt"]
+
+[sub_resource type="Animation" id="Animation_i1jt5"]
+resource_name = "CampaignIn"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campaign Textures/Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(2533, 1509), Vector2(1603, 345)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Campaign Textures/Map:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qqk61"]
+resource_name = "CampaignOut"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campaign Textures/Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.362227, 1),
+"update": 0,
+"values": [Vector2(1603, 345), Vector2(2533, 1509)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Campaign Textures/Map:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.362227, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_aqw68"]
+resource_name = "MultiIn"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplayerTextures/Tank1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(1584, 1562), Vector2(1664, 842)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MultiplayerTextures/Tank1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, -1.0472]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MultiplayerTextures/Tank2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(2905, 539), Vector2(97, -157)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MultiplayerTextures/Tank2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, 0.523598]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MultiplayerTextures/Tank3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(817, -736), Vector2(425, 1040)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MultiplayerTextures/Tank3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, -0.523598]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MultiplayerTextures/Tank4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(-508, 408), Vector2(2060, 504)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MultiplayerTextures/Tank4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, -2.61799]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MultiplayerTextures/Tank5:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(-125, 1431), Vector2(1419, -8.99994)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MultiplayerTextures/Tank5:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, 2.61799]
+}
+
+[sub_resource type="Animation" id="Animation_t2yk2"]
+resource_name = "MultiOut"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MultiplayerTextures/Tank1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(1664, 842), Vector2(1584, 1562)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MultiplayerTextures/Tank1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [-1.0472, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MultiplayerTextures/Tank2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(97, -157), Vector2(2905, 539)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MultiplayerTextures/Tank2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.523598, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MultiplayerTextures/Tank3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(425, 1040), Vector2(817, -736)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MultiplayerTextures/Tank3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [-0.523598, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MultiplayerTextures/Tank4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(2060, 504), Vector2(-508, 408)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MultiplayerTextures/Tank4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [-2.61799, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MultiplayerTextures/Tank5:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(1419, -8.99994), Vector2(-125, 1431)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MultiplayerTextures/Tank5:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [2.61799, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_s064i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campaign Textures/Map:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2693, 1253)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Campaign Textures/Map:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MultiplayerTextures/Tank1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1584, 1562)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MultiplayerTextures/Tank1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MultiplayerTextures/Tank2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2905, 539)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MultiplayerTextures/Tank2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MultiplayerTextures/Tank3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(817, -736)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MultiplayerTextures/Tank3:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MultiplayerTextures/Tank4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-508, 408)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MultiplayerTextures/Tank4:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MultiplayerTextures/Tank5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-125, 1431)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MultiplayerTextures/Tank5:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TutorialTextures/JoyL:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-448, 1249)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TutorialTextures/JoyR:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3293, -385)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TutorialTextures/JoyR:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TutorialTextures/JoyL:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x8hk8"]
+resource_name = "TutorialIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialTextures/JoyL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(-838, 1292), Vector2(1549, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialTextures/JoyR:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1),
+"transitions": PackedFloat32Array(0.25, 0.25, 0.25, -3.249, 0.25, 1),
+"update": 0,
+"values": [Vector2(3785, -385), Vector2(2121, 340), Vector2(2350, -700), Vector2(2076, -711), Vector2(2076, 240), Vector2(2076, 207)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialTextures/JoyR:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.933333),
+"transitions": PackedFloat32Array(0.25, 2.82843, 1.41421, 0.25, 1),
+"update": 0,
+"values": [0.785397, 0.0, 0.349066, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialTextures/JoyL:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [-0.523598, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hkfag"]
+resource_name = "TutorialOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TutorialTextures/JoyL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(1549, 224), Vector2(-832, 1281)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TutorialTextures/JoyR:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(2076, 207), Vector2(3785, -385)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TutorialTextures/JoyR:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, 0.785397]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TutorialTextures/JoyL:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [0.0, -0.523598]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fnheo"]
+_data = {
+"CampaignIn": SubResource("Animation_i1jt5"),
+"CampaignOut": SubResource("Animation_qqk61"),
+"MultiIn": SubResource("Animation_aqw68"),
+"MultiOut": SubResource("Animation_t2yk2"),
+"RESET": SubResource("Animation_s064i"),
+"TutorialIn": SubResource("Animation_x8hk8"),
+"TutorialOut": SubResource("Animation_hkfag")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_cuu2a"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_pdnvo"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_pevus"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vhh4"]
+animation = &"CampaignOut"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c70pe"]
+animation = &"CampaignIn"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_270cw"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_5vhh4")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_c70pe")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ej40"]
+animation = &"MultiOut"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nkcgr"]
+animation = &"MultiIn"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nxe8r"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_8ej40")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_nkcgr")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ujo5s"]
+animation = &"TutorialOut"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f4xff"]
+animation = &"TutorialIn"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_6b32c"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ujo5s")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_f4xff")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8tm2m"]
+animation = &"TutorialIn"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s00xp"]
+animation = &"TutorialOut"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pgccr"]
+graph_offset = Vector2(-670.417, 228.1)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_pdnvo")
+nodes/Add2/position = Vector2(-180, 340)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_cuu2a")
+"nodes/Add2 2/position" = Vector2(-20, 360)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_pevus")
+nodes/Blend2/position = Vector2(-540, 640)
+nodes/Campaign/node = SubResource("AnimationNodeBlendSpace1D_270cw")
+nodes/Campaign/position = Vector2(-360, 320)
+nodes/Multi/node = SubResource("AnimationNodeBlendSpace1D_nxe8r")
+nodes/Multi/position = Vector2(-360, 480)
+nodes/Tutorial/node = SubResource("AnimationNodeBlendSpace1D_6b32c")
+nodes/Tutorial/position = Vector2(-200, 580)
+nodes/TutsIn/node = SubResource("AnimationNodeAnimation_8tm2m")
+nodes/TutsIn/position = Vector2(-720, 560)
+nodes/TutsOut/node = SubResource("AnimationNodeAnimation_s00xp")
+nodes/TutsOut/position = Vector2(-720, 720)
+nodes/output/position = Vector2(220, 420)
+node_connections = [&"Add2", 0, &"Campaign", &"Add2", 1, &"Multi", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Tutorial", &"Blend2", 0, &"TutsIn", &"Blend2", 1, &"TutsOut", &"output", 0, &"Add2 2"]
+
+[node name="Mode Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_drrap")
+
+[node name="CampaignMode" parent="." instance=ExtResource("2_gj3xe")]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 200.0
+offset_top = -386.0
+offset_right = 1353.0
+offset_bottom = -213.0
+grow_horizontal = 1
+text = "CAMPAIGN MODE"
+
+[node name="Multiplayer" parent="." instance=ExtResource("2_gj3xe")]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 200.0
+offset_top = -86.0
+offset_right = 1353.0
+offset_bottom = 87.0
+grow_horizontal = 1
+text = "MULTIPLAYER"
+
+[node name="Tutorial" parent="." instance=ExtResource("2_gj3xe")]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 200.0
+offset_top = 214.0
+offset_right = 1353.0
+offset_bottom = 387.0
+grow_horizontal = 1
+text = "HOW TO PLAY"
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fnheo")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_pgccr")
+anim_player = NodePath("../Animate")
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
+parameters/Blend2/blend_amount = 0.0
+parameters/Campaign/blend_position = -1.0
+parameters/Multi/blend_position = -1.0
+parameters/Tutorial/blend_position = -1.0
+
+[node name="Campaign Textures" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="TextureRect" parent="Campaign Textures"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1253.0
+offset_top = 789.0
+offset_right = 2028.0
+offset_bottom = 1564.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(387.5, 387.5)
+texture = ExtResource("3_yh5lv")
+expand_mode = 1
+
+[node name="MultiplayerTextures" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tank1" type="TextureRect" parent="MultiplayerTextures"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 304.0
+offset_top = 842.0
+offset_right = 888.0
+offset_bottom = 1190.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(292, 174)
+texture = ExtResource("4_pxevx")
+
+[node name="Tank2" type="TextureRect" parent="MultiplayerTextures"]
+modulate = Color(1, 2, 3, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1625.0
+offset_top = -181.0
+offset_right = 2582.0
+offset_bottom = 389.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(478.5, 285)
+texture = ExtResource("4_pxevx")
+
+[node name="Tank3" type="TextureRect" parent="MultiplayerTextures"]
+modulate = Color(4, 1, 1, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -463.0
+offset_top = -1456.0
+offset_right = 256.0
+offset_bottom = -1028.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(359.5, 214)
+texture = ExtResource("4_pxevx")
+
+[node name="Tank4" type="TextureRect" parent="MultiplayerTextures"]
+modulate = Color(1.05, 2.76, 1.82, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1788.0
+offset_top = -312.0
+offset_right = -1321.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(233.5, 139)
+texture = ExtResource("4_pxevx")
+
+[node name="Tank5" type="TextureRect" parent="MultiplayerTextures"]
+modulate = Color(3, 2, 1, 0.513)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1405.0
+offset_top = 711.0
+offset_right = -666.0
+offset_bottom = 1151.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(369.5, 220)
+texture = ExtResource("4_pxevx")
+
+[node name="TutorialTextures" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="JoyL" type="TextureRect" parent="TutorialTextures"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -852.0
+offset_top = 1261.0
+offset_right = -503.0
+offset_bottom = 2222.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_krj6b")
+
+[node name="JoyR" type="TextureRect" parent="TutorialTextures"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3765.0
+offset_top = -405.0
+offset_right = 4114.0
+offset_bottom = 582.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_a1cwt")
+
+[connection signal="pressed" from="CampaignMode" to="." method="CampaignMode"]
+[connection signal="pressed" from="Multiplayer" to="." method="Multiplayer"]
+[connection signal="pressed" from="Tutorial" to="." method="Tutorial"]

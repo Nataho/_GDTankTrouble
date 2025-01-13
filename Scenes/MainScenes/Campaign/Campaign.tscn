@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsgfhu7mns215"]
+
+[ext_resource type="PackedScene" uid="uid://ca8rarr1ftfjk" path="res://Scenes/MainScenes/UI/Button.tscn" id="1_7c6aw"]
+[ext_resource type="Script" path="res://Scripts/MainScenes/Campaign/campaign.gd" id="1_74s4n"]
+[ext_resource type="Texture2D" uid="uid://oovrbfffk2j8" path="res://Assets/Photos/Joystick.png" id="3_tucac"]
+[ext_resource type="Texture2D" uid="uid://dl444y6xs82k0" path="res://Assets/Photos/Pressed_Joystick.png" id="4_hfio5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_74s4n")
+metadata/_edit_horizontal_guides_ = [1186.0]
+metadata/_edit_vertical_guides_ = [2259.0]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="row1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Prologue" parent="VBoxContainer/row1" instance=ExtResource("1_7c6aw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+mouse_filter = 0
+text = "Prologue"
+
+[node name="Tropikala" parent="VBoxContainer/row1" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+mouse_filter = 0
+text = "Tropikala"
+
+[node name="row2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AtsuIsland" parent="VBoxContainer/row2" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+mouse_filter = 0
+text = "Atsu Island"
+
+[node name="Domageti" parent="VBoxContainer/row2" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+mouse_filter = 0
+text = "Domageti"
+
+[node name="row3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Scharbi" parent="VBoxContainer/row3" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+mouse_filter = 0
+text = "Scharbi"
+
+[node name="MirageIsland" parent="VBoxContainer/row3" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+mouse_filter = 0
+text = "Mirage Island"
+
+[node name="up" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 2133.0
+offset_top = 936.0
+offset_right = 2383.0
+offset_bottom = 1186.0
+texture_normal = ExtResource("3_tucac")
+texture_pressed = ExtResource("4_hfio5")
+stretch_mode = 0
+
+[node name="down" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 2133.0
+offset_top = 1186.0
+offset_right = 2383.0
+offset_bottom = 1436.0
+texture_normal = ExtResource("3_tucac")
+texture_pressed = ExtResource("4_hfio5")
+stretch_mode = 0
+
+[node name="left" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 2010.0
+offset_top = 1063.0
+offset_right = 2260.0
+offset_bottom = 1313.0
+texture_normal = ExtResource("3_tucac")
+texture_pressed = ExtResource("4_hfio5")
+stretch_mode = 0
+
+[node name="right" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 2258.0
+offset_top = 1063.0
+offset_right = 2508.0
+offset_bottom = 1313.0
+texture_normal = ExtResource("3_tucac")
+texture_pressed = ExtResource("4_hfio5")
+stretch_mode = 0

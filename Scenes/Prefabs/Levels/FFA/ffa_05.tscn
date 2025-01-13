@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b46sjqti8ep2s" path="res://Assets/Photos/Environment/amongus.png" id="7_wmxt7"]
 [ext_resource type="Texture2D" uid="uid://ddsgphcv38lv0" path="res://Assets/Photos/Environment/cracked.png" id="8_idly2"]
 [ext_resource type="Texture2D" uid="uid://od7k6do3sjad" path="res://Assets/Photos/Environment/TankInfo.png" id="9_qbup6"]
+[ext_resource type="Environment" uid="uid://celx2lm655lti" path="res://Assets/Godot/WorldEnvironment/maps.tres" id="10_ks0mh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
 font = ExtResource("3_j08g3")
@@ -378,11 +379,6 @@ sources/0 = SubResource("TileSetAtlasSource_msbmv")
 sources/1 = SubResource("TileSetAtlasSource_vwgfk")
 sources/2 = SubResource("TileSetAtlasSource_6r0me")
 sources/3 = SubResource("TileSetAtlasSource_gh7nl")
-
-[sub_resource type="Environment" id="Environment_xclex"]
-background_mode = 3
-glow_enabled = true
-glow_hdr_scale = 0.0
 
 [node name="FFA_05" type="Node2D"]
 script = ExtResource("1_7flcv")
@@ -2303,7 +2299,7 @@ wait_time = 20.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_xclex")
+environment = ExtResource("10_ks0mh")
 
 [connection signal="timeout" from="Countdown" to="." method="UpdateTime"]
 [connection signal="timeout" from="toResult" to="." method="toResult"]

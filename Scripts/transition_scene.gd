@@ -42,8 +42,8 @@ func ChangeScene(scene:String, transition:String):
 		Animate.play("slideDown")
 		await Animate.animation_finished
 		GameManager.changeScene(scene)
-		Animate.play("slideDown")
-		
+		Animate.play("slideDownEnd")
+	 
 	elif transition == "slideUp":
 		Animate.play_backwards("slideDownEnd")
 		await Animate.animation_finished

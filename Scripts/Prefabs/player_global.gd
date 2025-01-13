@@ -137,6 +137,7 @@ var playerPower = [
 #region colors of players
 var tankColor = {
 	-1: Color(2,2,2,1), #(1, 2, -.10, 1), #keyboard and mouse
+	#-1: Color(4,1,1,1), #(1, 2, -.10, 1), #red
 	0: Color(1,2,3,1), #controller 1 (1121)
 	1: Color(4,1,1,1), #controller 2
 	2: Color(1.05,2.76,1.82,1), #controller 3

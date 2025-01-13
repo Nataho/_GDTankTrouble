@@ -122,6 +122,10 @@ one_shot = true
 
 [node name="BreadCrum" type="Timer" parent="."]
 
+[node name="Idle" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+
 [node name="Eye" type="Node2D" parent="."]
 visible = false
 
@@ -187,6 +191,7 @@ debug_path_custom_color = Color(0.156863, 0, 0.807843, 1)
 [connection signal="timeout" from="Timer" to="." method="Respawn"]
 [connection signal="timeout" from="powerTimer" to="." method="stop_power_timer"]
 [connection signal="timeout" from="invincibility" to="." method="invincibility"]
+[connection signal="timeout" from="Idle" to="." method="idle"]
 [connection signal="area_entered" from="Vision" to="." method="AI_player_in_area"]
 [connection signal="area_exited" from="Vision" to="." method="AI_player_out_area"]
 [connection signal="body_entered" from="Vision" to="." method="AI_player_in_area"]

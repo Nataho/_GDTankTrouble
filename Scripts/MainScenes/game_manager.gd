@@ -3,12 +3,17 @@ extends Node
 @export var Debug:bool = true
 @export var kiosk:bool = false #founders
 var isIdle = false
+var currentFocus
 const Scenes = {
 	"main": "res://Scenes/main.tscn",
+	"modes":"res://Scenes/MainScenes/UI/mode_select.tscn",
+	"campaign menu":"res://Scenes/MainScenes/campaign_menu.tscn",
 	"tutorial": "res://Scenes/MainScenes/tutorial.tscn",
 	"player menu": "res://Scenes/MainScenes/player_menu.tscn",
 	"results": "res://Scenes/MainScenes/results.tscn",
 	"loading": "res://Scenes/MainScenes/loading_screen.tscn",
+	
+	"tropikala": "res://Scenes/MainScenes/Campaign/Tropikala/tropikala.tscn",
 	
 	"level 1" : "res://Scenes/Prefabs/Levels/level1.tscn",
 	

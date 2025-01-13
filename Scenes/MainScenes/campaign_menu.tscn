@@ -1,0 +1,281 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbrlb48p64h6s"]
+
+[ext_resource type="Script" path="res://Scripts/MainScenes/campaign_menu.gd" id="1_q0wq8"]
+[ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="2_3gpra"]
+
+[node name="Campaign Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q0wq8")
+
+[node name="Save States" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Save States"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Save1" type="Button" parent="Save States"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1105.0
+offset_top = -315.0
+offset_right = -475.0
+offset_bottom = 315.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3gpra")
+
+[node name="Text" type="Label" parent="Save States/Save1"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_3gpra")
+theme_override_font_sizes/font_size = 120
+text = "FILE 1"
+
+[node name="Save2" type="Button" parent="Save States"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 965.0
+offset_top = -315.0
+offset_right = 1595.0
+offset_bottom = 315.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3gpra")
+disabled = true
+
+[node name="Text" type="Label" parent="Save States/Save2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_3gpra")
+theme_override_font_sizes/font_size = 120
+text = "FILE 2"
+
+[node name="Status" type="Label" parent="Save States/Save2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.5
+offset_top = -47.0
+offset_right = 303.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+pivot_offset = Vector2(304, 47)
+theme_override_fonts/font = ExtResource("2_3gpra")
+theme_override_font_sizes/font_size = 80
+text = "UNAVAILABLE"
+
+[node name="Save3" type="Button" parent="Save States"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -805.0
+offset_top = -315.0
+offset_right = -175.0
+offset_bottom = 315.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3gpra")
+disabled = true
+
+[node name="Text" type="Label" parent="Save States/Save3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_3gpra")
+theme_override_font_sizes/font_size = 120
+text = "FILE 3"
+
+[node name="Status" type="Label" parent="Save States/Save3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.5
+offset_top = -47.0
+offset_right = 303.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+pivot_offset = Vector2(304, 47)
+theme_override_fonts/font = ExtResource("2_3gpra")
+theme_override_font_sizes/font_size = 80
+text = "UNAVAILABLE"
+
+[node name="otherUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Confirm" type="Panel" parent="otherUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -517.0
+offset_top = -267.0
+offset_bottom = -198.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="otherUI/Confirm"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -33.5
+offset_right = 67.0
+offset_bottom = 33.5
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="otherUI/Confirm/Icon"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -27.5
+offset_right = 256.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Confirm"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Delete" type="Panel" parent="otherUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -517.0
+offset_top = -139.0
+offset_bottom = -70.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="otherUI/Delete"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -33.5
+offset_right = 67.0
+offset_bottom = 33.5
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="otherUI/Delete/Icon"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -27.5
+offset_right = 225.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Delete"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Back" type="Panel" parent="otherUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = -203.0
+offset_right = 435.0
+offset_bottom = -134.0
+grow_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="otherUI/Back"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -33.5
+offset_right = 33.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="otherUI/Back/Icon"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -27.5
+offset_right = 192.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="Save States/Save1" to="." method="save1"]
+[connection signal="pressed" from="Save States/Save2" to="." method="save1"]
+[connection signal="pressed" from="Save States/Save3" to="." method="save1"]

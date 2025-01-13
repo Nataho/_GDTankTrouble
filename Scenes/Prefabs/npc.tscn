@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfksrnxwg82nq"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Levels/Storyline/Tropikala/NPC/von01.gd" id="1_sbxr1"]
+[ext_resource type="Texture2D" uid="uid://d286prpanuvuh" path="res://Assets/Photos/Controller Buttons/Button_X.png" id="2_gnoo0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e02w1"]
+radius = 121.037
+
+[sub_resource type="BoxMesh" id="BoxMesh_cu218"]
+
+[sub_resource type="Animation" id="Animation_qgv72"]
+resource_name = "InteractShow"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(304, 80), Vector2(304, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-152, -40), Vector2(-152, -206)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r8los"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(304, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-152, -40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17wdq"]
+_data = {
+"InteractShow": SubResource("Animation_qgv72"),
+"RESET": SubResource("Animation_r8los")
+}
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_sbxr1")
+
+[node name="playerDettection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDettection"]
+shape = SubResource("CircleShape2D_e02w1")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.367069, 0.609092, 0.444585, 1)
+scale = Vector2(60, 60)
+mesh = SubResource("BoxMesh_cu218")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -40.0
+offset_right = 152.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(152, 40)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -27.5
+offset_right = -20.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "INTERACT"
+
+[node name="X" type="Sprite2D" parent="Panel"]
+position = Vector2(45, 40)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_gnoo0")
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_17wdq")
+}
+
+[connection signal="body_entered" from="playerDettection" to="." method="playerDetected"]
+[connection signal="body_exited" from="playerDettection" to="." method="playerLeft"]

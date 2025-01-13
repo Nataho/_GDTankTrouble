@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="3_7vkm5"]
 [ext_resource type="PackedScene" uid="uid://wmpvq2c53b5" path="res://Scenes/Prefabs/UI/multiplayer_ui.tscn" id="4_tcb2h"]
 [ext_resource type="PackedScene" uid="uid://bnybsixdqwqbu" path="res://mainTileMap.tscn" id="5_ttwjs"]
+[ext_resource type="Environment" uid="uid://celx2lm655lti" path="res://Assets/Godot/WorldEnvironment/maps.tres" id="6_2l5hb"]
 [ext_resource type="PackedScene" uid="uid://d1sl8f53dlquv" path="res://Scenes/MainScenes/crum.tscn" id="6_xnvue"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
@@ -12,11 +13,6 @@ font = ExtResource("3_7vkm5")
 font_size = 640
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Environment" id="Environment_iu8ib"]
-background_mode = 3
-glow_enabled = true
-glow_hdr_scale = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vuk2"]
 font = ExtResource("3_7vkm5")
@@ -120,7 +116,7 @@ wait_time = 20.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_iu8ib")
+environment = ExtResource("6_2l5hb")
 
 [node name="Game Name" type="CanvasLayer" parent="."]
 visible = false

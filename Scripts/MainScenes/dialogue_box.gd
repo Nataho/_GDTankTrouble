@@ -3,7 +3,9 @@ class_name DBOX
 #var soundLib = SoundLib.characters
 
 @onready var animate: AnimationPlayer = $Animate
+signal dialogue_line_finished(index)
 signal dialogue_finished
+signal transition_finished
 
 var charIndex = 0
 var cps = 15 #characters per second
@@ -19,6 +21,7 @@ var characters = {
 	"Owen" : "res://Assets/Photos/Characters/owen.jpg",
 	"Enric" : "res://Assets/Photos/Characters/enmyg.jpg",
 	"Von": "res://Assets/Photos/Characters/Von.jpg",
+	"Ric": "res://Assets/Photos/PowerUps/PowerUpMystery.png"
 }
 
 var text #temporary text variable
@@ -31,13 +34,26 @@ func _ready() -> void:
 	cps = 10 / cps
 	$Box.scale = Vector2(1,0)
 	next()
+	$Box/skip.grab_focus()
+	GameManager.currentFocus = $Box/skip
 	#animate.play("open")
-	
-	
 
+#region signals
+func DialogueLineFinished(index):
+	playing = false
+	
+func DialogueFinished():
+	StoryManager.isDialogue = false
+	$Box/skip.release_focus()
+	GameManager.currentFocus = null
+	queue_free()
+	print("signal Dialogue Finished Emmited")
+#endregion signals
+
+#region dialogue and sound
 func output(dialogue:String):
 	text = dialogue
-	playing = true
+	playing = true; StoryManager.isDialogue = true
 	
 	var textBuffer = ""
 	if dialogue == null: dialogue = textBuffer #manage error
@@ -52,7 +68,8 @@ func output(dialogue:String):
 		output(dialogue) #reccursive function
 	else: 
 		charIndex = 0 #reset location
-		dialogue_finished.emit()
+		emit_signal("dialogue_line_finished",dScriptIndex)
+		#dialogue_line_finished.emit()
 
 func playSound(character,emotion):
 	if character not in characters: return
@@ -72,15 +89,15 @@ func playSound(character,emotion):
 	if GameManager.Debug: print(playing)
 	await $sfx.finished
 	playSound(character,emotion)
+#endregion dialogue and sound
 
-func DialogueFinished():
-	playing = false
+#region proccess
 func next():
 	#manage error
 	if dScriptIndex >= dScript.size():
 		close()
-		await $shortcuts.animation_finished
-		queue_free()
+		await animate.animation_finished
+		dialogue_finished.emit()
 		return
 	
 	var line = dScript[dScriptIndex]
@@ -103,7 +120,7 @@ func next():
 	output(text)
 	playSound(talking,line[0])
 	dScriptIndex += 1
-	#await dialogue_finished
+	#await dialogue_line_finished
 	#await get_tree().create_timer(1).timeout
 
 func skip():
@@ -121,33 +138,42 @@ func skip():
 	#cps = 0.01
 	#await get_tree().create_timer(1).timeout
 	#cps = temp
+#endregion proccess
 
-#getters
+#region getters
 func isPlaying():
 	return playing
+#endregion getters
 
-#setter
+#region setters
 func setDialogue(myScript:Array):
 	dScript = myScript
 	dScriptIndex = 0
 
 func setLayout(layout:String):
 	$shortcuts.play(layout)
-	
+
 func play():
 	pass
 func stop():
 	pass
+#endregion setters
 
+#region OnOff
 var transition = false
 func open():
 	transition = true
 	animate.play("open")
 	await animate.animation_finished
 	transition = false
+	transition_finished.emit()
 	
 func close():
 	transition = true
 	animate.play_backwards("open")
 	await animate.animation_finished
 	transition = false
+	transition_finished.emit()
+	$sfx.stop()
+	
+#endregion OnOff

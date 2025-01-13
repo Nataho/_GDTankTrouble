@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="7_fw870"]
 [ext_resource type="Texture2D" uid="uid://ddsgphcv38lv0" path="res://Assets/Photos/Environment/cracked.png" id="8_0njrq"]
 [ext_resource type="Texture2D" uid="uid://od7k6do3sjad" path="res://Assets/Photos/Environment/TankInfo.png" id="9_et7gn"]
+[ext_resource type="Environment" uid="uid://celx2lm655lti" path="res://Assets/Godot/WorldEnvironment/maps.tres" id="10_bhfun"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
 font = ExtResource("3_p5qjb")
@@ -364,11 +365,6 @@ sources/0 = SubResource("TileSetAtlasSource_ij5xk")
 sources/1 = SubResource("TileSetAtlasSource_eli2j")
 sources/2 = SubResource("TileSetAtlasSource_fntfp")
 sources/3 = SubResource("TileSetAtlasSource_2c26s")
-
-[sub_resource type="Environment" id="Environment_lcg83"]
-background_mode = 3
-glow_enabled = true
-glow_hdr_scale = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmhtq"]
 font = ExtResource("3_p5qjb")
@@ -1926,7 +1922,7 @@ wait_time = 20.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lcg83")
+environment = ExtResource("10_bhfun")
 
 [node name="Game Name" type="CanvasLayer" parent="."]
 visible = false

@@ -24,7 +24,7 @@ func _ready() -> void:
 		for indexes in PlayerG.isAI.keys():
 			if !PlayerG.isAI[indexes]: realPlayers += 1
 			
-		if realPlayers > 1: lives = 10
+		if realPlayers > 1: lives = 99
 		$UI/TIME.text = "Lives: " + str(lives)
 		
 	leaderboards()

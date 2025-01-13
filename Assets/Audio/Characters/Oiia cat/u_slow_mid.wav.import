@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cdclmqasquj55"
+path="res://.godot/imported/u_slow_mid.wav-c9b96ee2c5df14f1266cba090ac7dc00.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Characters/Oiia cat/u_slow_mid.wav"
+dest_files=["res://.godot/imported/u_slow_mid.wav-c9b96ee2c5df14f1266cba090ac7dc00.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

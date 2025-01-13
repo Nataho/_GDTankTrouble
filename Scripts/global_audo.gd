@@ -7,7 +7,11 @@ extends Node
 	"bulletCollide": "res://Assets/Sample_0004.wav",
 	"whistle":"res://Assets/Audio/SFX/Sample_0028.wav",
 	
-	"button press": "res://Assets/Audio/SFX/Sample_0025.wav"
+	"button press": "res://Assets/Audio/SFX/Sample_0025.wav",
+	"button1": "res://Assets/Audio/SFX/UI/1.mp3",
+	"button2": "res://Assets/Audio/SFX/UI/2.mp3",
+	"button3": "res://Assets/Audio/SFX/UI/3.mp3",
+	"button4": "res://Assets/Audio/SFX/UI/4.mp3",
 }
 
 @onready var music = {
@@ -16,10 +20,15 @@ extends Node
 	"wii tanks 1": "res://Assets/Audio/Music/Wii Play Tanks Music  Brown Tank.mp3",
 	"FFA 1": "res://Assets/Audio/Music/FFA 01 OST.mp3",
 	"square roll": "res://Assets/Audio/Music/The Roll of Squares.mp3",
+	
+	"Prologue 01": "res://Assets/Audio/Music/Prologue/Prologue_01.mp3", #intro
+	"Prologue 02": "res://Assets/Audio/Music/Prologue/Prologue_02.mp3", #loop
+	
+	"Tropikala 01": "",
 }
 
 var characters = {
-	"Oshiro" = {
+	"Oshiro": {
 		"normal": {
 			"start": [
 				"res://Assets/Audio/Characters/Oshiro/normal_mid_A_01.wav",
@@ -205,7 +214,7 @@ var characters = {
 			]
 		}
 	},
-	"Theo" = {
+	"Theo": {
 		"excited": {
 			"start": [
 				"res://Assets/Audio/Characters/Theo/excited_mid_A_01.wav",
@@ -298,6 +307,26 @@ var characters = {
 				"res://Assets/Audio/Characters/Theo/normal_per_10.wav",
 			]
 		},
+	},
+	"OIIA": {
+		"slow": {
+			"start": [
+				"res://Assets/Audio/Characters/Oiia cat/a_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/e_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/n_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/o_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/u_slow_mid.wav",
+				"res://Scenes/Prefabs/Levels/Storyline/Tropikala/NPC/",
+			],
+			"end": [
+				"res://Assets/Audio/Characters/Oiia cat/a_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/e_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/n_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/o_slow_mid.wav",
+				"res://Assets/Audio/Characters/Oiia cat/u_slow_mid.wav",
+				"res://Scenes/Prefabs/Levels/Storyline/Tropikala/NPC/",
+			]
+		}
 	}
 }
 
@@ -306,10 +335,9 @@ var characters = {
 @onready var SFX3: AudioStreamPlayer = $SFX3
 @onready var SFXEND: AudioStreamPlayer = $SFXEND
 
-
-@onready var MUSIC = $Music
-@onready var MUSIC2 = $Music2
-@onready var MUSIC3 = $Music3
+@onready var MUSIC : AudioStreamPlayer = $Music
+@onready var MUSIC2 : AudioStreamPlayer = $Music2
+@onready var MUSIC3 : AudioStreamPlayer = $Music3
 
 func STOP():
 	SFX.stop()

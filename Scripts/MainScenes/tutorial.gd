@@ -10,7 +10,7 @@ func exitTuts():
 func _ready() -> void:
 	Tuts()
 	await get_tree().create_timer(2).timeout
-	StoryManager.startDialogue("Prologue", "Start",self)
+	#StoryManager.startDialogue("Prologue", "Start",self)
 	
 	
 func _physics_process(delta: float) -> void:

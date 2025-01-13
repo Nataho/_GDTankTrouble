@@ -11,12 +11,14 @@ var multiShotCount = 0
 var dir : float
 var spawnPos : Vector2
 var spawnRot : float
+var isCampaign: bool
 
 func GetGamepadIndex():
 	playerIndex = get_parent().playerIndex
 	pass
 
 func _ready():
+	print("color p1: ", PlayerG.activeTankColor)
 	$shadow.rotation_degrees -= spawnRot
 	
 	AudioG.playSFX("bulletShoot",true)
@@ -83,6 +85,7 @@ func hit(body):
 		else: #if the bullet has hit a player other than the sender
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1
 			PlayerG.PlayerScore[playerIndex]["game score"] += 1
+			if isCampaign: return
 			if !PlayerG.activeTankColor[body.playerIndex] == PlayerG.activeTankColor[playerIndex]: PlayerG.teamScore[PlayerG.activeTankColor[playerIndex]] +=1 #team score
 			if PlayerG.isSurvival && !PlayerG.isAI[playerIndex]: PlayerG.SURVIVALKill()
 		if GameManager.Debug: print("Player ", playerIndex, "'s score is: ", PlayerG.PlayerScore[playerIndex])

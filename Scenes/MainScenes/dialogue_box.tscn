@@ -388,6 +388,9 @@ libraries = {
 }
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="dialogue_finished" from="." to="." method="DialogueFinished"]
+[connection signal="dialogue_line_finished" from="." to="." method="DialogueLineFinished"]
 [connection signal="pressed" from="Box/skip" to="." method="skip"]

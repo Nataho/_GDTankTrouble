@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b46sjqti8ep2s" path="res://Assets/Photos/Environment/amongus.png" id="7_r7dt1"]
 [ext_resource type="Texture2D" uid="uid://ddsgphcv38lv0" path="res://Assets/Photos/Environment/cracked.png" id="8_rgthb"]
 [ext_resource type="Texture2D" uid="uid://od7k6do3sjad" path="res://Assets/Photos/Environment/TankInfo.png" id="9_a5w7j"]
+[ext_resource type="Environment" uid="uid://celx2lm655lti" path="res://Assets/Godot/WorldEnvironment/maps.tres" id="10_qb512"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ynohh"]
 font = ExtResource("3_e53ow")
@@ -364,11 +365,6 @@ sources/0 = SubResource("TileSetAtlasSource_e1xte")
 sources/1 = SubResource("TileSetAtlasSource_8rems")
 sources/2 = SubResource("TileSetAtlasSource_af3lu")
 sources/3 = SubResource("TileSetAtlasSource_ikt3d")
-
-[sub_resource type="Environment" id="Environment_iu8ib"]
-background_mode = 3
-glow_enabled = true
-glow_hdr_scale = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vuk2"]
 font = ExtResource("3_e53ow")
@@ -2215,7 +2211,7 @@ wait_time = 20.0
 one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_iu8ib")
+environment = ExtResource("10_qb512")
 
 [node name="Game Name" type="CanvasLayer" parent="."]
 visible = false

@@ -1,9 +1,15 @@
 extends CharacterBody2D
+class_name Player
+const isPlayer = true
 
 #region AI
 @export var isAI:bool = false
+@export var canRespawn = true
 #endregion
 
+#region campaign
+@export var isCampaign = false
+#endregion campaign
 var tankParent
 var SPEED = 150; const defaultSPEED = 150
 var rotationSPEED = 3.0; const defaultRotationSPEED = 3.0
@@ -16,6 +22,7 @@ var bulletCount:int = PlayerG.PlayerBulletCap[playerIndex] #cap for the bullet, 
 @export var isTutorial = false
 @export var isPlayerMenu = false
 @export var canShoot_Move = true
+var canShoot = true
 
 @onready var head_power: Sprite2D = $power/HeadPower
 @onready var pathFinder: NavigationAgent2D = $NavigationAgent2D
@@ -42,6 +49,24 @@ func _process(delta: float) -> void:
 	if isPlayerMenu: modulate = Color.LIGHT_GOLDENROD; $power/WorldEnvironment.environment = null
 	if GameManager.Debug: if Input.is_action_just_pressed("goBack"): get_tree().quit()
 	
+	#######inputs
+	UIcontrols()
+
+#region aditional controls
+signal interacting
+var pressing = false
+func UIcontrols():
+	if Input.is_action_just_pressed("interact"): interact()
+	if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_Y): 
+		if not pressing:
+			pressing = true
+			interact()
+	else: pressing = false
+func interact():
+	interacting.emit()
+	
+	if GameManager.currentFocus is Button: GameManager.currentFocus.emit_signal("pressed")
+#endregion aditional controls
 #region startup
 func _ready():
 	bulletCount = PlayerG.PlayerBulletCap[playerIndex]
@@ -96,9 +121,20 @@ func Died():
 	self.hide() #hide player
 	self.set_process_mode(4) #process of player is disabled
 	$Timer.start() #start respawn timer
+	idle()
 	
 
 func Respawn():
+	#print("respawning")
+	if !canRespawn: return
+	if isCampaign:
+		
+		print("respawning")
+		show() #hide player
+		set_process_mode(0)
+		$Timer.stop()
+		return
+	
 	power_reset()
 	tankScale = 1
 	scale = Vector2(tankScale*Scale_default, tankScale*Scale_default)
@@ -109,6 +145,7 @@ func CHECK():
 	#region stop respawn
 	if isTutorial: return #tutorial
 	if isPlayerMenu: return #player menu
+	if isCampaign: return #campaign
 	#endregion
 	
 	var respawnAttempts = 0
@@ -163,7 +200,8 @@ func _physics_process(delta):
 		#region pathfinding
 		
 		#endregion pathfinding
-		
+		if StoryManager.isDialogue: return
+		#print(StoryManager.isDialogue)
 		Rotation()
 		POWER()
 		Movement(delta)
@@ -203,16 +241,34 @@ func Rotation():
 	#endregion
 	
 	
-	if playerIndex == -1: rotate = Input.get_action_strength("rotate right") - Input.get_action_strength("rotate left")
-	else: rotate = Input.get_joy_axis(playerIndex,2)
+	if playerIndex == -1: 
+		rotate = Input.get_action_strength("rotate right") - Input.get_action_strength("rotate left")
+		
+		
+	else: 
+		rotate = Input.get_joy_axis(playerIndex,2)
+		
+		
 	
 	if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_B):
 		rotate = 1
+	
+		
 	elif Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_X):
 		rotate = -1
 		
+		
 	if rotate<-0.1 or rotate>0.1:
 		rotation_degrees += rotate * rotationSPEED * SPEEDmultiplier; PlayerG.PlayerRotated = true
+		if isIdle: 
+			isIdle = false
+		#print("asdf")
+		$Idle.start()
+		idle_remove()
+		emit_signal("moved",self)
+		#print("emitting moved")
+		hasMoved = true#;print("emitting moved")
+		
 
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
@@ -230,10 +286,27 @@ func Movement(delta):
 	
 	#look_at(get_global_mouse_position())
 	forward_vector = (Vector2(cos(-rotation), sin(rotation)))
-	if playerIndex == -1: move = Input.get_action_strength("forward") - Input.get_action_strength("back");
-	else: move = Input.get_joy_axis(playerIndex,1)*-1;
+	if playerIndex == -1: 
+		move = Input.get_action_strength("forward") - Input.get_action_strength("back");
+		
+		
+	else: 
+		move = Input.get_joy_axis(playerIndex,1)*-1;
+	
+		
 	if move<-0.1 or move>0.1:
 		velocity = forward_vector * move * SPEED * SPEEDmultiplier; PlayerG.PlayerMoved = true
+		if isIdle: 
+			isIdle = false
+		#print("asdf")
+		$Idle.start()
+		idle_remove()
+		emit_signal("moved",self)
+		#print("emitting moved")
+		hasMoved = true#;print("emitting moved")
+			
+
+		
 	else:
 		velocity = Vector2.ZERO
 	#PlayerG.playerForwardV[playerIndex] = forward_vector #default
@@ -248,6 +321,7 @@ var hasShot = false #prevents shooting multiple bullets when pressing one button
 func Shoot():
 	#region stopShooting 
 	if !canShoot_Move: return #player menu
+	if !canShoot: return
 	#endregion
 	
 	#region tutorial
@@ -263,6 +337,7 @@ func Shoot():
 				var bullet = plBullet.instantiate()
 				bullet.position.x += 15
 				bullet.spawnRot = rotation
+				bullet.isCampaign = isCampaign
 				add_child(bullet); bullet.reparent(get_parent())
 				if GameManager.Debug: print("SHOOT")
 				
@@ -277,10 +352,12 @@ func Shoot():
 						bullet.position += Vector2(15,-5)
 						bullet.spawnRot = rotation
 						
+						
 					else: 
 						bullet.position += Vector2(15,5)
 						bullet.spawnRot = rotation
 					
+					bullet.isCampaign = isCampaign
 					add_child(bullet); bullet.reparent(get_parent())
 					extraBullets += 1
 					#if GameManager.Debug: print("SHOOT")
@@ -288,15 +365,18 @@ func Shoot():
 				
 	else:
 		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A) or Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_RIGHT_SHOULDER):# or Input.is_action_just_pressed("shoot"): #presses RB / R1 / R
+			if hasShot: return
 			if !hasShot:
 				if GameManager.Debug: print(hasShot)
 				var bullet = plBullet.instantiate()
 				bullet.position.x += 15
+				bullet.isCampaign = isCampaign
 				add_child(bullet); bullet.reparent(get_parent())
 				if GameManager.Debug: print("SHOOT")
 				hasShot = true
 				
 			if isMultishot:
+				#if hasShot: return
 				var extraBullets = 0
 				while extraBullets < 2:
 					if PlayerG.pBulletCount[playerIndex] >= bulletCount: return
@@ -310,9 +390,11 @@ func Shoot():
 					else: 
 						bullet.position += Vector2(15,5)
 						bullet.spawnRot = rotation
+					bullet.isCampaign = isCampaign
 					
 					add_child(bullet); bullet.reparent(get_parent())
 					extraBullets += 1
+				hasShot = true
 		else: hasShot = false;#print(hasShot)
 #endregion
 func CheckForWalls(body): #area2d
@@ -355,7 +437,7 @@ func AI_Rotate():
 	if state: return
 	rotate = randf_range(-1,1)
 
-var move
+var move = 0
 var forward_vector
 var doMovement = false
 func AI_Move():
@@ -578,3 +660,25 @@ func AI_Detection():
 	await get_tree().create_timer(0.1).timeout
 	if isAID: AI_Detection()
 #endregion timed looping functions
+
+#region Idle
+var isIdle = true
+var hasMoved
+signal moved
+signal IdleEntered
+signal IdleExited(PlayerBody:Player)
+@onready var idleTimer: Timer = $Idle
+
+func idle():
+	if !hasMoved: return
+	if isIdle: return
+	
+	isIdle = true
+	emit_signal("IdleEntered",self)
+	$Idle.stop()
+
+func idle_remove():
+	emit_signal("IdleExited",self)
+	isIdle = false
+	#$Idle.start()
+#endregion Idle
