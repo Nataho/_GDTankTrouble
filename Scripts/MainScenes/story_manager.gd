@@ -12,7 +12,17 @@ const maps = [ #reference for Current Map variable
 	"Mirage Island", #chapter 6
 ]
 var objectives = {
-	"Prologue Complete": false
+	"Prologue Complete": false,
+	"Tropikala Complete": false,
+	"Atsu Island Complete": false,
+	"Domageti Complete": false,
+	"Scharbi Complete": false,
+	"Mirage Island Complete": false,
+}
+
+var achievements = {
+	"A New Companion": false, #complete the prologue
+	"A Not So Fun Vacation": false, #complete Tropikala A side
 }
 #endregion important variables
 
@@ -120,7 +130,6 @@ var dialogue:Dictionary = {
 			[p1[2][0], p1, "What do you mean?"],
 			[npc1[2][0], npc1, "I gave a name to one of the islands"],
 			[npc1[2][0], npc1, "It's so funny"],
-			
 		]
 		#endregion npcs
 		

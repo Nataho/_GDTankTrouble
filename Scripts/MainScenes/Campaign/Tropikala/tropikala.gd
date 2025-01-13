@@ -405,5 +405,5 @@ func Checkpoint_End(body):
 	StoryManager.startDialogue("Prologue", "End", self)
 	await StoryManager.myDbox.dialogue_finished
 	StoryManager.objectives["Prologue Complete"] = true
-	Transition.ChangeScene("main","slideUp")
+	Transition.ChangeScene("campaign","slideUp")
 #endregion cameraCheckpoints

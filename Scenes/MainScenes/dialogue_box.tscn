@@ -1,8 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpi5k6dppuj2b"]
+[gd_scene load_steps=16 format=3 uid="uid://bpi5k6dppuj2b"]
 
 [ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="1_c2fth"]
 [ext_resource type="Script" path="res://Scripts/MainScenes/dialogue_box.gd" id="1_t12ny"]
 [ext_resource type="Texture2D" uid="uid://b2e8yowcuimjd" path="res://Assets/Photos/Characters/enmyg.jpg" id="3_0eevo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4k74"]
+bg_color = Color(0.222, 0.222, 0.222, 0.75)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.579423, 0.579423, 0.579422, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Theme" id="Theme_cgwp1"]
+Panel/styles/panel = SubResource("StyleBoxFlat_f4k74")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vnwh0"]
+
+[sub_resource type="Theme" id="Theme_s4bqi"]
+Button/styles/focus = SubResource("StyleBoxEmpty_vnwh0")
 
 [sub_resource type="Animation" id="Animation_3020m"]
 length = 0.001
@@ -330,6 +351,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_cgwp1")
 
 [node name="Dialogue" type="Label" parent="Box/Background"]
 unique_name_in_owner = true
@@ -339,10 +361,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -879.5
-offset_top = -131.5
-offset_right = 1177.5
-offset_bottom = 132.5
+offset_left = -1028.5
+offset_top = -132.0
+offset_right = 1028.5
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_c2fth")
@@ -359,10 +381,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -1476.0
-offset_top = -155.5
-offset_right = -1194.0
-offset_bottom = 126.5
+offset_left = -282.0
+offset_top = -141.0
+offset_bottom = 141.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("3_0eevo")
@@ -375,6 +396,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_s4bqi")
 flat = true
 
 [node name="Animate" type="AnimationPlayer" parent="."]

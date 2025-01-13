@@ -2,7 +2,7 @@ extends Node
 @export var Version:String = "0.0.16"
 @export var Debug:bool = true
 @export var kiosk:bool = false #founders
-var isIdle = false
+var isIdle = true
 var currentFocus
 const Scenes = {
 	"main": "res://Scenes/main.tscn",
@@ -13,6 +13,7 @@ const Scenes = {
 	"results": "res://Scenes/MainScenes/results.tscn",
 	"loading": "res://Scenes/MainScenes/loading_screen.tscn",
 	
+	"campaign": "res://Scenes/MainScenes/Campaign/Campaign.tscn",
 	"tropikala": "res://Scenes/MainScenes/Campaign/Tropikala/tropikala.tscn",
 	
 	"level 1" : "res://Scenes/Prefabs/Levels/level1.tscn",
@@ -92,8 +93,6 @@ func updateLeaderboard(update):
 	if GameManager.Debug: print("updated leaderboard")
 #endregion handle saving ans loading
 
-
-
 #region scoring
 var SCORES = {
 	"bh": 28,
@@ -132,9 +131,21 @@ func _ready() -> void:
 func changeScene(scene: String):
 	get_tree().change_scene_to_file(Scenes[scene])
 
-
-
-
-#
-
-#
+#region testing #this region must be deleted or commented after testing
+#func _process(delta: float) -> void:
+	#testing()
+#func testing(): 
+	#var joyAxis: Vector2
+	#joyAxis.x = Input.get_joy_axis(0,JOY_AXIS_RIGHT_X)
+	#joyAxis.y = Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y)
+	#
+	#var deadZone = 0.1
+	#if joyAxis.x > -deadZone && joyAxis.x < deadZone && joyAxis.y > -deadZone && joyAxis.y < deadZone: return
+	#
+	#var angleInRadians := atan2(joyAxis.y, joyAxis.x)
+	#var angleInDegrees = rad_to_deg(angleInRadians)
+	#
+	##if angleInDegrees < 0: angleInDegrees += 360
+	#
+	#print("Joystick Angle: ", angleInDegrees, " Degrees")
+#endregion testing

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://oovrbfffk2j8" path="res://Assets/Photos/Joystick.png" id="3_tucac"]
 [ext_resource type="Texture2D" uid="uid://dl444y6xs82k0" path="res://Assets/Photos/Pressed_Joystick.png" id="4_hfio5"]
 
-[node name="Control" type="Control"]
+[node name="Campaign" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,8 +13,89 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_74s4n")
-metadata/_edit_horizontal_guides_ = [1186.0]
-metadata/_edit_vertical_guides_ = [2259.0]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1002.0
+offset_top = -304.0
+offset_right = 1002.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="Prologue" parent="GridContainer" instance=ExtResource("1_7c6aw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Tropikala")
+focus_neighbor_top = NodePath("../Scharbi")
+focus_neighbor_right = NodePath("../Tropikala")
+focus_neighbor_bottom = NodePath("../AtsuIsland")
+mouse_filter = 0
+text = "Prologue"
+
+[node name="Tropikala" parent="GridContainer" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Prologue")
+focus_neighbor_top = NodePath("../MirageIsland")
+focus_neighbor_right = NodePath("../Prologue")
+focus_neighbor_bottom = NodePath("../Domageti")
+mouse_filter = 0
+disabled = true
+text = "Tropikala"
+
+[node name="AtsuIsland" parent="GridContainer" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Domageti")
+focus_neighbor_top = NodePath("../Prologue")
+focus_neighbor_right = NodePath("../Domageti")
+focus_neighbor_bottom = NodePath("../Scharbi")
+mouse_filter = 0
+disabled = true
+text = "Atsu Island"
+
+[node name="Domageti" parent="GridContainer" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+focus_neighbor_left = NodePath("../AtsuIsland")
+focus_neighbor_top = NodePath("../Tropikala")
+focus_neighbor_right = NodePath("../AtsuIsland")
+focus_neighbor_bottom = NodePath("../MirageIsland")
+mouse_filter = 0
+disabled = true
+text = "Domageti"
+
+[node name="Scharbi" parent="GridContainer" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+focus_neighbor_left = NodePath("../MirageIsland")
+focus_neighbor_top = NodePath("../AtsuIsland")
+focus_neighbor_right = NodePath("../MirageIsland")
+focus_neighbor_bottom = NodePath("../Prologue")
+mouse_filter = 0
+disabled = true
+text = "Scharbi"
+
+[node name="MirageIsland" parent="GridContainer" instance=ExtResource("1_7c6aw")]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Scharbi")
+focus_neighbor_top = NodePath("../Domageti")
+focus_neighbor_right = NodePath("../Scharbi")
+focus_neighbor_bottom = NodePath("../Tropikala")
+mouse_filter = 0
+disabled = true
+text = "Mirage Island"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -33,48 +114,11 @@ grow_vertical = 2
 [node name="row1" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Prologue" parent="VBoxContainer/row1" instance=ExtResource("1_7c6aw")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-mouse_filter = 0
-text = "Prologue"
-
-[node name="Tropikala" parent="VBoxContainer/row1" instance=ExtResource("1_7c6aw")]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-mouse_filter = 0
-text = "Tropikala"
-
 [node name="row2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="AtsuIsland" parent="VBoxContainer/row2" instance=ExtResource("1_7c6aw")]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-mouse_filter = 0
-text = "Atsu Island"
-
-[node name="Domageti" parent="VBoxContainer/row2" instance=ExtResource("1_7c6aw")]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-mouse_filter = 0
-text = "Domageti"
-
 [node name="row3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="Scharbi" parent="VBoxContainer/row3" instance=ExtResource("1_7c6aw")]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-mouse_filter = 0
-text = "Scharbi"
-
-[node name="MirageIsland" parent="VBoxContainer/row3" instance=ExtResource("1_7c6aw")]
-custom_minimum_size = Vector2(1000, 200)
-layout_mode = 2
-mouse_filter = 0
-text = "Mirage Island"
 
 [node name="up" type="TextureButton" parent="."]
 layout_mode = 0

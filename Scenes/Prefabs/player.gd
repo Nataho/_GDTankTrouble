@@ -57,7 +57,11 @@ signal interacting
 var pressing = false
 func UIcontrols():
 	if Input.is_action_just_pressed("interact"): interact()
-	if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_Y): 
+	if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_Y) and !StoryManager.isDialogue: 
+		if not pressing:
+			pressing = true
+			interact()
+	elif Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A):
 		if not pressing:
 			pressing = true
 			interact()
@@ -249,14 +253,30 @@ func Rotation():
 		rotate = Input.get_joy_axis(playerIndex,2)
 		
 		
-	
-	if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_B):
-		rotate = 1
-	
+	#region Controller
+	#if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_B):
+		#rotate = 1
+		#
+	#elif Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_X):
+		#rotate = -1
+	if playerIndex != -1:
+		var joyAxis: Vector2
+		joyAxis.x = Input.get_joy_axis(playerIndex,JOY_AXIS_LEFT_X)
+		joyAxis.y = Input.get_joy_axis(playerIndex,JOY_AXIS_LEFT_Y)
 		
-	elif Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_X):
-		rotate = -1
+		var deadZone = 0.1
+		if joyAxis.x > -deadZone && joyAxis.x < deadZone && joyAxis.y > -deadZone && joyAxis.y < deadZone: return
 		
+		var angleInRadians := atan2(joyAxis.y, joyAxis.x)
+		var angleInDegrees = rad_to_deg(angleInRadians)
+		
+		var angleDifference = wrapf(angleInDegrees - rotation_degrees, -180, 180)
+		
+		if angleDifference > 1.5: rotate = 1
+		elif angleDifference < -1.5: rotate = -1
+		else: rotate = 0
+		
+	#endregion Controller
 		
 	if rotate<-0.1 or rotate>0.1:
 		rotation_degrees += rotate * rotationSPEED * SPEEDmultiplier; PlayerG.PlayerRotated = true
@@ -272,27 +292,27 @@ func Rotation():
 
 var desired_velocity := Vector2.ZERO
 var steering_velocity := Vector2.ZERO
+var moving = false
+var moveJoy:Vector2 = Vector2.ZERO
 func Movement(delta):
 	
 	#region stop movement
 	if !canShoot_Move: return #player menu
 	#endregion
-	#var direction = Input.get_vector('rotate left','rotate right','forward','back')
-	#desired_velocity = direction * SPEED
-	#steering_velocity = desired_velocity - velocity
-	#velocity += steering_velocity * drag_factor
-	#velocity = direction * SPEED
-	#rotation = velocity.angle()
-	
-	#look_at(get_global_mouse_position())
+
 	forward_vector = (Vector2(cos(-rotation), sin(rotation)))
 	if playerIndex == -1: 
 		move = Input.get_action_strength("forward") - Input.get_action_strength("back");
-		
-		
 	else: 
-		move = Input.get_joy_axis(playerIndex,1)*-1;
-	
+		#move = Input.get_joy_axis(playerIndex,1)*-1;
+		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A):
+			moveJoy.x = 1
+		else: moveJoy.x = 0
+		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_B):
+			moveJoy.y = 1
+		else: moveJoy.y = 0
+		
+		move = moveJoy.x - moveJoy.y
 		
 	if move<-0.1 or move>0.1:
 		velocity = forward_vector * move * SPEED * SPEEDmultiplier; PlayerG.PlayerMoved = true
@@ -364,7 +384,7 @@ func Shoot():
 				
 				
 	else:
-		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A) or Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_RIGHT_SHOULDER):# or Input.is_action_just_pressed("shoot"): #presses RB / R1 / R
+		if Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_X) or Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_RIGHT_SHOULDER):# or Input.is_action_just_pressed("shoot"): #presses RB / R1 / R
 			if hasShot: return
 			if !hasShot:
 				if GameManager.Debug: print(hasShot)

@@ -6,6 +6,14 @@ extends Control
 
 func _ready() -> void:
 	%Prologue.grab_focus()
+	checkCompletion()
+
+func checkCompletion():
+	var objectives = StoryManager.objectives
+	if objectives["Prologue Complete"]: $GridContainer/Tropikala.disabled = false
+	if objectives["Tropikala Complete"]: $GridContainer/AtsuIsland.disabled = false
+	if objectives["Atsu Island Complete"]: $GridContainer/Domageti.disabled = false
+	if objectives["Domageti Complete"]: $GridContainer/Scharbi.disabled = false
 
 var pressedButton = {
 	"up": false,
