@@ -12,18 +12,21 @@ var dir : float
 var spawnPos : Vector2
 var spawnRot : float
 var isCampaign: bool
+var isAI := false
 
 func GetGamepadIndex():
 	playerIndex = get_parent().playerIndex
 	pass
 
 func _ready():
+	print(isCampaign)
 	print("color p1: ", PlayerG.activeTankColor)
 	$shadow.rotation_degrees -= spawnRot
 	
 	AudioG.playSFX("bulletShoot",true)
 	GetGamepadIndex()
-	modulate = PlayerG.activeTankColor[playerIndex] #color
+	if !isCampaign: modulate = PlayerG.activeTankColor[playerIndex] #color
+	else:  modulate = get_parent().modulate
 	PlayerG.pBulletCount[playerIndex] += 1
 	if GameManager.Debug: print("Player ", playerIndex, " has shot")
 	
@@ -70,7 +73,9 @@ func hit(body):
 		PlayerG.pBulletCount[playerIndex] -= 1
 		PlayerG.PlayerScore[body.playerIndex]["deaths"] += 1
 		queue_free()
-		if body.playerIndex == playerIndex: #if bullet has hit the sender 
+		
+		if body.playerIndex == playerIndex: #if bullet has hit the sender
+			if isAI && isCampaign: return
 			PlayerG.PlayerScore[playerIndex]["game score"] -= 1
 			#region team score
 			var total = 0
@@ -83,6 +88,7 @@ func hit(body):
 		
 			PlayerG.PlayerScore[playerIndex]["suicide"] += 1
 		else: #if the bullet has hit a player other than the sender
+			if isAI && isCampaign: return
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1
 			PlayerG.PlayerScore[playerIndex]["game score"] += 1
 			if isCampaign: return

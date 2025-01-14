@@ -1,6 +1,7 @@
 extends Node2D
 
 var selfNode = self
+var canPause = false
 #region signals
 signal tutsTextLineFinished
 #endregion signals
@@ -25,21 +26,30 @@ var objectives = {
 ]
 
 @onready var cameraCheckpoints = [
-	$"Area Preview/checkpoints/Tutorial",
-	$"Area Preview/checkpoints/Tutorial/CP_preview1",
-	$"Area Preview/checkpoints/Tutorial/CP_preview2",
+	$"Area Preview/checkpoints/Prologue/Tutorial", #0
+	$"Area Preview/checkpoints/Prologue/Tutorial/CP_preview1", #1
+	$"Area Preview/checkpoints/Prologue/Tutorial/CP_preview2", #2
 	
-	$"Area Preview/checkpoints/Tutorial2/room",
-	$"Area Preview/checkpoints/Tutorial2/CP_preview1",
-	$"Area Preview/checkpoints/Tutorial2/CP_preview2",
+	$"Area Preview/checkpoints/Prologue/Tutorial2/room", #3
+	$"Area Preview/checkpoints/Prologue/Tutorial2/CP_preview1", #4
+	$"Area Preview/checkpoints/Prologue/Tutorial2/CP_preview2", #5
 	
-	$"Area Preview/checkpoints/End/end",
+	$"Area Preview/checkpoints/Prologue/End/end", #6
+	
+	$"Area Preview/checkpoints/Chapter 1/boundary/Preview", #7
+	
+	$"Area Preview/checkpoints/Chapter 1/room1/Preview", #8
+	$"Area Preview/checkpoints/Chapter 1/room2/Preview", #9
+	
 	
 ]
-@onready var checkpointSpawns = [
-	$"Area Preview/checkpoints/Tutorial/spawn",
-	$"Area Preview/checkpoints/Tutorial2/spawn",
-]
+@onready var checkpointSpawns = {
+	0: $"Area Preview/checkpoints/Prologue/Tutorial/spawn",
+	1: $"Area Preview/checkpoints/Prologue/Tutorial2/spawn",
+	8: $"Area Preview/checkpoints/Chapter 1/room1/spawn",
+	9: $"Area Preview/checkpoints/Chapter 1/room2/spawn",
+	
+}
 
 @onready var main_cam: Camera2D = $mainCam
 var mainCamZoom = 1
@@ -68,6 +78,7 @@ var playerName = ""
 var OOBPlayer = null
 #region basic functions
 func _ready() -> void:
+	get_tree().paused = false
 	playerCam = players[0]
 	StoryManager.isDialogue = true
 	
@@ -78,6 +89,7 @@ func _ready() -> void:
 	
 	#main_cam.reparent(players[0])
 	main_cam.global_position = players[0].global_position
+	mainCamZoom = 4
 	
 	await get_tree().create_timer(1.5).timeout
 	startChapter()
@@ -87,9 +99,23 @@ func _process(delta: float) -> void:
 	if isStart: playerOOB(delta)
 	handleVon(delta)
 
-func pauseGame():
-	pass
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pauseGame()
 
+var isPaused := false
+var pauseMenu:PAUSE = null
+func pauseGame():
+	if !canPause: return
+	if isPaused: 
+		pauseMenu.resume()
+		isPaused = false
+		
+		return
+	var pause = load("res://Scenes/MainScenes/UI/pause.tscn")
+	pauseMenu = pause.instantiate()
+	add_child(pauseMenu); isPaused = true
+	
 func handleVon(delta):
 	if !objectives["new companion"]: return
 	var npcPos = von.global_position
@@ -141,11 +167,11 @@ func initializePlayers():
 		index +=1
 	
 var playerCam
-var checkpointCam
+var checkpointCam 
 var checkpointSpawn
 func changeCamera(isPlayer = true, checkpoint = null):
 	if isPlayer:
-		for player:Player in players:           
+		for player in players:           
 			if player.isIdle: continue
 			#main_cam.reparent(player)
 			playerCam = player
@@ -230,14 +256,21 @@ func getPlayerInfo(): #initialize
 var isStart = false
 func startChapter():
 	if StoryManager.currentMap == "Tropikala":
+		StoryManager.startDialogue("Chapter 1", "start", self)
+		music("Tropikala 01")
+		await StoryManager.myDbox.dialogue_finished
+		mainCamZoom = 1
+		canPause = true
 		
 		return
 	StoryManager.startDialogue("Prologue", "Start", self)
 	music("Prologue")
 	await StoryManager.myDbox.dialogue_finished
+	mainCamZoom = 1
 	isStart = true
 	tutsIndex = 0
 	startTutsText(tutorials["Move"])
+	canPause = true
 
 func music(value):
 	var myAudio
@@ -246,6 +279,8 @@ func music(value):
 	
 		await AudioG.MUSIC.finished
 		AudioG.playMusic("Prologue 02")
+	if value == "Tropikala 01":
+		AudioG.playMusic(value, -1)
 #endregion chapterFunctions
 
 #region tutorial textBox
@@ -260,7 +295,7 @@ var tutorials = {
 
 var tutsIndex = 0
 func startTutsText(lib):
-	print(tutsIndex)
+	%"Tutorial Text".show()
 	if tutsIndex >= lib.size():
 		tutsIndex = 0
 		text = ""
@@ -328,12 +363,18 @@ func dialogueTiming(dLogue):
 	dialogueTiming(dLogue)
 	
 func Checkpoint_Tutorial(body):
+	if !objectives["new companion"]:
+		StoryManager.startDialogue("Prologue", "Not Yet", self)
+		await StoryManager.myDbox.dialogue_finished
+		body.global_position.x -= 200
+		return
 	if !body.isPlayer: return
+	if body.isAI: return
 	playerCam = body
 	checkpointCam = cameraCheckpoints[0]
 	checkpointSpawn = checkpointSpawns[0]
 	mainCamZoom = 0.9
-	for player:Player in players: player.idleTimer.stop()
+	for player in players: player.idleTimer.stop()
 	
 	if !objectives["new companion"]: return
 	if objectives["tutorial shooting"]: return
@@ -350,9 +391,9 @@ func Checkpoint_Tutorial(body):
 	mainCamZoom = 0.9
 	
 	objectives["tutorial shooting"] = true
-	
 func Checkpoint_TutorialOut(body):
 	if !body.isPlayer: return
+	if body.isAI: return
 	playerCam = body
 	checkpointCam = null
 	checkpointSpawn = null
@@ -363,9 +404,9 @@ func Checkpoint_TutorialOut(body):
 	#checkpointCam = null
 	#for player:Player in players: player.idleTimer.start()
 
-
 func Checkpoint_Tutorial2In(body):
 	if !body.isPlayer: return
+	if body.isAI: return
 	playerCam = body
 	checkpointCam = cameraCheckpoints[3]
 	checkpointSpawn = checkpointSpawns[1]
@@ -389,6 +430,7 @@ func Checkpoint_Tutorial2In(body):
 	objectives["tutorial ricochet"] = true
 func Checkpoint_Tutorial2Out(body):
 	if !body.isPlayer: return
+	if body.isAI: return
 	playerCam = body
 	checkpointCam = null
 	checkpointSpawn = null
@@ -396,6 +438,7 @@ func Checkpoint_Tutorial2Out(body):
 
 func Checkpoint_End(body):
 	if !body.isPlayer: return
+	if body.isAI: return
 	playerCam = body
 	checkpointCam = cameraCheckpoints[6]
 	mainCamZoom = 3
@@ -404,6 +447,53 @@ func Checkpoint_End(body):
 	
 	StoryManager.startDialogue("Prologue", "End", self)
 	await StoryManager.myDbox.dialogue_finished
-	StoryManager.objectives["Prologue Complete"] = true
+	StoryManager.objectives[StoryManager.usedSaveIndex]["Prologue Complete"] = true
+	GameManager.SaveGame()
 	Transition.ChangeScene("campaign","slideUp")
+
+func Checkpoint_Boundary(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = cameraCheckpoints[7]
+	mainCamZoom = cameraCheckpoints[7].zoom.x
+	
+	for player:Player in players: player.idleTimer.stop()
+	StoryManager.startDialogue("Chapter 1", "boundary", self)
+	
+	await StoryManager.myDbox.dialogue_finished
+	body.global_position += Vector2(0,-100)
+	mainCamZoom = 1
+	checkpointCam = null
+
+func Checkpoint_Room1In(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = cameraCheckpoints[8]
+	mainCamZoom = cameraCheckpoints[8].zoom.x
+	checkpointSpawn = checkpointSpawns[8]
+func Checkpoint_Room1Out(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = null
+	checkpointSpawn = null
+	mainCamZoom = 1
+
+func Checkpoint_Room2In(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = cameraCheckpoints[9]
+	mainCamZoom = cameraCheckpoints[9].zoom.x
+	checkpointSpawn = checkpointSpawns[9]
+	  
+func Checkpoint_Room2Out(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = null
+	checkpointSpawn = null
+	mainCamZoom = 1
 #endregion cameraCheckpoints

@@ -3,6 +3,7 @@ class_name Player
 const isPlayer = true
 
 #region AI
+@export var isHardMode = false
 @export var isAI:bool = false
 @export var canRespawn = true
 #endregion
@@ -22,6 +23,7 @@ var bulletCount:int = PlayerG.PlayerBulletCap[playerIndex] #cap for the bullet, 
 @export var isTutorial = false
 @export var isPlayerMenu = false
 @export var canShoot_Move = true
+
 var canShoot = true
 
 @onready var head_power: Sprite2D = $power/HeadPower
@@ -34,7 +36,7 @@ var plBullet := preload("res://Scenes/Prefabs/bullet.tscn")
 var Spawned = false
 var CoastClear = false
 var raycastTarget = false
-var targetDirection = rotation_degrees
+var targetDirection = 0
 
 var defaultModulate = 1
 var allModulate = defaultModulate
@@ -61,7 +63,7 @@ func UIcontrols():
 		if not pressing:
 			pressing = true
 			interact()
-	elif Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A):
+	elif Input.is_joy_button_pressed(playerIndex,JOY_BUTTON_A) and StoryManager.isDialogue:
 		if not pressing:
 			pressing = true
 			interact()
@@ -73,13 +75,23 @@ func interact():
 #endregion aditional controls
 #region startup
 func _ready():
+	
+	
 	bulletCount = PlayerG.PlayerBulletCap[playerIndex]
-	if GameManager.isIdle || PlayerG.isHardMode: 
+	if GameManager.isIdle || PlayerG.isHardMode or isHardMode: 
 		$Vision.monitoring = true
 		$Vision2.monitoring = false
+		$Vision.show()
+		$RayCast2D.show()
+		$eye.show()
+		$CheckWall.show()
 	else:
 		$Vision.monitoring = false #turn true if hard mode
 		$Vision2.monitoring = true
+		$Vision2.show()
+		$RayCast2D.show()
+		$eye.show()
+		$CheckWall.show()
 	
 	if PlayerG.isSurvival && !isAI: allModulate = 5
 	if get_parent().get_parent(): tankParent = get_parent().get_parent()
@@ -97,6 +109,7 @@ func _ready():
 	if !isPlayerMenu: scale = Vector2(tankScale*Scale_default,tankScale*Scale_default)
 	
 	CheckAI()
+	
 	$Timer.wait_time = PlayerG.respawnTime
 	if !isPlayerMenu: 
 		if playerIndex in PlayerG.activeTankColor:
@@ -110,7 +123,7 @@ func _ready():
 	CHECK()
 
 func CheckAI():
-	isAI = PlayerG.isAI[playerIndex]
+	if !isCampaign: isAI = PlayerG.isAI[playerIndex]
 	if isAI: print("player AI index ", playerIndex,"; isAI: ", isAI)
 	if isAI: initializeAI()
 	if isAI: set_AI_detection(true)
@@ -127,6 +140,8 @@ func Died():
 	$Timer.start() #start respawn timer
 	idle()
 	
+	if isCampaign && !canRespawn:
+		queue_free()
 
 func Respawn():
 	#print("respawning")
@@ -136,6 +151,7 @@ func Respawn():
 		print("respawning")
 		show() #hide player
 		set_process_mode(0)
+		canShoot_Move = true
 		$Timer.stop()
 		return
 	
@@ -199,6 +215,7 @@ func CHECK():
 
 func _physics_process(delta):
 	if PlayerG.gameFinished: return
+	if GameManager.isPaused: return
 	
 	if !isAI:
 		#region pathfinding
@@ -211,6 +228,7 @@ func _physics_process(delta):
 		Movement(delta)
 		Shoot()
 	elif isAI:
+		if !canShoot_Move: return
 		AIdoRotation()
 		AIdoMovement(delta)
 	
@@ -484,6 +502,8 @@ func AI_Shoot():
 				multiBullet.position += Vector2(15,5)
 				multiBullet.spawnRot = rotation
 			
+			multiBullet.isCampaign = isCampaign
+			multiBullet.isAI = true
 			add_child(multiBullet); multiBullet.reparent(get_parent())
 			extraBullets += 1
 	
@@ -491,6 +511,8 @@ func AI_Shoot():
 	var bullet = plBullet.instantiate()
 	bullet.position.x += 15
 	bullet.playerIndex = playerIndex
+	bullet.isCampaign = isCampaign
+	bullet.isAI = true
 	add_child(bullet); bullet.reparent(get_parent())
 	
 	
@@ -540,10 +562,12 @@ var powerFound
 
 func AI_player_in_area(body):
 	if !isAI: return
+	if body.isAI && isCampaign: return
+	if isAI && !canShoot_Move: return
 	#print(self.name, " HAS FOUND ", body.name)
 	
 	#if body == self: return
-	if !body.crum: if PlayerG.activeTankColor[playerIndex] == PlayerG.activeTankColor[body.playerIndex]: return
+	#if !body.crum: if PlayerG.activeTankColor[playerIndex] == PlayerG.activeTankColor[body.playerIndex]: return
 	if !(body not in get_tree().get_nodes_in_group("Player") || body.name == self.name || state):
 		$MeshInstance2D.show()
 		target = body
@@ -554,11 +578,11 @@ func AI_player_in_area(body):
 		ignoreState = false
 		$AI/Rotation.wait_time = 2; $AI/Rotation.start()
 	
-	if body.crum: 
-		target = body
-		state = true
-		doRotation = true
-		ignoreState = false
+	#if body.crum: 
+		#target = body
+		#state = true
+		#doRotation = true
+		#ignoreState = false
 	#if !(state): 
 		#target = body
 		#state = true
@@ -578,12 +602,13 @@ func AI_player_out_area(body):
 		targetDetails["position"] = Vector2()
 		state = false
 		
-	if body.crum: 
-		target = null
-		state = false
-		#AIcanShoot = false
-		doRotation = true
-		ignoreState = false
+	#if body.crum: 
+		#target = null
+		#state = false
+		##AIcanShoot = false
+		#doRotation = true
+		#ignoreState = false
+		
 	#if !(state): 
 		#print(self.name, " HAS LOST ", body.name)
 		#
@@ -676,9 +701,12 @@ func AI_Detection():
 		targetDirection = $eye.global_rotation_degrees
 		#print("Player direction ",targetDirection)wd
 		#print("bot rotation ",rotation_degrees)
-	else:$RayCast2D.target_position = Vector2(100,0)
+	else:
+		$RayCast2D.target_position = Vector2(100,0)
+	
 	await get_tree().create_timer(0.1).timeout
-	if isAID: AI_Detection()
+	if isAID:
+		AI_Detection()
 #endregion timed looping functions
 
 #region Idle

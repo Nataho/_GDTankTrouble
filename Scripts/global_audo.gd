@@ -12,6 +12,8 @@ extends Node
 	"button2": "res://Assets/Audio/SFX/UI/2.mp3",
 	"button3": "res://Assets/Audio/SFX/UI/3.mp3",
 	"button4": "res://Assets/Audio/SFX/UI/4.mp3",
+	"focus1": "res://Assets/Audio/SFX/UI/ui_world_icon_roll_left.wav",
+	"focus2": "res://Assets/Audio/SFX/UI/ui_world_icon_roll_right.wav",
 }
 
 @onready var music = {
@@ -21,10 +23,11 @@ extends Node
 	"FFA 1": "res://Assets/Audio/Music/FFA 01 OST.mp3",
 	"square roll": "res://Assets/Audio/Music/The Roll of Squares.mp3",
 	
+	"ambience 01": "res://Assets/Audio/Music/Ambience/silver apple archipelago.mp3", #ambience
 	"Prologue 01": "res://Assets/Audio/Music/Prologue/Prologue_01.mp3", #intro
 	"Prologue 02": "res://Assets/Audio/Music/Prologue/Prologue_02.mp3", #loop
 	
-	"Tropikala 01": "",
+	"Tropikala 01": "res://Assets/Audio/Music/The Blocky Plains.mp3",
 }
 
 var characters = {
@@ -392,9 +395,10 @@ func playSFXEND(sound,randPitch):
 #endregion
 
 #region music
-func playMusic(sound):
+func playMusic(sound,volume = 0):
 	#STOP()
 	if MUSIC.stream == load(music[sound]):return
 	MUSIC.stream = load(music[sound])
+	MUSIC.volume_db = volume
 	MUSIC.play()
 #endregion

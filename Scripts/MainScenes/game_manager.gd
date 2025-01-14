@@ -3,6 +3,7 @@ extends Node
 @export var Debug:bool = true
 @export var kiosk:bool = false #founders
 var isIdle = true
+var isPaused = false
 var currentFocus
 const Scenes = {
 	"main": "res://Scenes/main.tscn",
@@ -35,9 +36,14 @@ const Scenes = {
 #region handle saving and loading
 var saving:Dictionary = {
 	"leaderboard": SCORES,
+	"objectives": StoryManager.objectives,
+	"achievements": StoryManager.achievements,
 }
 func UpdateEVERYTHING():
 	saving["leaderboard"] = SCORES
+	saving["objectives"] = StoryManager.objectives
+	saving["achievements"] = StoryManager.achievements
+	
 func Save():
 	UpdateEVERYTHING()
 	var saves = saving
@@ -59,7 +65,11 @@ func LoadGame():
 		var parse_result = json.parse(json_string)
 		if parse_result == OK:
 			var node_data = json.get_data()
+			if "objectives" not in node_data: node_data["objectives"] = StoryManager.objectives
+			if "achievements" not in node_data: node_data["achievements"] = StoryManager.achievements
+			
 			updateLeaderboard(node_data["leaderboard"])
+			updateObjectives(node_data["objectives"])
 			# Ensure that the keys are converted back to integers
 #			var updated_names = {}
 #			for key in node_data.keys():
@@ -91,6 +101,12 @@ func updateLeaderboard(update):
 	SCORES = update
 	add_to_leaderboard()
 	if GameManager.Debug: print("updated leaderboard")
+	
+func updateObjectives(update):
+	if update == null: return
+	StoryManager.objectives = update
+	#for objective in update.keys():
+		#StoryManager.objectives[objective] = update[objective]
 #endregion handle saving ans loading
 
 #region scoring

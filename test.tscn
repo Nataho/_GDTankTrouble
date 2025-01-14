@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://becjegrtokk5p"]
+
+[ext_resource type="PackedScene" uid="uid://chr5bm0rlck45" path="res://Scenes/Prefabs/player.tscn" id="1_nxsvn"]
+
+[node name="test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_nxsvn")]
+position = Vector2(458, 858)
+
+[node name="Player2" parent="." instance=ExtResource("1_nxsvn")]
+position = Vector2(1725, 782)
+isAI = true
+playerIndex = 0

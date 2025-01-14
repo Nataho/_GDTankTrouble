@@ -31,7 +31,7 @@ func playerLeft(body):
 	isUp = false
 	if !interactable: return
 	ourPlayer.interacting.disconnect(interactNPC)
-	ourPlayer = null
+	#ourPlayer = null
 
 func interactNPC():
 	if !isUp: return

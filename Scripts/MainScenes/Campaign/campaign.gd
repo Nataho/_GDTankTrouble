@@ -1,19 +1,22 @@
 extends Control
 
-@onready var buttons = [
-
-]
+var saveIndex = StoryManager.usedSaveIndex
 
 func _ready() -> void:
+	AudioG.playMusic("ambience 01",5)
 	%Prologue.grab_focus()
 	checkCompletion()
 
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("goBack"): 
+		Transition.ChangeScene("main","slideLeft")
+
 func checkCompletion():
 	var objectives = StoryManager.objectives
-	if objectives["Prologue Complete"]: $GridContainer/Tropikala.disabled = false
-	if objectives["Tropikala Complete"]: $GridContainer/AtsuIsland.disabled = false
-	if objectives["Atsu Island Complete"]: $GridContainer/Domageti.disabled = false
-	if objectives["Domageti Complete"]: $GridContainer/Scharbi.disabled = false
+	if objectives[saveIndex]["Prologue Complete"]: $GridContainer/Tropikala.disabled = false
+	if objectives[saveIndex]["Tropikala Complete"]: $GridContainer/AtsuIsland.disabled = false
+	if objectives[saveIndex]["Atsu Island Complete"]: $GridContainer/Domageti.disabled = false
+	if objectives[saveIndex]["Domageti Complete"]: $GridContainer/Scharbi.disabled = false
 
 var pressedButton = {
 	"up": false,
@@ -58,3 +61,15 @@ func buttonInput():
 	else:
 		$right.texture_normal = buttonUp
 		pressedButton["up"] = false
+
+#region startMaps
+func Prologue():
+	AudioG.playSFX("button4",0)
+	StoryManager.currentMap = "Prologue"
+	Transition.ChangeScene("tropikala","slideLeft")
+
+func Tropikala():
+	AudioG.playSFX("button4",0)
+	StoryManager.currentMap = "Tropikala"
+	Transition.ChangeScene("tropikala","slideLeft")
+#endregion startMaps
