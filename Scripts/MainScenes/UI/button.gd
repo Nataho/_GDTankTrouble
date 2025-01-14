@@ -24,6 +24,13 @@ func _ready() -> void:
 func setFontSize():
 	var fntsz = self.get_theme_font_size("font_size")
 	%Text.add_theme_font_size_override("font_size",fntsz)
+	var algnmnt = alignment
+	#%Text.set_horizontal_alignment(algnmnt)
+	if algnmnt == 0: $Anchor.play("left")
+	elif algnmnt == 1: $Anchor.play("RESET")
+	elif algnmnt == 2: $Anchor.play("right")
+		
+	print(%Text.horizontal_alignment)
 	pass
 
 

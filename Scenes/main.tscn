@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://d18qeqmnb3shl"]
+[gd_scene load_steps=24 format=4 uid="uid://d18qeqmnb3shl"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_a2i88"]
-[ext_resource type="FontFile" uid="uid://bbvj3mftecedk" path="res://Assets/Fonts/unicode.futurab.ttf" id="2_cul20"]
 [ext_resource type="Texture2D" uid="uid://by2okstvbdda2" path="res://Assets/Photos/PowerUps/PowerupElephant.png" id="4_f3nhm"]
 [ext_resource type="Texture2D" uid="uid://bq5we2wtwwam8" path="res://Assets/Photos/PowerUps/PowerUpMouse.png" id="5_j01hk"]
+[ext_resource type="PackedScene" uid="uid://ca8rarr1ftfjk" path="res://Scenes/MainScenes/UI/Button.tscn" id="6_7u4uq"]
+[ext_resource type="Shader" path="res://Assets/Godot/Shader/pause.gdshader" id="6_isbi7"]
 [ext_resource type="Texture2D" uid="uid://7sew8fpvcoei" path="res://Assets/Photos/PowerUps/PowerupSpeed.png" id="6_r8ttc"]
 [ext_resource type="Texture2D" uid="uid://c18t63rbu4bv7" path="res://Assets/Photos/player 1.png" id="7_3tdrd"]
+[ext_resource type="Texture2D" uid="uid://87a632y33clt" path="res://Assets/Photos/Main/BLOCKY BLASTERRS.png" id="7_k3t23"]
 [ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="8_es7nf"]
 [ext_resource type="Texture2D" uid="uid://b46sjqti8ep2s" path="res://Assets/Photos/Environment/amongus.png" id="9_q6xal"]
 [ext_resource type="Texture2D" uid="uid://ddsgphcv38lv0" path="res://Assets/Photos/Environment/cracked.png" id="10_hnygs"]
@@ -355,17 +357,46 @@ sources/1 = SubResource("TileSetAtlasSource_3ydk2")
 sources/2 = SubResource("TileSetAtlasSource_c502v")
 sources/3 = SubResource("TileSetAtlasSource_nasmd")
 
-[sub_resource type="LabelSettings" id="LabelSettings_ccbrq"]
-font = ExtResource("2_cul20")
-font_size = 240
-outline_size = 40
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki6uy"]
+shader = ExtResource("6_isbi7")
+shader_parameter/amount = 1.5
 
-[sub_resource type="LabelSettings" id="LabelSettings_1eosx"]
-font = ExtResource("2_cul20")
-font_size = 120
-outline_size = 40
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_51676"]
+resource_name = "start"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiddlePanel/TextureRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.210224, 1),
+"update": 0,
+"values": [Vector2(2618, -21), Vector2(914, -21)]
+}
+
+[sub_resource type="Animation" id="Animation_2ds0w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MiddlePanel/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(914, -21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2d4v"]
+_data = {
+"RESET": SubResource("Animation_2ds0w"),
+"start": SubResource("Animation_51676")
+}
 
 [sub_resource type="Curve" id="Curve_r6xfe"]
 min_value = -1.0
@@ -390,7 +421,7 @@ tile_set = SubResource("TileSet_v7hn2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="NewUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -398,77 +429,93 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Play" type="Button" parent="CanvasLayer/Control"]
+[node name="ScreenBlur" type="ColorRect" parent="CanvasLayer/NewUI"]
+material = SubResource("ShaderMaterial_ki6uy")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -322.0
-offset_top = 10.0
-offset_right = 322.0
-offset_bottom = 183.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 120
-text = "PLAY!"
 
-[node name="Tutorial" type="Button" parent="CanvasLayer/Control"]
-visible = false
+[node name="ScreenPanel" type="ColorRect" parent="CanvasLayer/NewUI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -322.0
-offset_top = 82.0
-offset_right = 322.0
-offset_bottom = 255.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 120
-text = "TUTORIAL"
+color = Color(0, 0, 0, 0.5)
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
-visible = false
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-scale = Vector2(8.46986, 8.46986)
-text = "debug"
-
-[node name="TITLE" type="Label" parent="CanvasLayer/Control"]
+[node name="MiddlePanel" type="ColorRect" parent="CanvasLayer/NewUI"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -649.5
-offset_top = 135.0
-offset_right = 649.5
-offset_bottom = 375.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -427.0
+offset_bottom = 427.0
 grow_horizontal = 2
-text = "BLOCKY BLASTERS"
-label_settings = SubResource("LabelSettings_ccbrq")
-horizontal_alignment = 1
-vertical_alignment = 1
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25)
 
-[node name="Edition" type="Label" parent="CanvasLayer/Control/TITLE"]
-visible = false
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NewUI/MiddlePanel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -319.0
-offset_top = 199.0
-offset_right = 1113.0
-offset_bottom = 320.0
-grow_horizontal = 2
-text = "Founders Week Edition!"
-label_settings = SubResource("LabelSettings_1eosx")
-horizontal_alignment = 1
-vertical_alignment = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1646.0
+offset_top = -448.0
+offset_right = -53.0
+offset_bottom = 448.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_k3t23")
+expand_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/NewUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 213.0
+offset_top = -286.0
+offset_right = 813.0
+offset_bottom = 286.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Play" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "PLAY"
+alignment = 0
+
+[node name="Options" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+text = "OPTIONS"
+alignment = 0
+
+[node name="Credits" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+text = "CREDITS"
+alignment = 0
+
+[node name="Quit" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+text = "QUIT"
+alignment = 0
+
+[node name="Animation" type="AnimationPlayer" parent="CanvasLayer/NewUI"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_d2d4v")
+}
 
 [node name="Particles" type="Node" parent="."]
 
@@ -569,7 +616,5 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
-[connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="buttonPlay"]
-[connection signal="pressed" from="CanvasLayer/Control/Tutorial" to="." method="buttonTutorial"]
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="debug"]
+[connection signal="pressed" from="CanvasLayer/NewUI/VBox/Play" to="." method="buttonPlay"]
 [connection signal="timeout" from="Unattended" to="." method="Unattended"]

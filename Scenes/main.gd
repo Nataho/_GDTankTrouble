@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	%Animation.play("start")
 	loadParticles()
 	GameManager.LoadGame()
 	GameManager.isIdle = false
@@ -8,24 +9,13 @@ func _ready():
 	PlayerG.reset()
 	AudioG.playMusic("main menu")
 	
-	$CanvasLayer/Control/Play.grab_focus()
+	$CanvasLayer/NewUI/VBox/Play.grab_focus()
 
 var pressingJoyButton = false
 var currentFocus
 func _process(delta: float) -> void:
 	currentFocus = get_viewport().gui_get_focus_owner()
-	#if Input.is_joy_button_pressed(0,0):
-		#if not pressingJoyButton:
-			#pressingJoyButton = true
-			#if currentFocus is Button: currentFocus.emit_signal("pressed")
-	#else: pressingJoyButton = false
-#
-#var isMenuButtonPresssing = false
-#func _process(delta: float) -> void:
-	#if Input.is_joy_button_pressed(0,11):
-		#if not isMenuButtonPresssing:
-			#isMenuButtonPresssing = true
-			#print("pressing A")
+
 
 func loadParticles():
 	$Particles/Particle1.show()

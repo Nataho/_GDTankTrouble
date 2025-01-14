@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca8rarr1ftfjk"]
+[gd_scene load_steps=13 format=3 uid="uid://ca8rarr1ftfjk"]
 
 [ext_resource type="Theme" uid="uid://co4kg5fnwqx5g" path="res://Assets/Godot/Themes/buttons_0.tres" id="1_hfswg"]
 [ext_resource type="Script" path="res://Scripts/MainScenes/UI/button.gd" id="2_4jqlb"]
@@ -132,6 +132,61 @@ _data = {
 "selected": SubResource("Animation_o0dfc")
 }
 
+[sub_resource type="Animation" id="Animation_0411b"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:anchors_preset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_on73v"]
+resource_name = "left"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:anchors_preset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_8qy2r"]
+resource_name = "right"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text:anchors_preset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4vm3"]
+_data = {
+"RESET": SubResource("Animation_0411b"),
+"left": SubResource("Animation_on73v"),
+"right": SubResource("Animation_8qy2r")
+}
+
 [sub_resource type="PrismMesh" id="PrismMesh_yajcu"]
 
 [node name="Button" type="Button"]
@@ -140,10 +195,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -569.5
-offset_top = -86.5
-offset_right = 569.5
-offset_bottom = 86.5
+offset_left = -282.0
+offset_top = -86.0
+offset_right = 282.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -164,9 +219,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -0.5
-offset_top = -70.5
+offset_top = -60.0
 offset_right = 0.5
-offset_bottom = 70.5
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_hfswg")
@@ -191,6 +246,11 @@ texture = ExtResource("5_org4c")
 [node name="Animate" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8swik")
+}
+
+[node name="Anchor" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r4vm3")
 }
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
