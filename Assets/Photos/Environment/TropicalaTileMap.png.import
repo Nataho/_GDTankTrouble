@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b51dxsncwq5w5"
-path="res://.godot/imported/map.jpg-c094fd6141cafef6400515fe6abdcfda.ctex"
+uid="uid://b3caodpmh8v36"
+path="res://.godot/imported/TropicalaTileMap.png-5b6d1c3bef4bcb7b032999088369b9a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Photos/Campaign/map.jpg"
-dest_files=["res://.godot/imported/map.jpg-c094fd6141cafef6400515fe6abdcfda.ctex"]
+source_file="res://Assets/Photos/Environment/TropicalaTileMap.png"
+dest_files=["res://.godot/imported/TropicalaTileMap.png-5b6d1c3bef4bcb7b032999088369b9a9.ctex"]
 
 [params]
 
