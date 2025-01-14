@@ -14,13 +14,13 @@ var pressingJoyButton = false
 var currentFocus
 func _process(delta: float) -> void:
 	currentFocus = get_viewport().gui_get_focus_owner()
-	if Input.is_joy_button_pressed(0,0):
-		if not pressingJoyButton:
-			pressingJoyButton = true
-			if currentFocus is Button: currentFocus.emit_signal("pressed")
-	else: pressingJoyButton = false
-
-var isMenuButtonPresssing = false
+	#if Input.is_joy_button_pressed(0,0):
+		#if not pressingJoyButton:
+			#pressingJoyButton = true
+			#if currentFocus is Button: currentFocus.emit_signal("pressed")
+	#else: pressingJoyButton = false
+#
+#var isMenuButtonPresssing = false
 #func _process(delta: float) -> void:
 	#if Input.is_joy_button_pressed(0,11):
 		#if not isMenuButtonPresssing:

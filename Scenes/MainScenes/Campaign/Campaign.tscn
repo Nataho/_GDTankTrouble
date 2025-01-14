@@ -159,3 +159,6 @@ offset_bottom = 1313.0
 texture_normal = ExtResource("3_tucac")
 texture_pressed = ExtResource("4_hfio5")
 stretch_mode = 0
+
+[connection signal="pressed" from="GridContainer/Prologue" to="." method="Prologue"]
+[connection signal="pressed" from="GridContainer/Tropikala" to="." method="Tropikala"]

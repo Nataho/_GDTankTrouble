@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://co4kg5fnwqx5g"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://co4kg5fnwqx5g"]
+
+[ext_resource type="FontFile" uid="uid://b5ewil2731chq" path="res://Assets/Fonts/Agrandir - Free For Personal Use/Agrandir-TextBold.otf" id="1_en5cx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tn0i5"]
 
 [resource]
+Button/fonts/font = ExtResource("1_en5cx")
 Button/styles/focus = SubResource("StyleBoxEmpty_tn0i5")
+Label/fonts/font = ExtResource("1_en5cx")

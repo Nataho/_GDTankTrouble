@@ -2,7 +2,7 @@ extends Node
 #region important variables
 var isDialogue
 var currentMap = "Prologue"
-
+var usedSaveIndex = 0
 const maps = [ #reference for Current Map variable
 	"Prologue", #for tropikala player location
 	"Tropikala", #prologue and chapter 1
@@ -11,15 +11,34 @@ const maps = [ #reference for Current Map variable
 	"Scharbi", #hapter 4
 	"Mirage Island", #chapter 6
 ]
-var objectives = {
-	"Prologue Complete": false,
-	"Tropikala Complete": false,
-	"Atsu Island Complete": false,
-	"Domageti Complete": false,
-	"Scharbi Complete": false,
-	"Mirage Island Complete": false,
-}
-
+var objectives = [
+	{
+		"Prologue Complete": false,
+		"Tropikala Complete": false,
+		"Atsu Island Complete": false,
+		"Domageti Complete": false,
+		"Scharbi Complete": false,
+		"Mirage Island Complete": false,
+	},
+	{
+		"Prologue Complete": false,
+		"Tropikala Complete": false,
+		"Atsu Island Complete": false,
+		"Domageti Complete": false,
+		"Scharbi Complete": false,
+		"Mirage Island Complete": false,
+	},
+	{
+		"Prologue Complete": false,
+		"Tropikala Complete": false,
+		"Atsu Island Complete": false,
+		"Domageti Complete": false,
+		"Scharbi Complete": false,
+		"Mirage Island Complete": false,
+	},
+	
+	
+]
 var achievements = {
 	"A New Companion": false, #complete the prologue
 	"A Not So Fun Vacation": false, #complete Tropikala A side
@@ -122,7 +141,7 @@ var dialogue:Dictionary = {
 		],
 		#endregion main storyline
 		
-		#region npcs
+		#region misc
 		"Ric01": [
 			[npc1[2][0], npc1, "Huy"],
 			[p1[2][0], p1, "Huh?"],
@@ -130,18 +149,33 @@ var dialogue:Dictionary = {
 			[p1[2][0], p1, "What do you mean?"],
 			[npc1[2][0], npc1, "I gave a name to one of the islands"],
 			[npc1[2][0], npc1, "It's so funny"],
+		],
+		
+		"Not Yet": [
+			[p1[2][0], p1, "i shouldn't go there yet..."]
 		]
-		#endregion npcs
+		#endregion misc
 		
 		
 	},
 	"Chapter 1": {
+		"start": [
+			[p1[2][0], p1, "this is it.."],
+			[p1[2][0], p1, "let's save them"],
+		],
+		#region misc
+		"boundary": [
+			[c2[2][0], c2, "you should't go there"],
+		]
+		#endregion misc
+		
 	}
 }
 
 var DialogueBox = preload("res://Scenes/MainScenes/dialogue_box.tscn")
 var myDbox:DBOX
 func startDialogue(chapter,part,node): #node is the node that calls the function
+	if myDbox != null: return
 	myDbox = DialogueBox.instantiate()
 	myDbox.setDialogue(dialogue[chapter][part])
 	node.add_child(myDbox)

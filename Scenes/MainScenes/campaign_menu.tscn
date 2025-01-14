@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbrlb48p64h6s"]
+[gd_scene load_steps=7 format=3 uid="uid://cbrlb48p64h6s"]
 
 [ext_resource type="Script" path="res://Scripts/MainScenes/campaign_menu.gd" id="1_q0wq8"]
 [ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="2_3gpra"]
+[ext_resource type="LabelSettings" uid="uid://dm644nfi0nxiy" path="res://Assets/_Settings/LabelSettings/Main.tres" id="3_8y7w8"]
+[ext_resource type="Texture2D" uid="uid://b1qq73xwf0ffx" path="res://Assets/Photos/Controller Buttons/Button_A.png" id="4_6emr6"]
+[ext_resource type="Texture2D" uid="uid://cmp6md46sw63r" path="res://Assets/Photos/Controller Buttons/Button_Y.png" id="5_m3s7n"]
+[ext_resource type="Texture2D" uid="uid://dptj47katwxjv" path="res://Assets/Photos/Controller Buttons/Button_B.png" id="6_v6cg2"]
 
 [node name="Campaign Menu" type="Control"]
 layout_mode = 3
@@ -19,11 +23,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="Save States"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Save1" type="Button" parent="Save States"]
 layout_mode = 1
@@ -54,6 +53,13 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_3gpra")
 theme_override_font_sizes/font_size = 120
 text = "FILE 1"
+
+[node name="Chapters" type="Label" parent="Save States/Save1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Chapters :"
+label_settings = ExtResource("3_8y7w8")
 
 [node name="Save2" type="Button" parent="Save States"]
 layout_mode = 1
@@ -101,6 +107,13 @@ pivot_offset = Vector2(304, 47)
 theme_override_fonts/font = ExtResource("2_3gpra")
 theme_override_font_sizes/font_size = 80
 text = "UNAVAILABLE"
+
+[node name="Chapters" type="Label" parent="Save States/Save2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Chapters :"
+label_settings = ExtResource("3_8y7w8")
 
 [node name="Save3" type="Button" parent="Save States"]
 layout_mode = 1
@@ -152,6 +165,13 @@ theme_override_fonts/font = ExtResource("2_3gpra")
 theme_override_font_sizes/font_size = 80
 text = "UNAVAILABLE"
 
+[node name="Chapters" type="Label" parent="Save States/Save3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Chapters :"
+label_settings = ExtResource("3_8y7w8")
+
 [node name="otherUI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -182,6 +202,7 @@ offset_top = -33.5
 offset_right = 67.0
 offset_bottom = 33.5
 grow_vertical = 2
+texture = ExtResource("4_6emr6")
 
 [node name="Label" type="Label" parent="otherUI/Confirm/Icon"]
 layout_mode = 1
@@ -220,6 +241,7 @@ offset_top = -33.5
 offset_right = 67.0
 offset_bottom = 33.5
 grow_vertical = 2
+texture = ExtResource("5_m3s7n")
 
 [node name="Label" type="Label" parent="otherUI/Delete/Icon"]
 layout_mode = 1
@@ -260,6 +282,7 @@ offset_right = 33.5
 offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_v6cg2")
 
 [node name="Label" type="Label" parent="otherUI/Back/Icon"]
 layout_mode = 1
