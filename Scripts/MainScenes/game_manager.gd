@@ -1,5 +1,5 @@
 extends Node
-@export var Version:String = "0.0.16"
+@export var Version:String = "0.0.17"
 @export var Debug:bool = true
 @export var kiosk:bool = false #founders
 var isIdle = true
@@ -145,8 +145,11 @@ func _ready() -> void:
 	add_to_leaderboard()
 
 func changeScene(scene: String):
+	if scene == "exit": get_tree().quit(); return
 	get_tree().change_scene_to_file(Scenes[scene])
 
+func quit():
+	Transition.ChangeScene("exit", "VCloseIn")
 #region testing #this region must be deleted or commented after testing
 #func _process(delta: float) -> void:
 	#testing()

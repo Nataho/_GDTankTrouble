@@ -39,7 +39,6 @@ focus_neighbor_left = NodePath("../Tropikala")
 focus_neighbor_top = NodePath("../Scharbi")
 focus_neighbor_right = NodePath("../Tropikala")
 focus_neighbor_bottom = NodePath("../AtsuIsland")
-mouse_filter = 0
 text = "Prologue"
 
 [node name="Tropikala" parent="GridContainer" instance=ExtResource("1_7c6aw")]
@@ -49,7 +48,6 @@ focus_neighbor_left = NodePath("../Prologue")
 focus_neighbor_top = NodePath("../MirageIsland")
 focus_neighbor_right = NodePath("../Prologue")
 focus_neighbor_bottom = NodePath("../Domageti")
-mouse_filter = 0
 disabled = true
 text = "Tropikala"
 
@@ -60,7 +58,6 @@ focus_neighbor_left = NodePath("../Domageti")
 focus_neighbor_top = NodePath("../Prologue")
 focus_neighbor_right = NodePath("../Domageti")
 focus_neighbor_bottom = NodePath("../Scharbi")
-mouse_filter = 0
 disabled = true
 text = "Atsu Island"
 
@@ -71,7 +68,6 @@ focus_neighbor_left = NodePath("../AtsuIsland")
 focus_neighbor_top = NodePath("../Tropikala")
 focus_neighbor_right = NodePath("../AtsuIsland")
 focus_neighbor_bottom = NodePath("../MirageIsland")
-mouse_filter = 0
 disabled = true
 text = "Domageti"
 
@@ -82,7 +78,6 @@ focus_neighbor_left = NodePath("../MirageIsland")
 focus_neighbor_top = NodePath("../AtsuIsland")
 focus_neighbor_right = NodePath("../MirageIsland")
 focus_neighbor_bottom = NodePath("../Prologue")
-mouse_filter = 0
 disabled = true
 text = "Scharbi"
 
@@ -93,7 +88,6 @@ focus_neighbor_left = NodePath("../Scharbi")
 focus_neighbor_top = NodePath("../Domageti")
 focus_neighbor_right = NodePath("../Scharbi")
 focus_neighbor_bottom = NodePath("../Tropikala")
-mouse_filter = 0
 disabled = true
 text = "Mirage Island"
 

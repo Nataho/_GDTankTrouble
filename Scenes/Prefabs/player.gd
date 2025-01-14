@@ -134,6 +134,11 @@ func Died():
 	if tankParent && !isAI && PlayerG.isSurvival:
 		tankParent.died()
 	
+	if isCampaign && !isAI:
+		StoryManager.livesNode.deductLife(playerIndex)
+		StoryManager.livesNode.showAll()
+		if StoryManager.livesNode.lives[playerIndex] < 0:
+			StoryManager.livesNode.startRescue()
 	power_reset()
 	self.hide() #hide player
 	self.set_process_mode(4) #process of player is disabled
@@ -146,13 +151,20 @@ func Died():
 func Respawn():
 	#print("respawning")
 	if !canRespawn: return
+	
 	if isCampaign:
-		
+		if StoryManager.livesNode.lives[playerIndex] < 0 && !isAI: 
+			print("attempt respawn failed")
+			$Timer.start()
+			return
 		print("respawning")
 		show() #hide player
 		set_process_mode(0)
 		canShoot_Move = true
 		$Timer.stop()
+		moved.emit()
+		idle_remove()
+		if !isAI: StoryManager.livesNode.showAll()
 		return
 	
 	power_reset()
@@ -703,7 +715,7 @@ func AI_Detection():
 		#print("bot rotation ",rotation_degrees)
 	else:
 		$RayCast2D.target_position = Vector2(100,0)
-	
+	 
 	await get_tree().create_timer(0.1).timeout
 	if isAID:
 		AI_Detection()

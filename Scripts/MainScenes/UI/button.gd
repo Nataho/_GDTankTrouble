@@ -60,7 +60,9 @@ func focused():
 		modulate = Color.SALMON
 		return
 		
-	modulate = Color.DARK_KHAKI
+	#modulate = Color.PALE_GREEN
+	modulate = Color.GOLD
+	#modulate = Color.DARK_KHAKI
 
 func unfocused():
 	animate.play("deselected")

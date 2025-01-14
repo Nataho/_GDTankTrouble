@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready():
+	%Version.text = str(GameManager.Version)
+	if GameManager.kiosk: $Unattended.start()
 	%Animation.play("start")
 	loadParticles()
 	GameManager.LoadGame()
@@ -22,19 +24,18 @@ func loadParticles():
 	$Particles/Particle2.show()
 	$Particles/Particle3.show()
 	$Particles/Particle4.show()
-	
+
 func buttonPlay():
 	AudioG.playSFX("button1",0)
 	Transition.ChangeScene("modes","slideRight")
 
-func buttonTutorial():
-	Transition.ChangeScene("tutorial","dissolve")
-
-func debug():
-	get_tree().change_scene_to_file("res://Scenes/MainScenes/player_menu.tscn")
+func buttonQuit():
+	GameManager.quit()
 
 func _input(event):
 	if event is InputEventMouseMotion:
+		if !GameManager.kiosk: return
+		
 		var mouse_movement = event.relative
 		$Unattended.start()
 

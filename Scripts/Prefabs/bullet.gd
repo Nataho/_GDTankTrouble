@@ -91,7 +91,10 @@ func hit(body):
 			if isAI && isCampaign: return
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1
 			PlayerG.PlayerScore[playerIndex]["game score"] += 1
-			if isCampaign: return
+			if isCampaign:
+				if body.isAI: StoryManager.livesNode.rescueTanks()
+				return
+				
 			if !PlayerG.activeTankColor[body.playerIndex] == PlayerG.activeTankColor[playerIndex]: PlayerG.teamScore[PlayerG.activeTankColor[playerIndex]] +=1 #team score
 			if PlayerG.isSurvival && !PlayerG.isAI[playerIndex]: PlayerG.SURVIVALKill()
 		if GameManager.Debug: print("Player ", playerIndex, "'s score is: ", PlayerG.PlayerScore[playerIndex])

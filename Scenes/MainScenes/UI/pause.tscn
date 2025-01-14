@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.5)
+color = Color(0, 0, 0, 0.7)
 
 [node name="SidePanel" type="ColorRect" parent="."]
 process_mode = 3
@@ -61,17 +61,27 @@ process_mode = 3
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../quit")
-focus_neighbor_bottom = NodePath("../options")
+focus_neighbor_bottom = NodePath("../restart")
 theme_override_font_sizes/font_size = 70
 text = "RESUME"
+
+[node name="restart" parent="SidePanel/Selection" instance=ExtResource("1_74hrk")]
+process_mode = 3
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../resume")
+focus_neighbor_bottom = NodePath("../options")
+theme_override_font_sizes/font_size = 70
+text = "RESTART CHAPTER"
 
 [node name="options" parent="SidePanel/Selection" instance=ExtResource("1_74hrk")]
 process_mode = 3
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
-focus_neighbor_top = NodePath("../resume")
+focus_neighbor_top = NodePath("../restart")
 focus_neighbor_bottom = NodePath("../save_exit")
 theme_override_font_sizes/font_size = 70
+disabled = true
 text = "OPTIONS"
 
 [node name="save_exit" parent="SidePanel/Selection" instance=ExtResource("1_74hrk")]
@@ -81,6 +91,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../options")
 focus_neighbor_bottom = NodePath("../mode select")
 theme_override_font_sizes/font_size = 70
+disabled = true
 text = "SAVE & EXIT"
 metadata/_edit_vertical_guides_ = [709.0]
 
@@ -117,3 +128,4 @@ metadata/_edit_vertical_guides_ = [709.0]
 [connection signal="pressed" from="SidePanel/Selection/resume" to="." method="resume"]
 [connection signal="pressed" from="SidePanel/Selection/mode select" to="." method="modeSelect"]
 [connection signal="pressed" from="SidePanel/Selection/Map" to="." method="map"]
+[connection signal="pressed" from="SidePanel/Selection/quit" to="." method="quit"]
