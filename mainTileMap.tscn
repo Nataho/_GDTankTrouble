@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnybsixdqwqbu"]
+[gd_scene load_steps=22 format=3 uid="uid://bnybsixdqwqbu"]
 
 [ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="1_yeqb4"]
 [ext_resource type="Texture2D" uid="uid://b46sjqti8ep2s" path="res://Assets/Photos/Environment/amongus.png" id="2_pxffr"]
 [ext_resource type="Texture2D" uid="uid://ddsgphcv38lv0" path="res://Assets/Photos/Environment/cracked.png" id="3_5i1nd"]
 [ext_resource type="Texture2D" uid="uid://od7k6do3sjad" path="res://Assets/Photos/Environment/TankInfo.png" id="4_bjsto"]
+[ext_resource type="Texture2D" uid="uid://b3caodpmh8v36" path="res://Assets/Photos/Environment/TropicalaTileMap.png" id="5_nqypp"]
+[ext_resource type="Texture2D" uid="uid://dxattf56s1ot3" path="res://Assets/Photos/Environment/LabTileMap.png" id="5_pgpvu"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0p5ji"]
 tile_data = PackedInt32Array(0, 327680, 0, 65536, 327680, 1, 131072, 327680, 2, 1, 393216, 0, 65537, 393216, 1, 131073, 393216, 2, 2, 458752, 0, 65538, 458752, 1, 131074, 458752, 2)
@@ -20,7 +22,6 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
-3:0/0 = 0
 4:0/0 = 0
 4:0/0/terrain_set = 0
 8:0/0 = 0
@@ -142,7 +143,6 @@ texture_region_size = Vector2i(32, 32)
 27:3/0 = 0
 0:4/0 = 0
 1:4/0 = 0
-2:4/0 = 0
 8:4/0 = 0
 9:4/0 = 0
 10:4/0 = 0
@@ -165,7 +165,6 @@ texture_region_size = Vector2i(32, 32)
 27:4/0 = 0
 0:5/0 = 0
 1:5/0 = 0
-2:5/0 = 0
 4:5/0 = 0
 5:5/0 = 0
 6:5/0 = 0
@@ -381,6 +380,7 @@ texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 7:0/0/terrain_set = 0
 7:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xranv"]
 texture = ExtResource("2_pxffr")
@@ -397,6 +397,131 @@ texture = ExtResource("4_bjsto")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5u16u"]
+texture = ExtResource("5_nqypp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+8:0/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+14:0/0 = 0
+16:0/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+8:2/0 = 0
+16:2/0 = 0
+2:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+8:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+16:4/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+8:6/0 = 0
+10:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+16:6/0 = 0
+0:7/0 = 0
+2:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+8:8/0 = 0
+10:8/0 = 0
+12:8/0 = 0
+14:8/0 = 0
+16:8/0 = 0
+18:9/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+10:10/0 = 0
+12:10/0 = 0
+14:10/0 = 0
+16:10/0 = 0
+18:10/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:12/0 = 0
+10:12/0 = 0
+12:12/0 = 0
+14:12/0 = 0
+16:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+5:14/0 = 0
+8:14/0 = 0
+10:14/0 = 0
+12:14/0 = 0
+14:14/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+10:16/0 = 0
+12:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+19:19/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_on6pr"]
+texture = ExtResource("5_pgpvu")
+texture_region_size = Vector2i(32, 32)
+3:0/0 = 0
+2:4/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_demy1"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 258
@@ -409,6 +534,8 @@ sources/0 = SubResource("TileSetAtlasSource_lxwqf")
 sources/1 = SubResource("TileSetAtlasSource_xranv")
 sources/2 = SubResource("TileSetAtlasSource_wmsaj")
 sources/3 = SubResource("TileSetAtlasSource_i7blb")
+sources/5 = SubResource("TileSetAtlasSource_on6pr")
+sources/4 = SubResource("TileSetAtlasSource_5u16u")
 pattern_0 = SubResource("TileMapPattern_0p5ji")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6i0un"]
@@ -706,6 +833,59 @@ texture = ExtResource("4_bjsto")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u3cbv"]
+texture = ExtResource("5_nqypp")
+texture_region_size = Vector2i(32, 32)
+8:0/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+14:0/0 = 0
+16:0/0 = 0
+8:2/0 = 0
+16:2/0 = 0
+8:4/0 = 0
+16:4/0 = 0
+8:6/0 = 0
+16:6/0 = 0
+8:8/0 = 0
+10:8/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_y28j8"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 258
@@ -719,6 +899,7 @@ sources/0 = SubResource("TileSetAtlasSource_6i0un")
 sources/1 = SubResource("TileSetAtlasSource_bocba")
 sources/2 = SubResource("TileSetAtlasSource_wee3b")
 sources/3 = SubResource("TileSetAtlasSource_i8gbe")
+sources/4 = SubResource("TileSetAtlasSource_u3cbv")
 pattern_0 = SubResource("TileMapPattern_0p5ji")
 
 [node name="mainTileMapSet" type="Node2D"]

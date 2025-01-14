@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b51dxsncwq5w5"
-path="res://.godot/imported/map.jpg-c094fd6141cafef6400515fe6abdcfda.ctex"
+uid="uid://dxattf56s1ot3"
+path="res://.godot/imported/LabTileMap.png-f434e8a24d20113467f8ef30f6708e90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Photos/Campaign/map.jpg"
-dest_files=["res://.godot/imported/map.jpg-c094fd6141cafef6400515fe6abdcfda.ctex"]
+source_file="res://Assets/Photos/Environment/LabTileMap.png"
+dest_files=["res://.godot/imported/LabTileMap.png-f434e8a24d20113467f8ef30f6708e90.ctex"]
 
 [params]
 

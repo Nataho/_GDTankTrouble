@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b51dxsncwq5w5"
-path="res://.godot/imported/map.jpg-c094fd6141cafef6400515fe6abdcfda.ctex"
+uid="uid://cfyih5rgtct62"
+path="res://.godot/imported/scifitiles-sheet.png-4c3ea43ded8d1a83ac04c44f869c92c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Photos/Campaign/map.jpg"
-dest_files=["res://.godot/imported/map.jpg-c094fd6141cafef6400515fe6abdcfda.ctex"]
+source_file="res://Assets/Godot/scifitiles-sheet.png"
+dest_files=["res://.godot/imported/scifitiles-sheet.png-4c3ea43ded8d1a83ac04c44f869c92c2.ctex"]
 
 [params]
 
