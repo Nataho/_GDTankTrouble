@@ -49,4 +49,10 @@ func ChangeScene(scene:String, transition:String):
 		await Animate.animation_finished
 		GameManager.changeScene(scene)
 		Animate.play_backwards("slideDown")
+	
+	elif transition == "VCloseIn":
+		Animate.play("VCloseIn")
+		await Animate.animation_finished
+		GameManager.changeScene(scene)
+		Animate.play_backwards("VCloseIn")
 	#endregion

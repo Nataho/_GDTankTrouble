@@ -2,25 +2,36 @@ extends CanvasLayer
 class_name PAUSE
 
 func _ready() -> void:
-	#Engine.time_scale = 0
 	get_tree().paused = true
 	GameManager.isPaused = true
 	$SidePanel/Selection/resume.grab_focus()
 
-func resume():
-	#Engine.time_scale = 1
+func unPause():
 	get_tree().paused = false
 	GameManager.isPaused = false
+	
+func resume():
+	unPause()
 	queue_free()
 
+func restart():
+	unPause()
+	queue_free()
+	Transition.ChangeScene("Tropikala","slideLeft")
+	
+
 func modeSelect():
-	get_tree().paused = false
+	unPause()
 	Transition.ChangeScene("modes","slideLeft")
 
 func map():
-	get_tree().paused = false
+	unPause()
 	Transition.ChangeScene("campaign","slideLeft")
-	
+
+func quit():
+	unPause()
+	GameManager.quit()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		resume()

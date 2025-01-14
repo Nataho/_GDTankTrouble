@@ -92,6 +92,7 @@ func _ready() -> void:
 	mainCamZoom = 4
 	
 	await get_tree().create_timer(1.5).timeout
+	initiateLives()
 	startChapter()
 	
 func _process(delta: float) -> void:
@@ -145,6 +146,12 @@ func handleCam(delta):
 	camPos.x = lerpf(camPos.x,newCamPos.x,5*delta)
 	camPos.y = lerpf(camPos.y,newCamPos.y,5*delta)
 	main_cam.global_position = camPos
+
+func initiateLives():
+	var livesFile = load("res://Scenes/MainScenes/UI/lives.tscn")
+	var livesNode = livesFile.instantiate()
+	StoryManager.livesNode = livesNode
+	add_child(livesNode)
 #endregion basic functions
 
 #region playerHandler

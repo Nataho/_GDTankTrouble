@@ -3,6 +3,7 @@ extends Node
 var isDialogue
 var currentMap = "Prologue"
 var usedSaveIndex = 0
+var livesNode:LIVES = null
 const maps = [ #reference for Current Map variable
 	"Prologue", #for tropikala player location
 	"Tropikala", #prologue and chapter 1

@@ -1,0 +1,397 @@
+[gd_scene load_steps=20 format=3 uid="uid://bftvtufs7ypyp"]
+
+[ext_resource type="Script" path="res://Scripts/MainScenes/UI/lives.gd" id="1_6w285"]
+[ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="1_7nas1"]
+[ext_resource type="Shader" path="res://Assets/Godot/Shader/pause.gdshader" id="1_xurrh"]
+[ext_resource type="Texture2D" uid="uid://c18t63rbu4bv7" path="res://Assets/Photos/player 1.png" id="2_ca3e4"]
+[ext_resource type="Texture2D" uid="uid://dbfgu66vvhvu4" path="res://Assets/Photos/Main/Heart.webp" id="5_ii47b"]
+
+[sub_resource type="Animation" id="Animation_kpii4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/5 Players:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-260, 69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Lives:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(57, 74)]
+}
+
+[sub_resource type="Animation" id="Animation_p87l6"]
+resource_name = "ShowAll"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/5 Players:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.31864, 1),
+"update": 0,
+"values": [Vector2(-260, 69), Vector2(14, 69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Lives:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.318, 1),
+"update": 0,
+"values": [Vector2(100, 74), Vector2(-200, 74)]
+}
+
+[sub_resource type="Animation" id="Animation_fia2p"]
+resource_name = "ShowIndividual"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/5 Players:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.329877, 1),
+"update": 0,
+"values": [Vector2(14, 69), Vector2(-260, 69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Lives:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.329877, 1),
+"update": 0,
+"values": [Vector2(-150, 74), Vector2(100, 74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uywh"]
+_data = {
+"RESET": SubResource("Animation_kpii4"),
+"ShowAll": SubResource("Animation_p87l6"),
+"ShowIndividual": SubResource("Animation_fia2p")
+}
+
+[sub_resource type="Animation" id="Animation_k3gd6"]
+resource_name = "Warn"
+length = 2.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goods:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_te3o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goods:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3opbk"]
+resource_name = "Goods"
+length = 2.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goods:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wnn0"]
+_data = {
+"Goods": SubResource("Animation_3opbk"),
+"RESET": SubResource("Animation_te3o2"),
+"Warn": SubResource("Animation_k3gd6")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_niyiv"]
+bg_color = Color(0.448683, 0.107992, 0.00664623, 0)
+border_width_left = 200
+border_width_top = 200
+border_width_right = 200
+border_width_bottom = 200
+border_color = Color(0.766304, 0, 0.151866, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_nb1ly"]
+Panel/styles/panel = SubResource("StyleBoxFlat_niyiv")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0la02"]
+bg_color = Color(0.448683, 0.107992, 0.00664623, 0)
+border_width_left = 200
+border_width_top = 200
+border_width_right = 200
+border_width_bottom = 200
+border_color = Color(6.257e-06, 0.855398, 0.406058, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_yhwn0"]
+Panel/styles/panel = SubResource("StyleBoxFlat_0la02")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtwcq"]
+shader = ExtResource("1_xurrh")
+shader_parameter/amount = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_onx3l"]
+font = ExtResource("1_7nas1")
+font_size = 60
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Lives" type="CanvasLayer"]
+script = ExtResource("1_6w285")
+
+[node name="Animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4uywh")
+}
+
+[node name="PanelAnimate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4wnn0")
+}
+
+[node name="Warn" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_nb1ly")
+
+[node name="Goods" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_yhwn0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5 Players" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_xtwcq")
+layout_mode = 1
+offset_left = -260.0
+offset_top = 69.0
+offset_right = -25.0
+offset_bottom = 479.0
+
+[node name="Panel" type="Panel" parent="Control/5 Players"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/5 Players/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 222.0
+offset_bottom = 401.0
+theme_override_constants/separation = 10
+
+[node name="P_-1" type="HBoxContainer" parent="Control/5 Players/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Tank" type="TextureRect" parent="Control/5 Players/Panel/VBoxContainer/P_-1"]
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+texture = ExtResource("2_ca3e4")
+
+[node name="Lives" type="Label" parent="Control/5 Players/Panel/VBoxContainer/P_-1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7nas1")
+theme_override_font_sizes/font_size = 60
+text = "x0"
+label_settings = SubResource("LabelSettings_onx3l")
+
+[node name="P_0" type="HBoxContainer" parent="Control/5 Players/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Tank" type="TextureRect" parent="Control/5 Players/Panel/VBoxContainer/P_0"]
+modulate = Color(0.627451, 1, 1, 1)
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+texture = ExtResource("2_ca3e4")
+
+[node name="Lives" type="Label" parent="Control/5 Players/Panel/VBoxContainer/P_0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7nas1")
+theme_override_font_sizes/font_size = 60
+text = "x0"
+label_settings = SubResource("LabelSettings_onx3l")
+
+[node name="P_1" type="HBoxContainer" parent="Control/5 Players/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Tank" type="TextureRect" parent="Control/5 Players/Panel/VBoxContainer/P_1"]
+modulate = Color(1, 0.619608, 0.619608, 1)
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+texture = ExtResource("2_ca3e4")
+
+[node name="Lives" type="Label" parent="Control/5 Players/Panel/VBoxContainer/P_1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7nas1")
+theme_override_font_sizes/font_size = 60
+text = "x0"
+label_settings = SubResource("LabelSettings_onx3l")
+
+[node name="P_2" type="HBoxContainer" parent="Control/5 Players/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Tank" type="TextureRect" parent="Control/5 Players/Panel/VBoxContainer/P_2"]
+modulate = Color(0.753481, 1, 0.810324, 1)
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+texture = ExtResource("2_ca3e4")
+
+[node name="Lives" type="Label" parent="Control/5 Players/Panel/VBoxContainer/P_2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7nas1")
+theme_override_font_sizes/font_size = 60
+text = "x0"
+label_settings = SubResource("LabelSettings_onx3l")
+
+[node name="P_3" type="HBoxContainer" parent="Control/5 Players/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Tank" type="TextureRect" parent="Control/5 Players/Panel/VBoxContainer/P_3"]
+modulate = Color(1, 1, 0.635294, 1)
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+texture = ExtResource("2_ca3e4")
+
+[node name="Lives" type="Label" parent="Control/5 Players/Panel/VBoxContainer/P_3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_7nas1")
+theme_override_font_sizes/font_size = 60
+text = "x0"
+label_settings = SubResource("LabelSettings_onx3l")
+
+[node name="Lives" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 99.9999
+offset_top = 74.0
+offset_right = 184.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("1_7nas1")
+theme_override_font_sizes/font_size = 60
+text = "x0"
+label_settings = SubResource("LabelSettings_onx3l")
+
+[node name="TextureRect" type="TextureRect" parent="Control/Lives"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -32.5
+offset_right = -10.0
+offset_bottom = 33.5
+grow_vertical = 2
+texture = ExtResource("5_ii47b")
+expand_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
