@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d18qeqmnb3shl"]
+[gd_scene load_steps=25 format=4 uid="uid://d18qeqmnb3shl"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_a2i88"]
 [ext_resource type="Texture2D" uid="uid://by2okstvbdda2" path="res://Assets/Photos/PowerUps/PowerupElephant.png" id="4_f3nhm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c18t63rbu4bv7" path="res://Assets/Photos/player 1.png" id="7_3tdrd"]
 [ext_resource type="Texture2D" uid="uid://87a632y33clt" path="res://Assets/Photos/Main/BLOCKY BLASTERRS.png" id="7_k3t23"]
 [ext_resource type="Texture2D" uid="uid://g1j0m05x1b3o" path="res://Assets/Photos/Environment/scifitiles-sheet.png" id="8_es7nf"]
+[ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="9_fbvfb"]
 [ext_resource type="Texture2D" uid="uid://b46sjqti8ep2s" path="res://Assets/Photos/Environment/amongus.png" id="9_q6xal"]
 [ext_resource type="Texture2D" uid="uid://ddsgphcv38lv0" path="res://Assets/Photos/Environment/cracked.png" id="10_hnygs"]
 [ext_resource type="Texture2D" uid="uid://od7k6do3sjad" path="res://Assets/Photos/Environment/TankInfo.png" id="11_ar71u"]
@@ -386,8 +387,8 @@ tracks/0/path = NodePath("MiddlePanel/TextureRect:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.210224, 1),
+"times": PackedFloat32Array(0.4, 1),
+"transitions": PackedFloat32Array(0.307785, 1),
 "update": 0,
 "values": [Vector2(2618, -21), Vector2(914, -21)]
 }
@@ -490,24 +491,34 @@ theme_override_constants/separation = 20
 [node name="Play" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Options")
 text = "PLAY"
 alignment = 0
 
 [node name="Options" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Credits")
+disabled = true
 text = "OPTIONS"
 alignment = 0
 
 [node name="Credits" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../Quit")
+disabled = true
 text = "CREDITS"
 alignment = 0
 
 [node name="Quit" parent="CanvasLayer/NewUI/VBox" instance=ExtResource("6_7u4uq")]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Play")
 text = "QUIT"
 alignment = 0
 
@@ -516,6 +527,23 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_d2d4v")
 }
+
+[node name="Version" type="Label" parent="CanvasLayer/NewUI"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -110.0
+offset_right = 320.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_fbvfb")
+theme_override_font_sizes/font_size = 60
+text = "xx.xx.xx"
+vertical_alignment = 1
 
 [node name="Particles" type="Node" parent="."]
 
@@ -614,7 +642,7 @@ environment = SubResource("Environment_pty2a")
 process_callback = 0
 wait_time = 15.0
 one_shot = true
-autostart = true
 
 [connection signal="pressed" from="CanvasLayer/NewUI/VBox/Play" to="." method="buttonPlay"]
+[connection signal="pressed" from="CanvasLayer/NewUI/VBox/Quit" to="." method="buttonQuit"]
 [connection signal="timeout" from="Unattended" to="." method="Unattended"]

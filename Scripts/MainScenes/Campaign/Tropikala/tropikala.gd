@@ -40,7 +40,8 @@ var objectives = {
 	
 	$"Area Preview/checkpoints/Chapter 1/room1/Preview", #8
 	$"Area Preview/checkpoints/Chapter 1/room2/Preview", #9
-	
+	$"Area Preview/checkpoints/Chapter 1/room3/preview", #10
+	$"Area Preview/checkpoints/Chapter 1/End/preview", #11
 	
 ]
 @onready var checkpointSpawns = {
@@ -48,6 +49,7 @@ var objectives = {
 	1: $"Area Preview/checkpoints/Prologue/Tutorial2/spawn",
 	8: $"Area Preview/checkpoints/Chapter 1/room1/spawn",
 	9: $"Area Preview/checkpoints/Chapter 1/room2/spawn",
+	10: $"Area Preview/checkpoints/Chapter 1/room3/spawn",
 	
 }
 
@@ -147,16 +149,23 @@ func handleCam(delta):
 	camPos.y = lerpf(camPos.y,newCamPos.y,5*delta)
 	main_cam.global_position = camPos
 
+func quickSwitch():
+	main_cam.position_smoothing_enabled = false
+	await get_tree().create_timer(0.5).timeout
+	main_cam.position_smoothing_enabled = true
+	
+
 func initiateLives():
 	var livesFile = load("res://Scenes/MainScenes/UI/lives.tscn")
-	var livesNode = livesFile.instantiate()
+	var livesNode:LIVES = livesFile.instantiate()
 	StoryManager.livesNode = livesNode
+	livesNode.players = players
 	add_child(livesNode)
 #endregion basic functions
 
 #region playerHandler
 func initializePlayers():
-	
+	checkEveryoneIdle()
 	var index = -1 #use index+1 for local index
 	while index < 4: #idle
 		if StoryManager.currentMap == "Tropikala": #for chapter 1
@@ -173,7 +182,7 @@ func initializePlayers():
 			players[index+1].moved.connect(startCam)
 		index +=1
 	
-var playerCam
+var playerCam:Player
 var checkpointCam 
 var checkpointSpawn
 func changeCamera(isPlayer = true, checkpoint = null):
@@ -188,9 +197,49 @@ func changeCamera(isPlayer = true, checkpoint = null):
 		if checkpoint == null: return
 		checkpointCam = checkpoint
 
+var noActivePlayer = false
+func checkEveryoneIdle(game0ver = false):
+	if game0ver: return
+	var active := 0
+	for player:Player in players:
+		if !player.isIdle: active += 1
+	
+	if active == 0:
+		noActivePlayer = true
+		if StoryManager.livesNode != null: 
+			if StoryManager.livesNode.rescue: gameOver()
+	elif noActivePlayer: 
+		gameOver(true)
+		noActivePlayer = false
+		changeCamera()
+	print(active)
+	await get_tree().create_timer(1).timeout
+	checkEveryoneIdle()
+
+var countdown = 11
+func gameOver(reset = false):
+	if reset:
+		#StoryManager.livesNode.rescue = false
+		#StoryManager.livesNode.rescueTanks()
+		countdown = 11
+		StoryManager.livesNode.countdown(countdown)
+		
+		return
+	countdown -= 1
+	if countdown <= 0:
+		endGame()
+		checkEveryoneIdle(true)
+	StoryManager.livesNode.countdown(countdown)
+
+func endGame():
+	Transition.ChangeScene("main","slideDown")
+
 var startedCam = false
 func startCam(body):
 	#startOOB(body)
+	if !playerCam.isIdle: 
+		startedCam = true
+		return
 	if startedCam: return
 	print("start")
 	startedCam = true
@@ -233,6 +282,7 @@ func playerOOB(delta):
 		#print("OOB")  # Out of bounds
 
 func checkOOB(body):
+	
 	#if checkpointCam != null: await get_tree().create_timer(5).timeout
 		#return
 	var OOBpos = body.global_position
@@ -503,4 +553,38 @@ func Checkpoint_Room2Out(body):
 	checkpointCam = null
 	checkpointSpawn = null
 	mainCamZoom = 1
+
+#region no dialogue reference
+func Checkpoint_Room3In(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = cameraCheckpoints[10]
+	mainCamZoom = cameraCheckpoints[10].zoom.x
+	checkpointSpawn = checkpointSpawns[10]
+
+func Checkpoint_Room3Out(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = null
+	checkpointSpawn = null
+	mainCamZoom = 1
+#endregion no dialogue reference
+
+func Checkpoint_End_Chpt1(body):
+	if !body.isPlayer: return
+	if body.isAI: return
+	playerCam = body
+	checkpointCam = cameraCheckpoints[11]
+	mainCamZoom = cameraCheckpoints[11].zoom.x
+	
+	for player:Player in players: player.idleTimer.stop()
+	
+	StoryManager.startDialogue("Chapter 1", "End", self)
+	await StoryManager.myDbox.dialogue_finished
+	StoryManager.objectives[StoryManager.usedSaveIndex]["Tropikala Complete"] = true
+	GameManager.SaveGame()
+	Transition.ChangeScene("campaign","slideUp")
+	#checkpointSpawn = checkpointSpawns[11]
 #endregion cameraCheckpoints

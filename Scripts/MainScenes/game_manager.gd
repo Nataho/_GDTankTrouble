@@ -1,5 +1,5 @@
 extends Node
-@export var Version:String = "0.0.17"
+@export var Version:String = "0.0.18"
 @export var Debug:bool = true
 @export var kiosk:bool = false #founders
 var isIdle = true

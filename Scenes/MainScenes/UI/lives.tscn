@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bftvtufs7ypyp"]
+[gd_scene load_steps=22 format=3 uid="uid://bftvtufs7ypyp"]
 
 [ext_resource type="Script" path="res://Scripts/MainScenes/UI/lives.gd" id="1_6w285"]
 [ext_resource type="FontFile" uid="uid://w1s71lqfqnt5" path="res://Assets/Fonts/Renogare-Regular.otf" id="1_7nas1"]
@@ -30,7 +30,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(57, 74)]
+"values": [Vector2(100, 74)]
 }
 
 [sub_resource type="Animation" id="Animation_p87l6"]
@@ -95,62 +95,6 @@ _data = {
 "ShowIndividual": SubResource("Animation_fia2p")
 }
 
-[sub_resource type="Animation" id="Animation_k3gd6"]
-resource_name = "Warn"
-length = 2.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Warn:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Goods:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_te3o2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Warn:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Goods:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_3opbk"]
 resource_name = "Goods"
 length = 2.5
@@ -180,6 +124,62 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_te3o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goods:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k3gd6"]
+resource_name = "Warn"
+length = 2.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Goods:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wnn0"]
 _data = {
 "Goods": SubResource("Animation_3opbk"),
@@ -198,6 +198,18 @@ border_blend = true
 
 [sub_resource type="Theme" id="Theme_nb1ly"]
 Panel/styles/panel = SubResource("StyleBoxFlat_niyiv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1hhyt"]
+font = ExtResource("1_7nas1")
+font_size = 250
+outline_size = 100
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhu4r"]
+font = ExtResource("1_7nas1")
+font_size = 40
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0la02"]
 bg_color = Color(0.448683, 0.107992, 0.00664623, 0)
@@ -243,6 +255,43 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_nb1ly")
 
+[node name="CountDown" type="Label" parent="Warn"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "10"
+label_settings = SubResource("LabelSettings_1hhyt")
+
+[node name="text" type="Label" parent="Warn/CountDown"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -27.0
+offset_right = 153.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "MOVE PLAYER 
+TO CONTINUE"
+label_settings = SubResource("LabelSettings_mhu4r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Goods" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -277,12 +326,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/5 Players/Panel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 222.0
-offset_bottom = 401.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -197.5
+offset_right = 107.0
+offset_bottom = 197.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="P_-1" type="HBoxContainer" parent="Control/5 Players/Panel/VBoxContainer"]
 layout_mode = 2
@@ -370,7 +427,7 @@ label_settings = SubResource("LabelSettings_onx3l")
 
 [node name="Lives" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 99.9999
+offset_left = 100.0
 offset_top = 74.0
 offset_right = 184.0
 offset_bottom = 145.0

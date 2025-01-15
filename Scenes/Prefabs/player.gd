@@ -143,6 +143,7 @@ func Died():
 	self.hide() #hide player
 	self.set_process_mode(4) #process of player is disabled
 	$Timer.start() #start respawn timer
+	#await get_tree().create_timer(0.1).timeout
 	idle()
 	
 	if isCampaign && !canRespawn:
@@ -153,6 +154,7 @@ func Respawn():
 	if !canRespawn: return
 	
 	if isCampaign:
+		#$Idle.start()
 		if StoryManager.livesNode.lives[playerIndex] < 0 && !isAI: 
 			print("attempt respawn failed")
 			$Timer.start()
@@ -163,7 +165,7 @@ func Respawn():
 		canShoot_Move = true
 		$Timer.stop()
 		moved.emit()
-		idle_remove()
+		#idle_remove()
 		if !isAI: StoryManager.livesNode.showAll()
 		return
 	

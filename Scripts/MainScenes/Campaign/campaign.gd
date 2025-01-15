@@ -3,6 +3,7 @@ extends Control
 var saveIndex = StoryManager.usedSaveIndex
 
 func _ready() -> void:
+	PlayerG.reset()
 	AudioG.playMusic("ambience 01",5)
 	%Prologue.grab_focus()
 	checkCompletion()
