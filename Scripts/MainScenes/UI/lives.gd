@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name LIVES
 var lives = {
-	-1: 0,
+	-1: 5,
 	0: 5,
 	1: 5,
 	2: 5,
@@ -82,6 +82,7 @@ func rescueTanks():
 		return
 	if !rescue:
 		%CountDown.hide()
+		countdown(11)
 		return
 	tankRescue += 1
 	
@@ -100,6 +101,9 @@ func startRescue():
 func countdown(count):
 	if count == 11: 
 		%CountDown.hide()
+		return
+	if StoryManager.isDialogue:
+		countdown(11)
 		return
 	%CountDown.text = str(count)
 	%CountDown.show()

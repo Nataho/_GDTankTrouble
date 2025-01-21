@@ -4,6 +4,7 @@ var selfNode = self
 var canPause = false
 #region signals
 signal tutsTextLineFinished
+signal pause_toggle
 #endregion signals
 
 #region objectives
@@ -110,9 +111,10 @@ var isPaused := false
 var pauseMenu:PAUSE = null
 func pauseGame():
 	if !canPause: return
-	if isPaused: 
-		pauseMenu.resume()
+	if isPaused:
+		#pauseMenu.resume() 
 		isPaused = false
+		pause_toggle.emit()
 		
 		return
 	var pause = load("res://Scenes/MainScenes/UI/pause.tscn")
@@ -218,6 +220,9 @@ func checkEveryoneIdle(game0ver = false):
 
 var countdown = 11
 func gameOver(reset = false):
+	if StoryManager.isDialogue: 
+		countdown = 11
+		return
 	if reset:
 		#StoryManager.livesNode.rescue = false
 		#StoryManager.livesNode.rescueTanks()
@@ -352,6 +357,7 @@ var tutorials = {
 
 var tutsIndex = 0
 func startTutsText(lib):
+	
 	%"Tutorial Text".show()
 	if tutsIndex >= lib.size():
 		tutsIndex = 0
@@ -368,6 +374,7 @@ func startTutsText(lib):
 
 var charIndex = 0
 func TutsText(value:String):
+	if isPaused: await pause_toggle
 	var textBuffer = ""
 	
 	text = value
@@ -389,6 +396,12 @@ func TutsText(value:String):
 #endregion tutorial textBox
 
 #region cameraCheckpoints
+func activate_AI_in_rooms(node, active = true):
+	var children = node.get_children()
+	for child in children:
+		if !child.isPlayer: continue
+		child.canShoot_Move = active
+
 func dialogueTiming(dLogue):
 	if dLogue == "": return
 	if dLogue == "Tutorial Shooting":
@@ -448,6 +461,7 @@ func Checkpoint_Tutorial(body):
 	mainCamZoom = 0.9
 	
 	objectives["tutorial shooting"] = true
+	
 func Checkpoint_TutorialOut(body):
 	if !body.isPlayer: return
 	if body.isAI: return
@@ -530,6 +544,9 @@ func Checkpoint_Room1In(body):
 	checkpointCam = cameraCheckpoints[8]
 	mainCamZoom = cameraCheckpoints[8].zoom.x
 	checkpointSpawn = checkpointSpawns[8]
+	
+	activate_AI_in_rooms($CPU/Tropikala/Room1)
+	
 func Checkpoint_Room1Out(body):
 	if !body.isPlayer: return
 	if body.isAI: return
@@ -537,6 +554,9 @@ func Checkpoint_Room1Out(body):
 	checkpointCam = null
 	checkpointSpawn = null
 	mainCamZoom = 1
+	
+	activate_AI_in_rooms($CPU/Tropikala/Room1, false)
+	
 
 func Checkpoint_Room2In(body):
 	if !body.isPlayer: return
@@ -545,7 +565,11 @@ func Checkpoint_Room2In(body):
 	checkpointCam = cameraCheckpoints[9]
 	mainCamZoom = cameraCheckpoints[9].zoom.x
 	checkpointSpawn = checkpointSpawns[9]
-	  
+	
+	activate_AI_in_rooms($CPU/Tropikala/Room2)
+	activate_AI_in_rooms($CPU/Tropikala/FreeRoam1, false)
+	
+	
 func Checkpoint_Room2Out(body):
 	if !body.isPlayer: return
 	if body.isAI: return
@@ -554,6 +578,9 @@ func Checkpoint_Room2Out(body):
 	checkpointSpawn = null
 	mainCamZoom = 1
 
+	activate_AI_in_rooms($CPU/Tropikala/Room2, false)
+	activate_AI_in_rooms($CPU/Tropikala/FreeRoam1)
+	
 #region no dialogue reference
 func Checkpoint_Room3In(body):
 	if !body.isPlayer: return
@@ -563,6 +590,10 @@ func Checkpoint_Room3In(body):
 	mainCamZoom = cameraCheckpoints[10].zoom.x
 	checkpointSpawn = checkpointSpawns[10]
 
+	activate_AI_in_rooms($CPU/Tropikala/Room3)
+	activate_AI_in_rooms($CPU/Tropikala/FreeRoam1, false)
+	activate_AI_in_rooms($CPU/Tropikala/FreeRoam2, false)
+	
 func Checkpoint_Room3Out(body):
 	if !body.isPlayer: return
 	if body.isAI: return
@@ -570,8 +601,16 @@ func Checkpoint_Room3Out(body):
 	checkpointCam = null
 	checkpointSpawn = null
 	mainCamZoom = 1
+	main_cam.position_smoothing_enabled = false
+	await get_tree().create_timer(0.5).timeout
+	main_cam.position_smoothing_enabled = true
+	
+	activate_AI_in_rooms($CPU/Tropikala/Room3, false)
+	activate_AI_in_rooms($CPU/Tropikala/FreeRoam1)
+	activate_AI_in_rooms($CPU/Tropikala/FreeRoam2)
+	
 #endregion no dialogue reference
-
+		   
 func Checkpoint_End_Chpt1(body):
 	if !body.isPlayer: return
 	if body.isAI: return

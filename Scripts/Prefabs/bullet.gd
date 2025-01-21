@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const isPlayer = false
+
 var playerIndex :int
 @export var SPEED := 500.0
 
@@ -17,28 +19,40 @@ var isAI := false
 func GetGamepadIndex():
 	playerIndex = get_parent().playerIndex
 	pass
-
+	
 func _ready():
-	print(isCampaign)
-	print("color p1: ", PlayerG.activeTankColor)
-	$shadow.rotation_degrees -= spawnRot
+	#print(isCampaign)
+	#print("color p1: ", PlayerG.activeTankColor)
+	#$shadow.rotation_degrees -= spawnRot
 	
 	AudioG.playSFX("bulletShoot",true)
 	GetGamepadIndex()
-	if !isCampaign: modulate = PlayerG.activeTankColor[playerIndex] #color
-	else:  modulate = get_parent().modulate
+	#if !isCampaign: modulate = PlayerG.activeTankColor[playerIndex] #color
+	#else:  modulate = PlayerG.tankColor[playerIndex]
+	if !isCampaign: 
+		$MeshInstance2D.modulate = TOOLS.get_unGlow_Color(PlayerG.activeTankColor[playerIndex])
+		#$main.modulate = PlayerG.activeTankColor[playerIndex]
+	else: 
+		$MeshInstance2D.modulate = TOOLS.get_unGlow_Color(PlayerG.tankColor[playerIndex])
+		#$main.modulate = PlayerG.tankColor[playerIndex]
 	PlayerG.pBulletCount[playerIndex] += 1
 	if GameManager.Debug: print("Player ", playerIndex, " has shot")
+	particle.color = TOOLS.get_unGlow_Color($MeshInstance2D.modulate)
+	#particle.color = TOOLS.get_opposite_color($MeshInstance2D.modulate)
+	#print("modulate: ", modulate)
+	#print("modulate: ", TOOLS.get_opposite_color(modulate))
 	
 	if !isMultiShot: forward_vector = PlayerG.playerForwardV[playerIndex] #afor forward wdirection ####
 	else: 
 		if multiShotCount == 0: forward_vector =  PlayerG.playerForwardV10[playerIndex]
 		else: forward_vector =  PlayerG.playerForwardV_10[playerIndex]
 	velocity = forward_vector * SPEED
+	#particle.set_color(modulate)  
+@onready var particle: CPUParticles2D = $Particle
 
 func _physics_process(delta:float) -> void:
-	Collisions(delta)
 	
+	Collisions(delta)
 func Collisions(delta:float) -> void:
 	var collision = move_and_collide(velocity*delta)
 	var collisionBody
@@ -52,17 +66,25 @@ func Collisions(delta:float) -> void:
 		
 		
 		velocity = velocity.bounce(collision.get_normal())
-		
+		if collisionBody.name == "Shield":
+			collisionBody.hit()
 		
 	if collisionBody != null and collisionBody.name == "Walls":
 		AudioG.playSFX("bulletBounce",true)
 	
 	collisionBody = null
 
-func die():
+func die():  
 	PlayerG.pBulletCount[playerIndex] -= 1
-	queue_free()
+	#particle.reparent(get_parent())
+	velocity = Vector2.ZERO
+	particle.emitting = false
+	$main.hide()
+	$MeshInstance2D.hide()
+	set_process_mode(Node.PROCESS_MODE_DISABLED)
 	
+	await get_tree().create_timer(1).timeout
+	queue_free()
 func hit(body):
 	if body in get_tree().get_nodes_in_group("Player"):
 		if GameManager.Debug: print("HIT!")
@@ -88,7 +110,7 @@ func hit(body):
 		
 			PlayerG.PlayerScore[playerIndex]["suicide"] += 1
 		else: #if the bullet has hit a player other than the sender
-			if isAI && isCampaign: return
+			if isAI && isCampaign:return
 			PlayerG.PlayerScore[playerIndex]["kills"] += 1
 			PlayerG.PlayerScore[playerIndex]["game score"] += 1
 			if isCampaign:

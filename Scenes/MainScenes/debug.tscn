@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://5u7a50o8j56i"]
+
+[ext_resource type="Script" path="res://Scenes/MainScenes/debug.gd" id="1_2fh86"]
+[ext_resource type="FontFile" uid="uid://4rqi5msf7djb" path="res://Assets/Fonts/BAHNSCHRIFT.TTF" id="2_foewu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ak8jp"]
+font = ExtResource("2_foewu")
+font_size = 30
+
+[node name="Debug" type="Node"]
+script = ExtResource("1_2fh86")
+goodFPS = 60
+warnFPS = 40
+
+[node name="Ui" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="FPS" type="Label" parent="Ui"]
+offset_left = 36.0
+offset_top = 33.0
+offset_right = 134.0
+offset_bottom = 64.0
+text = "FPS: 00"
+label_settings = SubResource("LabelSettings_ak8jp")

@@ -150,6 +150,15 @@ var tankColor = {
 	7: Color(2.66, 1.78, 2.54, 1),
 }
 
+	
+var bulletTrailColor = {
+	-1: Color(0.859, 0.859, 0.859, 1),
+	0: Color(0.431, 0.859, 1, 1), #6EDBFF
+	1: Color(1, 0.431, 0.431, 1), #FF6E6E
+	2: Color(0.451, 1, 0.784, 1), #73FFC8
+	3: Color(0.451, 1, 0.784, 1), 
+}
+
 var activeTankColor = {
 	#0: Color(1.98, 1.09, -0.26, 1)
 } #stores new tank colors

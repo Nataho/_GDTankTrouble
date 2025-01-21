@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8yst42r7apkx"]
+
+[sub_resource type="Curve" id="Curve_s8ff2"]
+_data = [Vector2(0, 1), 0.0, 2.43879, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_joh7m"]
+offsets = PackedFloat32Array(0.10396, 0.242574, 0.653465)
+colors = PackedColorArray(0.2, 0.313726, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+
+[node name="DeathEffect" type="CPUParticles2D"]
+process_mode = 3
+process_priority = 5
+emitting = false
+amount = 64
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.31
+fixed_fps = 60
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = 180.0
+angular_velocity_max = 180.0
+orbit_velocity_min = -1.0
+orbit_velocity_max = 1.0
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 150.0
+radial_accel_max = 150.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_max = 15.05
+scale_amount_curve = SubResource("Curve_s8ff2")
+color_ramp = SubResource("Gradient_joh7m")

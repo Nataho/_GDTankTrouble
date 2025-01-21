@@ -668,7 +668,7 @@ animation = &"TutorialIn"
 animation = &"TutorialOut"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pgccr"]
-graph_offset = Vector2(-670.417, 228.1)
+graph_offset = Vector2(-766.085, 97.92)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_pdnvo")
 nodes/Add2/position = Vector2(-180, 340)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_cuu2a")
@@ -717,9 +717,9 @@ anchors_preset = 4
 anchor_left = 0.0
 anchor_right = 0.0
 offset_left = 200.0
-offset_top = -86.0
+offset_top = -86.5
 offset_right = 1353.0
-offset_bottom = 87.0
+offset_bottom = 86.5
 grow_horizontal = 1
 focus_neighbor_top = NodePath("../CampaignMode")
 focus_neighbor_bottom = NodePath("../Tutorial")
@@ -737,6 +737,7 @@ offset_bottom = 387.0
 grow_horizontal = 1
 focus_neighbor_top = NodePath("../Multiplayer")
 focus_neighbor_bottom = NodePath("../CampaignMode")
+disabled = true
 text = "HOW TO PLAY"
 
 [node name="Animate" type="AnimationPlayer" parent="."]

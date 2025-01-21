@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://ipbsrc1j255x"]
+[gd_scene load_steps=24 format=4 uid="uid://ipbsrc1j255x"]
 
 [ext_resource type="Script" path="res://Scripts/MainScenes/Campaign/Tropikala/tropikala.gd" id="1_yo4v0"]
 [ext_resource type="Texture2D" uid="uid://c8wtd40xo6m5o" path="res://Assets/Photos/crown.png" id="2_vjn77"]
+[ext_resource type="Environment" uid="uid://celx2lm655lti" path="res://Assets/Godot/WorldEnvironment/maps.tres" id="2_y30u6"]
 [ext_resource type="PackedScene" uid="uid://chr5bm0rlck45" path="res://Scenes/Prefabs/player.tscn" id="3_orreb"]
 [ext_resource type="PackedScene" uid="uid://n0648an3hc76" path="res://Scenes/Prefabs/Levels/Storyline/Tropikala/NPC/von01.tscn" id="4_n1ee2"]
 [ext_resource type="PackedScene" uid="uid://bq6h4v2e805b" path="res://Scenes/Prefabs/Levels/Storyline/Tropikala/NPC/ric01.tscn" id="5_bhmge"]
@@ -56,6 +57,9 @@ size = Vector2(328, 48)
 [node name="Tropikala" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_yo4v0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_y30u6")
 
 [node name="mainCam" type="Camera2D" parent="."]
 position = Vector2(-188, -323)
@@ -211,6 +215,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer2" parent="CPU/Tropikala/Room1" instance=ExtResource("3_orreb")]
 position = Vector2(10203, -1230)
@@ -219,6 +224,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer3" parent="CPU/Tropikala/Room1" instance=ExtResource("3_orreb")]
 position = Vector2(9519, -1351)
@@ -227,6 +233,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer4" parent="CPU/Tropikala/Room1" instance=ExtResource("3_orreb")]
 position = Vector2(8396, -1422)
@@ -235,6 +242,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer5" parent="CPU/Tropikala/Room1" instance=ExtResource("3_orreb")]
 position = Vector2(8984, -945)
@@ -243,6 +251,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Room2" type="Node" parent="CPU/Tropikala"]
 

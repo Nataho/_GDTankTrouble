@@ -204,7 +204,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_hfswg")
 theme_override_font_sizes/font_size = 120
-text = "Text"
+text = "text"
 flat = true
 autowrap_mode = 1
 script = ExtResource("2_4jqlb")
@@ -242,6 +242,22 @@ offset_bottom = 40.5
 grow_vertical = 2
 pivot_offset = Vector2(55, 40)
 texture = ExtResource("5_org4c")
+stretch_mode = 5
+
+[node name="customArrow" type="TextureRect" parent="Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -46.0
+offset_right = -9.5
+offset_bottom = 46.0
+grow_vertical = 2
+pivot_offset = Vector2(46, 46)
+texture = ExtResource("5_org4c")
+expand_mode = 1
 
 [node name="Animate" type="AnimationPlayer" parent="."]
 libraries = {

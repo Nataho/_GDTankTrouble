@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="tankTroubleRep"
+config/name="Blocky Blasters"
 run/main_scene="res://Scenes/MainScenes/UI/splash_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,6 +24,7 @@ AudioG="*res://Scenes/global_audio.tscn"
 StoryManager="*res://Scenes/MainScenes/story_manager.tscn"
 Transition="*res://Scenes/transition_scene.tscn"
 GameManager="*res://Scenes/MainScenes/game_manager.tscn"
+Debug="*res://Scenes/MainScenes/debug.tscn"
 
 [display]
 
@@ -134,12 +137,12 @@ pointing/emulate_touch_from_mouse=true
 [layer_names]
 
 2d_physics/layer_2="bullet collider"
+2d_physics/layer_3="bullet"
 2d_physics/layer_21="crums"
 2d_physics/layer_32="player"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true

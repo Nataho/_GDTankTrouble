@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh014oeqscv8h"]
+[gd_scene load_steps=5 format=3 uid="uid://dh014oeqscv8h"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/bullet.gd" id="1_sueat"]
 
@@ -7,21 +7,29 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvm1r"]
 radius = 0.5
 
+[sub_resource type="Curve" id="Curve_yj85a"]
+_data = [Vector2(0.00869565, 1), 0.0, 0.0, 0, 0, Vector2(0.986957, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Bullet" type="CharacterBody2D" groups=["Bullet"]]
 scale = Vector2(2, 2)
+collision_layer = 5
 collision_mask = 16777477
 script = ExtResource("1_sueat")
 
 [node name="main" type="MeshInstance2D" parent="."]
 modulate = Color(0.176471, 0.176471, 0.176471, 0.490196)
+z_index = 1
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(2.00227, 2)
 mesh = SubResource("SphereMesh_rje25")
 
 [node name="shadow" type="Node2D" parent="."]
+visible = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(0.43, 0.43, 0.43, 1)
+z_index = 1
 mesh = SubResource("SphereMesh_rje25")
 
 [node name="Timer" type="Timer" parent="."]
@@ -29,6 +37,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_dvm1r")
 
@@ -37,7 +46,20 @@ scale = Vector2(1.1, 1.1)
 collision_mask = 16777478
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_dvm1r")
+
+[node name="Particle" type="CPUParticles2D" parent="."]
+process_mode = 3
+amount = 32
+lifetime = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_yj85a")
+color = Color(0.236093, 0.236093, 0.236093, 1)
 
 [connection signal="timeout" from="Timer" to="." method="die"]
 [connection signal="body_entered" from="Area2D" to="." method="hit"]

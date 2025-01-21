@@ -6,11 +6,17 @@ const isPlayer = true
 @export var isHardMode = false
 @export var isAI:bool = false
 @export var canRespawn = true
+@export var showCollisionsAI = false
 #endregion
 
 #region campaign
 @export var isCampaign = false
+#var playerColor = 
 #endregion campaign
+
+#region signals
+signal died
+#endregion signals
 var tankParent
 var SPEED = 150; const defaultSPEED = 150
 var rotationSPEED = 3.0; const defaultRotationSPEED = 3.0
@@ -75,23 +81,9 @@ func interact():
 #endregion aditional controls
 #region startup
 func _ready():
-	
-	
 	bulletCount = PlayerG.PlayerBulletCap[playerIndex]
-	if GameManager.isIdle || PlayerG.isHardMode or isHardMode: 
-		$Vision.monitoring = true
-		$Vision2.monitoring = false
-		$Vision.show()
-		$RayCast2D.show()
-		$eye.show()
-		$CheckWall.show()
-	else:
-		$Vision.monitoring = false #turn true if hard mode
-		$Vision2.monitoring = true
-		$Vision2.show()
-		$RayCast2D.show()
-		$eye.show()
-		$CheckWall.show()
+	CollisionsAI()
+
 	
 	if PlayerG.isSurvival && !isAI: allModulate = 5
 	if get_parent().get_parent(): tankParent = get_parent().get_parent()
@@ -122,15 +114,53 @@ func _ready():
 		else: modulate = PlayerG.tankColor[playerIndex]
 	CHECK()
 
+@onready var vision: Area2D = $Vision
+@onready var vision_2: Area2D = $Vision2
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var eye: RayCast2D = $eye
+@onready var check_wall: RayCast2D = $CheckWall
+
+func CollisionsAI():
+	
+	if GameManager.isIdle || PlayerG.isHardMode or isHardMode:
+		$Vision.monitoring = true
+		$Vision2.monitoring = false
+		if !showCollisionsAI: return
+		$Vision.show()
+		$RayCast2D.show()
+		$eye.show()
+		$CheckWall.show()
+	else:
+		$Vision.monitoring = false #turn true if hard mode
+		$Vision2.monitoring = true
+		if !showCollisionsAI: return
+		$Vision2.show()
+		$RayCast2D.show()
+		$eye.show()
+		$CheckWall.show()
+	if !isAI: 
+		$Vision.hide()
+		$Vision2.hide()
+		$RayCast2D.hide()
+		$eye.hide()
+		$CheckWall.hide()
+
 func CheckAI():
 	if !isCampaign: isAI = PlayerG.isAI[playerIndex]
 	if isAI: print("player AI index ", playerIndex,"; isAI: ", isAI)
 	if isAI: initializeAI()
-	if isAI: set_AI_detection(true)
+	if isAI && canShoot_Move: set_AI_detection(false)
+	elif isAI && !canShoot_Move: set_AI_detection(true)
 	
 #endregion startup
+@onready var death_effect: CPUParticles2D = $DeathEffect
 
 func Died():
+	#death_effect.emitting = true
+	#death_effect.one_shot = true
+	#print(name)
+	death_effect.restart()
+	died.emit()
 	if tankParent && !isAI && PlayerG.isSurvival:
 		tankParent.died()
 	
@@ -140,33 +170,57 @@ func Died():
 		if StoryManager.livesNode.lives[playerIndex] < 0:
 			StoryManager.livesNode.startRescue()
 	power_reset()
-	self.hide() #hide player
-	self.set_process_mode(4) #process of player is disabled
+	showTankTexture(false) #hide player
 	$Timer.start() #start respawn timer
 	#await get_tree().create_timer(0.1).timeout
 	idle()
 	
 	if isCampaign && !canRespawn:
+		await get_tree().create_timer(1.5).timeout
 		queue_free()
 
+func showTankTexture(show = true):
+	if show:
+		print("tank show")
+		$Body.show()
+		$Nozzle.show()
+		$Head.show()
+		self.set_process_mode(0)
+		return
+	print("tank hidden")
+	$Body.hide()
+	$Nozzle.hide()
+	$Head.hide()
+	self.set_process_mode(4) #process of player is disabled
+	
 func Respawn():
 	#print("respawning")
 	if !canRespawn: return
 	
-	if isCampaign:
+	if isCampaign or isTutorial:
 		#$Idle.start()
-		if StoryManager.livesNode.lives[playerIndex] < 0 && !isAI: 
-			print("attempt respawn failed")
-			$Timer.start()
-			return
+		if StoryManager.livesNode != null: 
+			if StoryManager.livesNode.lives[playerIndex] < 0 && !isAI: 
+				print("attempt respawn failed")
+				$Timer.start()
+				return
 		print("respawning")
-		show() #hide player
-		set_process_mode(0)
+		#show() #hide player
+		showTankTexture(true)
+		
+		#set_process_mode(0)
 		canShoot_Move = true
 		$Timer.stop()
 		moved.emit()
 		#idle_remove()
-		if !isAI: StoryManager.livesNode.showAll()
+		if !isAI and StoryManager.livesNode != null: 
+			StoryManager.livesNode.showAll()
+			
+		#var spawnShield:SHIELD = SHIELD.new()
+		var spawnShield = load("res://Scenes/Prefabs/Powerup/powerUp_shield.tscn")
+		var myNode = spawnShield.instantiate()
+		myNode.state = myNode._states.SPAWN_SHIELD
+		add_child(myNode)
 		return
 	
 	power_reset()
@@ -183,8 +237,7 @@ func CHECK():
 	#endregion
 	
 	var respawnAttempts = 0
-	self.show()
-	self.set_process_mode(0)
+	showTankTexture(true)
 	var WindowSize = Vector2(2560,1440) #get_viewport().size
 	while !Spawned:
 		randomize()
@@ -538,9 +591,14 @@ func AIdoRotation():
 		#var direction = ($Vision.to_local(target.position) - position).normalized()
 		#var targetAngle = rad_to_deg(atan2(direction.y, direction.x))
 		#var angleDiff = wrapf(targetAngle - rotation, -180, 180)
-		if targetDirection < rotation_degrees: rotate = -1
-		elif targetDirection > rotation_degrees: rotate = 1
-		if abs(rotation_degrees - targetDirection) < 1: rotate = 0
+		
+		var angleDifference = wrapf(targetDirection - global_rotation_degrees,-180,180)
+		if angleDifference > 1.5: rotate = 1
+		elif angleDifference < -1.5: rotate = -1
+		else: rotate = 0
+		#if targetDirection < rotation_degrees: rotate = -1
+		#elif targetDirection > rotation_degrees: rotate = 1
+		#if abs(rotation_degrees - targetDirection) < 1: rotate = 0
 		
 		self.rotation_degrees += rotate * rotationSPEED * SPEEDmultiplier
 		
@@ -558,9 +616,6 @@ func AIdoMovement(delta):
 		velocity = forward_vector * move * SPEED * SPEEDmultiplier; PlayerG.PlayerMoved = true
 		translate(velocity * delta)
 		move_and_slide()
-
-
-@onready var vision: Area2D = $Vision
 
 ##########################
 var target = null
@@ -721,7 +776,7 @@ func AI_Detection():
 	await get_tree().create_timer(0.1).timeout
 	if isAID:
 		AI_Detection()
-#endregion timed looping functions
+#endregion timed looping functionssa
 
 #region Idle
 var isIdle = true

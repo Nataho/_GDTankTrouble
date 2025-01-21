@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var TIME: Label = $UI/TIME
 const PLAYER = preload("res://Scenes/Prefabs/player.tscn")
+var tool:TOOLS
 
 #will contain all of the player tags or player names
 var playerTagArray = [] 

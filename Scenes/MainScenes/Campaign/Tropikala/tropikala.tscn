@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b8iipiro2mna5"]
+[gd_scene load_steps=29 format=4 uid="uid://b8iipiro2mna5"]
 
 [ext_resource type="Script" path="res://Scripts/MainScenes/Campaign/Tropikala/tropikala.gd" id="1_u8sg5"]
 [ext_resource type="PackedScene" uid="uid://chr5bm0rlck45" path="res://Scenes/Prefabs/player.tscn" id="2_4vsui"]
@@ -41,6 +41,9 @@ size = Vector2(20, 348)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7b3cr"]
 size = Vector2(306.375, 69)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_s52ya"]
+points = PackedVector2Array(984, -447, 982, 579, -1030, 579, -1030, 226, -1011, 226, -1011, -448)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq126"]
 size = Vector2(22, 348)
 
@@ -71,6 +74,8 @@ size = Vector2(366, 20)
 [node name="Tropikala" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_u8sg5")
+metadata/_edit_horizontal_guides_ = [-500.0, -1527.0]
+metadata/_edit_vertical_guides_ = [8265.0, 10260.0]
 
 [node name="mainCam" type="Camera2D" parent="."]
 position = Vector2(-188, -323)
@@ -226,6 +231,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer2" parent="CPU/Tropikala/Room1" instance=ExtResource("2_4vsui")]
 position = Vector2(10203, -1230)
@@ -234,6 +240,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer3" parent="CPU/Tropikala/Room1" instance=ExtResource("2_4vsui")]
 position = Vector2(9519, -1351)
@@ -242,6 +249,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer4" parent="CPU/Tropikala/Room1" instance=ExtResource("2_4vsui")]
 position = Vector2(8396, -1422)
@@ -250,6 +258,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer5" parent="CPU/Tropikala/Room1" instance=ExtResource("2_4vsui")]
 position = Vector2(8984, -945)
@@ -258,6 +267,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Room2" type="Node" parent="CPU/Tropikala"]
 
@@ -268,6 +278,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer2" parent="CPU/Tropikala/Room2" instance=ExtResource("2_4vsui")]
 position = Vector2(9570, -2776)
@@ -276,6 +287,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer3" parent="CPU/Tropikala/Room2" instance=ExtResource("2_4vsui")]
 position = Vector2(8646, -1884)
@@ -284,6 +296,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer4" parent="CPU/Tropikala/Room2" instance=ExtResource("2_4vsui")]
 position = Vector2(7274, -1884)
@@ -293,6 +306,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer5" parent="CPU/Tropikala/Room2" instance=ExtResource("2_4vsui")]
 position = Vector2(8160, -1841)
@@ -302,6 +316,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer6" parent="CPU/Tropikala/Room2" instance=ExtResource("2_4vsui")]
 position = Vector2(7204, -2621)
@@ -310,6 +325,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="FreeRoam1" type="Node" parent="CPU/Tropikala"]
 
@@ -320,6 +336,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer2" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(5868, -2238)
@@ -328,6 +345,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer3" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(5326, -1401)
@@ -336,6 +354,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer4" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(6506, -2714)
@@ -344,6 +363,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer5" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(4423, -2676)
@@ -352,6 +372,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer6" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(4452, -1877)
@@ -360,6 +381,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer7" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(5793, -3428)
@@ -368,6 +390,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer8" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(5289, -2772)
@@ -376,6 +399,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer9" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(7578, -4216)
@@ -384,6 +408,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer10" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(8311, -4258)
@@ -392,6 +417,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer11" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(7468, -4877)
@@ -400,6 +426,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer12" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(9019, -5356)
@@ -408,6 +435,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer13" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(8566, -4886)
@@ -417,6 +445,7 @@ canRespawn = false
 isCampaign = true
 playerIndex = 7
 tankScale = 2
+canShoot_Move = false
 
 [node name="Computer14" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(7604, -5416)
@@ -425,6 +454,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer15" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(6311, -4941)
@@ -433,6 +463,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer16" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(5646, -5305)
@@ -441,6 +472,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer17" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(4646, -5398)
@@ -449,6 +481,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer18" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(5205, -4144)
@@ -457,6 +490,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer19" parent="CPU/Tropikala/FreeRoam1" instance=ExtResource("2_4vsui")]
 position = Vector2(6557, -4068)
@@ -465,6 +499,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Room3" type="Node" parent="CPU/Tropikala"]
 
@@ -475,6 +510,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer2" parent="CPU/Tropikala/Room3" instance=ExtResource("2_4vsui")]
 position = Vector2(3987, -5273)
@@ -483,6 +519,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer3" parent="CPU/Tropikala/Room3" instance=ExtResource("2_4vsui")]
 position = Vector2(3202, -4416)
@@ -492,6 +529,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer4" parent="CPU/Tropikala/Room3" instance=ExtResource("2_4vsui")]
 position = Vector2(2459, -4937)
@@ -500,6 +538,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer5" parent="CPU/Tropikala/Room3" instance=ExtResource("2_4vsui")]
 position = Vector2(1980, -5458)
@@ -508,6 +547,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer6" parent="CPU/Tropikala/Room3" instance=ExtResource("2_4vsui")]
 position = Vector2(2483, -4074)
@@ -516,6 +556,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="FreeRoam2" type="Node" parent="CPU/Tropikala"]
 
@@ -526,6 +567,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer2" parent="CPU/Tropikala/FreeRoam2" instance=ExtResource("2_4vsui")]
 position = Vector2(1239, -4526)
@@ -534,6 +576,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer3" parent="CPU/Tropikala/FreeRoam2" instance=ExtResource("2_4vsui")]
 position = Vector2(826, -4882)
@@ -543,6 +586,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer4" parent="CPU/Tropikala/FreeRoam2" instance=ExtResource("2_4vsui")]
 position = Vector2(1100, -5427)
@@ -551,6 +595,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 7
+canShoot_Move = false
 
 [node name="Computer5" parent="CPU/Tropikala/FreeRoam2" instance=ExtResource("2_4vsui")]
 position = Vector2(794, -5897)
@@ -560,6 +605,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer6" parent="CPU/Tropikala/FreeRoam2" instance=ExtResource("2_4vsui")]
 position = Vector2(1346, -5911)
@@ -568,6 +614,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Computer7" parent="CPU/Tropikala/FreeRoam2" instance=ExtResource("2_4vsui")]
 position = Vector2(1328, -6364)
@@ -576,6 +623,7 @@ isAI = true
 canRespawn = false
 isCampaign = true
 playerIndex = 4
+canShoot_Move = false
 
 [node name="Npcs" type="Node" parent="."]
 
@@ -735,12 +783,23 @@ collision_layer = 0
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room1/In"]
+process_mode = 4
+visible = false
 position = Vector2(-1021, 404)
 shape = SubResource("RectangleShape2D_qketw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room1/In"]
+process_mode = 4
+visible = false
 position = Vector2(611.812, -505.5)
 shape = SubResource("RectangleShape2D_7b3cr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room1/In"]
+shape = SubResource("ConvexPolygonShape2D_s52ya")
+debug_color = Color(0.7, 0, 0.00620341, 0.42)
+
+[node name="Node2D" type="Node2D" parent="Area Preview/checkpoints/Chapter 1/room1/In"]
+position = Vector2(-1011, -448)
 
 [node name="Out" type="Area2D" parent="Area Preview/checkpoints/Chapter 1/room1"]
 collision_layer = 0
@@ -769,12 +828,19 @@ collision_layer = 0
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room2/In"]
+process_mode = 4
+visible = false
 position = Vector2(961, 47)
 shape = SubResource("RectangleShape2D_deb56")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room2/In"]
+process_mode = 4
+visible = false
 position = Vector2(-699, 478)
 shape = SubResource("RectangleShape2D_3gy5o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area Preview/checkpoints/Chapter 1/room2/In"]
+polygon = PackedVector2Array(-34, 606, -1367, 610, -1369, -720, 1306, -712, 1307, -263, 826, -261, 825, -127, 982, -127, 982, 221, 729, 221, 729, 351, 1202, 351, 1201, 601, 463, 603, 463, 208, 347, 208, 347, 596, 81, 596, 81, -135, 559, -135, 559, -272, -35, -271)
 
 [node name="Out" type="Area2D" parent="Area Preview/checkpoints/Chapter 1/room2"]
 collision_layer = 0
@@ -802,11 +868,11 @@ collision_layer = 0
 collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room3/In"]
-position = Vector2(1603.75, -165.5)
+position = Vector2(1482, -165.5)
 shape = SubResource("RectangleShape2D_ay1om")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room3/In"]
-position = Vector2(-965, 781)
+position = Vector2(-965, 748)
 shape = SubResource("RectangleShape2D_3nqxs")
 
 [node name="Out" type="Area2D" parent="Area Preview/checkpoints/Chapter 1/room3"]
@@ -818,7 +884,7 @@ position = Vector2(1727, -165)
 shape = SubResource("RectangleShape2D_recsx")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Preview/checkpoints/Chapter 1/room3/Out"]
-position = Vector2(-965, 857)
+position = Vector2(-965, 878)
 shape = SubResource("RectangleShape2D_lpuf3")
 
 [node name="End" type="Node2D" parent="Area Preview/checkpoints/Chapter 1"]
@@ -851,6 +917,7 @@ tile_map_data = PackedByteArray("AAAUAA4AAAADAAMAAAAVAA4AAAADAAMAAAAWAA4AAAADAAM
 
 [node name="Tutorial Text" type="Label" parent="UI"]
 unique_name_in_owner = true
+process_mode = 1
 visible = false
 anchors_preset = 1
 anchor_left = 1.0

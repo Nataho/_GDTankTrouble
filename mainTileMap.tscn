@@ -1399,6 +1399,7 @@ sources/5 = SubResource("TileSetAtlasSource_oqi5p")
 pattern_0 = SubResource("TileMapPattern_0p5ji")
 
 [node name="mainTileMapSet" type="Node2D"]
+texture_filter = 1
 
 [node name="Layer 3 (Misc)" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)

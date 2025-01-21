@@ -29,7 +29,6 @@ const Scenes = {
 	"Bullet 01": "res://Scenes/Prefabs/Levels/Bullet/bullet_01.tscn",
 	"Bullet 02": "res://Scenes/Prefabs/Levels/Bullet/bullet_02.tscn",
 	
-	
 	"Survival 01": "res://Scenes/Prefabs/Levels/Survival/Survival_01.tscn",
 }
 

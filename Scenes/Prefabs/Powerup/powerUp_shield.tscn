@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://62g0fqjuil50"]
+
+[ext_resource type="Texture2D" uid="uid://lc2y72w70v2f" path="res://Assets/Photos/PowerUps/texture/bubbleshield.png" id="1_eyow7"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Powerup/power_up_shield.gd" id="1_iw2vc"]
+[ext_resource type="Environment" uid="uid://di6b052ctpd5a" path="res://Assets/player.tres" id="2_560qu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_naqyt"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_csgv3"]
+resource_name = "damage"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.378929, 1),
+"update": 0,
+"values": [Color(1, 0.184122, 0.203521, 0.5), Color(1, 1, 1, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_5wgmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_rbhqf"]
+resource_name = "hit"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.378929, 1),
+"update": 0,
+"values": [Color(0.181472, 0.148046, 1, 1), Color(1, 1, 1, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_taehm"]
+_data = {
+"RESET": SubResource("Animation_5wgmq"),
+"damage": SubResource("Animation_csgv3"),
+"hit": SubResource("Animation_rbhqf")
+}
+
+[node name="Shield" type="StaticBody2D"]
+modulate = Color(1, 1, 1, 0.5)
+z_index = -1
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_iw2vc")
+damageColor = Color(1, 0.184122, 0.203521, 0.5)
+active = true
+metadata/_edit_horizontal_guides_ = [-1.0, 0.0]
+metadata/_edit_vertical_guides_ = [1.0, 0.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(3, 3, 3, 1)
+scale = Vector2(0.119, 0.119)
+texture = ExtResource("1_eyow7")
+offset = Vector2(-6.605, 6.43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_naqyt")
+debug_color = Color(0.688446, 0.332871, 0.929468, 0.078)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_560qu")
+
+[node name="SpawnShieldTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_taehm")
+}
+
+[node name="slide" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="SpawnShieldTimer" to="." method="spawnShield_end"]
+[connection signal="timeout" from="slide" to="." method="releaseSlide"]
